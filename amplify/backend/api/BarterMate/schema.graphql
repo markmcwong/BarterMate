@@ -1,0 +1,30 @@
+enum TransactionStatus {
+  COMPLETED
+  PAYMENT_PENDING
+  CONFIRMATION_PENDING
+}
+
+type Transaction @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  status: TransactionStatus
+}
+
+type Group @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+}
+
+type Category @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  categoryName: String
+  itemID: ID! @index(name: "byItem")
+}
+
+type Item @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  description: String
+  image: AWSURL
+  categories: [Category] @hasMany(indexName: "byItem", fields: ["id"])
+}

@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-bartermate-staging-14821-authRole",
+      "UnauthRoleArn": "arn:aws:iam::190413129288:role/amplify-bartermate-staging-14821-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::190413129288:role/amplify-bartermate-staging-14821-authRole",
+      "Region": "ap-southeast-1",
+      "DeploymentBucketName": "amplify-bartermate-staging-14821-deployment",
+      "UnauthRoleName": "amplify-bartermate-staging-14821-unauthRole",
+      "StackName": "amplify-bartermate-staging-14821",
+      "StackId": "arn:aws:cloudformation:ap-southeast-1:190413129288:stack/amplify-bartermate-staging-14821/243ba1f0-bc8a-11ed-ad28-0a6dc331856c",
+      "AmplifyAppId": "d3a8dtfeen4j4q"
+    }
+  }
+}
