@@ -25,6 +25,10 @@
 		174ACAA229BFA3C7006222AF /* UserTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACA9029BFA3C7006222AF /* UserTransaction.swift */; };
 		174ACAA329BFA3C7006222AF /* Transaction+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACA9129BFA3C7006222AF /* Transaction+Schema.swift */; };
 		174ACAA429BFA3C7006222AF /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACA9229BFA3C7006222AF /* TransactionStatus.swift */; };
+		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
+		174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */; };
+		174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA829BFA454006222AF /* DataStoreService.swift */; };
+		174ACAAD29BFA454006222AF /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA929BFA454006222AF /* SessionState.swift */; };
 		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
 		4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */; };
@@ -81,6 +85,10 @@
 		174ACA9029BFA3C7006222AF /* UserTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTransaction.swift; sourceTree = "<group>"; };
 		174ACA9129BFA3C7006222AF /* Transaction+Schema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Transaction+Schema.swift"; sourceTree = "<group>"; };
 		174ACA9229BFA3C7006222AF /* TransactionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionStatus.swift; sourceTree = "<group>"; };
+		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreServiceEvent.swift; sourceTree = "<group>"; };
+		174ACAA829BFA454006222AF /* DataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
+		174ACAA929BFA454006222AF /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		4DC0F87229BE2D27009EE2B5 /* BarterMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateApp.swift; sourceTree = "<group>"; };
@@ -155,6 +163,17 @@
 			path = amplify/generated/AmplifyModels;
 			sourceTree = "<group>";
 		};
+		174ACAA529BFA454006222AF /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				174ACAA629BFA454006222AF /* StorageService.swift */,
+				174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */,
+				174ACAA829BFA454006222AF /* DataStoreService.swift */,
+				174ACAA929BFA454006222AF /* SessionState.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
 		4DC0F86929BE2D27009EE2B5 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +199,7 @@
 		4DC0F87429BE2D27009EE2B5 /* BarterMate */ = {
 			isa = PBXGroup;
 			children = (
+				174ACAA529BFA454006222AF /* Adapter */,
 				4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */,
 				4DC0F87729BE2D27009EE2B5 /* ContentView.swift */,
 				4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */,
@@ -381,12 +401,16 @@
 				174ACA9329BFA3C7006222AF /* Item+Schema.swift in Sources */,
 				4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */,
 				174ACA9629BFA3C7006222AF /* Item.swift in Sources */,
+				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
 				174ACAA229BFA3C7006222AF /* UserTransaction.swift in Sources */,
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
 				174ACA9A29BFA3C7006222AF /* User.swift in Sources */,
 				174ACAA429BFA3C7006222AF /* TransactionStatus.swift in Sources */,
+				174ACAAD29BFA454006222AF /* SessionState.swift in Sources */,
+				174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */,
 				174ACAA329BFA3C7006222AF /* Transaction+Schema.swift in Sources */,
 				174ACA9829BFA3C7006222AF /* User+Schema.swift in Sources */,
+				174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */,
 				174ACA9E29BFA3C7006222AF /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
