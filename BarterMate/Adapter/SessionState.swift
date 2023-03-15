@@ -9,6 +9,6 @@ import Amplify
 
 enum SessionState {
     case signedOut
-    case signedIn
+    case signedIn(_ user: AuthUser)
     case initializing
 }

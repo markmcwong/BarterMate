@@ -29,6 +29,9 @@
 		174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */; };
 		174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA829BFA454006222AF /* DataStoreService.swift */; };
 		174ACAAD29BFA454006222AF /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA929BFA454006222AF /* SessionState.swift */; };
+		174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAAE29C199E4006222AF /* ServiceManager.swift */; };
+		174ACAB129C19B64006222AF /* AmplifyDataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */; };
+		176890B329C23B800099D17F /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176890B229C23B800099D17F /* AmplifyStorageService.swift */; };
 		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
 		4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */; };
@@ -89,6 +92,9 @@
 		174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreServiceEvent.swift; sourceTree = "<group>"; };
 		174ACAA829BFA454006222AF /* DataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
 		174ACAA929BFA454006222AF /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
+		174ACAAE29C199E4006222AF /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
+		174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreService.swift; sourceTree = "<group>"; };
+		176890B229C23B800099D17F /* AmplifyStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		4DC0F87229BE2D27009EE2B5 /* BarterMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateApp.swift; sourceTree = "<group>"; };
@@ -170,6 +176,9 @@
 				174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */,
 				174ACAA829BFA454006222AF /* DataStoreService.swift */,
 				174ACAA929BFA454006222AF /* SessionState.swift */,
+				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
+				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
+				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -402,7 +411,10 @@
 				4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */,
 				174ACA9629BFA3C7006222AF /* Item.swift in Sources */,
 				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
+				174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */,
 				174ACAA229BFA3C7006222AF /* UserTransaction.swift in Sources */,
+				176890B329C23B800099D17F /* AmplifyStorageService.swift in Sources */,
+				174ACAB129C19B64006222AF /* AmplifyDataStoreService.swift in Sources */,
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
 				174ACA9A29BFA3C7006222AF /* User.swift in Sources */,
 				174ACAA429BFA3C7006222AF /* TransactionStatus.swift in Sources */,

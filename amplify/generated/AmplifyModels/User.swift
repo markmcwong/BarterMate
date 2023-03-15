@@ -27,6 +27,7 @@ public struct User: Model {
       createdAt: nil,
       updatedAt: nil)
   }
+    
   internal init(id: String = UUID().uuidString,
       username: String? = nil,
       Transactions: List<UserTransaction>? = [],
