@@ -11,6 +11,7 @@ extension User {
     case Postings
     case Requests
     case Items
+    case chatID
     case createdAt
     case updatedAt
   }
@@ -28,6 +29,7 @@ extension User {
     model.pluralName = "Users"
     
     model.attributes(
+      .index(fields: ["chatID"], name: "byChat"),
       .primaryKey(fields: [user.id])
     )
     
@@ -38,6 +40,7 @@ extension User {
       .hasMany(user.Postings, is: .optional, ofType: Posting.self, associatedWith: Posting.keys.userID),
       .hasMany(user.Requests, is: .optional, ofType: Request.self, associatedWith: Request.keys.userID),
       .hasMany(user.Items, is: .optional, ofType: Item.self, associatedWith: Item.keys.userID),
+      .field(user.chatID, is: .required, ofType: .string),
       .field(user.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(user.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

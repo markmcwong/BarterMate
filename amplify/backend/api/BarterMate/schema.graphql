@@ -1,3 +1,19 @@
+type Message @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  chatID: ID! @index(name: "byChat")
+  SentTo: Chat! @belongsTo(fields: ["chatID"])
+  SentBy: User! @hasOne
+  createdAt: AWSDateTime!
+  content: String!
+}
+
+type Chat @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  ChatMessages: [Message!] @hasMany(indexName: "byChat", fields: ["id"])
+  ChatUsers: [User!] @hasMany(indexName: "byChat", fields: ["id"])
+  name: String
+}
+
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   username: String
@@ -5,6 +21,7 @@ type User @model @auth(rules: [{allow: public}]) {
   Postings: [Posting] @hasMany(indexName: "byUser", fields: ["id"])
   Requests: [Request] @hasMany(indexName: "byUser", fields: ["id"])
   Items: [Item] @hasMany(indexName: "byUser", fields: ["id"])
+  chatID: ID! @index(name: "byChat")
 }
 
 type Request @model @auth(rules: [{allow: public}]) {

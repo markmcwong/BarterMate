@@ -10,6 +10,11 @@
       "StackName": "amplify-bartermate-staging-14821",
       "StackId": "arn:aws:cloudformation:ap-southeast-1:190413129288:stack/amplify-bartermate-staging-14821/243ba1f0-bc8a-11ed-ad28-0a6dc331856c",
       "AmplifyAppId": "d3a8dtfeen4j4q"
+    },
+    "categories": {
+      "auth": {
+        "BarterMate": {}
+      }
     }
   }
 }
