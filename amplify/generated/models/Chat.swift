@@ -5,14 +5,14 @@ import Foundation
 public struct Chat: Model {
   public let id: String
   public var ChatMessages: List<Message>?
-  public var ChatUsers: List<User>?
+  public var ChatUsers: List<UserChat>?
   public var name: String?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
   
   public init(id: String = UUID().uuidString,
       ChatMessages: List<Message> = [],
-      ChatUsers: List<User> = [],
+      ChatUsers: List<UserChat> = [],
       name: String? = nil) {
     self.init(id: id,
       ChatMessages: ChatMessages,
@@ -23,7 +23,7 @@ public struct Chat: Model {
   }
   internal init(id: String = UUID().uuidString,
       ChatMessages: List<Message> = [],
-      ChatUsers: List<User> = [],
+      ChatUsers: List<UserChat> = [],
       name: String? = nil,
       createdAt: Temporal.DateTime? = nil,
       updatedAt: Temporal.DateTime? = nil) {
