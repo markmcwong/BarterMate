@@ -5,6 +5,7 @@
 //  Created by Zico on 14/3/23.
 //
 
+import Foundation
 import Amplify
 import Combine
 
@@ -25,6 +26,13 @@ protocol DataStoreService {
     
     func saveRequest(_ request: Request) async throws -> Request
     func deleteRequest(_ request: Request) async throws
+    
+    // Chat Related functions
+    func createChat(chatName: String, users: [User]) async throws -> Chat
+    func fetchChat(id: String) async throws -> Chat?
+    func fetchMessagesByChat(chatID: String) async throws -> [Message]
+    func fetchChatsByUser(userID: String) async throws -> [Chat]
+    func createMessage(chat: Chat, sentBy: User, content: String) async throws -> Message
     
     func query<M: Model>(_ model: M.Type,
                          where predicate: QueryPredicate?,
