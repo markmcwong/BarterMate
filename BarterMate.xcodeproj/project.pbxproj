@@ -23,6 +23,8 @@
 		3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5CF9E593E82920841EA30D /* UserChat.swift */; };
 		4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95A3A358495DAC8787FAAF /* Chat.swift */; };
 		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
+		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
+		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
 		4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */; };
 		4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87729BE2D27009EE2B5 /* ContentView.swift */; };
 		4DC0F87A29BE2D2A009EE2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */; };
@@ -76,8 +78,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0C87690F81D7B273793CF891 /* Request.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Request.swift; path = amplify/generated/models/Request.swift; sourceTree = "<group>"; };
-		15493AFE237D3F1405C834FA /* UserTransaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = UserTransaction.swift; path = amplify/generated/models/UserTransaction.swift; sourceTree = "<group>"; };
+		0C87690F81D7B273793CF891 /* Request.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Request.swift; path = amplify/generated/models/Request.swift; sourceTree = "<group>"; };
+		15493AFE237D3F1405C834FA /* UserTransaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserTransaction.swift; path = amplify/generated/models/UserTransaction.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreServiceEvent.swift; sourceTree = "<group>"; };
 		174ACAA829BFA454006222AF /* DataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
@@ -85,12 +87,14 @@
 		174ACAAE29C199E4006222AF /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreService.swift; sourceTree = "<group>"; };
 		176890B229C23B800099D17F /* AmplifyStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
-		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
-		1B17F90476DAF2F25789B030 /* Posting+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Posting+Schema.swift"; path = "amplify/generated/models/Posting+Schema.swift"; sourceTree = "<group>"; };
-		1C5CF9E593E82920841EA30D /* UserChat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = UserChat.swift; path = amplify/generated/models/UserChat.swift; sourceTree = "<group>"; };
+		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
+		1B17F90476DAF2F25789B030 /* Posting+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Posting+Schema.swift"; path = "amplify/generated/models/Posting+Schema.swift"; sourceTree = "<group>"; };
+		1C5CF9E593E82920841EA30D /* UserChat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserChat.swift; path = amplify/generated/models/UserChat.swift; sourceTree = "<group>"; };
 		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
-		3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Chat+Schema.swift"; path = "amplify/generated/models/Chat+Schema.swift"; sourceTree = "<group>"; };
-		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
+		3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Chat+Schema.swift"; path = "amplify/generated/models/Chat+Schema.swift"; sourceTree = "<group>"; };
+		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
+		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
 		4DC0F87229BE2D27009EE2B5 /* BarterMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateApp.swift; sourceTree = "<group>"; };
 		4DC0F87729BE2D27009EE2B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,24 +105,24 @@
 		4DC0F88C29BE2D2A009EE2B5 /* BarterMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarterMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F89029BE2D2A009EE2B5 /* BarterMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITests.swift; sourceTree = "<group>"; };
 		4DC0F89229BE2D2A009EE2B5 /* BarterMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4EBEA87649BE7B1792832AD8 /* Posting.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Posting.swift; path = amplify/generated/models/Posting.swift; sourceTree = "<group>"; };
-		50ADF62A9DFD8D7DFA848084 /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
-		5ED66004C83F6FE910A1CA5D /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
-		710F4B0BC88DFA18FC19011F /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
-		72400523C3D47445D20F5F78 /* Item.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Item.swift; path = amplify/generated/models/Item.swift; sourceTree = "<group>"; };
-		73080FF9EBB7B943AF0763CE /* Category+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Category+Schema.swift"; path = "amplify/generated/models/Category+Schema.swift"; sourceTree = "<group>"; };
+		4EBEA87649BE7B1792832AD8 /* Posting.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Posting.swift; path = amplify/generated/models/Posting.swift; sourceTree = "<group>"; };
+		50ADF62A9DFD8D7DFA848084 /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
+		5ED66004C83F6FE910A1CA5D /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
+		710F4B0BC88DFA18FC19011F /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
+		72400523C3D47445D20F5F78 /* Item.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Item.swift; path = amplify/generated/models/Item.swift; sourceTree = "<group>"; };
+		73080FF9EBB7B943AF0763CE /* Category+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Category+Schema.swift"; path = "amplify/generated/models/Category+Schema.swift"; sourceTree = "<group>"; };
 		7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
-		86594AA17B70D1270359DCA7 /* Group+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Group+Schema.swift"; path = "amplify/generated/models/Group+Schema.swift"; sourceTree = "<group>"; };
-		8745E176A5DB60BA803E5D18 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
-		953E51B8C8AEA2EB84D96FFE /* Group.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Group.swift; path = amplify/generated/models/Group.swift; sourceTree = "<group>"; };
-		B1D4AF6C1DA2D220109058C7 /* Request+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Request+Schema.swift"; path = "amplify/generated/models/Request+Schema.swift"; sourceTree = "<group>"; };
-		B491D08A2162D1CDC4CC3D6B /* Transaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Transaction+Schema.swift"; path = "amplify/generated/models/Transaction+Schema.swift"; sourceTree = "<group>"; };
-		B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = TransactionStatus.swift; path = amplify/generated/models/TransactionStatus.swift; sourceTree = "<group>"; };
-		BCA264433AA3FA8A9B9E7B98 /* Transaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = amplify/generated/models/Transaction.swift; sourceTree = "<group>"; };
-		C9E92979881C70FABA79EA10 /* Item+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "Item+Schema.swift"; path = "amplify/generated/models/Item+Schema.swift"; sourceTree = "<group>"; };
-		CA95A3A358495DAC8787FAAF /* Chat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Chat.swift; path = amplify/generated/models/Chat.swift; sourceTree = "<group>"; };
-		CCECBB0F6B90DDC29E11EAD1 /* Category.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = Category.swift; path = amplify/generated/models/Category.swift; sourceTree = "<group>"; };
-		D63B15824858EB42E6A9D164 /* UserChat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = "UserChat+Schema.swift"; path = "amplify/generated/models/UserChat+Schema.swift"; sourceTree = "<group>"; };
+		86594AA17B70D1270359DCA7 /* Group+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Group+Schema.swift"; path = "amplify/generated/models/Group+Schema.swift"; sourceTree = "<group>"; };
+		8745E176A5DB60BA803E5D18 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		953E51B8C8AEA2EB84D96FFE /* Group.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Group.swift; path = amplify/generated/models/Group.swift; sourceTree = "<group>"; };
+		B1D4AF6C1DA2D220109058C7 /* Request+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Request+Schema.swift"; path = "amplify/generated/models/Request+Schema.swift"; sourceTree = "<group>"; };
+		B491D08A2162D1CDC4CC3D6B /* Transaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Transaction+Schema.swift"; path = "amplify/generated/models/Transaction+Schema.swift"; sourceTree = "<group>"; };
+		B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = TransactionStatus.swift; path = amplify/generated/models/TransactionStatus.swift; sourceTree = "<group>"; };
+		BCA264433AA3FA8A9B9E7B98 /* Transaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Transaction.swift; path = amplify/generated/models/Transaction.swift; sourceTree = "<group>"; };
+		C9E92979881C70FABA79EA10 /* Item+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Item+Schema.swift"; path = "amplify/generated/models/Item+Schema.swift"; sourceTree = "<group>"; };
+		CA95A3A358495DAC8787FAAF /* Chat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Chat.swift; path = amplify/generated/models/Chat.swift; sourceTree = "<group>"; };
+		CCECBB0F6B90DDC29E11EAD1 /* Category.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Category.swift; path = amplify/generated/models/Category.swift; sourceTree = "<group>"; };
+		D63B15824858EB42E6A9D164 /* UserChat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserChat+Schema.swift"; path = "amplify/generated/models/UserChat+Schema.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +169,8 @@
 				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
 				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
 				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
+				4D68925F29C41E61001ADF49 /* AuthService.swift */,
+				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
@@ -427,6 +433,7 @@
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
 				3DE63DE4217676F0B159A18C /* Category.swift in Sources */,
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
+				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
 				4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,
@@ -445,6 +452,7 @@
 				82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
+				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,
 			);
