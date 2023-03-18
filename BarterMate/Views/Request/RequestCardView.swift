@@ -44,7 +44,6 @@ struct RequestCardView: View {
                     .background(Circle().fill(Color.gray))
                     .padding(.leading, 10)
                     .onTapGesture {
-                        print("deleted")
                         Task {
                             await                         viewModel.deleteRequest()
                         }

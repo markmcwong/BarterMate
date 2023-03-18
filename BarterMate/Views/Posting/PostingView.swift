@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PostingView: View {
     
-//    @StateObject var viewModel: PostingViewModel
-//
+    @StateObject var viewModel: PostingViewModel
+
     init(posting: Posting) {
-//        self._viewModel = StateObject(wrappedValue: PostingViewModel(posting: posting))
+        self._viewModel = StateObject(wrappedValue: PostingViewModel(posting: posting))
     }
     
     var body: some View {

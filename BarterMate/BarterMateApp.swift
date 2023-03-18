@@ -15,11 +15,12 @@ import AWSAPIPlugin
 struct BarterMateApp: App {
     init() {
         configureAmplify()
+        AppServiceManager.shared.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RequestListView()
         }
     }
 }
@@ -27,7 +28,7 @@ struct BarterMateApp: App {
 func configureAmplify() {
     let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
     do {
-        Amplify.Logging.logLevel = .verbose
+        //Amplify.Logging.logLevel = .verbose
         try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
         try Amplify.add(plugin: dataStorePlugin)
         try Amplify.add(plugin: AWSCognitoAuthPlugin())

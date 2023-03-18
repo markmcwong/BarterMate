@@ -17,6 +17,9 @@ protocol DataStoreService {
     func configure(_ sessionState: Published<SessionState>.Publisher)
     func configure()
     
+    func save(_ model: Model) async throws -> Model
+    func delete(_ model: Model) async throws
+    
     func saveUser(_ user: User) async throws -> User
     
     func saveItem(_ item: Item) async throws -> Item

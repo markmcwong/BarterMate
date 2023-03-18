@@ -11,9 +11,9 @@ import AWSDataStorePlugin
 import Amplify
 
 class AmplifyDataStoreService: DataStoreService {
-    
+
     private var authUser: AuthUser?
-    private var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
+    var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
     
     var user: User?
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
@@ -23,6 +23,7 @@ class AmplifyDataStoreService: DataStoreService {
     
     init() {
         self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
+        self.start()
     }
     
     func configure(_ sessionState: Published<SessionState>.Publisher) {
@@ -30,8 +31,16 @@ class AmplifyDataStoreService: DataStoreService {
     }
     
     func configure() {
-        print("configured")
         subscribeToDataStoreHubEvents()
+    }
+    
+    func save(_ model: Model) async throws -> Model {
+        let savedItem = try await Amplify.DataStore.save(model)
+        return savedItem
+    }
+    
+    func delete(_ model: Model) async throws {
+        try await Amplify.DataStore.delete(model)
     }
     
     func saveUser(_ user: User) async throws -> User {
@@ -220,9 +229,7 @@ extension AmplifyDataStoreService {
     private func subscribeToDataStoreHubEvents() {
         Amplify.Hub.publisher(for: .dataStore)
             .receive(on: DispatchQueue.main)
-            .sink(receiveValue: {payload in
-                self.hubEventsHandler(payload: payload)
-            })
+            .sink(receiveValue: hubEventsHandler(payload:))
             .store(in: &subscribers)
     }
     
@@ -232,6 +239,8 @@ extension AmplifyDataStoreService {
             Task {
                 await getUser()
             }
+        case Item.modelName:
+            dataStoreServiceEventsTopic.send(.itemSynced)
         case Posting.modelName:
             dataStoreServiceEventsTopic.send(.postingSynced)
         case Request.modelName:
@@ -242,7 +251,6 @@ extension AmplifyDataStoreService {
     }
     
     private func hubEventsHandler(payload: HubPayload) {
-
         switch payload.eventName {
         case HubPayload.EventName.DataStore.modelSynced:
             guard let modelSyncedEvent = payload.data as? ModelSyncedEvent else {
@@ -254,7 +262,6 @@ extension AmplifyDataStoreService {
                 )
                 return
             }
-
             handleModelSyncedEvent(modelSyncedEvent: modelSyncedEvent);
         default:
             return

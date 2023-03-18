@@ -19,7 +19,6 @@ class PostingListViewModel: ObservableObject {
     
     init(manager: ServiceManager = AppServiceManager.shared) {
         self.dataStoreService = manager.dataStoreService
-        print("init RequestListViewModel")
         dataStoreService.eventsPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
@@ -33,7 +32,6 @@ class PostingListViewModel: ObservableObject {
     func onReceive(event: DataStoreServiceEvent) {
         switch event {
         case .postingSynced:
-            print("request Synced")
             Task {
                 await fetchPostings(page: 0)
             }
