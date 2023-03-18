@@ -42,7 +42,7 @@ class UserProfileViewModel: ObservableObject {
     
     private func onReceive(event: DataStoreServiceEvent) {
         switch event {
-        case .userSynced:
+        case .userLoaded:
             user = dataStoreService.user
             loadItems()
         case .itemSynced:

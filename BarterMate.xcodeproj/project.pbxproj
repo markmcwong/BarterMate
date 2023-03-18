@@ -34,6 +34,8 @@
 		174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAAE29C199E4006222AF /* ServiceManager.swift */; };
 		174ACAB129C19B64006222AF /* AmplifyDataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */; };
 		176890B329C23B800099D17F /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176890B229C23B800099D17F /* AmplifyStorageService.swift */; };
+		17AB3A1A29C63F3A00FE6DCB /* AmplifyEventsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A1929C63F3A00FE6DCB /* AmplifyEventsPublisher.swift */; };
+		17AB3A1C29C63FAA00FE6DCB /* EventsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
 		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */; };
@@ -126,6 +128,8 @@
 		174ACAAE29C199E4006222AF /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreService.swift; sourceTree = "<group>"; };
 		176890B229C23B800099D17F /* AmplifyStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
+		17AB3A1929C63F3A00FE6DCB /* AmplifyEventsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyEventsPublisher.swift; sourceTree = "<group>"; };
+		17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsPublisher.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		1B17F90476DAF2F25789B030 /* Posting+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Posting+Schema.swift"; path = "amplify/generated/models/Posting+Schema.swift"; sourceTree = "<group>"; };
 		1C5CF9E593E82920841EA30D /* UserChat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserChat.swift; path = amplify/generated/models/UserChat.swift; sourceTree = "<group>"; };
@@ -276,6 +280,8 @@
 			children = (
 				1734EF1C29C6312600D2D4AA /* ItemService.swift */,
 				1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */,
+				17AB3A1929C63F3A00FE6DCB /* AmplifyEventsPublisher.swift */,
+				17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -590,6 +596,8 @@
 				172FC0E629C616FD00842C70 /* ItemCardView.swift in Sources */,
 				174ACAAD29BFA454006222AF /* SessionState.swift in Sources */,
 				174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */,
+				17AB3A1C29C63FAA00FE6DCB /* EventsPublisher.swift in Sources */,
+				17AB3A1A29C63F3A00FE6DCB /* AmplifyEventsPublisher.swift in Sources */,
 				4D91956329C596A3003B5922 /* Router.swift in Sources */,
 				4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */,
 				172FC0E729C616FD00842C70 /* ItemListView.swift in Sources */,

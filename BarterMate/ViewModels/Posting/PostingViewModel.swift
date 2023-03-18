@@ -14,13 +14,13 @@ class PostingViewModel: ObservableObject {
     var posting: Posting
     var image: Image?
     var dataStoreService: DataStoreService
-    var storageService: StorageService
+    // var storageService: StorageService
     
     init(posting: Posting, manager: ServiceManager = AppServiceManager.shared) {
         self.posting = posting
         self.dataStoreService = manager.dataStoreService
-        self.storageService = manager.storageService
-        loadImage()
+        // self.storageService = manager.storageService
+        // loadImage()
     }
     
     func deletePost() async {

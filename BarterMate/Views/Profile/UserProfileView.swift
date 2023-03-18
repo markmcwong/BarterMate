@@ -26,7 +26,7 @@ struct UserProfileView: View {
 
                     }
                 }
-                ItemListView()
+                ItemListView(viewModel: viewModel)
             }
         }
     }

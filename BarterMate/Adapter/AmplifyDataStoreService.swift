@@ -179,7 +179,7 @@ extension AmplifyDataStoreService {
         do {
             _ = try await saveUser(user)
             self.user = user
-            dataStoreServiceEventsTopic.send(.userSynced(user))
+            dataStoreServiceEventsTopic.send(.userLoaded(user))
             Amplify.log.debug("Created user \(authUser.username)")
         } catch let dataStoreError as DataStoreError {
             self.dataStoreServiceEventsTopic.send(completion: .failure(dataStoreError))
@@ -201,7 +201,7 @@ extension AmplifyDataStoreService {
                 return
             }
             self.user = user
-            dataStoreServiceEventsTopic.send(.userSynced(user))
+            dataStoreServiceEventsTopic.send(.userLoaded(user))
         } catch {
             Amplify.log.error("Error querying User - \(error.localizedDescription)")
         }

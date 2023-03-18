@@ -8,7 +8,8 @@
 
 // TODO: implement functionalities for these events
 enum DataStoreServiceEvent {
-    case userSynced(_ user: User)
+    case userSynced
+    case userLoaded(_ user: User)
     case userUpdated(_ user: User)
     case itemCreated(_ item: Item)
     case itemDeleted(_ item: Item)

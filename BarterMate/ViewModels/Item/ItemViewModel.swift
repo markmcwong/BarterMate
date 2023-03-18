@@ -43,7 +43,7 @@ class ItemViewModel: ObservableObject {
             guard let key = item.image else {
                 return
             }
-            _ = try await storageService.removeImage(key: key)
+            //_ = try await storageService.removeImage(key: key)
         } catch let error as StorageError {
             Amplify.log.error("\(#function) Error removing image - \(error.localizedDescription)")
         } catch let error as DataStoreError {

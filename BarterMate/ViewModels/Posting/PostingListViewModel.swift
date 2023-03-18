@@ -9,6 +9,7 @@ import Combine
 import Foundation
 import Amplify
 
+@MainActor
 class PostingListViewModel: ObservableObject {
     @Published private(set) var loadedPostings: [Posting] = [Posting]()
     @Published var isPostingSynced = false
