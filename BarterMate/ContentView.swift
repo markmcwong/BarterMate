@@ -8,14 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var router = Router()
+//    @StateObject var appState = AppState()
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            switch router.currentScreen {
+            case .login:
+                LoginView(onLoginSuccess: {
+//                    appState.isLoggedIn = true
+                })
+//            case .home:
+//                HomeView()
+//                    .onSignOut {
+//                        router.navigate(to: .login)
+//                    }
+//            case .profile:
+//                ProfileView()
+//                    .onSignOut {
+//                        router.navigate(to: .login)
+//                    }
+            // Add other cases for different screens as needed
+            }
         }
-        .padding()
+//        .environmentObject(appState)
     }
 }
 

@@ -8,11 +8,13 @@
 import SwiftUI
 import Amplify
 import AWSDataStorePlugin
+import AWSCognitoAuthPlugin
+import AWSAPIPlugin
 
 @main
 struct BarterMateApp: App {
     init() {
-            configureAmplify()
+        configureAmplify()
     }
     
     var body: some Scene {
@@ -25,7 +27,10 @@ struct BarterMateApp: App {
 func configureAmplify() {
     let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
     do {
+        Amplify.Logging.logLevel = .verbose
+        try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
         try Amplify.add(plugin: dataStorePlugin)
+        try Amplify.add(plugin: AWSCognitoAuthPlugin())
         try Amplify.configure()
         print("Initialized Amplify");
     } catch {

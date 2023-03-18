@@ -25,6 +25,9 @@
 		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
 		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
+		4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956029C58A3B003B5922 /* LoginViewModel.swift */; };
+		4D91956329C596A3003B5922 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956229C596A3003B5922 /* Router.swift */; };
+		4D91956529C596D6003B5922 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956429C596D6003B5922 /* LoginView.swift */; };
 		4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */; };
 		4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87729BE2D27009EE2B5 /* ContentView.swift */; };
 		4DC0F87A29BE2D2A009EE2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */; };
@@ -95,6 +98,9 @@
 		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
+		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		4D91956229C596A3003B5922 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		4D91956429C596D6003B5922 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4DC0F87229BE2D27009EE2B5 /* BarterMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateApp.swift; sourceTree = "<group>"; };
 		4DC0F87729BE2D27009EE2B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -175,6 +181,37 @@
 			path = Adapter;
 			sourceTree = "<group>";
 		};
+		4D91955C29C589F0003B5922 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4D91955D29C58A05003B5922 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4D91956029C58A3B003B5922 /* LoginViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4D91955E29C58A0C003B5922 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D91956429C596D6003B5922 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4D91955F29C58A24003B5922 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4D91956229C596A3003B5922 /* Router.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		4DC0F86929BE2D27009EE2B5 = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +237,10 @@
 		4DC0F87429BE2D27009EE2B5 /* BarterMate */ = {
 			isa = PBXGroup;
 			children = (
+				4D91955F29C58A24003B5922 /* Helpers */,
+				4D91955E29C58A0C003B5922 /* Views */,
+				4D91955D29C58A05003B5922 /* ViewModels */,
+				4D91955C29C589F0003B5922 /* Models */,
 				174ACAA529BFA454006222AF /* Adapter */,
 				4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */,
 				4DC0F87729BE2D27009EE2B5 /* ContentView.swift */,
@@ -428,12 +469,15 @@
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
 				174ACAAD29BFA454006222AF /* SessionState.swift in Sources */,
 				174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */,
+				4D91956329C596A3003B5922 /* Router.swift in Sources */,
+				4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */,
 				174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
 				3DE63DE4217676F0B159A18C /* Category.swift in Sources */,
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
 				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
+				4D91956529C596D6003B5922 /* LoginView.swift in Sources */,
 				4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,

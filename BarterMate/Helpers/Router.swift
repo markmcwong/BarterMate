@@ -1,0 +1,24 @@
+//
+//  Router.swift
+//  BarterMate
+//
+//  Created by Mark on 18/3/23.
+//
+
+import Foundation
+import Combine
+import SwiftUI
+
+enum AppScreen {
+    case login
+//    case home
+//    case profile
+}
+
+class Router: ObservableObject {
+    @Published var currentScreen: AppScreen = .login
+    
+    func navigate(to screen: AppScreen) {
+        currentScreen = screen
+    }
+}
