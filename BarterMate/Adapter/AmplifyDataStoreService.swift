@@ -29,6 +29,11 @@ class AmplifyDataStoreService: DataStoreService {
     
     }
     
+    func configure() {
+        print("configured")
+        subscribeToDataStoreHubEvents()
+    }
+    
     func saveUser(_ user: User) async throws -> User {
         let savedUser = try await Amplify.DataStore.save(user)
         dataStoreServiceEventsTopic.send(.userUpdated(savedUser))
@@ -132,6 +137,11 @@ class AmplifyDataStoreService: DataStoreService {
     func query<M: Model>(_ model: M.Type,
                   byId: String) async throws -> M? where M : Model {
         return try await Amplify.DataStore.query(model, byId: byId)
+    }
+    
+    func dataStorePublisher<M: Model>(for model: M.Type)
+    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error> {
+        Amplify.Publisher.create(Amplify.DataStore.observe(model))
     }
     
     private func start() {

@@ -15,6 +15,7 @@ protocol DataStoreService {
     var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
     
     func configure(_ sessionState: Published<SessionState>.Publisher)
+    func configure()
     
     func saveUser(_ user: User) async throws -> User
     
@@ -40,4 +41,7 @@ protocol DataStoreService {
                          paginate paginationInput: QueryPaginationInput?) async throws -> [M]
     
     func query<M: Model>(_ model: M.Type, byId: String) async throws -> M?
+    
+    func dataStorePublisher<M: Model>(for model: M.Type)
+    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error>
 }

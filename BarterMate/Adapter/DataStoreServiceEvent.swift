@@ -12,6 +12,7 @@ enum DataStoreServiceEvent {
     case userUpdated(_ user: User)
     case itemCreated(_ item: Item)
     case itemDeleted(_ item: Item)
+    case itemSynced
     case postingCreated(_ posting: Posting)
     case postingDeleted(_ posting: Posting)
     case postingSynced
