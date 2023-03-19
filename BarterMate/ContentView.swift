@@ -8,24 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var router = Router()
-//    @StateObject var appState = AppState()
-
-    var body: some View {
-        VStack {
-            switch router.currentScreen {
-            case .login:
-                LoginView(onLoginSuccess: {
-//                    appState.isLoggedIn = true
-                })
-//            case .home:
-//                HomeView()
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
     @StateObject private var router = Router.singleton
 //    @StateObject var appState = AppState()
 
