@@ -36,6 +36,7 @@ class RequestListViewModel: ObservableObject {
             Task {
                 await fetchRequests(page: 0)
             }
+            isRequestSynced = true
         case .requestDeleted(let request):
             deleteRequest(request)
         default:

@@ -26,7 +26,7 @@ struct UserProfileView: View {
 
                     }
                 }
-                ItemListView()
+                ItemListView(viewModel: viewModel)
             }
         }
     }
@@ -37,3 +37,4 @@ struct UserProfileView_Previews: PreviewProvider {
         UserProfileView()
     }
 }
+
