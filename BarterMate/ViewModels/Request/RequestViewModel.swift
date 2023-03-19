@@ -13,13 +13,15 @@ extension RequestCardView {
     class RequestViewModel: ObservableObject {
         var request: Request
         var requesterName: String?
-        var dataStoreService: DataStoreService
+        var userService: UserService
+        var requestService: RequestService
         @Published var isLoading = true
         
 
         init(request: Request, manager: ServiceManager = AppServiceManager.shared) {
             self.request = request
-            self.dataStoreService = manager.dataStoreService
+            self.requestService = manager.requestService
+            self.userService = manager.userService
             Task {
                 await getRequesterName()
             }
@@ -27,7 +29,7 @@ extension RequestCardView {
         
         func deleteRequest() async {
             do {
-                try await dataStoreService.deleteRequest(request)
+                try await requestService.deleteRequest(request)
             } catch let error as DataStoreError {
                 Amplify.log.error("\(#function) Error removing request - \(error.localizedDescription)")
             } catch {
@@ -41,7 +43,7 @@ extension RequestCardView {
                 return
             }
             do {
-                let user = try await dataStoreService.query(User.self, byId: request.userID)
+                let user = try await userService.query(byId: request.userID)
                 requesterName = user?.username
                 isLoading = false
             } catch let error as DataStoreError {
@@ -52,4 +54,5 @@ extension RequestCardView {
         }
     }
 }
+
 

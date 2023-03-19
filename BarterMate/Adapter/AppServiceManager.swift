@@ -14,8 +14,11 @@ class AppServiceManager: ServiceManager {
     let authService: AuthService = AmplifyAuthService()
     let dataStoreService: DataStoreService = AmplifyDataStoreService()
     let storageService: StorageService = AmplifyStorageService()
+    let itemService: ItemService = AmplifyItemService()
+    let requestService: RequestService = AmplifyRequestService()
+    let postingService: PostingService = AmplifyPostingService()
+    let userService: UserService = AmplifyUserService()
     
-    func configure() {
-        dataStoreService.configure()
-    }
+    func configure() { }
 }
+

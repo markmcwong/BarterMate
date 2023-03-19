@@ -30,8 +30,18 @@
 		174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA829BFA454006222AF /* DataStoreService.swift */; };
 		174ACAAD29BFA454006222AF /* SessionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA929BFA454006222AF /* SessionState.swift */; };
 		174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAAE29C199E4006222AF /* ServiceManager.swift */; };
-		174ACAB129C19B64006222AF /* AmplifyDataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */; };
-		176890B329C23B800099D17F /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176890B229C23B800099D17F /* AmplifyStorageService.swift */; };
+		17AB3A3029C76FE600FE6DCB /* EventsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A2B29C76FE600FE6DCB /* EventsPublisher.swift */; };
+		17AB3A3129C76FE600FE6DCB /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A2C29C76FE600FE6DCB /* ItemService.swift */; };
+		17AB3A3229C76FE600FE6DCB /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A2D29C76FE600FE6DCB /* UserService.swift */; };
+		17AB3A3329C76FE600FE6DCB /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A2E29C76FE600FE6DCB /* RequestService.swift */; };
+		17AB3A3429C76FE600FE6DCB /* PostingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A2F29C76FE600FE6DCB /* PostingService.swift */; };
+		17AB3A3E29C7701A00FE6DCB /* AmplifyUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3629C7701A00FE6DCB /* AmplifyUserService.swift */; };
+		17AB3A3F29C7701A00FE6DCB /* AmplifyDataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3729C7701A00FE6DCB /* AmplifyDataStoreService.swift */; };
+		17AB3A4029C7701A00FE6DCB /* AmplifyItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3829C7701A00FE6DCB /* AmplifyItemService.swift */; };
+		17AB3A4129C7701A00FE6DCB /* AmplifyEventsPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3929C7701A00FE6DCB /* AmplifyEventsPublisher.swift */; };
+		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
+		17AB3A4429C7701A00FE6DCB /* AmplifyRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3C29C7701A00FE6DCB /* AmplifyRequestService.swift */; };
+		17AB3A4529C7701A00FE6DCB /* AmplifyPostingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3D29C7701A00FE6DCB /* AmplifyPostingService.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
 		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */; };
@@ -122,8 +132,18 @@
 		174ACAA829BFA454006222AF /* DataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
 		174ACAA929BFA454006222AF /* SessionState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionState.swift; sourceTree = "<group>"; };
 		174ACAAE29C199E4006222AF /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
-		174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreService.swift; sourceTree = "<group>"; };
-		176890B229C23B800099D17F /* AmplifyStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
+		17AB3A2B29C76FE600FE6DCB /* EventsPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsPublisher.swift; sourceTree = "<group>"; };
+		17AB3A2C29C76FE600FE6DCB /* ItemService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		17AB3A2D29C76FE600FE6DCB /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		17AB3A2E29C76FE600FE6DCB /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		17AB3A2F29C76FE600FE6DCB /* PostingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingService.swift; sourceTree = "<group>"; };
+		17AB3A3629C7701A00FE6DCB /* AmplifyUserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyUserService.swift; sourceTree = "<group>"; };
+		17AB3A3729C7701A00FE6DCB /* AmplifyDataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyDataStoreService.swift; sourceTree = "<group>"; };
+		17AB3A3829C7701A00FE6DCB /* AmplifyItemService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyItemService.swift; sourceTree = "<group>"; };
+		17AB3A3929C7701A00FE6DCB /* AmplifyEventsPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyEventsPublisher.swift; sourceTree = "<group>"; };
+		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
+		17AB3A3C29C7701A00FE6DCB /* AmplifyRequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyRequestService.swift; sourceTree = "<group>"; };
+		17AB3A3D29C7701A00FE6DCB /* AmplifyPostingService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyPostingService.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		1B17F90476DAF2F25789B030 /* Posting+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Posting+Schema.swift"; path = "amplify/generated/models/Posting+Schema.swift"; sourceTree = "<group>"; };
 		1C5CF9E593E82920841EA30D /* UserChat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserChat.swift; path = amplify/generated/models/UserChat.swift; sourceTree = "<group>"; };
@@ -133,7 +153,7 @@
 		4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
 		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
+		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AmplifyAuthService.swift; path = ../BarterMate/Adapter/AmplifyAuthService.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4D91956229C596A3003B5922 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4D91956429C596D6003B5922 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -274,6 +294,11 @@
 		174ACAA529BFA454006222AF /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
+				17AB3A2B29C76FE600FE6DCB /* EventsPublisher.swift */,
+				17AB3A2C29C76FE600FE6DCB /* ItemService.swift */,
+				17AB3A2F29C76FE600FE6DCB /* PostingService.swift */,
+				17AB3A2E29C76FE600FE6DCB /* RequestService.swift */,
+				17AB3A2D29C76FE600FE6DCB /* UserService.swift */,
 				172FC0FD29C6175700842C70 /* AppServiceManager.swift */,
 				172FC0FC29C6175700842C70 /* ImageProvider.swift */,
 				174ACAA629BFA454006222AF /* StorageService.swift */,
@@ -281,12 +306,24 @@
 				174ACAA829BFA454006222AF /* DataStoreService.swift */,
 				174ACAA929BFA454006222AF /* SessionState.swift */,
 				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
-				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
-				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
 				4D68925F29C41E61001ADF49 /* AuthService.swift */,
-				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
 			);
 			path = Adapter;
+			sourceTree = "<group>";
+		};
+		17AB3A3529C7701A00FE6DCB /* AmplifyServices */ = {
+			isa = PBXGroup;
+			children = (
+				17AB3A3629C7701A00FE6DCB /* AmplifyUserService.swift */,
+				17AB3A3729C7701A00FE6DCB /* AmplifyDataStoreService.swift */,
+				17AB3A3829C7701A00FE6DCB /* AmplifyItemService.swift */,
+				17AB3A3929C7701A00FE6DCB /* AmplifyEventsPublisher.swift */,
+				17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */,
+				17AB3A3C29C7701A00FE6DCB /* AmplifyRequestService.swift */,
+				17AB3A3D29C7701A00FE6DCB /* AmplifyPostingService.swift */,
+				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
+			);
+			path = AmplifyServices;
 			sourceTree = "<group>";
 		};
 		4D4AD57229C6F76D00C2EEC6 /* Auth */ = {
@@ -350,6 +387,7 @@
 		4DC0F86929BE2D27009EE2B5 = {
 			isa = PBXGroup;
 			children = (
+				17AB3A3529C7701A00FE6DCB /* AmplifyServices */,
 				4DC0F87429BE2D27009EE2B5 /* BarterMate */,
 				4DC0F88529BE2D2A009EE2B5 /* BarterMateTests */,
 				4DC0F88F29BE2D2A009EE2B5 /* BarterMateUITests */,
@@ -600,18 +638,19 @@
 				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
 				174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */,
 				172FC0E429C616FD00842C70 /* RequestCardView.swift in Sources */,
-				176890B329C23B800099D17F /* AmplifyStorageService.swift in Sources */,
-				174ACAB129C19B64006222AF /* AmplifyDataStoreService.swift in Sources */,
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
+				17AB3A3129C76FE600FE6DCB /* ItemService.swift in Sources */,
 				172FC0E629C616FD00842C70 /* ItemCardView.swift in Sources */,
 				174ACAAD29BFA454006222AF /* SessionState.swift in Sources */,
 				174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */,
 				4D91956329C596A3003B5922 /* Router.swift in Sources */,
+				17AB3A3329C76FE600FE6DCB /* RequestService.swift in Sources */,
 				4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */,
 				172FC0E729C616FD00842C70 /* ItemListView.swift in Sources */,
 				174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
+				17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */,
 				172FC0F729C6171E00842C70 /* UserProfileViewModel.swift in Sources */,
 				172FC0EB29C616FD00842C70 /* PostingListView.swift in Sources */,
 				3DE63DE4217676F0B159A18C /* Category.swift in Sources */,
@@ -629,26 +668,35 @@
 				EAE1D5811D7F3A1FCBF3E7A2 /* Item.swift in Sources */,
 				172FC0FF29C6175700842C70 /* AppServiceManager.swift in Sources */,
 				BED414D8153876A3A805A563 /* Message+Schema.swift in Sources */,
+				17AB3A4429C7701A00FE6DCB /* AmplifyRequestService.swift in Sources */,
+				17AB3A3229C76FE600FE6DCB /* UserService.swift in Sources */,
+				17AB3A4029C7701A00FE6DCB /* AmplifyItemService.swift in Sources */,
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				172FC0F929C6171E00842C70 /* PostingViewModel.swift in Sources */,
 				850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */,
 				BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */,
+				17AB3A3F29C7701A00FE6DCB /* AmplifyDataStoreService.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
+				17AB3A3E29C7701A00FE6DCB /* AmplifyUserService.swift in Sources */,
 				AD47EC9B05D2C213951781BF /* Transaction+Schema.swift in Sources */,
 				172FC0F629C6171E00842C70 /* ItemViewModel.swift in Sources */,
 				172FC0FE29C6175700842C70 /* ImageProvider.swift in Sources */,
 				B27F5D222D23E58CB0AAA4C6 /* Transaction.swift in Sources */,
+				17AB3A4529C7701A00FE6DCB /* AmplifyPostingService.swift in Sources */,
+				17AB3A4129C7701A00FE6DCB /* AmplifyEventsPublisher.swift in Sources */,
 				2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */,
 				5365083C8F89716DB167D767 /* User+Schema.swift in Sources */,
 				172FC0FA29C6171E00842C70 /* RequestViewModel.swift in Sources */,
 				82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */,
+				17AB3A3429C76FE600FE6DCB /* PostingService.swift in Sources */,
 				172FC0F829C6171E00842C70 /* PostingListViewModel.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
+				17AB3A3029C76FE600FE6DCB /* EventsPublisher.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,
 				172FC0E929C616FD00842C70 /* UserProfileImageView.swift in Sources */,
 			);
