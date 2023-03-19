@@ -11,29 +11,15 @@ import AWSDataStorePlugin
 import Amplify
 
 class AmplifyDataStoreService: DataStoreService {
-
-    private var authUser: AuthUser?
-    var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
     
-    var user: User?
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
-        return dataStoreServiceEventsTopic.eraseToAnyPublisher()
-    }
+    private var authUser: AuthUser?
+
     private var subscribers = Set<AnyCancellable>()
     
     init() {
-        self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
         self.start()
     }
-    
-    func configure(_ sessionState: Published<SessionState>.Publisher) {
-    
-    }
-    
-    func configure() {
-        subscribeToDataStoreHubEvents()
-    }
-    
+
     func save(_ model: Model) async throws -> Model {
         let savedItem = try await Amplify.DataStore.save(model)
         return savedItem
@@ -43,45 +29,6 @@ class AmplifyDataStoreService: DataStoreService {
         try await Amplify.DataStore.delete(model)
     }
     
-    func saveUser(_ user: User) async throws -> User {
-        let savedUser = try await Amplify.DataStore.save(user)
-        dataStoreServiceEventsTopic.send(.userUpdated(savedUser))
-        return savedUser
-    }
-    
-    
-    func saveItem(_ item: Item) async throws -> Item {
-        let savedItem = try await Amplify.DataStore.save(item)
-        dataStoreServiceEventsTopic.send(.itemCreated(savedItem))
-        return savedItem
-    }
-    
-    func deleteItem(_ item: Item) async throws {
-        try await Amplify.DataStore.delete(item)
-        dataStoreServiceEventsTopic.send(.itemDeleted(item))
-    }
-    
-    func savePosting(_ posting: Posting) async throws -> Posting {
-        let savedPosting = try await Amplify.DataStore.save(posting)
-        dataStoreServiceEventsTopic.send(.postingCreated(savedPosting))
-        return savedPosting
-    }
-    
-    func deletePosting(_ posting: Posting) async throws {
-        try await Amplify.DataStore.delete(posting)
-        dataStoreServiceEventsTopic.send(.postingDeleted(posting))
-    }
-    
-    func saveRequest(_ request: Request) async throws -> Request {
-        let savedRequest = try await Amplify.DataStore.save(request)
-        dataStoreServiceEventsTopic.send(.requestCreated(savedRequest))
-        return savedRequest
-    }
-    
-    func deleteRequest(_ request: Request) async throws {
-        try await Amplify.DataStore.delete(request)
-        dataStoreServiceEventsTopic.send(.requestDeleted(request))
-    }
     
     func createChat(chatName: String, users: [User]) async throws -> Chat {
         let chat = Chat(name: chatName)
@@ -148,11 +95,6 @@ class AmplifyDataStoreService: DataStoreService {
         return try await Amplify.DataStore.query(model, byId: byId)
     }
     
-    func dataStorePublisher<M: Model>(for model: M.Type)
-    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error> {
-        Amplify.Publisher.create(Amplify.DataStore.observe(model))
-    }
-    
     private func start() {
         Task {
             try await Amplify.DataStore.start()
@@ -164,107 +106,4 @@ class AmplifyDataStoreService: DataStoreService {
         }
     }
 
-}
-
-extension AmplifyDataStoreService {
-    
-    private func createUser() async {
-        guard let authUser = self.authUser else {
-            return
-        }
-        
-        let user = User(id: "\(authUser.userId)",
-                        username: authUser.username)
-        
-        do {
-            _ = try await saveUser(user)
-            self.user = user
-            dataStoreServiceEventsTopic.send(.userLoaded(user))
-            Amplify.log.debug("Created user \(authUser.username)")
-        } catch let dataStoreError as DataStoreError {
-            self.dataStoreServiceEventsTopic.send(completion: .failure(dataStoreError))
-            Amplify.log.error("Error creating user \(authUser.username) - \(dataStoreError.localizedDescription)")
-        } catch {
-            Amplify.log.error("Error creating user \(authUser.username) - \(error.localizedDescription)")
-        }
-    }
-    
-    private func getUser() async {
-        guard let userId = authUser?.userId else {
-            return
-        }
-        
-        do {
-            let user = try await query(User.self, byId: userId)
-            guard let user = user else {
-                await createUser()
-                return
-            }
-            self.user = user
-            dataStoreServiceEventsTopic.send(.userLoaded(user))
-        } catch {
-            Amplify.log.error("Error querying User - \(error.localizedDescription)")
-        }
-    }
-    
-    private func subscribe(to sessionState: Published<SessionState>.Publisher?) {
-        sessionState?
-            .receive(on: DispatchQueue.main)
-            .sink { state in
-                switch state {
-                case .signedOut:
-                    self.clear()
-                    self.user = nil
-                    self.authUser = nil
-                case .signedIn(let authUser):
-                    self.authUser = authUser
-                    self.start()
-                case .initializing:
-                    break
-                }
-            }
-            .store(in: &subscribers)
-    }
-    
-    private func subscribeToDataStoreHubEvents() {
-        Amplify.Hub.publisher(for: .dataStore)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: hubEventsHandler(payload:))
-            .store(in: &subscribers)
-    }
-    
-    private func handleModelSyncedEvent(modelSyncedEvent: ModelSyncedEvent) {
-        switch modelSyncedEvent.modelName {
-        case User.modelName:
-            Task {
-                await getUser()
-            }
-        case Item.modelName:
-            dataStoreServiceEventsTopic.send(.itemSynced)
-        case Posting.modelName:
-            dataStoreServiceEventsTopic.send(.postingSynced)
-        case Request.modelName:
-            dataStoreServiceEventsTopic.send(.requestSynced)
-        default:
-            return
-        }
-    }
-    
-    private func hubEventsHandler(payload: HubPayload) {
-        switch payload.eventName {
-        case HubPayload.EventName.DataStore.modelSynced:
-            guard let modelSyncedEvent = payload.data as? ModelSyncedEvent else {
-                Amplify.log.error(
-                    """
-                    Failed to case payload of type '\(type(of: payload.data))' \
-                    to ModelSyncedEvent.
-                    """
-                )
-                return
-            }
-            handleModelSyncedEvent(modelSyncedEvent: modelSyncedEvent);
-        default:
-            return
-        }
-    }
 }

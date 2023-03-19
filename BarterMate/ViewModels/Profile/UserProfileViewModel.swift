@@ -18,11 +18,13 @@ class UserProfileViewModel: ObservableObject {
     private var dataStorePublisher: AnyCancellable?
     private var subscribers = Set<AnyCancellable>()
     
-    var dataStoreService: DataStoreService
+    var userService: UserService
+    var itemService: ItemService
     
     init(manager: ServiceManager = AppServiceManager.shared) {
-        self.dataStoreService = manager.dataStoreService
-        dataStoreService.eventsPublisher
+        self.userService = manager.userService
+        self.itemService = manager.itemService
+        userService.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             
@@ -32,18 +34,19 @@ class UserProfileViewModel: ObservableObject {
             .store(in: &subscribers)
         Task {
             do {
-                user = try await dataStoreService.query(User.self, byId: "e3a20b7c-b166-4b33-9495-2cbc3f99adf6")
+                user = try await userService.query(byId: "e3a20b7c-b166-4b33-9495-2cbc3f99adf6")
             } catch {
                 print("error querying user")
             }
 
         }
+
     }
     
     private func onReceive(event: DataStoreServiceEvent) {
         switch event {
         case .userLoaded:
-            user = dataStoreService.user
+            user = userService.user
             loadItems()
         case .itemSynced:
             //dataStorePublisher?.cancel()
@@ -71,10 +74,9 @@ class UserProfileViewModel: ObservableObject {
         let sortInput = QuerySortInput.descending(Item.keys.createdAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         do {
-            let items = try await dataStoreService.query(Item.self,
-                                                         where: predicateInput,
-                                                         sort: sortInput,
-                                                         paginate: paginationInput)
+            let items = try await itemService.query(where: predicateInput,
+                                                    sort: sortInput,
+                                                    paginate: paginationInput)
             
             if page != 0 {
                 loadedItems.append(contentsOf: items)
@@ -104,7 +106,7 @@ class UserProfileViewModel: ObservableObject {
             await fetchItems(page: 0)
         }
         
-        dataStorePublisher = dataStoreService.dataStorePublisher(for: Item.self)
+        dataStorePublisher = userService.eventsPublisher.dataStorePublisher(for: Item.self)
             .receive(on: DispatchQueue.main)
             .collect(.byTimeOrCount(DispatchQueue.main, 3.0, 10))
             .sink {

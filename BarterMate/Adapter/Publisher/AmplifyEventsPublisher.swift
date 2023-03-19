@@ -10,21 +10,30 @@ import Combine
 import Amplify
 import AWSDataStorePlugin
 
-class AmplifyEventsPublisher {
+class AmplifyEventsPublisher: EventsPublisher {
+    
+    static var shared: EventsPublisher = AmplifyEventsPublisher()
+    
     var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError>
     
-    var user: User?
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
+    var toAnyPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> {
         return dataStoreServiceEventsTopic.eraseToAnyPublisher()
     }
+    
     private var subscribers = Set<AnyCancellable>()
     
     init() {
         self.dataStoreServiceEventsTopic = PassthroughSubject<DataStoreServiceEvent, DataStoreError>()
+        configure()
     }
     
     func configure() {
         subscribeToDataStoreHubEvents()
+    }
+
+    func dataStorePublisher<M: Model>(for model: M.Type)
+    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error> {
+        Amplify.Publisher.create(Amplify.DataStore.observe(model))
     }
 }
 

@@ -10,26 +10,9 @@ import Amplify
 import Combine
 
 protocol DataStoreService {
-
-    var user: User? { get }
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
-    
-    func configure(_ sessionState: Published<SessionState>.Publisher)
-    func configure()
     
     func save(_ model: Model) async throws -> Model
     func delete(_ model: Model) async throws
-    
-    func saveUser(_ user: User) async throws -> User
-    
-    func saveItem(_ item: Item) async throws -> Item
-    func deleteItem(_ item: Item) async throws
-    
-    func savePosting(_ posting: Posting) async throws -> Posting
-    func deletePosting(_ posting: Posting) async throws
-    
-    func saveRequest(_ request: Request) async throws -> Request
-    func deleteRequest(_ request: Request) async throws
     
     // Chat Related functions
     func createChat(chatName: String, users: [User]) async throws -> Chat
@@ -38,13 +21,5 @@ protocol DataStoreService {
     func fetchChatsByUser(userID: String) async throws -> [Chat]
     func createMessage(chat: Chat, sentBy: User, content: String) async throws -> Message
     
-    func query<M: Model>(_ model: M.Type,
-                         where predicate: QueryPredicate?,
-                         sort sortInput: QuerySortInput?,
-                         paginate paginationInput: QueryPaginationInput?) async throws -> [M]
     
-    func query<M: Model>(_ model: M.Type, byId: String) async throws -> M?
-    
-    func dataStorePublisher<M: Model>(for model: M.Type)
-    -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error>
 }

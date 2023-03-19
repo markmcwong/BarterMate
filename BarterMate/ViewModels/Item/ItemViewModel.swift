@@ -13,7 +13,7 @@ class ItemViewModel: ObservableObject {
     
     var item: Item
     var ownerName: String?
-    var dataStoreService: DataStoreService
+    var itemService: ItemService
     var storageService: StorageService
     //var image: Image?
     var isLoading = true
@@ -22,11 +22,11 @@ class ItemViewModel: ObservableObject {
     
     init(item: Item, manager: ServiceManager = AppServiceManager.shared) {
         self.item = item
-        self.dataStoreService = manager.dataStoreService
+        self.itemService = manager.itemService
         self.storageService = manager.storageService
-        Task {
-            await getOwnerName()
-        }
+//        Task {
+//            await getOwnerName()
+//        }
     }
     
 //    private func loadImage(data: Data) {
@@ -39,7 +39,7 @@ class ItemViewModel: ObservableObject {
 //
     func deleteItem() async {
         do {
-            try await dataStoreService.deleteItem(item)
+            try await itemService.deleteItem(item)
             guard let key = item.image else {
                 return
             }
@@ -53,22 +53,22 @@ class ItemViewModel: ObservableObject {
         }
     }
     
-    @MainActor
-    func getOwnerName() async {
-        guard isLoading else {
-            return
-        }
-        do {
-            let user = try await dataStoreService.query(User.self, byId: item.userID)
-            guard let name = user?.username else {
-                return
-            }
-            ownerName = name
-            isLoading = false
-        } catch let error as DataStoreError {
-            Amplify.log.error("\(#function) Error finding username - \(error.localizedDescription)")
-        } catch {
-            Amplify.log.error("\(#function) Error removing request - \(error.localizedDescription)")
-        }
-    }
+//    @MainActor
+//    func getOwnerName() async {
+//        guard isLoading else {
+//            return
+//        }
+//        do {
+//            let user = try await dataStoreService.query(User.self, byId: item.userID)
+//            guard let name = user?.username else {
+//                return
+//            }
+//            ownerName = name
+//            isLoading = false
+//        } catch let error as DataStoreError {
+//            Amplify.log.error("\(#function) Error finding username - \(error.localizedDescription)")
+//        } catch {
+//            Amplify.log.error("\(#function) Error removing request - \(error.localizedDescription)")
+//        }
+//    }
 }

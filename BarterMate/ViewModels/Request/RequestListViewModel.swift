@@ -15,12 +15,12 @@ class RequestListViewModel: ObservableObject {
     @Published var isRequestSynced = false
     
     private var subscribers = Set<AnyCancellable>()
-    
-    var dataStoreService: DataStoreService
+
+    var requestService: RequestService
     
     init(manager: ServiceManager = AppServiceManager.shared) {
-        self.dataStoreService = manager.dataStoreService
-        dataStoreService.eventsPublisher
+        self.requestService = manager.requestService
+        requestService.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             
@@ -57,10 +57,9 @@ class RequestListViewModel: ObservableObject {
         let sortInput = QuerySortInput.descending(Request.keys.createdAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         do {
-            let requests = try await dataStoreService.query(Request.self,
-                                                         where: nil,
-                                                         sort: sortInput,
-                                                         paginate: paginationInput)
+            let requests = try await requestService.query(where: nil,
+                                                          sort: sortInput,
+                                                          paginate: paginationInput)
             
             if page != 0 {
                 loadedRequests.append(contentsOf: requests)

@@ -10,8 +10,14 @@ import Combine
 import Amplify
 
 protocol EventsPublisher {
-    var eventsPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
+    
+    static var shared: EventsPublisher { get }
+    
+    var toAnyPublisher: AnyPublisher<DataStoreServiceEvent, DataStoreError> { get }
+    
+    var dataStoreServiceEventsTopic: PassthroughSubject<DataStoreServiceEvent, DataStoreError> { get }
     
     func dataStorePublisher<M: Model>(for model: M.Type)
     -> AnyPublisher<AmplifyAsyncThrowingSequence<MutationEvent>.Element, Error>
+    
 }
