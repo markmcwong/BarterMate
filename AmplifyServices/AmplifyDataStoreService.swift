@@ -72,7 +72,6 @@ class AmplifyDataStoreService: DataStoreService {
         }
     }
 
-    
     func createMessage(chat: Chat, sentBy: User, content: String) async throws -> Message {
         let createdAt = Temporal.DateTime.now()
         let message = Message(SentTo: chat, SentBy: sentBy, createdAt: createdAt, content: content, messageSentById: sentBy.id)

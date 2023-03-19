@@ -287,26 +287,14 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		1734EF1B29C62F1100D2D4AA /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				1734EF1C29C6312600D2D4AA /* ItemService.swift */,
-				1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */,
-				17AB3A1D29C72A7200FE6DCB /* PostingService.swift */,
-				17AB3A1F29C72AAB00FE6DCB /* AmplifyPostingService.swift */,
-				17AB3A2129C72B3300FE6DCB /* RequestService.swift */,
-				17AB3A2329C72B6C00FE6DCB /* AmplifyRequestService.swift */,
-				17AB3A2629C7378B00FE6DCB /* UserService.swift */,
-				17AB3A2829C737B700FE6DCB /* AmplifyUserService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 		174ACAA529BFA454006222AF /* Adapter */ = {
 			isa = PBXGroup;
 			children = (
-				17AB3A2529C731BD00FE6DCB /* Publisher */,
-				1734EF1B29C62F1100D2D4AA /* Services */,
+				17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */,
+				1734EF1C29C6312600D2D4AA /* ItemService.swift */,
+				17AB3A1D29C72A7200FE6DCB /* PostingService.swift */,
+				17AB3A2129C72B3300FE6DCB /* RequestService.swift */,
+				17AB3A2629C7378B00FE6DCB /* UserService.swift */,
 				172FC0FD29C6175700842C70 /* AppServiceManager.swift */,
 				172FC0FC29C6175700842C70 /* ImageProvider.swift */,
 				174ACAA629BFA454006222AF /* StorageService.swift */,
@@ -314,21 +302,24 @@
 				174ACAA829BFA454006222AF /* DataStoreService.swift */,
 				174ACAA929BFA454006222AF /* SessionState.swift */,
 				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
-				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
-				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
 				4D68925F29C41E61001ADF49 /* AuthService.swift */,
-				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
 			);
 			path = Adapter;
 			sourceTree = "<group>";
 		};
-		17AB3A2529C731BD00FE6DCB /* Publisher */ = {
+		17AB3A2A29C7693900FE6DCB /* AmplifyServices */ = {
 			isa = PBXGroup;
 			children = (
+				17AB3A2329C72B6C00FE6DCB /* AmplifyRequestService.swift */,
 				17AB3A1929C63F3A00FE6DCB /* AmplifyEventsPublisher.swift */,
-				17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */,
+				1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */,
+				17AB3A1F29C72AAB00FE6DCB /* AmplifyPostingService.swift */,
+				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
+				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
+				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
+				17AB3A2829C737B700FE6DCB /* AmplifyUserService.swift */,
 			);
-			path = Publisher;
+			path = AmplifyServices;
 			sourceTree = "<group>";
 		};
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
@@ -366,6 +357,7 @@
 		4DC0F86929BE2D27009EE2B5 = {
 			isa = PBXGroup;
 			children = (
+				17AB3A2A29C7693900FE6DCB /* AmplifyServices */,
 				4DC0F87429BE2D27009EE2B5 /* BarterMate */,
 				4DC0F88529BE2D2A009EE2B5 /* BarterMateTests */,
 				4DC0F88F29BE2D2A009EE2B5 /* BarterMateUITests */,
@@ -388,10 +380,10 @@
 		4DC0F87429BE2D27009EE2B5 /* BarterMate */ = {
 			isa = PBXGroup;
 			children = (
+				174ACAA529BFA454006222AF /* Adapter */,
 				4D91955F29C58A24003B5922 /* Helpers */,
 				4D91955E29C58A0C003B5922 /* Views */,
 				4D91955D29C58A05003B5922 /* ViewModels */,
-				174ACAA529BFA454006222AF /* Adapter */,
 				4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */,
 				4DC0F87729BE2D27009EE2B5 /* ContentView.swift */,
 				4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */,

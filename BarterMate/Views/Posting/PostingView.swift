@@ -23,14 +23,14 @@ struct PostingView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
-                        Text("username here")
+                        Text("Bob")
                             .font(.system(size: 20))
                             .bold()
                 }
                 Spacer()
                 Image(systemName: "ellipsis")
             }
-            Text("item description")
+            Text("Water Bottle 500 ml")
             ZStack {
                 Image(systemName: "plus.square.fill")
                     .resizable()
