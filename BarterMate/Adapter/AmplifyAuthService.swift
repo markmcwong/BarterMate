@@ -28,9 +28,9 @@ public class AmplifyAuthService: AuthService {
         }
     }
     
-    func confirmSignUp(username: String, confirmationCode: String) async -> ActionResult{
+    func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult{
         do {
-            let res = try await Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode)
+            let res = try await Amplify.Auth.confirmSignUp(for: email, confirmationCode: confirmationCode)
             return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
         } catch let error as AuthError {
             return ActionResult(false, "Signup failed with error: \(error)")

@@ -15,5 +15,5 @@ protocol AuthService {
     func signInWithPhoneNumber(phoneNumber: String, password: String) async -> ActionResult
     func signOut() async throws
     func getCurrentUser() async throws -> AuthUser?
-    func confirmSignUp(username: String, confirmationCode: String) async -> ActionResult
+    func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult
 }
