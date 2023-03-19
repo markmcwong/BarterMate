@@ -10,26 +10,57 @@ import Amplify
 
 public class AmplifyAuthService: AuthService {
     
-    func signUp(username: String, email: String, phoneNumber: String, password: String) async throws -> AuthSignUpResult {
+    func signUp(username: String, email: String, phoneNumber: String, password: String) async -> ActionResult {
             let attributes = [
                 AuthUserAttribute(.email, value: email),
-                AuthUserAttribute(.phoneNumber, value: phoneNumber)
+                AuthUserAttribute(.phoneNumber, value: phoneNumber),
+                AuthUserAttribute(.preferredUsername, value: username)
             ]
             let options = AuthSignUpRequest.Options(userAttributes: attributes)
-            
-            return try await Amplify.Auth.signUp(username: username, password: password, options: options)
+        
+        do {
+            let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
+            return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
+        } catch let error as AuthError {
+            return ActionResult(false, "Signup failed with error: \(error)")
+        } catch {
+            return ActionResult(false, "Unexpected error: \(error)")
+        }
     }
     
-//    func confirmSignUp(username: String, confirmationCode: String) async throws -> AuthConfirmSignUpResult {
-//        return try await Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode)
-//    }
-    
-    func signInWithEmail(email: String, password: String) async throws -> AuthSignInResult {
-        return try await Amplify.Auth.signIn(username: email, password: password)
+    func confirmSignUp(username: String, confirmationCode: String) async -> ActionResult{
+        do {
+            let res = try await Amplify.Auth.confirmSignUp(for: username, confirmationCode: confirmationCode)
+            return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
+        } catch let error as AuthError {
+            return ActionResult(false, "Signup failed with error: \(error)")
+        } catch {
+            return ActionResult(false, "Unexpected error: \(error)")
+        }
     }
     
-    func signInWithPhoneNumber(phoneNumber: String, password: String) async throws -> AuthSignInResult {
-        return try await Amplify.Auth.signIn(username: phoneNumber, password: password)
+    func signInWithEmail(email: String, password: String) async -> ActionResult {
+        do {
+            let res = try await Amplify.Auth.signIn(username: email, password: password)
+            print(res.isSignedIn, res)
+            return ActionResult(res.isSignedIn, res.isSignedIn ? "" : "Invalid Credentials")
+        } catch let error as AuthError {
+            print(error.errorDescription)
+            return ActionResult(false, "Sign in failed with error: \(error)")
+        } catch {
+            return ActionResult(false, "Unexpected error: \(error)")
+        }
+    }
+    
+    func signInWithPhoneNumber(phoneNumber: String, password: String) async -> ActionResult {
+        do {
+            let res = try await Amplify.Auth.signIn(username: phoneNumber, password: password)
+            return ActionResult(res.isSignedIn, res.isSignedIn ? "" : "Invalid Credentials")
+        } catch let error as AuthError {
+            return ActionResult(false, "Sign in failed with error: \(error)")
+        } catch {
+            return ActionResult(false, "Unexpected error: \(error)")
+        }
     }
     
     func signOut() async {

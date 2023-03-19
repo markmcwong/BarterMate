@@ -20,6 +20,25 @@ struct ContentView: View {
                 })
 //            case .home:
 //                HomeView()
+    var body: some View {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+            Text("Hello, world!")
+    @StateObject private var router = Router.singleton
+//    @StateObject var appState = AppState()
+
+    var body: some View {
+        VStack {
+            switch router.currentScreen {
+            case .login:
+                LoginView(onLoginSuccess: {
+                    router.navigate(to: .login)
+//                    appState.isLoggedIn = true
+                })
+            case .home:
+                HomeView()
 //                    .onSignOut {
 //                        router.navigate(to: .login)
 //                    }

@@ -39,6 +39,8 @@
 		3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5CF9E593E82920841EA30D /* UserChat.swift */; };
 		4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95A3A358495DAC8787FAAF /* Chat.swift */; };
 		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
+		4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */; };
+		4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */; };
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
 		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
 		4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956029C58A3B003B5922 /* LoginViewModel.swift */; };
@@ -128,6 +130,8 @@
 		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Chat+Schema.swift"; path = "amplify/generated/models/Chat+Schema.swift"; sourceTree = "<group>"; };
 		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
+		4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
+		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -285,14 +289,38 @@
 			path = Adapter;
 			sourceTree = "<group>";
 		};
+		4D4AD57229C6F76D00C2EEC6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4D91956429C596D6003B5922 /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4D4AD57329C6F85100C2EEC6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				4D91956029C58A3B003B5922 /* LoginViewModel.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		4D4AD57629C6FEA100C2EEC6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				4D4AD57329C6F85100C2EEC6 /* Auth */,
 				172FC0EC29C6171D00842C70 /* Item */,
 				172FC0F029C6171E00842C70 /* Posting */,
 				172FC0EE29C6171E00842C70 /* Profile */,
 				172FC0F329C6171E00842C70 /* Request */,
-				4D91956029C58A3B003B5922 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -300,11 +328,12 @@
 		4D91955E29C58A0C003B5922 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4D4AD57629C6FEA100C2EEC6 /* Home */,
+				4D4AD57229C6F76D00C2EEC6 /* Auth */,
 				172FC0DB29C616FD00842C70 /* Item */,
 				172FC0E129C616FD00842C70 /* Posting */,
 				172FC0DE29C616FD00842C70 /* Profile */,
 				172FC0D829C616FC00842C70 /* Request */,
-				4D91956429C596D6003B5922 /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				4D91956229C596A3003B5922 /* Router.swift */,
+				4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -594,6 +624,7 @@
 				172FC0FB29C6171E00842C70 /* RequestListViewModel.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,
+				4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */,
 				AAAEBFC2D0D7C2E3823505C0 /* Item+Schema.swift in Sources */,
 				EAE1D5811D7F3A1FCBF3E7A2 /* Item.swift in Sources */,
 				172FC0FF29C6175700842C70 /* AppServiceManager.swift in Sources */,
@@ -616,6 +647,7 @@
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
+				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,
 				172FC0E929C616FD00842C70 /* UserProfileImageView.swift in Sources */,

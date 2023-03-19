@@ -10,10 +10,10 @@ import Amplify
 import Combine
 
 protocol AuthService {
-    func signUp(username: String, email: String, phoneNumber: String, password: String) async throws -> AuthSignUpResult
-//  func confirmSignUp(username: String, confirmationCode: String) async throws -> AuthConfirmSignUpRequest
-    func signInWithEmail(email: String, password: String) async throws -> AuthSignInResult
-    func signInWithPhoneNumber(phoneNumber: String, password: String) async throws -> AuthSignInResult
+    func signUp(username: String, email: String, phoneNumber: String, password: String) async -> ActionResult
+    func signInWithEmail(email: String, password: String) async -> ActionResult
+    func signInWithPhoneNumber(phoneNumber: String, password: String) async -> ActionResult
     func signOut() async throws
     func getCurrentUser() async throws -> AuthUser?
+    func confirmSignUp(username: String, confirmationCode: String) async -> ActionResult
 }
