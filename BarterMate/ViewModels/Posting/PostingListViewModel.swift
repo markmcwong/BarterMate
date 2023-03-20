@@ -9,18 +9,18 @@ import Combine
 import Foundation
 import Amplify
 
+@MainActor
 class PostingListViewModel: ObservableObject {
     @Published private(set) var loadedPostings: [Posting] = [Posting]()
     @Published var isPostingSynced = false
     
     private var subscribers = Set<AnyCancellable>()
     
-    var dataStoreService: DataStoreService
+    var postingService: PostingService
     
     init(manager: ServiceManager = AppServiceManager.shared) {
-        self.dataStoreService = manager.dataStoreService
-        print("init RequestListViewModel")
-        dataStoreService.eventsPublisher
+        self.postingService = manager.postingService
+        manager.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             
@@ -33,7 +33,6 @@ class PostingListViewModel: ObservableObject {
     func onReceive(event: DataStoreServiceEvent) {
         switch event {
         case .postingSynced:
-            print("request Synced")
             Task {
                 await fetchPostings(page: 0)
             }
@@ -58,10 +57,9 @@ class PostingListViewModel: ObservableObject {
         let sortInput = QuerySortInput.descending(Posting.keys.createdAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         do {
-            let postings = try await dataStoreService.query(Posting.self,
-                                                         where: nil,
-                                                         sort: sortInput,
-                                                         paginate: paginationInput)
+            let postings = try await postingService.query(where: nil,
+                                                          sort: sortInput,
+                                                          paginate: paginationInput)
             
             if page != 0 {
                 loadedPostings.append(contentsOf: postings)
@@ -75,3 +73,4 @@ class PostingListViewModel: ObservableObject {
         }
     }
 }
+

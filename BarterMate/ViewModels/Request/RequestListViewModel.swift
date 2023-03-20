@@ -15,13 +15,12 @@ class RequestListViewModel: ObservableObject {
     @Published var isRequestSynced = false
     
     private var subscribers = Set<AnyCancellable>()
-    
-    var dataStoreService: DataStoreService
+
+    var requestService: RequestService
     
     init(manager: ServiceManager = AppServiceManager.shared) {
-        self.dataStoreService = manager.dataStoreService
-        print("init RequestListViewModel")
-        dataStoreService.eventsPublisher
+        self.requestService = manager.requestService
+        manager.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             
@@ -34,10 +33,10 @@ class RequestListViewModel: ObservableObject {
     func onReceive(event: DataStoreServiceEvent) {
         switch event {
         case .requestSynced:
-            print("request Synced")
             Task {
                 await fetchRequests(page: 0)
             }
+            isRequestSynced = true
         case .requestDeleted(let request):
             deleteRequest(request)
         default:
@@ -59,10 +58,9 @@ class RequestListViewModel: ObservableObject {
         let sortInput = QuerySortInput.descending(Request.keys.createdAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         do {
-            let requests = try await dataStoreService.query(Request.self,
-                                                         where: nil,
-                                                         sort: sortInput,
-                                                         paginate: paginationInput)
+            let requests = try await requestService.query(where: nil,
+                                                          sort: sortInput,
+                                                          paginate: paginationInput)
             
             if page != 0 {
                 loadedRequests.append(contentsOf: requests)
@@ -76,3 +74,4 @@ class RequestListViewModel: ObservableObject {
         }
     }
 }
+

@@ -13,19 +13,19 @@ class PostingViewModel: ObservableObject {
     
     var posting: Posting
     var image: Image?
-    var dataStoreService: DataStoreService
-    var storageService: StorageService
+    var postingService: PostingService
+    // var storageService: StorageService
     
     init(posting: Posting, manager: ServiceManager = AppServiceManager.shared) {
         self.posting = posting
-        self.dataStoreService = manager.dataStoreService
-        self.storageService = manager.storageService
-        loadImage()
+        self.postingService = manager.postingService
+        // self.storageService = manager.storageService
+        // loadImage()
     }
     
     func deletePost() async {
         do {
-            try await dataStoreService.deletePosting(posting)
+            try await postingService.deletePosting(posting)
         } catch let error as StorageError {
             Amplify.log.error("Failed to delete Posting in Storage: \(error.localizedDescription)")
         } catch let error as DataStoreError {
@@ -45,5 +45,6 @@ class PostingViewModel: ObservableObject {
     }
     
 }
+
 
 

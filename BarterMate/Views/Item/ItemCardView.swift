@@ -21,24 +21,33 @@ struct ItemCardView: View {
                     .frame(width: 150, height: 150)
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
+//                    HStack {
+//                        Text(viewModel.ownerName ?? "loading name")
+//                            .font(.callout)
+//                            .lineLimit(1)
+//                        Spacer()
+//
+//                    }
                     HStack {
-                        Text(viewModel.ownerName ?? "loading name")
+                        Text(viewModel.item.name ?? "name")
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()
-
                     }
                     HStack {
                         Text(viewModel.item.description ?? "description")
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()
-
+                    }
+                    Button(action: {}) {
+                        Text("Make Posting")
                     }
                 }
             }
             .padding()
             .background(Rectangle().fill(Color.white))
+            .border(.green)
             .shadow(color: .gray, radius: 3, x: 2, y: 2)
         }
     }

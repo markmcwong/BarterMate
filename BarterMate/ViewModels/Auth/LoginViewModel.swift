@@ -4,7 +4,6 @@
 //
 //  Created by Mark on 18/3/23.
 //
-
 import SwiftUI
 import Combine
 
@@ -69,3 +68,4 @@ class LoginViewModel: ObservableObject {
         }
     }
 }
+

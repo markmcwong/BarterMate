@@ -39,16 +39,15 @@ struct RequestCardView: View {
 
                     }
                 }
-                Image(systemName: "xmark")
-                    .frame(width: 25, height: 25)
-                    .background(Circle().fill(Color.gray))
-                    .padding(.leading, 10)
-                    .onTapGesture {
-                        print("deleted")
-                        Task {
-                            await                         viewModel.deleteRequest()
-                        }
-                    }
+//                Image(systemName: "xmark")
+//                    .frame(width: 25, height: 25)
+//                    .background(Circle().fill(Color.gray))
+//                    .padding(.leading, 10)
+//                    .onTapGesture {
+//                        Task {
+//                            await                         viewModel.deleteRequest()
+//                        }
+//                    }
             }
             .padding()
             .background(Rectangle().fill(Color.white))
@@ -63,4 +62,5 @@ struct RequestCardView_Previews: PreviewProvider {
         RequestCardView(request: Request(id: "a", description: "Hello World", createdAt: nil, userID: "1"))
     }
 }
+
 

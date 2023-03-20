@@ -11,18 +11,23 @@ struct RequestListView: View {
     @StateObject var viewModel = RequestListViewModel()
 
     var body: some View {
-        VStack {
-            LazyVStack {
-                ForEach(viewModel.loadedRequests.indices, id: \.self) { index in
-                    RequestCardView(request: viewModel.loadedRequests[index])
-                }
-            }.id(UUID())
-            
-            if viewModel.loadedRequests.count == 0 {
-                Text("No More Request")
-                    .padding()
-            } else {
+        ScrollView(.vertical) {
+            VStack {
+                LazyVStack {
+                    ForEach(viewModel.loadedRequests.indices, id: \.self) { index in
+                        RequestCardView(request: viewModel.loadedRequests[index])
+                    }
+                }.id(UUID())
                 
+                if !viewModel.isRequestSynced {
+                    Text("Loading Request")
+                        .padding()
+                } else if viewModel.loadedRequests.count == 0 {
+                    Text("No More Request")
+                        .padding()
+                } else {
+                    
+                }
             }
         }
     }

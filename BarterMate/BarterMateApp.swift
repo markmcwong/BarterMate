@@ -15,6 +15,7 @@ import AWSAPIPlugin
 struct BarterMateApp: App {
     init() {
         configureAmplify()
+        AppServiceManager.shared.configure()
     }
     
     var body: some Scene {
