@@ -59,7 +59,7 @@ class LoginViewModel: ObservableObject {
     
     func confirmSignup() async {
         print(username)
-        let res = await authService.confirmSignUp(username: username, confirmationCode: confirmationCode)
+        let res = await authService.confirmSignUp(email: username, confirmationCode: confirmationCode)
         if !res.isSuccess {
             errorMessage = res.message
         } else {
