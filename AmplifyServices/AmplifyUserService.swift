@@ -8,9 +8,9 @@
 import Amplify
 
 class AmplifyUserService: UserService {
-    
+
     var user: User?
-    
+  
     var eventsPublisher = AmplifyEventsPublisher.shared
     
     func saveUser(_ user: User) async throws -> User {

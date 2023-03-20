@@ -20,7 +20,7 @@ class PostingListViewModel: ObservableObject {
     
     init(manager: ServiceManager = AppServiceManager.shared) {
         self.postingService = manager.postingService
-        postingService.eventsPublisher.toAnyPublisher
+        manager.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             

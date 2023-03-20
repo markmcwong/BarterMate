@@ -10,8 +10,6 @@ import Amplify
 
 protocol RequestService {
     
-    var eventsPublisher: EventsPublisher { get }
-    
     func saveRequest(_ request: Request) async throws -> Request
     func deleteRequest(_ request: Request) async throws
     

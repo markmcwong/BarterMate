@@ -9,8 +9,6 @@ import Amplify
 
 protocol ItemService {
     
-    var eventsPublisher: EventsPublisher { get }
-    
     func saveItem(_ item: Item) async throws -> Item
     func deleteItem(_ item: Item) async throws
     

@@ -24,7 +24,7 @@ class UserProfileViewModel: ObservableObject {
     init(manager: ServiceManager = AppServiceManager.shared) {
         self.userService = manager.userService
         self.itemService = manager.itemService
-        userService.eventsPublisher.toAnyPublisher
+        manager.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             

@@ -9,8 +9,6 @@ import Amplify
 
 protocol PostingService {
     
-    var eventsPublisher: EventsPublisher { get }
-    
     func savePosting(_ posting: Posting) async throws -> Posting
     func deletePosting(_ posting: Posting) async throws
     
