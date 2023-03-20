@@ -20,7 +20,7 @@ class RequestListViewModel: ObservableObject {
     
     init(manager: ServiceManager = AppServiceManager.shared) {
         self.requestService = manager.requestService
-        requestService.eventsPublisher.toAnyPublisher
+        manager.eventsPublisher.toAnyPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [ weak self ] completion in
             

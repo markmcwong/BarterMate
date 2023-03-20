@@ -153,7 +153,7 @@
 		4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
 		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AmplifyAuthService.swift; path = ../BarterMate/Adapter/AmplifyAuthService.swift; sourceTree = "<group>"; };
+		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4D91956229C596A3003B5922 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4D91956429C596D6003B5922 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -291,7 +291,7 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		174ACAA529BFA454006222AF /* Adapter */ = {
+		174ACAA529BFA454006222AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				17AB3A2B29C76FE600FE6DCB /* EventsPublisher.swift */,
@@ -308,7 +308,7 @@
 				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
 				4D68925F29C41E61001ADF49 /* AuthService.swift */,
 			);
-			path = Adapter;
+			path = Service;
 			sourceTree = "<group>";
 		};
 		17AB3A3529C7701A00FE6DCB /* AmplifyServices */ = {
@@ -413,7 +413,7 @@
 				4D91955F29C58A24003B5922 /* Helpers */,
 				4D91955E29C58A0C003B5922 /* Views */,
 				4D91955D29C58A05003B5922 /* ViewModels */,
-				174ACAA529BFA454006222AF /* Adapter */,
+				174ACAA529BFA454006222AF /* Service */,
 				4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */,
 				4DC0F87729BE2D27009EE2B5 /* ContentView.swift */,
 				4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */,

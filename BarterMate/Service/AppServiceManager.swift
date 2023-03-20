@@ -18,6 +18,7 @@ class AppServiceManager: ServiceManager {
     let requestService: RequestService = AmplifyRequestService()
     let postingService: PostingService = AmplifyPostingService()
     let userService: UserService = AmplifyUserService()
+    let eventsPublisher: EventsPublisher = AmplifyEventsPublisher.shared
     
     func configure() { }
 }
