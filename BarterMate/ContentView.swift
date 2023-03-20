@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var router = Router.singleton
-//    @StateObject var appState = AppState()
+    var globalState = GlobalState.shared
 
     var body: some View {
         VStack {
@@ -20,7 +20,7 @@ struct ContentView: View {
 //                    appState.isLoggedIn = true
                 })
             case .home:
-                HomeView()
+                UserProfileView()
 //                    .onSignOut {
 //                        router.navigate(to: .login)
 //                    }

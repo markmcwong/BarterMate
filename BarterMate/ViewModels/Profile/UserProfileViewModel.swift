@@ -34,7 +34,8 @@ class UserProfileViewModel: ObservableObject {
             .store(in: &subscribers)
         Task {
             do {
-                user = try await userService.query(byId: "e3a20b7c-b166-4b33-9495-2cbc3f99adf6")
+                print(GlobalState.shared.userId)
+                user = try await userService.query(byId: GlobalState.shared.userId!)
             } catch {
                 print("error querying user")
             }

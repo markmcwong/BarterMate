@@ -6,27 +6,27 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct ChatListView: View {
     @StateObject var viewModel = ChatListViewModel()
 
     var body: some View {
         VStack {
-            if viewModel.loading {
-                ProgressView()
-            } else if viewModel.chats.isEmpty {
-                Text("No chats")
-            } else {
-                List(viewModel.chats) { chat in
-                    NavigationLink(destination: ChatView(chat: chat)) {
-                        Text(chat.name ?? "Unnamed chat")
-                    }
-                }
-            }
-            Spacer()
+            //            LazyVStack {
+            //                ForEach(viewModel.loadedPostings.indices, id: \.self) { index in
+            //                    PostingView(posting: viewModel.loadedPostings[index])
+            //                }
+            //            }.id(UUID())
+            //
+            //            if viewModel.loadedPostings.count == 0 {
+            //                Text("No More Postings")
+            //                    .padding()
+            //            } else {
+            //            }
         }
         .navigationBarTitle("Chats")
-        .onAppear(perform: viewModel.loadChats)
+//        .onAppear(perform: viewModel.loadChats)
     }
 }
 

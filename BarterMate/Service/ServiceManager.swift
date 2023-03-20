@@ -14,6 +14,7 @@ protocol ServiceManager {
     var postingService: PostingService { get }
     var userService: UserService { get }
     var eventsPublisher: EventsPublisher { get }
+    var chatService: ChatService {get}
     
     func configure()
     

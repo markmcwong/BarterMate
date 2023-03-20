@@ -58,6 +58,9 @@
 		4D91956529C596D6003B5922 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956429C596D6003B5922 /* LoginView.swift */; };
 		4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7051429C836EF004D3CBC /* ChatListView.swift */; };
 		4DA7051829C837DF004D3CBC /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7051729C837DF004D3CBC /* ChatListViewModel.swift */; };
+		4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7051929C84112004D3CBC /* ChatService.swift */; };
+		4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7051B29C841D4004D3CBC /* AmplifyChatService.swift */; };
+		4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7051D29C89D67004D3CBC /* GlobalState.swift */; };
 		4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */; };
 		4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC0F87729BE2D27009EE2B5 /* ContentView.swift */; };
 		4DC0F87A29BE2D2A009EE2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */; };
@@ -161,6 +164,9 @@
 		4D91956429C596D6003B5922 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		4DA7051429C836EF004D3CBC /* ChatListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListView.swift; sourceTree = "<group>"; };
 		4DA7051729C837DF004D3CBC /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		4DA7051929C84112004D3CBC /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		4DA7051B29C841D4004D3CBC /* AmplifyChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyChatService.swift; sourceTree = "<group>"; };
+		4DA7051D29C89D67004D3CBC /* GlobalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalState.swift; sourceTree = "<group>"; };
 		4DC0F87229BE2D27009EE2B5 /* BarterMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BarterMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateApp.swift; sourceTree = "<group>"; };
 		4DC0F87729BE2D27009EE2B5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -298,19 +304,20 @@
 		174ACAA529BFA454006222AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				172FC0FD29C6175700842C70 /* AppServiceManager.swift */,
+				4D68925F29C41E61001ADF49 /* AuthService.swift */,
+				174ACAA829BFA454006222AF /* DataStoreService.swift */,
+				174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */,
 				17AB3A2B29C76FE600FE6DCB /* EventsPublisher.swift */,
+				172FC0FC29C6175700842C70 /* ImageProvider.swift */,
 				17AB3A2C29C76FE600FE6DCB /* ItemService.swift */,
 				17AB3A2F29C76FE600FE6DCB /* PostingService.swift */,
 				17AB3A2E29C76FE600FE6DCB /* RequestService.swift */,
-				17AB3A2D29C76FE600FE6DCB /* UserService.swift */,
-				172FC0FD29C6175700842C70 /* AppServiceManager.swift */,
-				172FC0FC29C6175700842C70 /* ImageProvider.swift */,
-				174ACAA629BFA454006222AF /* StorageService.swift */,
-				174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */,
-				174ACAA829BFA454006222AF /* DataStoreService.swift */,
-				174ACAA929BFA454006222AF /* SessionState.swift */,
 				174ACAAE29C199E4006222AF /* ServiceManager.swift */,
-				4D68925F29C41E61001ADF49 /* AuthService.swift */,
+				174ACAA929BFA454006222AF /* SessionState.swift */,
+				174ACAA629BFA454006222AF /* StorageService.swift */,
+				17AB3A2D29C76FE600FE6DCB /* UserService.swift */,
+				4DA7051929C84112004D3CBC /* ChatService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 				17AB3A3C29C7701A00FE6DCB /* AmplifyRequestService.swift */,
 				17AB3A3D29C7701A00FE6DCB /* AmplifyPostingService.swift */,
 				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
+				4DA7051B29C841D4004D3CBC /* AmplifyChatService.swift */,
 			);
 			path = AmplifyServices;
 			sourceTree = "<group>";
@@ -386,6 +394,7 @@
 			children = (
 				4D91956229C596A3003B5922 /* Router.swift */,
 				4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */,
+				4DA7051D29C89D67004D3CBC /* GlobalState.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -683,6 +692,7 @@
 				4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */,
 				172FC0EA29C616FD00842C70 /* PostingView.swift in Sources */,
 				172FC0FB29C6171E00842C70 /* RequestListViewModel.swift in Sources */,
+				4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,
 				4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */,
@@ -694,6 +704,7 @@
 				17AB3A3229C76FE600FE6DCB /* UserService.swift in Sources */,
 				17AB3A4029C7701A00FE6DCB /* AmplifyItemService.swift in Sources */,
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
+				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				172FC0F929C6171E00842C70 /* PostingViewModel.swift in Sources */,
 				850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */,
@@ -717,6 +728,7 @@
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
+				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
 				17AB3A3029C76FE600FE6DCB /* EventsPublisher.swift in Sources */,
