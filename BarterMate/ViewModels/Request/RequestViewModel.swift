@@ -43,7 +43,7 @@ class RequestViewModel: ObservableObject {
             return
         }
         do {
-            let user = try await userService.query(byId: request.userID)
+            let user = try await userService.query(byId: request.owner.id)
             requesterName = user?.username
             isLoading = false
         } catch let error as DataStoreError {

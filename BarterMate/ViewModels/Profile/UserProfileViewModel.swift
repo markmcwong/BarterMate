@@ -34,7 +34,7 @@ class UserProfileViewModel: ObservableObject {
             .store(in: &subscribers)
         Task {
             do {
-                print(GlobalState.shared.userId)
+                print("global state user Id from user profile: ", GlobalState.shared.userId)
                 user = try await userService.query(byId: GlobalState.shared.userId!)
             } catch {
                 print("error querying user")
@@ -71,7 +71,7 @@ class UserProfileViewModel: ObservableObject {
             return
         }
         
-        let predicateInput = Item.keys.userID == user?.id
+        let predicateInput = Item.keys. == user?.id
         let sortInput = QuerySortInput.descending(Item.keys.createdAt)
         let paginationInput = QueryPaginationInput.page(UInt(page), limit: 20)
         do {
