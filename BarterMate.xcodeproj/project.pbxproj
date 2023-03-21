@@ -25,6 +25,8 @@
 		172FC0FB29C6171E00842C70 /* RequestListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0F529C6171E00842C70 /* RequestListViewModel.swift */; };
 		172FC0FE29C6175700842C70 /* ImageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0FC29C6175700842C70 /* ImageProvider.swift */; };
 		172FC0FF29C6175700842C70 /* AppServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0FD29C6175700842C70 /* AppServiceManager.swift */; };
+		1734EF1D29C6312600D2D4AA /* ItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734EF1C29C6312600D2D4AA /* ItemService.swift */; };
+		1734EF1F29C6313600D2D4AA /* AmplifyItemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
 		174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */; };
 		174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA829BFA454006222AF /* DataStoreService.swift */; };
@@ -132,6 +134,8 @@
 		172FC0F529C6171E00842C70 /* RequestListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestListViewModel.swift; sourceTree = "<group>"; };
 		172FC0FC29C6175700842C70 /* ImageProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageProvider.swift; sourceTree = "<group>"; };
 		172FC0FD29C6175700842C70 /* AppServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppServiceManager.swift; sourceTree = "<group>"; };
+		1734EF1C29C6312600D2D4AA /* ItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemService.swift; sourceTree = "<group>"; };
+		1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyItemService.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		174ACAA729BFA454006222AF /* DataStoreServiceEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreServiceEvent.swift; sourceTree = "<group>"; };
 		174ACAA829BFA454006222AF /* DataStoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStoreService.swift; sourceTree = "<group>"; };
@@ -304,6 +308,11 @@
 		174ACAA529BFA454006222AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				17AB3A1B29C63FAA00FE6DCB /* EventsPublisher.swift */,
+				1734EF1C29C6312600D2D4AA /* ItemService.swift */,
+				17AB3A1D29C72A7200FE6DCB /* PostingService.swift */,
+				17AB3A2129C72B3300FE6DCB /* RequestService.swift */,
+				17AB3A2629C7378B00FE6DCB /* UserService.swift */,
 				172FC0FD29C6175700842C70 /* AppServiceManager.swift */,
 				4D68925F29C41E61001ADF49 /* AuthService.swift */,
 				174ACAA829BFA454006222AF /* DataStoreService.swift */,
@@ -360,6 +369,21 @@
 				4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		17AB3A2A29C7693900FE6DCB /* AmplifyServices */ = {
+			isa = PBXGroup;
+			children = (
+				17AB3A2329C72B6C00FE6DCB /* AmplifyRequestService.swift */,
+				17AB3A1929C63F3A00FE6DCB /* AmplifyEventsPublisher.swift */,
+				1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */,
+				17AB3A1F29C72AAB00FE6DCB /* AmplifyPostingService.swift */,
+				174ACAB029C19B64006222AF /* AmplifyDataStoreService.swift */,
+				176890B229C23B800099D17F /* AmplifyStorageService.swift */,
+				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
+				17AB3A2829C737B700FE6DCB /* AmplifyUserService.swift */,
+			);
+			path = AmplifyServices;
 			sourceTree = "<group>";
 		};
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
@@ -441,6 +465,7 @@
 		4DC0F87429BE2D27009EE2B5 /* BarterMate */ = {
 			isa = PBXGroup;
 			children = (
+				174ACAA529BFA454006222AF /* Adapter */,
 				4D91955F29C58A24003B5922 /* Helpers */,
 				4D91955E29C58A0C003B5922 /* Views */,
 				4D91955D29C58A05003B5922 /* ViewModels */,
@@ -673,7 +698,10 @@
 				17AB3A3129C76FE600FE6DCB /* ItemService.swift in Sources */,
 				172FC0E629C616FD00842C70 /* ItemCardView.swift in Sources */,
 				174ACAAD29BFA454006222AF /* SessionState.swift in Sources */,
+				17AB3A2429C72B6C00FE6DCB /* AmplifyRequestService.swift in Sources */,
 				174ACAAB29BFA454006222AF /* DataStoreServiceEvent.swift in Sources */,
+				17AB3A1C29C63FAA00FE6DCB /* EventsPublisher.swift in Sources */,
+				17AB3A1A29C63F3A00FE6DCB /* AmplifyEventsPublisher.swift in Sources */,
 				4D91956329C596A3003B5922 /* Router.swift in Sources */,
 				17AB3A3329C76FE600FE6DCB /* RequestService.swift in Sources */,
 				4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */,
@@ -696,6 +724,7 @@
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,
 				4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */,
+				1734EF1F29C6313600D2D4AA /* AmplifyItemService.swift in Sources */,
 				AAAEBFC2D0D7C2E3823505C0 /* Item+Schema.swift in Sources */,
 				EAE1D5811D7F3A1FCBF3E7A2 /* Item.swift in Sources */,
 				172FC0FF29C6175700842C70 /* AppServiceManager.swift in Sources */,
@@ -712,6 +741,9 @@
 				17AB3A3F29C7701A00FE6DCB /* AmplifyDataStoreService.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
 				17AB3A3E29C7701A00FE6DCB /* AmplifyUserService.swift in Sources */,
+				17AB3A2029C72AAB00FE6DCB /* AmplifyPostingService.swift in Sources */,
+				17AB3A2229C72B3300FE6DCB /* RequestService.swift in Sources */,
+				1734EF1D29C6312600D2D4AA /* ItemService.swift in Sources */,
 				AD47EC9B05D2C213951781BF /* Transaction+Schema.swift in Sources */,
 				172FC0F629C6171E00842C70 /* ItemViewModel.swift in Sources */,
 				172FC0FE29C6175700842C70 /* ImageProvider.swift in Sources */,
@@ -722,11 +754,14 @@
 				5365083C8F89716DB167D767 /* User+Schema.swift in Sources */,
 				4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */,
 				172FC0FA29C6171E00842C70 /* RequestViewModel.swift in Sources */,
+				17AB3A2929C737B700FE6DCB /* AmplifyUserService.swift in Sources */,
 				82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */,
 				17AB3A3429C76FE600FE6DCB /* PostingService.swift in Sources */,
 				172FC0F829C6171E00842C70 /* PostingListViewModel.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
+				17AB3A2729C7378B00FE6DCB /* UserService.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
+				17AB3A1E29C72A7200FE6DCB /* PostingService.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
 				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,

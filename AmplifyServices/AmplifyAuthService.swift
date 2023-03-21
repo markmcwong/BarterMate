@@ -9,6 +9,7 @@ import Foundation
 import Amplify
 
 public class AmplifyAuthService: AuthService {
+<<<<<<< HEAD
     var eventsPublisher = AmplifyEventsPublisher.shared
     
     func signUp(username: String, email: String, phoneNumber: String, password: String) async -> ActionResult {
@@ -83,7 +84,6 @@ public class AmplifyAuthService: AuthService {
         } catch {
             print("Unexpected error: \(error)")
         }
-        
     }
     
     func getCurrentUser() async throws -> AuthUser? {
