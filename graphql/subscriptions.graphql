@@ -2,69 +2,147 @@
 subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
   onCreateMessage(filter: $filter) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
 subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
   onUpdateMessage(filter: $filter) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
 subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
   onDeleteMessage(filter: $filter) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
 subscription OnCreateChat($filter: ModelSubscriptionChatFilterInput) {
   onCreateChat(filter: $filter) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -72,17 +150,39 @@ subscription OnCreateChat($filter: ModelSubscriptionChatFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateChat($filter: ModelSubscriptionChatFilterInput) {
   onUpdateChat(filter: $filter) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -90,17 +190,39 @@ subscription OnUpdateChat($filter: ModelSubscriptionChatFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteChat($filter: ModelSubscriptionChatFilterInput) {
   onDeleteChat(filter: $filter) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -108,12 +230,19 @@ subscription OnDeleteChat($filter: ModelSubscriptionChatFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
@@ -127,8 +256,56 @@ subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -137,11 +314,18 @@ subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
@@ -155,8 +339,56 @@ subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -165,11 +397,18 @@ subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
@@ -183,8 +422,56 @@ subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -193,11 +480,18 @@ subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateRequest($filter: ModelSubscriptionRequestFilterInput) {
@@ -205,7 +499,11 @@ subscription OnCreateRequest($filter: ModelSubscriptionRequestFilterInput) {
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateRequest($filter: ModelSubscriptionRequestFilterInput) {
@@ -213,7 +511,11 @@ subscription OnUpdateRequest($filter: ModelSubscriptionRequestFilterInput) {
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteRequest($filter: ModelSubscriptionRequestFilterInput) {
@@ -221,13 +523,18 @@ subscription OnDeleteRequest($filter: ModelSubscriptionRequestFilterInput) {
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreatePosting($filter: ModelSubscriptionPostingFilterInput) {
   onCreatePosting(filter: $filter) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -235,11 +542,19 @@ subscription OnCreatePosting($filter: ModelSubscriptionPostingFilterInput) {
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -247,6 +562,7 @@ subscription OnUpdatePosting($filter: ModelSubscriptionPostingFilterInput) {
   onUpdatePosting(filter: $filter) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -254,11 +570,19 @@ subscription OnUpdatePosting($filter: ModelSubscriptionPostingFilterInput) {
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -266,6 +590,7 @@ subscription OnDeletePosting($filter: ModelSubscriptionPostingFilterInput) {
   onDeletePosting(filter: $filter) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -273,11 +598,19 @@ subscription OnDeletePosting($filter: ModelSubscriptionPostingFilterInput) {
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -294,11 +627,18 @@ subscription OnCreateTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateTransaction(
@@ -314,11 +654,18 @@ subscription OnUpdateTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteTransaction(
@@ -334,11 +681,18 @@ subscription OnDeleteTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateGroup($filter: ModelSubscriptionGroupFilterInput) {
@@ -348,6 +702,9 @@ subscription OnCreateGroup($filter: ModelSubscriptionGroupFilterInput) {
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateGroup($filter: ModelSubscriptionGroupFilterInput) {
@@ -357,6 +714,9 @@ subscription OnUpdateGroup($filter: ModelSubscriptionGroupFilterInput) {
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteGroup($filter: ModelSubscriptionGroupFilterInput) {
@@ -366,6 +726,9 @@ subscription OnDeleteGroup($filter: ModelSubscriptionGroupFilterInput) {
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
@@ -375,6 +738,9 @@ subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
@@ -384,6 +750,9 @@ subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
@@ -393,6 +762,9 @@ subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateItem($filter: ModelSubscriptionItemFilterInput) {
@@ -408,11 +780,19 @@ subscription OnCreateItem($filter: ModelSubscriptionItemFilterInput) {
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateItem($filter: ModelSubscriptionItemFilterInput) {
@@ -428,11 +808,19 @@ subscription OnUpdateItem($filter: ModelSubscriptionItemFilterInput) {
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteItem($filter: ModelSubscriptionItemFilterInput) {
@@ -448,11 +836,19 @@ subscription OnDeleteItem($filter: ModelSubscriptionItemFilterInput) {
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
@@ -462,27 +858,55 @@ subscription OnCreateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
@@ -492,27 +916,55 @@ subscription OnUpdateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteUserChat($filter: ModelSubscriptionUserChatFilterInput) {
@@ -522,27 +974,55 @@ subscription OnDeleteUserChat($filter: ModelSubscriptionUserChatFilterInput) {
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnCreateUserTransaction(
@@ -557,24 +1037,48 @@ subscription OnCreateUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnUpdateUserTransaction(
@@ -589,24 +1093,48 @@ subscription OnUpdateUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 subscription OnDeleteUserTransaction(
@@ -621,23 +1149,47 @@ subscription OnDeleteUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

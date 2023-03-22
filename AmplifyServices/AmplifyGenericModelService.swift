@@ -18,34 +18,34 @@ class AmplifyGenericModelService<T: BarterMateModel>: GenericModelService {
         try await Amplify.DataStore.delete(model)
     }
     
-    func get(byId id: String) async throws -> T.CodableType? {
+    func get(byId id: String) async throws -> T? {
         let item = try await Amplify.DataStore.query(T.self, byId: id)
-        return try item?.toJSON() as? T.CodableType
+        return item
     }
     
-    func query(_ query: ModelQuery<T.CodableType>) async throws -> [T] {
+    func query(_ query: any ModelQuery<T>) async throws -> [T] {
 //        var wherePredicate: QueryPredicate?
-//        if let whereClause = query.whereClause {
-//            let jsonData = try JSONEncoder().encode(whereClause)
-//            let jsonString = String(data: jsonData, encoding: .utf8)!
-//            wherePredicate = QueryPredicate(json: jsonString)
-//        }
+//        // TODO:
+////        if let whereClause = query.whereClause {
+////            let jsonData = try JSONEncoder().encode(whereClause)
+////            let jsonString = String(data: jsonData, encoding: .utf8)!
+////            wherePredicate = QueryPredicateGroup.(json: jsonString)
+////        }
 //
 //        var sortInput: QuerySortInput?
-//        if let sortBy = query.sortBy {
-//            sortInput = QuerySortInput(fieldName: sortBy, sortOrder: .ascending)
+//        if let sortByKey = query.sortBy, let isAscending = query.isAscending {
+//            if let codingKey = T.getModelKey(input: sortByKey) {
+//                sortInput = isAscending ? .ascending(codingKey as! CodingKey) : .descending(codingKey as! CodingKey)
+//            }
 //        }
 //
 //        var paginationInput: QueryPaginationInput?
-//        if let limit = query.limit {
-//            paginationInput = QueryPaginationInput(limit: limit)
+//        if let limit = query.limit, let page = query.page {
+//            paginationInput = QueryPaginationInput.page(UInt(page), limit: UInt(limit))
 //        }
-//
-//        let items = try await Amplify.DataStore.query(T.self, where: wherePredicate, sort: sortInput, paginate: paginationInput)
-//        return items
-    }
-}
 
-class Test {
-    var service = AmplifyGenericModelService<Item>()
+        let items = try await Amplify.DataStore.query(T.self)
+        print("test ", items)
+        return items
+    }
 }

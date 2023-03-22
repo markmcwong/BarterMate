@@ -6,7 +6,7 @@ extension Message {
   // MARK: - CodingKeys 
    public enum CodingKeys: String, ModelKey {
     case id
-    case SentTo
+    case chatID
     case SentBy
     case createdAt
     case content
@@ -33,7 +33,7 @@ extension Message {
     
     model.fields(
       .field(message.id, is: .required, ofType: .string),
-      .belongsTo(message.SentTo, is: .required, ofType: Chat.self, targetNames: ["chatID"]),
+      .field(message.chatID, is: .required, ofType: .string),
       .hasOne(message.SentBy, is: .required, ofType: User.self, associatedWith: User.keys.id, targetNames: ["messageSentById"]),
       .field(message.createdAt, is: .required, ofType: .dateTime),
       .field(message.content, is: .required, ofType: .string),

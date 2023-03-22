@@ -9,7 +9,6 @@ import Foundation
 import Amplify
 
 public class AmplifyAuthService: AuthService {
-<<<<<<< HEAD
     var eventsPublisher = AmplifyEventsPublisher.shared
     
     func signUp(username: String, email: String, phoneNumber: String, password: String) async -> ActionResult {
@@ -23,7 +22,7 @@ public class AmplifyAuthService: AuthService {
         do {
             let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
             let userId = try await Amplify.Auth.getCurrentUser().userId
-            let _ = try await AppServiceManager.shared.userService.saveUser(User(id: userId, username: username))
+            let _ = try await AmplifyGenericModelService<User>().save(User(id: userId, username: username))
             return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
         } catch let error as AuthError {
             return ActionResult(false, "Signup failed with error: \(error)")

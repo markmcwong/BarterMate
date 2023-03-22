@@ -34,10 +34,10 @@ class AmplifyChatService: ChatService {
         return try await Amplify.DataStore.query(Chat.self, byId: id)
     }
     
-    func fetchMessagesByChat(chatID: String) async throws -> [Message] {
-        let messages = try await Amplify.DataStore.query(Message.self, where: Message.keys.SentTo == chatID)
-        return messages
-    }
+//    func fetchMessagesByChat(chatID: String) async throws -> [Message] {
+//        let messages = try await Amplify.DataStore.query(Message.self, where: Message.keys.SentTo == chatID)
+//        return messages
+//    }
     
     func fetchChatsByUser(userID: String) async throws -> [Chat] {
         let userChats = try await Amplify.DataStore.query(UserChat.self, where: UserChat.keys.user == userID)
@@ -62,7 +62,7 @@ class AmplifyChatService: ChatService {
 
     func createMessage(chat: Chat, sentBy: User, content: String) async throws -> Message {
         let createdAt = Temporal.DateTime.now()
-        let message = Message(SentTo: chat, SentBy: sentBy, createdAt: createdAt, content: content, messageSentById: sentBy.id)
+        let message = Message(chatID: chat.id, SentBy: sentBy, createdAt: createdAt, content: content, messageSentById: sentBy.id)
         try await Amplify.DataStore.save(message)
         return message
     }

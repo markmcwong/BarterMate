@@ -7,7 +7,10 @@
 
 import Foundation
 
-extension Item {
-    typealias CodingKeysEnum = CodingKeys
-    typealias ListItemType = Item
+extension Item: BarterMateModel {
+    static func getModelKey(input: String) -> CodingKeys? {
+        return Item.keys.init(rawValue: input)
+    }
+     
+    typealias key = CodingKeys
 }

@@ -5,21 +5,42 @@ mutation CreateMessage(
 ) {
   createMessage(input: $input, condition: $condition) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
@@ -29,21 +50,42 @@ mutation UpdateMessage(
 ) {
   updateMessage(input: $input, condition: $condition) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
@@ -53,21 +95,42 @@ mutation DeleteMessage(
 ) {
   deleteMessage(input: $input, condition: $condition) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
@@ -77,6 +140,21 @@ mutation CreateChat(
 ) {
   createChat(input: $input, condition: $condition) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -84,12 +162,19 @@ mutation CreateChat(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateChat(
@@ -98,6 +183,21 @@ mutation UpdateChat(
 ) {
   updateChat(input: $input, condition: $condition) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -105,12 +205,19 @@ mutation UpdateChat(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteChat(
@@ -119,6 +226,21 @@ mutation DeleteChat(
 ) {
   deleteChat(input: $input, condition: $condition) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -126,12 +248,19 @@ mutation DeleteChat(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateUser(
@@ -148,8 +277,56 @@ mutation CreateUser(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -158,11 +335,18 @@ mutation CreateUser(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateUser(
@@ -179,8 +363,56 @@ mutation UpdateUser(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -189,11 +421,18 @@ mutation UpdateUser(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteUser(
@@ -210,8 +449,56 @@ mutation DeleteUser(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -220,11 +507,18 @@ mutation DeleteUser(
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateRequest(
@@ -235,7 +529,11 @@ mutation CreateRequest(
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateRequest(
@@ -246,7 +544,11 @@ mutation UpdateRequest(
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteRequest(
@@ -257,7 +559,11 @@ mutation DeleteRequest(
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreatePosting(
@@ -267,6 +573,7 @@ mutation CreatePosting(
   createPosting(input: $input, condition: $condition) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -274,11 +581,19 @@ mutation CreatePosting(
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -289,6 +604,7 @@ mutation UpdatePosting(
   updatePosting(input: $input, condition: $condition) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -296,11 +612,19 @@ mutation UpdatePosting(
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -311,6 +635,7 @@ mutation DeletePosting(
   deletePosting(input: $input, condition: $condition) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -318,11 +643,19 @@ mutation DeletePosting(
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -340,11 +673,18 @@ mutation CreateTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateTransaction(
@@ -361,11 +701,18 @@ mutation UpdateTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteTransaction(
@@ -382,11 +729,18 @@ mutation DeleteTransaction(
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateGroup(
@@ -399,6 +753,9 @@ mutation CreateGroup(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateGroup(
@@ -411,6 +768,9 @@ mutation UpdateGroup(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteGroup(
@@ -423,6 +783,9 @@ mutation DeleteGroup(
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateCategory(
@@ -435,6 +798,9 @@ mutation CreateCategory(
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateCategory(
@@ -447,6 +813,9 @@ mutation UpdateCategory(
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteCategory(
@@ -459,6 +828,9 @@ mutation DeleteCategory(
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateItem(
@@ -477,11 +849,19 @@ mutation CreateItem(
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateItem(
@@ -500,11 +880,19 @@ mutation UpdateItem(
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteItem(
@@ -523,11 +911,19 @@ mutation DeleteItem(
         itemID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
+    userID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateUserChat(
@@ -540,27 +936,55 @@ mutation CreateUserChat(
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateUserChat(
@@ -573,27 +997,55 @@ mutation UpdateUserChat(
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteUserChat(
@@ -606,27 +1058,55 @@ mutation DeleteUserChat(
     userId
     chat {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     user {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation CreateUserTransaction(
@@ -642,24 +1122,48 @@ mutation CreateUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation UpdateUserTransaction(
@@ -675,24 +1179,48 @@ mutation UpdateUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 mutation DeleteUserTransaction(
@@ -708,23 +1236,47 @@ mutation DeleteUserTransaction(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     transaction {
       id
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }

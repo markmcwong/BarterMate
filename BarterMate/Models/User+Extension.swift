@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+extension User: BarterMateModel {
+    static func getModelKey(input: String) -> CodingKeys? {
+        return User.keys.init(rawValue: input)
+    }
+     
+    typealias key = CodingKeys
+}

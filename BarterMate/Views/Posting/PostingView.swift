@@ -7,14 +7,19 @@
 
 import SwiftUI
 
-struct PostingView: View {
+struct PostingView: View, GenericListItemView {
+    typealias ListItemType = Posting
     
-    @StateObject var viewModel: PostingViewModel
-
-    init(posting: Posting) {
-        self._viewModel = StateObject(wrappedValue: PostingViewModel(posting: posting))
+//    init(viewModel: any GenericListItemViewModel) {
+//        self._viewModel = StateObject(wrappedValue: viewModel as! PostingViewModel)
+//
+    
+    init(item: Posting) {
+        self._viewModel = ObservedObject(wrappedValue: ListItemViewModel(item: item))
     }
     
+    @ObservedObject var viewModel: ListItemViewModel<Posting>
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -40,12 +45,15 @@ struct PostingView: View {
         .padding()
     }
 
+//    static func createFrom(_ genericItem: Posting) -> any V {
+//        return PostingView(viewModel: genericItem)
+//    }
                              
 }
-
-struct PostingView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostingView(posting: Posting(userID: "abc",item: Item(description: "Random item",userID: "abc")))
-    }
-}
+//
+//struct PostingView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostingView(item: Posting(userID: "abc",item: Item(description: "Random item",userID: "abc")))
+//    }
+//}
 

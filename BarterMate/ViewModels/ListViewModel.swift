@@ -18,6 +18,9 @@ class ListViewModel<T: BarterMateModel>: ObservableObject {
     
     init<U>(service: U) where U: GenericModelService, U.ModelType == T {
         self.service = service
+        Task {
+            await self.fetchObjects(queryObj: Query())
+        }
     }
     
     func delete(_ object: T) async throws {
@@ -25,8 +28,13 @@ class ListViewModel<T: BarterMateModel>: ObservableObject {
         loadedObjects.removeAll { $0.id == object.id }
     }
     
-    func fetchObjects(queryObj: any ModelQuery<T.CodableType>) async throws -> [T]? {
-        loadedObjects = try await service.query(queryObj)
+    func fetchObjects(queryObj: any ModelQuery<T>) async -> [T]? {
+        do {
+            loadedObjects = try await service.query(queryObj)
+        } catch {
+            loadedObjects = []
+        }
+        print(loadedObjects)
         return loadedObjects
     }
 }

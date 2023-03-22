@@ -1,6 +1,6 @@
 {
   "api": {
-    "BarterMate": {
+    "bartermate": {
       "dependsOn": [],
       "output": {
         "authConfig": {

@@ -16,17 +16,18 @@ import AWSS3StoragePlugin
 struct BarterMateApp: App {
     init() {
         configureAmplify()
-        AppServiceManager.shared.configure()
+//        AppServiceManager.shared.configure()
     }
     
     var body: some Scene {
         WindowGroup {
-            UserProfileView()
+            ContentView()
         }
     }
 }
 
 func configureAmplify() {
+//    Amplify.Logging.logLevel = .verbose
     let dataStorePlugin = AWSDataStorePlugin(modelRegistration: AmplifyModels())
     do {
         try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
@@ -40,3 +41,4 @@ func configureAmplify() {
         print("Could not initialize Amplify: \(error)")
     }
 }
+

@@ -2,9 +2,7 @@
 import Amplify
 import Foundation
 
-public struct Item: Model, BarterMateModel {
-  typealias CodableType = Item
-
+public struct Item: Model {
   public let id: String
   public var name: String?
   public var description: String?
