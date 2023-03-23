@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct ItemCardView: View {
-    @StateObject var viewModel: ItemViewModel
+struct ItemCardView: View, GenericListItemView {
+    typealias ListItemType = Item
+    @ObservedObject var viewModel: ListItemViewModel<Item>
 
     init(item: Item) {
-        _viewModel = StateObject(wrappedValue: ItemViewModel(item: item))
+        _viewModel = ObservedObject(wrappedValue: ListItemViewModel(item: item))
     }
     
     var body: some View {

@@ -9,18 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var router = Router.singleton
-//    @StateObject var appState = AppState()
+    var globalState = GlobalState.shared
 
     var body: some View {
         VStack {
             switch router.currentScreen {
-            case .login:
+            case .home:
                 LoginView(onLoginSuccess: {
-                    router.navigate(to: .login)
+                    router.navigate(to: .home)
 //                    appState.isLoggedIn = true
                 })
-            case .home:
-                HomeView()
+            case .login:
+                ListView<Item, ItemCardView>()
+                
 //                    .onSignOut {
 //                        router.navigate(to: .login)
 //                    }

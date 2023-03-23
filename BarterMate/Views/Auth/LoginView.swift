@@ -36,6 +36,7 @@ struct LoginView: View {
             
             Button("Login with Email") {
                 Task {
+                    await viewModel.signOut()
                     await viewModel.loginWithEmail()
                 }
             }
@@ -58,6 +59,13 @@ struct LoginView: View {
             TextField("Confirmation Code", text: $viewModel.confirmationCode)
                 .padding()
                 .keyboardType(.numberPad)
+            
+//            Button("Log Out") {
+//                Task {
+//                    await viewModel.signOut()
+//                }
+//            }
+//            .padding()
             
             Button("Confirm Sign Up") {
                 Task {

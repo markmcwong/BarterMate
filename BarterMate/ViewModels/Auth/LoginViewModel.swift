@@ -67,5 +67,9 @@ class LoginViewModel: ObservableObject {
             }
         }
     }
+    
+    func signOut() async {
+        await authService.signOut()
+    }
 }
 

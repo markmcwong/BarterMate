@@ -1,0 +1,1282 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateMessage(
+  $input: CreateMessageInput!
+  $condition: ModelMessageConditionInput
+) {
+  createMessage(input: $input, condition: $condition) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+mutation UpdateMessage(
+  $input: UpdateMessageInput!
+  $condition: ModelMessageConditionInput
+) {
+  updateMessage(input: $input, condition: $condition) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+mutation DeleteMessage(
+  $input: DeleteMessageInput!
+  $condition: ModelMessageConditionInput
+) {
+  deleteMessage(input: $input, condition: $condition) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+mutation CreateChat(
+  $input: CreateChatInput!
+  $condition: ModelChatConditionInput
+) {
+  createChat(input: $input, condition: $condition) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateChat(
+  $input: UpdateChatInput!
+  $condition: ModelChatConditionInput
+) {
+  updateChat(input: $input, condition: $condition) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteChat(
+  $input: DeleteChatInput!
+  $condition: ModelChatConditionInput
+) {
+  deleteChat(input: $input, condition: $condition) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateRequest(
+  $input: CreateRequestInput!
+  $condition: ModelRequestConditionInput
+) {
+  createRequest(input: $input, condition: $condition) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateRequest(
+  $input: UpdateRequestInput!
+  $condition: ModelRequestConditionInput
+) {
+  updateRequest(input: $input, condition: $condition) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteRequest(
+  $input: DeleteRequestInput!
+  $condition: ModelRequestConditionInput
+) {
+  deleteRequest(input: $input, condition: $condition) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreatePosting(
+  $input: CreatePostingInput!
+  $condition: ModelPostingConditionInput
+) {
+  createPosting(input: $input, condition: $condition) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+mutation UpdatePosting(
+  $input: UpdatePostingInput!
+  $condition: ModelPostingConditionInput
+) {
+  updatePosting(input: $input, condition: $condition) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+mutation DeletePosting(
+  $input: DeletePostingInput!
+  $condition: ModelPostingConditionInput
+) {
+  deletePosting(input: $input, condition: $condition) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+mutation CreateTransaction(
+  $input: CreateTransactionInput!
+  $condition: ModelTransactionConditionInput
+) {
+  createTransaction(input: $input, condition: $condition) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateTransaction(
+  $input: UpdateTransactionInput!
+  $condition: ModelTransactionConditionInput
+) {
+  updateTransaction(input: $input, condition: $condition) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteTransaction(
+  $input: DeleteTransactionInput!
+  $condition: ModelTransactionConditionInput
+) {
+  deleteTransaction(input: $input, condition: $condition) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateGroup(
+  $input: CreateGroupInput!
+  $condition: ModelGroupConditionInput
+) {
+  createGroup(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateGroup(
+  $input: UpdateGroupInput!
+  $condition: ModelGroupConditionInput
+) {
+  updateGroup(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteGroup(
+  $input: DeleteGroupInput!
+  $condition: ModelGroupConditionInput
+) {
+  deleteGroup(input: $input, condition: $condition) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateCategory(
+  $input: CreateCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  createCategory(input: $input, condition: $condition) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateCategory(
+  $input: UpdateCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  updateCategory(input: $input, condition: $condition) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteCategory(
+  $input: DeleteCategoryInput!
+  $condition: ModelCategoryConditionInput
+) {
+  deleteCategory(input: $input, condition: $condition) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateItem(
+  $input: CreateItemInput!
+  $condition: ModelItemConditionInput
+) {
+  createItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateItem(
+  $input: UpdateItemInput!
+  $condition: ModelItemConditionInput
+) {
+  updateItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteItem(
+  $input: DeleteItemInput!
+  $condition: ModelItemConditionInput
+) {
+  deleteItem(input: $input, condition: $condition) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateUserChat(
+  $input: CreateUserChatInput!
+  $condition: ModelUserChatConditionInput
+) {
+  createUserChat(input: $input, condition: $condition) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUserChat(
+  $input: UpdateUserChatInput!
+  $condition: ModelUserChatConditionInput
+) {
+  updateUserChat(input: $input, condition: $condition) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUserChat(
+  $input: DeleteUserChatInput!
+  $condition: ModelUserChatConditionInput
+) {
+  deleteUserChat(input: $input, condition: $condition) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation CreateUserTransaction(
+  $input: CreateUserTransactionInput!
+  $condition: ModelUserTransactionConditionInput
+) {
+  createUserTransaction(input: $input, condition: $condition) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation UpdateUserTransaction(
+  $input: UpdateUserTransactionInput!
+  $condition: ModelUserTransactionConditionInput
+) {
+  updateUserTransaction(input: $input, condition: $condition) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+mutation DeleteUserTransaction(
+  $input: DeleteUserTransactionInput!
+  $condition: ModelUserTransactionConditionInput
+) {
+  deleteUserTransaction(input: $input, condition: $condition) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

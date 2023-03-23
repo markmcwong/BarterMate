@@ -1,0 +1,1195 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
+  onCreateMessage(filter: $filter) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
+  onUpdateMessage(filter: $filter) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
+  onDeleteMessage(filter: $filter) {
+    id
+    chatID
+    SentBy {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    content
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    messageSentById
+  }
+}
+subscription OnCreateChat($filter: ModelSubscriptionChatFilterInput) {
+  onCreateChat(filter: $filter) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateChat($filter: ModelSubscriptionChatFilterInput) {
+  onUpdateChat(filter: $filter) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteChat($filter: ModelSubscriptionChatFilterInput) {
+  onDeleteChat(filter: $filter) {
+    id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
+    ChatUsers {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    name
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
+  onCreateUser(filter: $filter) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
+  onUpdateUser(filter: $filter) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
+  onDeleteUser(filter: $filter) {
+    id
+    username
+    Transactions {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Chats {
+      items {
+        id
+        chatId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateRequest($filter: ModelSubscriptionRequestFilterInput) {
+  onCreateRequest(filter: $filter) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateRequest($filter: ModelSubscriptionRequestFilterInput) {
+  onUpdateRequest(filter: $filter) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteRequest($filter: ModelSubscriptionRequestFilterInput) {
+  onDeleteRequest(filter: $filter) {
+    id
+    description
+    createdAt
+    userID
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreatePosting($filter: ModelSubscriptionPostingFilterInput) {
+  onCreatePosting(filter: $filter) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+subscription OnUpdatePosting($filter: ModelSubscriptionPostingFilterInput) {
+  onUpdatePosting(filter: $filter) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+subscription OnDeletePosting($filter: ModelSubscriptionPostingFilterInput) {
+  onDeletePosting(filter: $filter) {
+    id
+    createdAt
+    userID
+    item {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    postingItemId
+  }
+}
+subscription OnCreateTransaction(
+  $filter: ModelSubscriptionTransactionFilterInput
+) {
+  onCreateTransaction(filter: $filter) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateTransaction(
+  $filter: ModelSubscriptionTransactionFilterInput
+) {
+  onUpdateTransaction(filter: $filter) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteTransaction(
+  $filter: ModelSubscriptionTransactionFilterInput
+) {
+  onDeleteTransaction(filter: $filter) {
+    id
+    status
+    users {
+      items {
+        id
+        userId
+        transactionId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateGroup($filter: ModelSubscriptionGroupFilterInput) {
+  onCreateGroup(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateGroup($filter: ModelSubscriptionGroupFilterInput) {
+  onUpdateGroup(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteGroup($filter: ModelSubscriptionGroupFilterInput) {
+  onDeleteGroup(filter: $filter) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onCreateCategory(filter: $filter) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onUpdateCategory(filter: $filter) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteCategory($filter: ModelSubscriptionCategoryFilterInput) {
+  onDeleteCategory(filter: $filter) {
+    id
+    categoryName
+    itemID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateItem($filter: ModelSubscriptionItemFilterInput) {
+  onCreateItem(filter: $filter) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateItem($filter: ModelSubscriptionItemFilterInput) {
+  onUpdateItem(filter: $filter) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteItem($filter: ModelSubscriptionItemFilterInput) {
+  onDeleteItem(filter: $filter) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
+  onCreateUserChat(filter: $filter) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
+  onUpdateUserChat(filter: $filter) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUserChat($filter: ModelSubscriptionUserChatFilterInput) {
+  onDeleteUserChat(filter: $filter) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnCreateUserTransaction(
+  $filter: ModelSubscriptionUserTransactionFilterInput
+) {
+  onCreateUserTransaction(filter: $filter) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnUpdateUserTransaction(
+  $filter: ModelSubscriptionUserTransactionFilterInput
+) {
+  onUpdateUserTransaction(filter: $filter) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+subscription OnDeleteUserTransaction(
+  $filter: ModelSubscriptionUserTransactionFilterInput
+) {
+  onDeleteUserTransaction(filter: $filter) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}

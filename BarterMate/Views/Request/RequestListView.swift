@@ -1,40 +1,40 @@
+////
+////  RequestListView.swift
+////  BarterMate
+////
+////  Created by Zico on 16/3/23.
+////
 //
-//  RequestListView.swift
-//  BarterMate
+//import SwiftUI
 //
-//  Created by Zico on 16/3/23.
+//struct RequestListView: View {
+//    @StateObject var viewModel = RequestListViewModel()
 //
-
-import SwiftUI
-
-struct RequestListView: View {
-    @StateObject var viewModel = RequestListViewModel()
-
-    var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                LazyVStack {
-                    ForEach(viewModel.loadedRequests.indices, id: \.self) { index in
-                        RequestCardView(request: viewModel.loadedRequests[index])
-                    }
-                }.id(UUID())
-                
-                if !viewModel.isRequestSynced {
-                    Text("Loading Request")
-                        .padding()
-                } else if viewModel.loadedRequests.count == 0 {
-                    Text("No More Request")
-                        .padding()
-                } else {
-                    
-                }
-            }
-        }
-    }
-}
-
-struct RequestListView_Previews: PreviewProvider {
-    static var previews: some View {
-        RequestListView()
-    }
-}
+//    var body: some View {
+//        ScrollView(.vertical) {
+//            VStack {
+//                LazyVStack {
+//                    ForEach(viewModel.loadedRequests.indices, id: \.self) { index in
+//                        RequestCardView(request: viewModel.loadedRequests[index])
+//                    }
+//                }.id(UUID())
+//                
+//                if !viewModel.isRequestSynced {
+//                    Text("Loading Request")
+//                        .padding()
+//                } else if viewModel.loadedRequests.count == 0 {
+//                    Text("No More Request")
+//                        .padding()
+//                } else {
+//                    
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//struct RequestListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RequestListView()
+//    }
+//}

@@ -16,7 +16,8 @@
         "BarterMate": {}
       },
       "api": {
-        "BarterMate": {}
+        "BarterMate": {},
+        "bartermate": {}
       }
     }
   }
