@@ -15,9 +15,8 @@
       "auth": {
         "BarterMate": {}
       },
-      "api": {
-        "BarterMate": {},
-        "bartermate": {}
+      "storage": {
+        "s3bartermatestorage": {}
       }
     }
   }
