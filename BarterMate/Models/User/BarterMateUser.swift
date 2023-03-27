@@ -8,12 +8,12 @@
 class BarterMateUser {
     let id: Identifier<User>
     var username: String
-    var items: [Item]
-    var transactions: [UserTransaction]
-    var postings: [Posting]
-    var requests: [Request]
+    var items: [Item]?
+    var transactions: [UserTransaction]?
+    var postings: [Posting]?
+    var requests: [Request]?
     
-    init(id: Identifier<User>, username: String, items: [Item], transactions: [UserTransaction], postings: [Posting], requests: [Request]) {
+    init(id: Identifier<User>, username: String, items: [Item]?, transactions: [UserTransaction]?, postings: [Posting]?, requests: [Request]?) {
         self.id = id
         self.username = username
         self.items = items

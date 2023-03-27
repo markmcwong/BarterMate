@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-//    @StateObject var viewModel = UserProfileViewModel()
+    @StateObject var viewModel: UserProfileViewModel
     
     var body: some View {
         VStack {
@@ -20,21 +20,26 @@ struct UserProfileView: View {
                             .frame(width: 200,  height: 200)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(lineWidth: 1))
-//                        Text(viewModel.user?.username ?? "Loading")
-//                            .font(.largeTitle)
-//                            .fontWeight(.bold)
-
+                        Text(viewModel.user.username)
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
                     }
                 }
-//                ItemListView(viewModel: viewModel)
             }
+            MyItemListView(viewModel: viewModel)
         }
     }
 }
 
 struct UserProfileView_Previews: PreviewProvider {
+    static let viewModel = { () -> UserProfileViewModel in
+        var viewModel = UserProfileViewModel(user: SampleUser.bill)
+        viewModel.itemList.items = [SampleItem.guitar, SampleItem.waterBottle]
+        return viewModel
+    }()
+    
     static var previews: some View {
-        UserProfileView()
+        UserProfileView(viewModel: viewModel)
     }
 }
 

@@ -12,16 +12,30 @@ struct AmplifyUserAdapter {
     
 //    private static let dataStoreService = AmplifyGenericModelService<User>()
 //    
-//    static func toBarterMateModel(user: User) -> BarterMateUser {
+//    static func toBarterMateModel(user: User) -> BarterMateUser? {
 //        
-//        let items = user.Items.map()
-//        let barterMateUser = BarterMateUser(id: Identifier(id: user.id),
-//                                            username: user.username,
-//                                            items: <#T##[Item]#>,
-//                                            transactions: <#T##[UserTransaction]#>,
-//                                            postings:
-//                                                <#T##[Posting]#>,
-//                                            requests: <#T##[Request]#>)
+//        guard let username = user.username else {
+//            return nil
+//        }
 //
+//        let barterMateUser = BarterMateUser(id: Identifier(value: user.id),
+//                                            username: username)
+//
+//        return barterMateUser
+//    }
+//    
+//    static func toAmplifyModel(user: BarterMateUser) -> User? {
+//        var amplifyUser: User
+//        
+//        Task {
+//            do {
+//                amplifyUser = try await dataStoreService.get(byId: user.id)
+//            } catch {
+//                print("Error fetching user")
+//                return nil
+//            }
+//        }
+//        
+//        amplifyUser.id
 //    }
 }
