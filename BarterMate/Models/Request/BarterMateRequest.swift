@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateRequest {
+class BarterMateRequest: Hashable, ListElement {
     let id: Identifier<Request>
     var description: String
     let ownerId: Identifier<BarterMateUser>
@@ -22,5 +22,11 @@ class BarterMateRequest {
         self.updatedAt = updatedAt
     }
 
+    static func == (lhs: BarterMateRequest, rhs: BarterMateRequest) -> Bool {
+        lhs.id == rhs.id
+    }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }

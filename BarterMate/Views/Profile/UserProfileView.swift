@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-    @StateObject var viewModel: UserProfileViewModel
+    @ObservedObject var viewModel: UserProfileViewModel
     
     var body: some View {
         VStack {
@@ -23,10 +23,11 @@ struct UserProfileView: View {
                         Text(viewModel.user.username)
                             .font(.largeTitle)
                             .fontWeight(.bold)
+                        MyItemListView(viewModel: viewModel)
                     }
                 }
             }
-            MyItemListView(viewModel: viewModel)
+
         }
     }
 }
@@ -34,7 +35,7 @@ struct UserProfileView: View {
 struct UserProfileView_Previews: PreviewProvider {
     static let viewModel = { () -> UserProfileViewModel in
         var viewModel = UserProfileViewModel(user: SampleUser.bill)
-        viewModel.itemList.items = [SampleItem.guitar, SampleItem.waterBottle]
+        viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
         return viewModel
     }()
     

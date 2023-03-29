@@ -7,8 +7,9 @@
 
 import Foundation
 
-protocol ListFacadeDelegate: AnyObject {
-    func insert(item: BarterMateItem)
-    func insertAll(items: [BarterMateItem])
-    func remove(item: BarterMateItem)
+protocol ModelListFacadeDelegate: AnyObject {
+    associatedtype Model
+    func insert(model: Model)
+    func insertAll(models: [Model])
+    func remove(model: Model)
 }

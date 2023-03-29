@@ -9,23 +9,24 @@ import SwiftUI
 
 struct MyItemListView: View {
     
-    @StateObject var viewModel: UserProfileViewModel
+    @ObservedObject var viewModel: UserProfileViewModel
     
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 LazyVStack {
-                    ForEach(viewModel.itemList.items, id: \.self) { item in
+                    Text("\(viewModel.itemList.elements.count)")
+                    ForEach(viewModel.itemList.elements, id: \.self) { item in
                         MyItemCardView(item: item)
                     }
                 }.id(UUID())
                 
-//               if viewModel.loadedItems.count == 0 {
-//                   Text("No More Item")
-//                       .padding()
-//                } else {
-//
-//                }
+                if viewModel.itemList.elements.count == 0 {
+                   Text("No More Item")
+                       .padding()
+                } else {
+
+                }
             }
         }
     }
@@ -35,7 +36,7 @@ struct ItemListView_Previews: PreviewProvider {
     
     static let viewModel = { () -> UserProfileViewModel in
         var viewModel = UserProfileViewModel(user: SampleUser.bill)
-        viewModel.itemList.items = [SampleItem.guitar, SampleItem.waterBottle]
+        viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
         return viewModel
     }()
     

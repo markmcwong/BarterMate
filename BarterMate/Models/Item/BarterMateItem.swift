@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateItem: Hashable {
+class BarterMateItem: Hashable, ListElement {
     
     let id: Identifier<BarterMateItem>
     let name: String

@@ -20,7 +20,7 @@ struct ContentView: View {
 //                    appState.isLoggedIn = true
                 })
             case .login:
-                ListView<Item, ItemCardView>()
+                UserProfileView(viewModel: UserProfileViewModel(user: BarterMateUser(id: Identifier(value: "7358f9a3-a1d2-44e5-8c64-689f1cf4d646"), username: "zico", items: nil, transactions: nil, postings: nil, requests: nil)))
                 
 //                    .onSignOut {
 //                        router.navigate(to: .login)
