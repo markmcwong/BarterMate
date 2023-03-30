@@ -11,9 +11,11 @@ import SwiftUI
 struct MyItemCardView: View {
 
     @ObservedObject var viewModel: ItemViewModel
+    @ObservedObject var parentViewModel: UserProfileViewModel
 
-    init(item: BarterMateItem) {
+    init(item: BarterMateItem, parentViewModel: UserProfileViewModel) {
         _viewModel = ObservedObject(wrappedValue: ItemViewModel(item: item))
+        self.parentViewModel = parentViewModel
     }
     
     var body: some View {
@@ -23,13 +25,6 @@ struct MyItemCardView: View {
                     .frame(width: 150, height: 150)
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
-//                    HStack {
-//                        Text(viewModel.ownerName ?? "loading name")
-//                            .font(.callout)
-//                            .lineLimit(1)
-//                        Spacer()
-//
-//                    }
                     HStack {
                         Text(viewModel.item.name )
                             .font(.callout)
@@ -42,8 +37,11 @@ struct MyItemCardView: View {
                             .lineLimit(1)
                         Spacer()
                     }
-                    Button(action: {}) {
-                        Text("Make Posting")
+                    Button("Make posting") {
+                        print("clicked")
+                    }
+                    Button("Delete Item") {
+                        parentViewModel.delete(item: viewModel.item)
                     }
                 }
             }
@@ -57,9 +55,15 @@ struct MyItemCardView: View {
 
 struct MyItemCardView_Previews: PreviewProvider {
     static var previews: some View {
+        let viewModel = { () -> UserProfileViewModel in
+            let viewModel = UserProfileViewModel(user: SampleUser.bill)
+            viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
+            return viewModel
+        }()
+        
         VStack {
-            MyItemCardView(item: SampleItem.waterBottle)
-            MyItemCardView(item: SampleItem.guitar)
+            MyItemCardView(item: SampleItem.waterBottle, parentViewModel: viewModel)
+            MyItemCardView(item: SampleItem.guitar, parentViewModel: viewModel)
         }
 
     }

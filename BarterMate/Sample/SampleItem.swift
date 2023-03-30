@@ -9,11 +9,11 @@ import Foundation
 
 struct SampleItem {
     
-    static let waterBottle = BarterMateItem(id: Identifier(value: "1234"),
-                                            name: "Water Bottle",
+    static let waterBottle = BarterMateItem(id: Identifier(value: "Bottle"),
+                                            name: "Bottle",
                                             description: "500 ml, new",
                                             imageUrl: nil,
-                                            ownerId: Identifier(value: "123"),
+                                            ownerId: Identifier(value: "1111"),
                                             createdAt: Date(),
                                             updatedAt: Date())
     
@@ -21,7 +21,7 @@ struct SampleItem {
                                        name: "guitar",
                                        description: "Ibanez Acoustic Guitar",
                                        imageUrl: nil,
-                                       ownerId: Identifier(value: "123"),
+                                       ownerId: Identifier(value: "7358f9a3-a1d2-44e5-8c64-689f1cf4d646"),
                                        createdAt: Date(),
                                        updatedAt: Date())
 }

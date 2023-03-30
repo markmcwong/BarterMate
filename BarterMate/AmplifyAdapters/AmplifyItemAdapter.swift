@@ -9,7 +9,6 @@ import Amplify
 import Foundation
 
 struct AmplifyItemAdapter {
-    private static let dataStoreService = AmplifyGenericModelService<Item>()
     
     static func toBarterMateModel(item: Item) -> BarterMateItem? {
         guard let name = item.name,
@@ -21,7 +20,7 @@ struct AmplifyItemAdapter {
         
         
         
-        let convertedItem = BarterMateItem(id: Identifier(value: item.id),
+        let barterMateItem = BarterMateItem(id: Identifier(value: item.id),
                                   name: name,
                                   description: description,
                                   imageUrl: item.image,
@@ -29,7 +28,7 @@ struct AmplifyItemAdapter {
                                   createdAt: createdAt.foundationDate,
                                   updatedAt: updatedAt.foundationDate)
         
-        return convertedItem
+        return barterMateItem
     }
     
     static func toAmplifyModel(item: BarterMateItem) -> Item {

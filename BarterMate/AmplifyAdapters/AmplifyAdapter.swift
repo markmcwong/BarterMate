@@ -14,6 +14,10 @@ struct AmplifyAdapter {
         switch model {
         case is Item:
             return AmplifyItemAdapter.toBarterMateModel(item: model as! Item)
+        case is Request:
+            return AmplifyRequestAdapter.toBarterMateModel(request: model as! Request)
+        case is Posting:
+            return AmplifyPostingAdapter.toBarterMateModel(posting: model as! Posting)
         default:
             return nil
         }
@@ -23,6 +27,10 @@ struct AmplifyAdapter {
         switch model {
         case is BarterMateItem:
             return AmplifyItemAdapter.toAmplifyModel(item: model as! BarterMateItem)
+        case is BarterMateRequest:
+            return AmplifyRequestAdapter.toAmplifyModel(request: model as! BarterMateRequest)
+        case is BarterMatePosting:
+            return AmplifyPostingAdapter.toAmplifyModel(posting: model as! BarterMatePosting)
         default:
             return nil
         }

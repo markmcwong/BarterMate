@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     
+    @State var showModal: Bool = false
     @ObservedObject var viewModel: UserProfileViewModel
     
     var body: some View {
@@ -27,8 +28,16 @@ struct UserProfileView: View {
                     }
                 }
             }
-
-        }
+            ProfileButtonsView().onTapGesture {
+                showModal = true
+            }
+        }.overlay(ModalView(displayView: {
+            Image(systemName: "plus.app")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 30, height: 30)
+            
+        }, showModal: $showModal))
     }
 }
 

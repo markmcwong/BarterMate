@@ -22,7 +22,19 @@ class ModelList<T: ListElement>: ObservableObject {
         return modelList
     }
     
+    static func all() -> ModelList {
+        let modelList = ModelList()
+        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.modelListFacade?.setDelegate(delegate: modelList)
+        modelList.modelListFacade?.getEveryoneModels()
+        return modelList
+    }
+    
     private init() {}
+    
+    func saveItem(element: T) {
+        modelListFacade?.save(model: element)
+    }
     
     func delete(element: T) {
         modelListFacade?.delete(model: element)

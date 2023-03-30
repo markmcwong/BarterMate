@@ -26,10 +26,12 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     func save(model: any ListElement) {
         Task {
             do {
+                print("try save")
                 guard let amplifyModel = AmplifyAdapter.toAmplifyModel(model: model) else {
                     return
                 }
                 _ = try await Amplify.DataStore.save(amplifyModel)
+                print("finished saving")
             } catch {
                 os_log("Error saving item into Amplify")
             }
@@ -55,11 +57,14 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         }
         
         Task {
+            print(userId)
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 return
             }
             let amplifyModelList = try await Amplify.DataStore.query(type.self,
                                                              where: Ownable.userID == userId.value)
+            
+
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyAdapter.toBarterMateModel(model: $0)
             }
@@ -67,6 +72,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             if let barterMateModels = barterMateModels as? [U] {
                 delegate.insertAll(models: barterMateModels)
             }
+            
         }
     }
     

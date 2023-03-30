@@ -11,6 +11,10 @@ struct ContentView: View {
     @StateObject private var router = Router.singleton
     var globalState = GlobalState.shared
 
+//    init() {
+//        let itemList = ItemList.of(Identifier(value: "1111"))
+//        //itemList.saveItem(element: SampleItem.waterBottle)
+//    }
     var body: some View {
         VStack {
             switch router.currentScreen {
@@ -20,7 +24,7 @@ struct ContentView: View {
 //                    appState.isLoggedIn = true
                 })
             case .login:
-                UserProfileView(viewModel: UserProfileViewModel(user: BarterMateUser(id: Identifier(value: "7358f9a3-a1d2-44e5-8c64-689f1cf4d646"), username: "zico", items: nil, transactions: nil, postings: nil, requests: nil)))
+                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
                 
 //                    .onSignOut {
 //                        router.navigate(to: .login)

@@ -17,7 +17,7 @@ struct MyItemListView: View {
                 LazyVStack {
                     Text("\(viewModel.itemList.elements.count)")
                     ForEach(viewModel.itemList.elements, id: \.self) { item in
-                        MyItemCardView(item: item)
+                        MyItemCardView(item: item, parentViewModel: viewModel)
                     }
                 }.id(UUID())
                 

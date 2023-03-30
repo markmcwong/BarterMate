@@ -8,10 +8,6 @@
 import Foundation
 
 struct SampleUser {
-    static let bill = BarterMateUser(id: Identifier(value: "111"),
-                                     username: "Bill",
-                                     items: nil,
-                                     transactions: nil,
-                                     postings: nil,
-                                     requests: nil)
+    static let bill = BarterMateUser(id: Identifier(value: "1111"),
+                                     username: "Bill")
 }
