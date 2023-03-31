@@ -8,21 +8,27 @@
 import Foundation
 
 class BarterMateUser: ObservableObject {
-    let id: Identifier<BarterMateUser>
+    var id: Identifier<BarterMateUser>
     var username: String
+    
+    private var userFacade: (any UserFacade)?
 //    @Published var items: ModelList<BarterMateItem>
 //    @Published var transactions: [Transaction]
 //    @Published var postings: ModelList<BarterMatePosting>
 //    @Published var requests: ModelList<BarterMateRequest>
     
-//    init(id: Identifier<User>, username: String, items: [BarterMateItem]?, transactions: [Transaction]?, postings: [BarterMatePosting]?, requests: [BarterMateRequest]?) {
-//        self.id = id
-//        self.username = username
-//        self.items = items
-//        self.transactions = transactions
-//        self.postings = postings
-//        self.requests = requests
-//    }
+    static func getUserWithId(id: Identifier<BarterMateUser>) -> BarterMateUser {
+        let user = createEmptyUser()
+        let facade = AmplifyUserFacade()
+        user.userFacade = facade
+        facade.delegate = user
+        user.userFacade?.getUserById(id: id)
+        return user
+    }
+    
+    static func createEmptyUser() -> BarterMateUser {
+        BarterMateUser(id: Identifier(value: ""), username: "")
+    }
     
     init(id: Identifier<BarterMateUser> = Identifier(value: UUID().uuidString), username: String) {
         self.id = id
@@ -51,4 +57,11 @@ class BarterMateUser: ObservableObject {
 //        loadRequests()
 //    }
     
+}
+
+extension BarterMateUser: UserFacadeDelegate {
+    func update(user: BarterMateUser) {
+        self.id = user.id
+        self.username = user.username
+    }
 }

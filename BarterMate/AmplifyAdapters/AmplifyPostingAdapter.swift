@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import Amplify
 
 struct AmplifyPostingAdapter {
     
     static func toBarterMateModel(posting: Posting) -> BarterMatePosting? {
+        
         guard let item = posting.item,
               let createdAt = posting.createdAt,
               let updatedAt = posting.updatedAt else {
@@ -29,6 +31,7 @@ struct AmplifyPostingAdapter {
         
         return barterMatePosting
     }
+    
     
     static func toAmplifyModel(posting: BarterMatePosting) -> Posting? {
         

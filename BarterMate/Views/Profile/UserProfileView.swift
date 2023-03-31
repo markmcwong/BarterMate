@@ -24,7 +24,10 @@ struct UserProfileView: View {
                         Text(viewModel.user.username)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                        MyItemListView(viewModel: ItemListViewModel(user: viewModel.user, itemList: viewModel.itemList))
+                        Text("Post " + "\(viewModel.itemList.elements.count)")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                        MyItemListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.itemList))
                     }
                 }
             }

@@ -1,20 +1,20 @@
 //
-//  PostingView.swift
+//  MyPostingView.swift
 //  BarterMate
 //
-//  Created by Zico on 18/3/23.
+//  Created by Zico on 1/4/23.
 //
 
 import SwiftUI
 
-struct PostingView: View {
+struct MyPostingView: View {
 
     let posting: BarterMatePosting
-    let user: BarterMateUser
+    @ObservedObject var parentViewModel: ListViewModel<BarterMatePosting>
     
-    init(posting: BarterMatePosting, user: BarterMateUser) {
+    init(posting: BarterMatePosting, parentViewModel: ListViewModel<BarterMatePosting>) {
         self.posting = posting
-        self.user = user
+        self.parentViewModel = parentViewModel
     }
 
     var body: some View {
@@ -25,7 +25,7 @@ struct PostingView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
-                    Text(user.username)
+                    Text(parentViewModel.user.username)
                             .font(.system(size: 20))
                             .bold()
                 }
@@ -43,9 +43,8 @@ struct PostingView: View {
     }
 }
 
-struct PostingView_Previews: PreviewProvider {
+struct MyPostingView_Previews: PreviewProvider {
     static var previews: some View {
-        PostingView(posting: SamplePosting.bottlePosting, user: SampleUser.bill)
+        MyPostingView(posting: SamplePosting.bottlePosting, parentViewModel: ListViewModel(user: SampleUser.bill, modelList: ModelList.of(SampleUser.bill.id)))
     }
 }
-

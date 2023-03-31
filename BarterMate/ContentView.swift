@@ -11,10 +11,6 @@ struct ContentView: View {
     @StateObject private var router = Router.singleton
     var globalState = GlobalState.shared
 
-//    init() {
-//        let itemList = ItemList.of(Identifier(value: "1111"))
-//        //itemList.saveItem(element: SampleItem.waterBottle)
-//    }
     var body: some View {
         VStack {
             switch router.currentScreen {
@@ -24,17 +20,18 @@ struct ContentView: View {
 //                    appState.isLoggedIn = true
                 })
             case .login:
+                RequestFeedView()
+                //UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+            case .profile:
                 UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
-                
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-//            case .profile:
-//                ProfileView()
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-            // Add other cases for different screens as needed
+            case .request:
+                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+            case .posting:
+                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+            }
+            
+            if router.currentScreen != .home {
+                NavBarView()
             }
         }
 //        .environmentObject(appState)

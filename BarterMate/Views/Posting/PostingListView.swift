@@ -7,6 +7,30 @@
 
 import SwiftUI
 
+struct PostingListView: View {
+    @StateObject var viewModel: ListViewModel<BarterMatePosting>
+    
+        var body: some View {
+            ScrollView(.vertical) {
+                VStack {
+                    LazyVStack {
+                        ForEach(viewModel.modelList.elements, id: \.self) { posting in
+                            MyPostingView(posting: posting, parentViewModel: viewModel)
+                        }
+                    }.id(UUID())
+    
+                    if viewModel.modelList.elements.count == 0 {
+                        Text("No More Postings")
+                            .padding()
+                    } else {
+    
+                    }
+                }
+    
+            }
+        }
+}
+
 //class PostingListView {
 //    var test = GenericListView<Posting, View>()
 //}

@@ -12,7 +12,9 @@ import SwiftUI
 enum AppScreen {
     case login
     case home
-//    case profile
+    case profile
+    case request
+    case posting
 }
 
 class Router: ObservableObject {

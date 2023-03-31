@@ -10,11 +10,11 @@ import SwiftUI
 
 struct MyItemCardView: View {
 
-    @ObservedObject var viewModel: ItemViewModel
-    @ObservedObject var parentViewModel: ItemListViewModel
+    let item: BarterMateItem
+    @ObservedObject var parentViewModel: ListViewModel<BarterMateItem>
 
-    init(item: BarterMateItem, parentViewModel: ItemListViewModel) {
-        _viewModel = ObservedObject(wrappedValue: ItemViewModel(item: item))
+    init(item: BarterMateItem, parentViewModel: ListViewModel<BarterMateItem>) {
+        self.item = item
         self.parentViewModel = parentViewModel
     }
     
@@ -26,19 +26,19 @@ struct MyItemCardView: View {
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
                     HStack {
-                        Text(viewModel.item.name )
+                        Text(item.name )
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()
                     }
                     HStack {
-                        Text(viewModel.item.description )
+                        Text(item.description)
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()
                     }
                     Button("Delete Item") {
-                        parentViewModel.deleteItem(item: viewModel.item)
+                        parentViewModel.deleteItem(item: item)
                     }
                 }
             }
@@ -52,10 +52,12 @@ struct MyItemCardView: View {
 
 struct MyItemCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = { () -> ItemListViewModel in
-            let viewModel = ItemListViewModel(user: SampleUser.bill, itemList: ModelList<BarterMateItem>.of(SampleUser.bill.id))
-            return viewModel
-        }()
+//        let viewModel = { () -> ItemListViewModel in
+//            let viewModel = ItemListViewModel(user: SampleUser.bill, itemList: ModelList<BarterMateItem>.of(SampleUser.bill.id))
+//            return viewModel
+//        }()
+        
+        let viewModel = ListViewModel(user: SampleUser.bill, modelList: ModelList<BarterMateItem>.of(SampleUser.bill.id))
         
         VStack {
             MyItemCardView(item: SampleItem.waterBottle, parentViewModel: viewModel)

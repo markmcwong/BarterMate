@@ -36,7 +36,17 @@
 		172BC8E229D613A6000EB398 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E129D613A6000EB398 /* FormView.swift */; };
 		172BC8E529D71041000EB398 /* AddItemFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */; };
 		172BC8E929D736C0000EB398 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E829D736C0000EB398 /* ListViewModel.swift */; };
-		172FC0E429C616FD00842C70 /* RequestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0D929C616FC00842C70 /* RequestCardView.swift */; };
+		172BC8EC29D73E2D000EB398 /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8EB29D73E2D000EB398 /* NavBarView.swift */; };
+		172BC8EE29D74052000EB398 /* PostingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8ED29D74052000EB398 /* PostingListViewModel.swift */; };
+		172BC8F029D74263000EB398 /* MyPostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8EF29D74263000EB398 /* MyPostingView.swift */; };
+		172BC8F329D742EB000EB398 /* ListElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8F229D742EB000EB398 /* ListElementViewModel.swift */; };
+		172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8F529D744EE000EB398 /* PostingFeedViewModel.swift */; };
+		172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8F729D75299000EB398 /* UserFacadeDelegate.swift */; };
+		172BC8FA29D7543A000EB398 /* AmplifyUserFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8F929D7543A000EB398 /* AmplifyUserFacade.swift */; };
+		172BC8FF29D758F3000EB398 /* PostingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8FE29D758F3000EB398 /* PostingFeedView.swift */; };
+		172BC90129D768C3000EB398 /* RequestFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC90029D768C3000EB398 /* RequestFeedViewModel.swift */; };
+		172BC90329D76955000EB398 /* RequestFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC90229D76955000EB398 /* RequestFeedView.swift */; };
+		172BC90529D769AF000EB398 /* RequestCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC90429D769AF000EB398 /* RequestCardView.swift */; };
 		172FC0E529C616FD00842C70 /* RequestListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0DA29C616FC00842C70 /* RequestListView.swift */; };
 		172FC0E629C616FD00842C70 /* ItemCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0DC29C616FD00842C70 /* ItemCardView.swift */; };
 		172FC0E729C616FD00842C70 /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172FC0DD29C616FD00842C70 /* ItemListView.swift */; };
@@ -184,7 +194,17 @@
 		172BC8E129D613A6000EB398 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
 		172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFormViewModel.swift; sourceTree = "<group>"; };
 		172BC8E829D736C0000EB398 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
-		172FC0D929C616FC00842C70 /* RequestCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCardView.swift; sourceTree = "<group>"; };
+		172BC8EB29D73E2D000EB398 /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
+		172BC8ED29D74052000EB398 /* PostingListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingListViewModel.swift; sourceTree = "<group>"; };
+		172BC8EF29D74263000EB398 /* MyPostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostingView.swift; sourceTree = "<group>"; };
+		172BC8F229D742EB000EB398 /* ListElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementViewModel.swift; sourceTree = "<group>"; };
+		172BC8F529D744EE000EB398 /* PostingFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingFeedViewModel.swift; sourceTree = "<group>"; };
+		172BC8F729D75299000EB398 /* UserFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFacadeDelegate.swift; sourceTree = "<group>"; };
+		172BC8F929D7543A000EB398 /* AmplifyUserFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyUserFacade.swift; sourceTree = "<group>"; };
+		172BC8FE29D758F3000EB398 /* PostingFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostingFeedView.swift; sourceTree = "<group>"; };
+		172BC90029D768C3000EB398 /* RequestFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFeedViewModel.swift; sourceTree = "<group>"; };
+		172BC90229D76955000EB398 /* RequestFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFeedView.swift; sourceTree = "<group>"; };
+		172BC90429D769AF000EB398 /* RequestCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCardView.swift; sourceTree = "<group>"; };
 		172FC0DA29C616FC00842C70 /* RequestListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestListView.swift; sourceTree = "<group>"; };
 		172FC0DC29C616FD00842C70 /* ItemCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCardView.swift; sourceTree = "<group>"; };
 		172FC0DD29C616FD00842C70 /* ItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
@@ -320,6 +340,8 @@
 			children = (
 				17375A1029CDB7C6008C31B4 /* BarterMateUser.swift */,
 				1703C6FB29D0AFFF006466D3 /* UserFacade.swift */,
+				172BC8F729D75299000EB398 /* UserFacadeDelegate.swift */,
+				172BC8F929D7543A000EB398 /* AmplifyUserFacade.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -405,11 +427,37 @@
 			path = List;
 			sourceTree = "<group>";
 		};
+		172BC8EA29D73E09000EB398 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				172BC8EB29D73E2D000EB398 /* NavBarView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		172BC8F129D742D3000EB398 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				172BC8F229D742EB000EB398 /* ListElementViewModel.swift */,
+			);
+			path = Generic;
+			sourceTree = "<group>";
+		};
+		172BC8F429D744D5000EB398 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				172BC8F529D744EE000EB398 /* PostingFeedViewModel.swift */,
+				172BC90029D768C3000EB398 /* RequestFeedViewModel.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		172FC0D829C616FC00842C70 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				172FC0D929C616FC00842C70 /* RequestCardView.swift */,
 				172FC0DA29C616FC00842C70 /* RequestListView.swift */,
+				172BC90229D76955000EB398 /* RequestFeedView.swift */,
+				172BC90429D769AF000EB398 /* RequestCardView.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -441,6 +489,8 @@
 			children = (
 				172FC0E229C616FD00842C70 /* PostingView.swift */,
 				172FC0E329C616FD00842C70 /* PostingListView.swift */,
+				172BC8EF29D74263000EB398 /* MyPostingView.swift */,
+				172BC8FE29D758F3000EB398 /* PostingFeedView.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -466,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				172FC0F229C6171E00842C70 /* PostingViewModel.swift */,
+				172BC8ED29D74052000EB398 /* PostingListViewModel.swift */,
 			);
 			path = Posting;
 			sourceTree = "<group>";
@@ -592,6 +643,8 @@
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				172BC8F429D744D5000EB398 /* Feed */,
+				172BC8F129D742D3000EB398 /* Generic */,
 				172BC8E729D73463000EB398 /* List */,
 				172FC0EE29C6171E00842C70 /* Profile */,
 				172BC8E329D71030000EB398 /* Forms */,
@@ -608,6 +661,7 @@
 		4D91955E29C58A0C003B5922 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				172BC8EA29D73E09000EB398 /* Navigation */,
 				172BC8E629D7193B000EB398 /* Forms */,
 				172BC8DE29D60E89000EB398 /* UtilityViews */,
 				4DA7051329C835FB004D3CBC /* Chat */,
@@ -676,6 +730,7 @@
 		4DC0F87429BE2D27009EE2B5 /* BarterMate */ = {
 			isa = PBXGroup;
 			children = (
+				174ACAA529BFA454006222AF /* Service */,
 				1703C70F29D20F26006466D3 /* Sample */,
 				17375A1529CDBA5F008C31B4 /* AmplifyAdapters */,
 				17375A1229CDB7CC008C31B4 /* Utility */,
@@ -683,7 +738,6 @@
 				4D91955F29C58A24003B5922 /* Helpers */,
 				4D91955D29C58A05003B5922 /* ViewModels */,
 				4D91955E29C58A0C003B5922 /* Views */,
-				174ACAA529BFA454006222AF /* Service */,
 				4DC0F87529BE2D27009EE2B5 /* BarterMateApp.swift */,
 				4DC0F87729BE2D27009EE2B5 /* ContentView.swift */,
 				4DC0F87929BE2D2A009EE2B5 /* Assets.xcassets */,
@@ -905,9 +959,9 @@
 			files = (
 				172FC0E529C616FD00842C70 /* RequestListView.swift in Sources */,
 				4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */,
+				172BC90529D769AF000EB398 /* RequestCardView.swift in Sources */,
 				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
 				174ACAAF29C199E4006222AF /* ServiceManager.swift in Sources */,
-				172FC0E429C616FD00842C70 /* RequestCardView.swift in Sources */,
 				4D17C6E929C99B2C001CB84E /* GenericModelService.swift in Sources */,
 				172BC8BD29D349D2000EB398 /* AmplifyAdapter.swift in Sources */,
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
@@ -925,17 +979,20 @@
 				172FC0E729C616FD00842C70 /* ItemListView.swift in Sources */,
 				172BC8E229D613A6000EB398 /* FormView.swift in Sources */,
 				174ACAAC29BFA454006222AF /* DataStoreService.swift in Sources */,
+				172BC90329D76955000EB398 /* RequestFeedView.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				172BC8D929D5FEED000EB398 /* SamplePosting.swift in Sources */,
 				1703C71529D21631006466D3 /* MyItemListView.swift in Sources */,
 				4D17C6F529CAA405001CB84E /* ListItemViewModel.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
+				172BC8F329D742EB000EB398 /* ListElementViewModel.swift in Sources */,
 				1703C6FE29D0B03C006466D3 /* AmplifyUserAdapter.swift in Sources */,
 				17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */,
 				172BC8CD29D4A2C5000EB398 /* RequestList.swift in Sources */,
 				172FC0F729C6171E00842C70 /* UserProfileViewModel.swift in Sources */,
 				172FC0EB29C616FD00842C70 /* PostingListView.swift in Sources */,
 				1703C71729D219C9006466D3 /* MyItemCardView.swift in Sources */,
+				172BC8EE29D74052000EB398 /* PostingListViewModel.swift in Sources */,
 				3DE63DE4217676F0B159A18C /* Category.swift in Sources */,
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
 				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
@@ -948,6 +1005,7 @@
 				172FC0EA29C616FD00842C70 /* PostingView.swift in Sources */,
 				172FC0FB29C6171E00842C70 /* RequestListViewModel.swift in Sources */,
 				172BC8E029D60E98000EB398 /* ModalView.swift in Sources */,
+				172BC8FA29D7543A000EB398 /* AmplifyUserFacade.swift in Sources */,
 				4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */,
 				172BC8DD29D60DC6000EB398 /* ProfileButtonsView.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
@@ -959,15 +1017,18 @@
 				EAE1D5811D7F3A1FCBF3E7A2 /* Item.swift in Sources */,
 				172FC0FF29C6175700842C70 /* AppServiceManager.swift in Sources */,
 				BED414D8153876A3A805A563 /* Message+Schema.swift in Sources */,
+				172BC8EC29D73E2D000EB398 /* NavBarView.swift in Sources */,
 				17AB3A4429C7701A00FE6DCB /* AmplifyRequestService.swift in Sources */,
 				4D17C6EB29C99BF8001CB84E /* AmplifyGenericModelService.swift in Sources */,
 				17AB3A3229C76FE600FE6DCB /* UserService.swift in Sources */,
 				17AB3A4029C7701A00FE6DCB /* AmplifyItemService.swift in Sources */,
 				172BC8E529D71041000EB398 /* AddItemFormViewModel.swift in Sources */,
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
+				172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */,
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
 				4D17C6F129CAA1FA001CB84E /* ListItemView.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
+				172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */,
 				17375A1129CDB7C6008C31B4 /* BarterMateUser.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				172FC0F929C6171E00842C70 /* PostingViewModel.swift in Sources */,
@@ -994,6 +1055,7 @@
 				172BC8BB29D34965000EB398 /* ListElement.swift in Sources */,
 				17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */,
 				5365083C8F89716DB167D767 /* User+Schema.swift in Sources */,
+				172BC90129D768C3000EB398 /* RequestFeedViewModel.swift in Sources */,
 				4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */,
 				172FC0FA29C6171E00842C70 /* RequestViewModel.swift in Sources */,
 				82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */,
@@ -1003,6 +1065,8 @@
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
 				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,
+				172BC8F029D74263000EB398 /* MyPostingView.swift in Sources */,
+				172BC8FF29D758F3000EB398 /* PostingFeedView.swift in Sources */,
 				172BC8DB29D60D4C000EB398 /* CreateItemButton.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
