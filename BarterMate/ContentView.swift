@@ -25,9 +25,9 @@ struct ContentView: View {
             case .profile:
                 UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
             case .request:
-                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+                RequestFeedView()
             case .posting:
-                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+                PostingFeedView()
             }
             
             if router.currentScreen != .home {
