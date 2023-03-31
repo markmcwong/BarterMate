@@ -13,7 +13,7 @@ class BarterMatePosting: Hashable, ListElement {
     var createdAt: Date
     var updatedAt: Date
     
-    init(id: Identifier<BarterMatePosting>, item: BarterMateItem, createdAt: Date, updatedAt: Date) {
+    init(id: Identifier<BarterMatePosting> = Identifier(value: UUID().uuidString), item: BarterMateItem, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.item = item
         self.createdAt = createdAt

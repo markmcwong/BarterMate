@@ -14,7 +14,14 @@ class ModelList<T: ListElement>: ObservableObject {
     
     private var modelListFacade: (any ModelListFacade)?
     
-    static func of(_ ownerId: Identifier<User>) -> ModelList {
+    static func empty() -> ModelList {
+        let modelList = ModelList()
+        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.modelListFacade?.setDelegate(delegate: modelList)
+        return modelList
+    }
+    
+    static func of(_ ownerId: Identifier<BarterMateUser>) -> ModelList {
         let modelList = ModelList()
         modelList.modelListFacade = AmplifyListFacade<T>()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
@@ -42,11 +49,11 @@ class ModelList<T: ListElement>: ObservableObject {
 }
 
 extension ModelList: ModelListFacadeDelegate {
-
+    
     typealias Model = T
     
     func insert(model: T) {
-        if elements.contains(model) {
+        if !elements.contains(model) {
             elements.append(model)
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModelListFacadeDelegate: AnyObject {
+protocol ModelListFacadeDelegate {
     associatedtype Model
     func insert(model: Model)
     func insertAll(models: [Model])

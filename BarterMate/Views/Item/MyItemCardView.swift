@@ -11,9 +11,9 @@ import SwiftUI
 struct MyItemCardView: View {
 
     @ObservedObject var viewModel: ItemViewModel
-    @ObservedObject var parentViewModel: UserProfileViewModel
+    @ObservedObject var parentViewModel: ItemListViewModel
 
-    init(item: BarterMateItem, parentViewModel: UserProfileViewModel) {
+    init(item: BarterMateItem, parentViewModel: ItemListViewModel) {
         _viewModel = ObservedObject(wrappedValue: ItemViewModel(item: item))
         self.parentViewModel = parentViewModel
     }
@@ -37,11 +37,8 @@ struct MyItemCardView: View {
                             .lineLimit(1)
                         Spacer()
                     }
-                    Button("Make posting") {
-                        print("clicked")
-                    }
                     Button("Delete Item") {
-                        parentViewModel.delete(item: viewModel.item)
+                        parentViewModel.deleteItem(item: viewModel.item)
                     }
                 }
             }
@@ -55,9 +52,8 @@ struct MyItemCardView: View {
 
 struct MyItemCardView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = { () -> UserProfileViewModel in
-            let viewModel = UserProfileViewModel(user: SampleUser.bill)
-            viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
+        let viewModel = { () -> ItemListViewModel in
+            let viewModel = ItemListViewModel(user: SampleUser.bill, itemList: ModelList<BarterMateItem>.of(SampleUser.bill.id))
             return viewModel
         }()
         

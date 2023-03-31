@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MyItemListView: View {
     
-    @ObservedObject var viewModel: UserProfileViewModel
+    @ObservedObject var viewModel: ItemListViewModel
     
     var body: some View {
         ScrollView(.vertical) {
@@ -34,13 +34,9 @@ struct MyItemListView: View {
 
 struct ItemListView_Previews: PreviewProvider {
     
-    static let viewModel = { () -> UserProfileViewModel in
-        var viewModel = UserProfileViewModel(user: SampleUser.bill)
-        viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
-        return viewModel
-    }()
+    static var itemList = ModelList<BarterMateItem>.of(SampleUser.bill.id)
     
     static var previews: some View {
-        MyItemListView(viewModel: viewModel)
+        MyItemListView(viewModel: ItemListViewModel(user: SampleUser.bill, itemList: itemList))
     }
 }

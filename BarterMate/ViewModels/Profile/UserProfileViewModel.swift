@@ -3,20 +3,27 @@ import Combine
 
 class UserProfileViewModel: ObservableObject {
 
-    let user: BarterMateUser
+    @Published var user: BarterMateUser
     @Published var itemList: ModelList<BarterMateItem>
     @Published var postingList: ModelList<BarterMatePosting>
+    @Published var requestList: ModelList<BarterMateRequest>
     private var cancellables: Set<AnyCancellable> = []
-    
-    @MainActor
+
     init(user: BarterMateUser) {
         self.user = user
         itemList = ModelList<BarterMateItem>.of(user.id)
         postingList = ModelList<BarterMatePosting>.of(user.id)
-        itemList.objectWillChange.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        requestList = ModelList<BarterMateRequest>.of(user.id)
+        itemList.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)
-        postingList.objectWillChange.receive(on: DispatchQueue.main).sink { [weak self] _ in
+        postingList.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
+        requestList.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)
     }

@@ -14,7 +14,7 @@ class BarterMateRequest: Hashable, ListElement {
     var createdAt: Date
     var updatedAt: Date
     
-    init(id: Identifier<Request>, description: String, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
+    init(id: Identifier<Request> = Identifier(value: UUID().uuidString), description: String, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.description = description
         self.ownerId = ownerId

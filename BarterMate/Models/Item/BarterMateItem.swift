@@ -17,7 +17,7 @@ class BarterMateItem: Hashable, ListElement {
     let createdAt: Date
     let updatedAt: Date
     
-    init(id: Identifier<BarterMateItem>, name: String, description: String, imageUrl: String?, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
+    init(id: Identifier<BarterMateItem> = Identifier(value: UUID().uuidString), name: String, description: String, imageUrl: String?, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.name = name
         self.description = description

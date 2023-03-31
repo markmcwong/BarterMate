@@ -24,7 +24,7 @@ struct UserProfileView: View {
                         Text(viewModel.user.username)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                        MyItemListView(viewModel: viewModel)
+                        MyItemListView(viewModel: ItemListViewModel(user: viewModel.user, itemList: viewModel.itemList))
                     }
                 }
             }
@@ -32,11 +32,9 @@ struct UserProfileView: View {
                 showModal = true
             }
         }.overlay(ModalView(displayView: {
-            Image(systemName: "plus.app")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 30)
-            
+            FormView(viewModel: AddItemFormViewModel(itemList: viewModel.itemList,
+                                                     ownerId: viewModel.user.id),
+                     showModal: $showModal)
         }, showModal: $showModal))
     }
 }
@@ -44,7 +42,6 @@ struct UserProfileView: View {
 struct UserProfileView_Previews: PreviewProvider {
     static let viewModel = { () -> UserProfileViewModel in
         var viewModel = UserProfileViewModel(user: SampleUser.bill)
-        viewModel.itemList.elements = [SampleItem.guitar, SampleItem.waterBottle]
         return viewModel
     }()
     

@@ -26,12 +26,10 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     func save(model: any ListElement) {
         Task {
             do {
-                print("try save")
                 guard let amplifyModel = AmplifyAdapter.toAmplifyModel(model: model) else {
                     return
                 }
                 _ = try await Amplify.DataStore.save(amplifyModel)
-                print("finished saving")
             } catch {
                 os_log("Error saving item into Amplify")
             }
@@ -51,13 +49,12 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         }
     }
     
-    func getModelsById(of userId: Identifier<User>) {
+    func getModelsById(of userId: Identifier<BarterMateUser>) {
         guard let delegate = delegate else {
             return
         }
         
         Task {
-            print(userId)
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 return
             }
@@ -76,7 +73,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         }
     }
     
-    func getModelsById(of userId: Identifier<User>, limit: Int) {
+    func getModelsById(of userId: Identifier<BarterMateUser>, limit: Int) {
         guard let delegate = delegate else {
             return
         }

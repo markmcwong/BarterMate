@@ -20,7 +20,6 @@ struct ModalView<DisplayView: View>: View {
     var body: some View {
         SwiftUI.Group {
             if showModal {
-                self.displayView
                 Rectangle()
                     .foregroundColor(Color.black.opacity(0.5))
                     .edgesIgnoringSafeArea(.all)
@@ -28,8 +27,10 @@ struct ModalView<DisplayView: View>: View {
                         GeometryReader { geometry in
                             RoundedRectangle(cornerRadius: 16)
                                 .foregroundColor(.white)
-                                .frame(width: min(geometry.size.width - 100, 300), height: min(geometry.size.height - 100, 200))
-                                .overlay(ModalContentView(displayView: {self.displayView}, showModal: self.$showModal))
+                                .frame(width: min(geometry.size.width + 100, 300), height: min(geometry.size.height + 100, 300))
+                                .overlay(alignment: .top) {
+                                    ModalContentView(displayView: {self.displayView}, showModal: self.$showModal)
+                                }
                         }
                 )
             }
