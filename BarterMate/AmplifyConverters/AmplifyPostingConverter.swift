@@ -8,7 +8,7 @@
 import Foundation
 import Amplify
 
-struct AmplifyPostingAdapter {
+struct AmplifyPostingConverter {
     
     static func toBarterMateModel(posting: Posting) -> BarterMatePosting? {
         
@@ -18,7 +18,7 @@ struct AmplifyPostingAdapter {
             return nil
         }
         
-        let convertedItem = AmplifyAdapter.toBarterMateModel(model: item)
+        let convertedItem = AmplifyConverter.toBarterMateModel(model: item)
         
         guard let convertedItem = convertedItem as? BarterMateItem else {
             return nil
@@ -35,7 +35,7 @@ struct AmplifyPostingAdapter {
     
     static func toAmplifyModel(posting: BarterMatePosting) -> Posting? {
         
-        let convertedItem = AmplifyAdapter.toAmplifyModel(model: posting.item)
+        let convertedItem = AmplifyConverter.toAmplifyModel(model: posting.item)
         
         guard let convertedItem = convertedItem as? Item else {
             return nil

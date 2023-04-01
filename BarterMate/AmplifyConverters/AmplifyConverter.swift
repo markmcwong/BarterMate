@@ -8,16 +8,16 @@
 import Foundation
 import Amplify
 
-struct AmplifyAdapter {
+struct AmplifyConverter {
     
     static func toBarterMateModel(model: Model) -> (any ListElement)? {
         switch model {
         case is Item:
-            return AmplifyItemAdapter.toBarterMateModel(item: model as! Item)
+            return AmplifyItemConverter.toBarterMateModel(item: model as! Item)
         case is Request:
-            return AmplifyRequestAdapter.toBarterMateModel(request: model as! Request)
+            return AmplifyRequestConverter.toBarterMateModel(request: model as! Request)
         case is Posting:
-            return AmplifyPostingAdapter.toBarterMateModel(posting: model as! Posting)
+            return AmplifyPostingConverter.toBarterMateModel(posting: model as! Posting)
         default:
             return nil
         }
@@ -26,11 +26,11 @@ struct AmplifyAdapter {
     static func toAmplifyModel(model: any ListElement) -> Model? {
         switch model {
         case is BarterMateItem:
-            return AmplifyItemAdapter.toAmplifyModel(item: model as! BarterMateItem)
+            return AmplifyItemConverter.toAmplifyModel(item: model as! BarterMateItem)
         case is BarterMateRequest:
-            return AmplifyRequestAdapter.toAmplifyModel(request: model as! BarterMateRequest)
+            return AmplifyRequestConverter.toAmplifyModel(request: model as! BarterMateRequest)
         case is BarterMatePosting:
-            return AmplifyPostingAdapter.toAmplifyModel(posting: model as! BarterMatePosting)
+            return AmplifyPostingConverter.toAmplifyModel(posting: model as! BarterMatePosting)
         default:
             return nil
         }

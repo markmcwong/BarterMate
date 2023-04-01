@@ -26,7 +26,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     func save(model: any ListElement) {
         Task {
             do {
-                guard let amplifyModel = AmplifyAdapter.toAmplifyModel(model: model) else {
+                guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
                     return
                 }
                 _ = try await Amplify.DataStore.save(amplifyModel)
@@ -39,7 +39,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     func delete(model: any ListElement) {
         Task {
             do {
-                guard let amplifyModel = AmplifyAdapter.toAmplifyModel(model: model) else {
+                guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
                     return
                 }
                 _ = try await Amplify.DataStore.delete(amplifyModel)
@@ -63,7 +63,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             
 
             let barterMateModels = amplifyModelList.compactMap {
-                AmplifyAdapter.toBarterMateModel(model: $0)
+                AmplifyConverter.toBarterMateModel(model: $0)
             }
 
             if let barterMateModels = barterMateModels as? [U] {
@@ -87,7 +87,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
                                                              where: Ownable.userID == userId.value,
                                                                      paginate: .page(0, limit: UInt(limit)))
             let barterMateModels = amplifyModelList.compactMap {
-                AmplifyAdapter.toBarterMateModel(model: $0)
+                AmplifyConverter.toBarterMateModel(model: $0)
             }
 
             if let barterMateModels = barterMateModels as? [BarterMateModel] {
@@ -110,7 +110,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             let amplifyModelList = try await Amplify.DataStore.query(type.self)
             
             let barterMateModels = amplifyModelList.compactMap {
-                AmplifyAdapter.toBarterMateModel(model: $0)
+                AmplifyConverter.toBarterMateModel(model: $0)
             }
 
             if let barterMateModels = barterMateModels as? [U] {
@@ -133,7 +133,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
                                                                      paginate: .page(0, limit: UInt(limit)))
             
             let barterMateModels = amplifyModelList.compactMap {
-                AmplifyAdapter.toBarterMateModel(model: $0)
+                AmplifyConverter.toBarterMateModel(model: $0)
             }
 
             if let barterMateModels = barterMateModels as? [U] {

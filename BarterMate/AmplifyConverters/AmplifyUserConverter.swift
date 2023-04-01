@@ -8,7 +8,7 @@
 import Foundation
 import Amplify
 
-struct AmplifyUserAdapter {
+struct AmplifyUserConverter {
     
     static func toBarterMateModel(user: User) -> BarterMateUser? {
         

@@ -23,7 +23,7 @@ class AmplifyUserFacade: UserFacade {
                 return
             }
 
-            guard let barterMateUser = AmplifyUserAdapter.toBarterMateModel(user: amplifyUser) else {
+            guard let barterMateUser = AmplifyUserConverter.toBarterMateModel(user: amplifyUser) else {
                 return
             }
             
