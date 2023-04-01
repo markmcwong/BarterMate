@@ -18,8 +18,6 @@ struct AmplifyItemAdapter {
             return nil
         }
         
-        
-        
         let barterMateItem = BarterMateItem(id: Identifier(value: item.id),
                                   name: name,
                                   description: description,

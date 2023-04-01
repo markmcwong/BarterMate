@@ -36,5 +36,3 @@ public struct Posting: Model {
       self.postingItemId = postingItemId
   }
 }
-
-

@@ -16,4 +16,5 @@ protocol AuthService {
     func signOut() async
     func getCurrentUser() async throws -> AuthUser?
     func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult
+    func getUser() -> BarterMateUser?
 }

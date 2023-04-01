@@ -7,16 +7,24 @@
 import SwiftUI
 import Combine
 
+@MainActor
 class LoginViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var phoneNumber: String = ""
     @Published var username: String = ""
     @Published var errorMessage: String?
-    @Published var confirmationCode: String = ""
+    @Published var confirmationCode: String = ""   
+    @Published var isLoggedIn: Bool = false
 
+    private var user: BarterMateUser?
     private let authService: AuthService
     private let router: Router
+    
+    var homeViewModel: HomeViewModel {
+        let viewModel = HomeViewModel(user: getUser())
+        return viewModel
+    }
 
     init(authService: AuthService, router: Router) {
         self.authService = authService
@@ -28,9 +36,8 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            DispatchQueue.main.async {
-                self.router.navigate(to: .home)
-            }
+            user = authService.getUser()
+            isLoggedIn = true
         }
     }
     
@@ -39,9 +46,8 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            DispatchQueue.main.async {
-                self.router.navigate(to: .home)
-            }
+            user = authService.getUser()
+            isLoggedIn = true
         }
     }
     
@@ -50,22 +56,26 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            DispatchQueue.main.async {
-                self.router.navigate(to: .home)
-            }
+            user = authService.getUser()
+            isLoggedIn = true
         }
     }
     
     func confirmSignup() async {
-        print(username)
-        let res = await authService.confirmSignUp(email: username, confirmationCode: confirmationCode)
+        let res = await authService.confirmSignUp(email: email, confirmationCode: confirmationCode)
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            DispatchQueue.main.async {
-                self.router.navigate(to: .home)
-            }
+            user = authService.getUser()
+            isLoggedIn = true
         }
+    }
+    
+    private func getUser() -> BarterMateUser {
+        guard let user = self.user else {
+            fatalError("User is nil")
+        }
+        return user
     }
     
     func signOut() async {

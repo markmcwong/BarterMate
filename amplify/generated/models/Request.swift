@@ -31,4 +31,3 @@ public struct Request: Model {
       self.updatedAt = updatedAt
   }
 }
-

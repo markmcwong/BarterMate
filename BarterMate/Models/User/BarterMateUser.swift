@@ -12,10 +12,6 @@ class BarterMateUser: ObservableObject {
     var username: String
     
     private var userFacade: (any UserFacade)?
-//    @Published var items: ModelList<BarterMateItem>
-//    @Published var transactions: [Transaction]
-//    @Published var postings: ModelList<BarterMatePosting>
-//    @Published var requests: ModelList<BarterMateRequest>
     
     static func getUserWithId(id: Identifier<BarterMateUser>) -> BarterMateUser {
         let user = createEmptyUser()
@@ -33,29 +29,7 @@ class BarterMateUser: ObservableObject {
     init(id: Identifier<BarterMateUser> = Identifier(value: UUID().uuidString), username: String) {
         self.id = id
         self.username = username
-//        items = ModelList<BarterMateItem>.empty()
-//        postings = ModelList<BarterMatePosting>.empty()
-//        transactions = []
-//        requests = ModelList<BarterMateRequest>.empty()
     }
-    
-//    func loadPostings() {
-//        postings = ModelList<BarterMatePosting>.of(self.id)
-//    }
-//
-//    func loadItems() {
-//        items = ModelList<BarterMateItem>.of(self.id)
-//    }
-//
-//    func loadRequests() {
-//        requests = ModelList<BarterMateRequest>.of(self.id)
-//    }
-//
-//    func loadData() {
-//        loadItems()
-//        loadPostings()
-//        loadRequests()
-//    }
     
 }
 

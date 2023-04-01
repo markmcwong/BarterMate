@@ -10,26 +10,28 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel = LoginViewModel(authService: AmplifyAuthService(), router: Router.singleton)
-    var onLoginSuccess: () -> Void
     
     var body: some View {
+   
         VStack {
-            TextField("Email", text: $viewModel.email)
-                .padding()
-                .autocapitalization(.none)
-                .keyboardType(.emailAddress)
-            
-            SecureField("Password", text: $viewModel.password)
-                .padding()
-            
-            TextField("Phone Number", text: $viewModel.phoneNumber)
-                .padding()
-                .keyboardType(.phonePad)
-            
-            TextField("User Name", text: $viewModel.username)
-                .padding()
-                .keyboardType(.default)
-            
+            SwiftUI.Group {
+                TextField("Email", text: $viewModel.email)
+                    .padding()
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
+                
+                SecureField("Password", text: $viewModel.password)
+                    .padding()
+                
+                TextField("Phone Number", text: $viewModel.phoneNumber)
+                    .padding()
+                    .keyboardType(.phonePad)
+                
+                TextField("User Name", text: $viewModel.username)
+                    .padding()
+                    .keyboardType(.default)
+            }
+
             if viewModel.errorMessage != nil {
                 Text(viewModel.errorMessage!).foregroundColor(.orange).font(.system(size: 12)).padding()
             }
@@ -60,20 +62,26 @@ struct LoginView: View {
                 .padding()
                 .keyboardType(.numberPad)
             
-//            Button("Log Out") {
-//                Task {
-//                    await viewModel.signOut()
-//                }
-//            }
-//            .padding()
-            
             Button("Confirm Sign Up") {
                 Task {
                     await viewModel.confirmSignup()
                 }
             }
             .padding()
+            
+            NavigationLink(
+                "",
+                destination: LazyView {
+                    HomeView(viewModel: viewModel.homeViewModel)
+                },
+                isActive: $viewModel.isLoggedIn
+            )
+            .hidden()
+
         }
         .padding()
+        .navigationBarTitleDisplayMode(.inline)
+        
+
     }
 }

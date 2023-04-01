@@ -16,12 +16,12 @@ import AWSS3StoragePlugin
 struct BarterMateApp: App {
     init() {
         configureAmplify()
-//        AppServiceManager.shared.configure()
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+            //HomeView(viewModel: HomeViewModel(user: SampleUser.bill))
         }
     }
 }

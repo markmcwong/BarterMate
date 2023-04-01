@@ -10,16 +10,14 @@ import Combine
 import SwiftUI
 
 enum AppScreen {
-    case login
-    case home
     case profile
     case request
     case posting
 }
 
 class Router: ObservableObject {
-    @Published var currentScreen: AppScreen = .login
-
+    @Published var currentScreen: AppScreen = .profile
+    
     static let singleton = Router()
 
     private init() { }

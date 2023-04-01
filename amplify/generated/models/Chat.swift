@@ -11,7 +11,7 @@ public struct Chat: Model {
   public var updatedAt: Temporal.DateTime?
   
   public init(id: String = UUID().uuidString,
-      ChatMessages: List<Message> = [],
+      ChatMessages: List<Message>? = [],
       ChatUsers: List<UserChat> = [],
       name: String? = nil) {
     self.init(id: id,
@@ -22,7 +22,7 @@ public struct Chat: Model {
       updatedAt: nil)
   }
   internal init(id: String = UUID().uuidString,
-      ChatMessages: List<Message> = [],
+      ChatMessages: List<Message>? = [],
       ChatUsers: List<UserChat> = [],
       name: String? = nil,
       createdAt: Temporal.DateTime? = nil,
