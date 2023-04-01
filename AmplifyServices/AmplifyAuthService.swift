@@ -23,7 +23,12 @@ public class AmplifyAuthService: AuthService {
             let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
             let userId = try await Amplify.Auth.getCurrentUser().userId
             let _ = try await AmplifyGenericModelService<User>().save(User(id: userId, username: username))
-            return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
+            switch res.nextStep {
+            case .confirmUser:
+                return ActionResult(res.isSignUpComplete, "Confirm account with verification code")
+            default:
+                return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
+            }
         } catch let error as AuthError {
             return ActionResult(false, "Signup failed with error: \(error)")
         } catch {
