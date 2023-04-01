@@ -2,21 +2,42 @@
 query GetMessage($id: ID!) {
   getMessage(id: $id) {
     id
+    chatID
     SentBy {
       id
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     createdAt
     content
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     messageSentById
   }
 }
@@ -28,23 +49,120 @@ query ListMessages(
   listMessages(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      chatID
       SentBy {
         id
         username
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       content
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       messageSentById
     }
     nextToken
+    startedAt
+  }
+}
+query SyncMessages(
+  $filter: ModelMessageFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncMessages(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      chatID
+      SentBy {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      messageSentById
+    }
+    nextToken
+    startedAt
+  }
+}
+query MessagesByChatID(
+  $chatID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelMessageFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  messagesByChatID(
+    chatID: $chatID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      chatID
+      SentBy {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      content
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      messageSentById
+    }
+    nextToken
+    startedAt
   }
 }
 query GetChat($id: ID!) {
   getChat(id: $id) {
     id
+    ChatMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        messageSentById
+      }
+      nextToken
+      startedAt
+    }
     ChatUsers {
       items {
         id
@@ -52,12 +170,19 @@ query GetChat($id: ID!) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     name
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListChats(
@@ -68,14 +193,56 @@ query ListChats(
   listChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
       ChatUsers {
         nextToken
+        startedAt
       }
       name
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncChats(
+  $filter: ModelChatFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncChats(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetUser($id: ID!) {
@@ -89,8 +256,56 @@ query GetUser($id: ID!) {
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
+    }
+    Postings {
+      items {
+        id
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        postingItemId
+      }
+      nextToken
+      startedAt
+    }
+    Requests {
+      items {
+        id
+        description
+        createdAt
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    Items {
+      items {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
     }
     Chats {
       items {
@@ -99,11 +314,18 @@ query GetUser($id: ID!) {
         userId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListUsers(
@@ -117,14 +339,77 @@ query ListUsers(
       username
       Transactions {
         nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
       }
       Chats {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUsers(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetRequest($id: ID!) {
@@ -132,7 +417,11 @@ query GetRequest($id: ID!) {
     id
     description
     createdAt
+    userID
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListRequests(
@@ -145,15 +434,75 @@ query ListRequests(
       id
       description
       createdAt
+      userID
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncRequests(
+  $filter: ModelRequestFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncRequests(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      description
+      createdAt
+      userID
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query RequestsByUserID(
+  $userID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelRequestFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  requestsByUserID(
+    userID: $userID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      description
+      createdAt
+      userID
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetPosting($id: ID!) {
   getPosting(id: $id) {
     id
     createdAt
+    userID
     item {
       id
       name
@@ -161,11 +510,19 @@ query GetPosting($id: ID!) {
       image
       categories {
         nextToken
+        startedAt
       }
+      userID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
     postingItemId
   }
 }
@@ -178,18 +535,105 @@ query ListPostings(
     items {
       id
       createdAt
+      userID
       item {
         id
         name
         description
         image
+        userID
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
       postingItemId
     }
     nextToken
+    startedAt
+  }
+}
+query SyncPostings(
+  $filter: ModelPostingFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncPostings(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      createdAt
+      userID
+      item {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postingItemId
+    }
+    nextToken
+    startedAt
+  }
+}
+query PostingsByUserID(
+  $userID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelPostingFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  postingsByUserID(
+    userID: $userID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      createdAt
+      userID
+      item {
+        id
+        name
+        description
+        image
+        userID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      postingItemId
+    }
+    nextToken
+    startedAt
   }
 }
 query GetTransaction($id: ID!) {
@@ -203,11 +647,18 @@ query GetTransaction($id: ID!) {
         transactionId
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       nextToken
+      startedAt
     }
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListTransactions(
@@ -221,11 +672,45 @@ query ListTransactions(
       status
       users {
         nextToken
+        startedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncTransactions(
+  $filter: ModelTransactionFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncTransactions(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetGroup($id: ID!) {
@@ -235,6 +720,9 @@ query GetGroup($id: ID!) {
     description
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListGroups(
@@ -249,8 +737,38 @@ query ListGroups(
       description
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query SyncGroups(
+  $filter: ModelGroupFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncGroups(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      description
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query GetCategory($id: ID!) {
@@ -260,6 +778,9 @@ query GetCategory($id: ID!) {
     itemID
     createdAt
     updatedAt
+    _version
+    _deleted
+    _lastChangedAt
   }
 }
 query ListCategories(
@@ -274,164 +795,38 @@ query ListCategories(
       itemID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
   }
 }
-query GetItem($id: ID!) {
-  getItem(id: $id) {
-    id
-    name
-    description
-    image
-    categories {
-      items {
-        id
-        categoryName
-        itemID
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-    createdAt
-    updatedAt
-  }
-}
-query ListItems(
-  $filter: ModelItemFilterInput
+query SyncCategories(
+  $filter: ModelCategoryFilterInput
   $limit: Int
   $nextToken: String
+  $lastSync: AWSTimestamp
 ) {
-  listItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  syncCategories(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
     items {
       id
-      name
-      description
-      image
-      categories {
-        nextToken
-      }
+      categoryName
+      itemID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
-  }
-}
-query GetUserChat($id: ID!) {
-  getUserChat(id: $id) {
-    id
-    chatId
-    userId
-    chat {
-      id
-      ChatUsers {
-        nextToken
-      }
-      name
-      createdAt
-      updatedAt
-    }
-    user {
-      id
-      username
-      Transactions {
-        nextToken
-      }
-      Chats {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-query ListUserChats(
-  $filter: ModelUserChatFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listUserChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      chatId
-      userId
-      chat {
-        id
-        name
-        createdAt
-        updatedAt
-      }
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-    nextToken
-  }
-}
-query GetUserTransaction($id: ID!) {
-  getUserTransaction(id: $id) {
-    id
-    userId
-    transactionId
-    user {
-      id
-      username
-      Transactions {
-        nextToken
-      }
-      Chats {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    transaction {
-      id
-      status
-      users {
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-    createdAt
-    updatedAt
-  }
-}
-query ListUserTransactions(
-  $filter: ModelUserTransactionFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listUserTransactions(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      userId
-      transactionId
-      user {
-        id
-        username
-        createdAt
-        updatedAt
-      }
-      transaction {
-        id
-        status
-        createdAt
-        updatedAt
-      }
-      createdAt
-      updatedAt
-    }
-    nextToken
+    startedAt
   }
 }
 query CategoriesByItemID(
@@ -454,8 +849,272 @@ query CategoriesByItemID(
       itemID
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query GetItem($id: ID!) {
+  getItem(id: $id) {
+    id
+    name
+    description
+    image
+    categories {
+      items {
+        id
+        categoryName
+        itemID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    userID
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListItems(
+  $filter: ModelItemFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listItems(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncItems(
+  $filter: ModelItemFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncItems(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query ItemsByUserID(
+  $userID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelItemFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  itemsByUserID(
+    userID: $userID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      name
+      description
+      image
+      categories {
+        nextToken
+        startedAt
+      }
+      userID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetUserChat($id: ID!) {
+  getUserChat(id: $id) {
+    id
+    chatId
+    userId
+    chat {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListUserChats(
+  $filter: ModelUserChatFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserChats(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      chatId
+      userId
+      chat {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUserChats(
+  $filter: ModelUserChatFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUserChats(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      chatId
+      userId
+      chat {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query UserChatsByChatId(
@@ -481,17 +1140,27 @@ query UserChatsByChatId(
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
   }
 }
 query UserChatsByUserId(
@@ -517,17 +1186,163 @@ query UserChatsByUserId(
         name
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       user {
         id
         username
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
+  }
+}
+query GetUserTransaction($id: ID!) {
+  getUserTransaction(id: $id) {
+    id
+    userId
+    transactionId
+    user {
+      id
+      username
+      Transactions {
+        nextToken
+        startedAt
+      }
+      Postings {
+        nextToken
+        startedAt
+      }
+      Requests {
+        nextToken
+        startedAt
+      }
+      Items {
+        nextToken
+        startedAt
+      }
+      Chats {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    transaction {
+      id
+      status
+      users {
+        nextToken
+        startedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+  }
+}
+query ListUserTransactions(
+  $filter: ModelUserTransactionFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUserTransactions(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      userId
+      transactionId
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      transaction {
+        id
+        status
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query SyncUserTransactions(
+  $filter: ModelUserTransactionFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncUserTransactions(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      userId
+      transactionId
+      user {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      transaction {
+        id
+        status
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    nextToken
+    startedAt
   }
 }
 query UserTransactionsByUserId(
@@ -553,17 +1368,27 @@ query UserTransactionsByUserId(
         username
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       transaction {
         id
         status
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
   }
 }
 query UserTransactionsByTransactionId(
@@ -589,16 +1414,26 @@ query UserTransactionsByTransactionId(
         username
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       transaction {
         id
         status
         createdAt
         updatedAt
+        _version
+        _deleted
+        _lastChangedAt
       }
       createdAt
       updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
+    startedAt
   }
 }

@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct RequestCardView: View {
-    @StateObject var viewModel: RequestViewModel
+    let request: BarterMateRequest
+    let user: BarterMateUser
 
-    init(request: Request) {
-        _viewModel = StateObject(wrappedValue: RequestViewModel(request: request))
+    init(request: BarterMateRequest, user: BarterMateUser) {
+        self.request = request
+        self.user = user
     }
 
     var body: some View {
@@ -24,15 +26,14 @@ struct RequestCardView: View {
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
                     HStack {
-                        Text(viewModel.requesterName ?? "Loading")
+                        Text(user.username)
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()
 
                     }
                     HStack {
-                        Text(viewModel.request.description ??
-                    "description")
+                        Text(request.description)
                             .font(.callout)
                             .lineLimit(1)
                         Spacer()

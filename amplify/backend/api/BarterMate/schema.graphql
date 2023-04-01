@@ -1,20 +1,19 @@
-type Message @model @auth(rules: [{allow: public}]) {
+type Message @model @auth(rules: [{ allow: public }]) {
   id: ID!
   chatID: ID! @index(name: "byChat")
-  SentTo: Chat! @belongsTo(fields: ["chatID"])
   SentBy: User! @hasOne
   createdAt: AWSDateTime!
   content: String!
 }
 
-type Chat @model @auth(rules: [{allow: public}]) {
+type Chat @model @auth(rules: [{ allow: public }]) {
   id: ID!
   ChatMessages: [Message!] @hasMany(indexName: "byChat", fields: ["id"])
   ChatUsers: [User!] @manyToMany(relationName: "UserChat")
   name: String
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{ allow: public }]) {
   id: ID!
   username: String
   Transactions: [Transaction] @manyToMany(relationName: "UserTransaction")
@@ -24,14 +23,14 @@ type User @model @auth(rules: [{allow: public}]) {
   Chats: [Chat] @manyToMany(relationName: "UserChat")
 }
 
-type Request @model @auth(rules: [{allow: public}]) {
+type Request @model @auth(rules: [{ allow: public }]) {
   id: ID!
   description: String
   createdAt: AWSDateTime
   userID: ID! @index(name: "byUser")
 }
 
-type Posting @model @auth(rules: [{allow: public}]) {
+type Posting @model @auth(rules: [{ allow: public }]) {
   id: ID!
   createdAt: AWSDateTime
   userID: ID! @index(name: "byUser")
@@ -44,25 +43,25 @@ enum TransactionStatus {
   CONFIRMATION_PENDING
 }
 
-type Transaction @model @auth(rules: [{allow: public}]) {
+type Transaction @model @auth(rules: [{ allow: public }]) {
   id: ID!
   status: TransactionStatus
   users: [User] @manyToMany(relationName: "UserTransaction")
 }
 
-type Group @model @auth(rules: [{allow: public}]) {
+type Group @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String
   description: String
 }
 
-type Category @model @auth(rules: [{allow: public}]) {
+type Category @model @auth(rules: [{ allow: public }]) {
   id: ID!
   categoryName: String
   itemID: ID! @index(name: "byItem")
 }
 
-type Item @model @auth(rules: [{allow: public}]) {
+type Item @model @auth(rules: [{ allow: public }]) {
   id: ID!
   name: String
   description: String
@@ -70,4 +69,3 @@ type Item @model @auth(rules: [{allow: public}]) {
   categories: [Category] @hasMany(indexName: "byItem", fields: ["id"])
   userID: ID! @index(name: "byUser")
 }
- 

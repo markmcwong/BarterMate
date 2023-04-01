@@ -31,7 +31,7 @@ extension Chat {
     
     model.fields(
       .field(chat.id, is: .required, ofType: .string),
-      .hasMany(chat.ChatMessages, is: .optional, ofType: Message.self, associatedWith: Message.keys.SentTo),
+      .hasMany(chat.ChatMessages, is: .optional, ofType: Message.self, associatedWith: Message.keys.chatID),
       .hasMany(chat.ChatUsers, is: .optional, ofType: UserChat.self, associatedWith: UserChat.keys.chat),
       .field(chat.name, is: .optional, ofType: .string),
       .field(chat.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-    @StateObject var viewModel = UserProfileViewModel()
+    @State var showModal: Bool = false
+    @ObservedObject var viewModel: UserProfileViewModel
     
     var body: some View {
         VStack {
@@ -20,21 +21,35 @@ struct UserProfileView: View {
                             .frame(width: 200,  height: 200)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(lineWidth: 1))
-                        Text(viewModel.user?.username ?? "Loading")
+                        Text(viewModel.user.username)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-
+                        Text("Post " + "\(viewModel.itemList.elements.count)")
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                        MyItemListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.itemList))
                     }
                 }
-                ItemListView(viewModel: viewModel)
             }
-        }
+            ProfileButtonsView().onTapGesture {
+                showModal = true
+            }
+        }.overlay(ModalView(displayView: {
+            FormView(viewModel: AddItemFormViewModel(itemList: viewModel.itemList,
+                                                     ownerId: viewModel.user.id),
+                     showModal: $showModal)
+        }, showModal: $showModal))
     }
 }
 
 struct UserProfileView_Previews: PreviewProvider {
+    static let viewModel = { () -> UserProfileViewModel in
+        var viewModel = UserProfileViewModel(user: SampleUser.bill)
+        return viewModel
+    }()
+    
     static var previews: some View {
-        UserProfileView()
+        UserProfileView(viewModel: viewModel)
     }
 }
 

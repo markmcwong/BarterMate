@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct ItemCardView: View {
-    @StateObject var viewModel: ItemViewModel
+struct ItemCardView: View, GenericListItemView {
+    typealias ListItemType = Item
+    @ObservedObject var viewModel: ListItemViewModel<Item>
 
     init(item: Item) {
-        _viewModel = StateObject(wrappedValue: ItemViewModel(item: item))
+        _viewModel = ObservedObject(wrappedValue: ListItemViewModel(item: item))
     }
     
     var body: some View {
@@ -21,13 +22,6 @@ struct ItemCardView: View {
                     .frame(width: 150, height: 150)
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
-//                    HStack {
-//                        Text(viewModel.ownerName ?? "loading name")
-//                            .font(.callout)
-//                            .lineLimit(1)
-//                        Spacer()
-//
-//                    }
                     HStack {
                         Text(viewModel.item.name ?? "name")
                             .font(.callout)

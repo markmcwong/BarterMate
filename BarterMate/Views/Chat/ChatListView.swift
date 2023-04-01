@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct ChatListView: View {
-    @StateObject var viewModel = ChatListViewModel()
+//    @StateObject var viewModel = ListViewModel<Chat>(service: AmplifyGenericModelService<Chat>())
 
     var body: some View {
         VStack {

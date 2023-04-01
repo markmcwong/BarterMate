@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct PostingView: View {
-    
-    @StateObject var viewModel: PostingViewModel
 
-    init(posting: Posting) {
-        self._viewModel = StateObject(wrappedValue: PostingViewModel(posting: posting))
-    }
+    let posting: BarterMatePosting
+    let user: BarterMateUser
     
+    init(posting: BarterMatePosting, user: BarterMateUser) {
+        self.posting = posting
+        self.user = user
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -23,14 +25,14 @@ struct PostingView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
-                        Text("Bob")
+                    Text(user.username)
                             .font(.system(size: 20))
                             .bold()
                 }
                 Spacer()
                 Image(systemName: "ellipsis")
             }
-            Text("Water Bottle 500 ml")
+            Text(posting.item.description)
             ZStack {
                 Image(systemName: "plus.square.fill")
                     .resizable()
@@ -39,13 +41,11 @@ struct PostingView: View {
         }
         .padding()
     }
-
-                             
 }
 
 struct PostingView_Previews: PreviewProvider {
     static var previews: some View {
-        PostingView(posting: Posting(userID: "abc",item: Item(description: "Random item",userID: "abc")))
+        PostingView(posting: SamplePosting.bottlePosting, user: SampleUser.bill)
     }
 }
 

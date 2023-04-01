@@ -11,16 +11,15 @@ class AppServiceManager: ServiceManager {
     
     static let shared = AppServiceManager()
     
-    let authService: AuthService = AmplifyAuthService()
-    let dataStoreService: DataStoreService = AmplifyDataStoreService()
+//    let authService: AuthService = AmplifyAuthService()
+//    let dataStoreService: DataStoreService = AmplifyDataStoreService()
     let storageService: StorageService = AmplifyStorageService()
-    let itemService: ItemService = AmplifyItemService()
-    let requestService: RequestService = AmplifyRequestService()
-    let postingService: PostingService = AmplifyPostingService()
-    let userService: UserService = AmplifyUserService()
-    let chatService: ChatService = AmplifyChatService()
+//    let itemService: ItemService = AmplifyItemService()
+//    let requestService: RequestService = AmplifyRequestService()
+//    let postingService: PostingService = AmplifyPostingService()
+//    let userService: UserService = AmplifyUserService()
     let eventsPublisher: EventsPublisher = AmplifyEventsPublisher.shared
-    
+    var chatService: ChatService = AmplifyChatService()
     func configure() { }
 }
 

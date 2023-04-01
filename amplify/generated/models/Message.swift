@@ -4,7 +4,7 @@ import Foundation
 
 public struct Message: Model {
   public let id: String
-  public var SentTo: Chat
+  public var chatID: String
   public var SentBy: User
   public var createdAt: Temporal.DateTime
   public var content: String
@@ -12,13 +12,13 @@ public struct Message: Model {
   public var messageSentById: String
   
   public init(id: String = UUID().uuidString,
-      SentTo: Chat,
+      chatID: String,
       SentBy: User,
       createdAt: Temporal.DateTime,
       content: String,
       messageSentById: String) {
     self.init(id: id,
-      SentTo: SentTo,
+      chatID: chatID,
       SentBy: SentBy,
       createdAt: createdAt,
       content: content,
@@ -26,14 +26,14 @@ public struct Message: Model {
       messageSentById: messageSentById)
   }
   internal init(id: String = UUID().uuidString,
-      SentTo: Chat,
+      chatID: String,
       SentBy: User,
       createdAt: Temporal.DateTime,
       content: String,
       updatedAt: Temporal.DateTime? = nil,
       messageSentById: String) {
       self.id = id
-      self.SentTo = SentTo
+      self.chatID = chatID
       self.SentBy = SentBy
       self.createdAt = createdAt
       self.content = content

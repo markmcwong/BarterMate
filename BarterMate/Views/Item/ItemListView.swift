@@ -7,31 +7,31 @@
 
 import SwiftUI
 
-struct ItemListView: View {
-    
-    @StateObject var viewModel: UserProfileViewModel
-    
-    var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                LazyVStack {
-                   ForEach(viewModel.loadedItems.indices, id: \.self) { index in
-                       ItemCardView(item: viewModel.loadedItems[index])               }
-                }.id(UUID())
-                
-               if viewModel.loadedItems.count == 0 {
-                   Text("No More Item")
-                       .padding()
-                } else {
-
-                }
-            }
-        }
-    }
-}
-
-struct ItemListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ItemListView(viewModel: UserProfileViewModel())
-    }
-}
+//struct ItemListView: View {
+//    
+//    @StateObject var viewModel: ListViewModel<Item>
+//    
+//    var body: some View {
+//        ScrollView(.vertical) {
+//            VStack {
+//                LazyVStack {
+//                   ForEach(viewModel.loadedItems.indices, id: \.self) { index in
+//                       ItemCardView(item: viewModel.loadedItems[index])               }
+//                }.id(UUID())
+//                
+//               if viewModel.loadedItems.count == 0 {
+//                   Text("No More Item")
+//                       .padding()
+//                } else {
+//
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//struct ItemListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ItemListView(viewModel: UserProfileViewModel())
+//    }
+//}
