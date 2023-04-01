@@ -19,17 +19,21 @@ struct ContentView: View {
                     router.navigate(to: .login)
 //                    appState.isLoggedIn = true
                 })
-            case .home:
-                UserProfileView()
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-//            case .profile:
-//                ProfileView()
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-            // Add other cases for different screens as needed
+            case .login:
+                RequestFeedView()
+                //UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+            case .profile:
+                UserProfileView(viewModel: UserProfileViewModel(user: SampleUser.bill))
+            case .request:
+                RequestFeedView()
+            case .posting:
+                PostingFeedView()
+            case .chat:
+                ChatListView()
+            }
+            
+            if router.currentScreen != .home {
+                NavBarView()
             }
         }
 //        .environmentObject(appState)
