@@ -8,5 +8,5 @@
 import Foundation
 
 protocol UserFacadeDelegate {
-    func update(user: BarterMateUpdatableModel)
+    func update(user: BarterMateUser)
 }

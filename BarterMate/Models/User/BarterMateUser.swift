@@ -7,9 +7,10 @@
 
 import Foundation
 
-class BarterMateUser: ObservableObject, BarterMateUpdatableModel {
+class BarterMateUser: ObservableObject {
     var id: Identifier<BarterMateUser>
     var username: String
+    var profilePicUrl: String?
     
     private var userFacade: (any UserFacade)?
     

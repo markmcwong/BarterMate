@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateItem: Hashable, ListElement, BarterMateUpdatableModel {
+class BarterMateItem: Hashable, ListElement {
     
     var id: Identifier<BarterMateItem>
     var name: String
