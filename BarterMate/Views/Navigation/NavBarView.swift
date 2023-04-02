@@ -36,6 +36,7 @@ struct NavBarView: View {
             Spacer()
             Button("Chat") {
                 print("Click Chat")
+                router.navigate(to: .chat)
             }
             Spacer()
         }

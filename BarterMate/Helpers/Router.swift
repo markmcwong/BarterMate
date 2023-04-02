@@ -13,11 +13,13 @@ enum AppScreen {
     case profile
     case request
     case posting
+    case chat
+    case message
 }
 
 class Router: ObservableObject {
-    @Published var currentScreen: AppScreen = .profile
-    
+    @Published var currentScreen: AppScreen = .chat
+
     static let singleton = Router()
 
     private init() { }

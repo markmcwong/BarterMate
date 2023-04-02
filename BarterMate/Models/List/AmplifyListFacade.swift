@@ -17,9 +17,10 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     
     func setDelegate(delegate: any ModelListFacadeDelegate) {
         guard let delegate = delegate as? ModelList<U> else {
+            print("No delegate available")
             return
         }
-        //print("Correct delegate type")
+//        print("Correct delegate type")
         self.delegate = delegate
     }
     
@@ -104,6 +105,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
+                print("cannot convert to amplify type")
                 return
             }
             
@@ -111,6 +113,49 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
+            }
+
+            if let barterMateModels = barterMateModels as? [U] {
+                delegate.insertAll(models: barterMateModels)
+            }
+        }
+    }
+    
+    
+    func getMessageModelsByChatId(chatId: String) {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        Task {
+            let m = Message.keys
+            let amplifyMessageModels = try await Amplify.DataStore.query(Message.self, where: m.chatID.eq(chatId))
+            let barterMateModels = amplifyMessageModels.compactMap {
+                AmplifyMessageAdapter.toBarterMateModel(message: $0)
+            }
+
+            if let barterMateModels = barterMateModels as? [U] {
+                delegate.insertAll(models: barterMateModels)
+            }
+        }
+    }
+    
+    func getChatModels() {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        Task {
+            guard let type = convertToAmplifyType(type: U.typeName) else {
+                print("cannot convert to amplify type")
+                return
+            }
+            
+            let amplifyModelList = try await Amplify.DataStore.query(type.self)
+            let barterMateModels = amplifyModelList.compactMap {
+                AmplifyChatAdapter.toBarterMateModel(chat: $0 as! Chat) { barterMateChat in
+                    delegate.insert(model: barterMateChat as! U)
+                }
             }
 
             if let barterMateModels = barterMateModels as? [U] {
@@ -150,6 +195,8 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             return Request.self
         case "BarterMatePosting":
             return Posting.self
+        case "BarterMateChat":
+            return Chat.self
         default:
             return nil
         }

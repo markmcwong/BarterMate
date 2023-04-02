@@ -22,6 +22,10 @@ struct HomeView: View {
                 RequestFeedView()
             case .posting:
                 PostingFeedView()
+            case .chat:
+                ChatListView()
+            case .message:
+                MessageView(chat: GlobalState.shared.currentChat)
             }
             NavBarView()
 

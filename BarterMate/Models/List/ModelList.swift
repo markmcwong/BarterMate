@@ -33,7 +33,20 @@ class ModelList<T: ListElement>: ObservableObject {
         let modelList = ModelList()
         modelList.modelListFacade = AmplifyListFacade<T>()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
-        modelList.modelListFacade?.getEveryoneModels()
+        if(T.self.typeName == "BarterMateChat") {
+            print("Getting chat models")
+            modelList.modelListFacade?.getChatModels()
+        } else {
+            modelList.modelListFacade?.getEveryoneModels()
+        }
+        return modelList
+    }
+    
+    static func allMessage(chatId: String) -> ModelList {
+        let modelList = ModelList()
+        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.modelListFacade?.setDelegate(delegate: modelList)
+        modelList.modelListFacade?.getMessageModelsByChatId(chatId: chatId)
         return modelList
     }
     

@@ -14,5 +14,7 @@ protocol ModelListFacade {
     func getModelsById(of userId: Identifier<BarterMateUser>, limit: Int)
     func getEveryoneModels()
     func getEveryoneModels(limit: Int)
+    func getChatModels()
+    func getMessageModelsByChatId(chatId: String)
 }
 

@@ -17,6 +17,8 @@ class GlobalState {
     
     var userId: String?
     
+    var currentChat: BarterMateChat?
+    
     init() {
         
     }

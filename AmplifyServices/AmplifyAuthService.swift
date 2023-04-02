@@ -24,7 +24,8 @@ public class AmplifyAuthService: AuthService {
         
         do {
             let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
-            
+//            let userId = try await Amplify.Auth.getCurrentUser().userId
+//            let _ = try await AmplifyGenericModelService<User>().save(User(id: userId, username: username))
             switch res.nextStep {
             case .confirmUser:
                 self.username = username

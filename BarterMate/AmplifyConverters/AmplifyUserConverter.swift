@@ -42,4 +42,9 @@ struct AmplifyUserConverter {
 //        
 //        amplifyUser.id
 //    }
+    
+    static func toAmplifyModel(user: BarterMateUser) -> User {
+        let amplifyUser = User(id: user.id.value, username: user.username)
+        return amplifyUser
+    }
 }
