@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct PostingFeedView: View {
-    @ObservedObject var viewModel = PostingFeedViewModel()
+    @ObservedObject var viewModel = PostingFeedViewModel(modelType: BarterMatePosting.self)
     
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 LazyVStack {
-                    ForEach(viewModel.postingList.elements, id: \.self) { posting in
-                        if let user = viewModel.userIdToUser[posting.item.ownerId] {
+                    ForEach(viewModel.modelList.elements, id: \.self) { posting in
+                        if var user = viewModel.userIdToUser[posting.item.ownerId] {
                             PostingView(posting: posting, user: user)
                         }
                     }
                 }.id(UUID())
                 
-                if viewModel.postingList.elements.count == 0 {
+                if viewModel.modelList.elements.count == 0 {
                     Text("No More Postings")
                         .padding()
                 } else {

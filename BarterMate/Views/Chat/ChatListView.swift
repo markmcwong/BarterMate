@@ -9,29 +9,32 @@ import Foundation
 import SwiftUI
 
 struct ChatListView: View {
-//    @StateObject var viewModel = ListViewModel<Chat>(service: AmplifyGenericModelService<Chat>())
+//    @ObservedObject var viewModel: ListViewModel<BarterMateChat> = ListViewModel(user: SampleUser.bill, modelList: ModelList<BarterMateChat>.all())
 
+    @ObservedObject var viewModel = ChatListViewModel()
+    
     var body: some View {
-        VStack {
-            //            LazyVStack {
-            //                ForEach(viewModel.loadedPostings.indices, id: \.self) { index in
-            //                    PostingView(posting: viewModel.loadedPostings[index])
-            //                }
-            //            }.id(UUID())
-            //
-            //            if viewModel.loadedPostings.count == 0 {
-            //                Text("No More Postings")
-            //                    .padding()
-            //            } else {
-            //            }
+        ScrollView(.vertical) {
+            VStack {
+                VStack {
+                    ForEach(viewModel.chatList.elements, id: \.self) { chat in
+                        ChatListItemView(chat: chat)
+                    }
+                }.id(UUID())
+                
+                if viewModel.chatList.elements.count == 0 {
+                   Text("No More Item")
+                       .padding()
+                } else {
+
+                }
+            }
         }
-        .navigationBarTitle("Chats")
-//        .onAppear(perform: viewModel.loadChats)
     }
 }
 
-struct ChatListView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatListView()
-    }
-}
+//struct ChatListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatListView()
+//    }
+//}

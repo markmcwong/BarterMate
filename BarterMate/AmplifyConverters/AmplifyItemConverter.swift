@@ -8,7 +8,7 @@
 import Amplify
 import Foundation
 
-struct AmplifyItemAdapter {
+struct AmplifyItemConverter {
     
     static func toBarterMateModel(item: Item) -> BarterMateItem? {
         guard let name = item.name,
@@ -17,8 +17,6 @@ struct AmplifyItemAdapter {
               let updatedAt = item.updatedAt else {
             return nil
         }
-        
-        
         
         let barterMateItem = BarterMateItem(id: Identifier(value: item.id),
                                   name: name,

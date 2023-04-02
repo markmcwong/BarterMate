@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateChat: Hashable, Identifiable {
+class BarterMateChat: Hashable, Identifiable, ListElement {
     let id: Identifier<Chat>
     var name: String?
     var messages: [BarterMateMessage]

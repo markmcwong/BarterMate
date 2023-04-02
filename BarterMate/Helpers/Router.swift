@@ -10,8 +10,6 @@ import Combine
 import SwiftUI
 
 enum AppScreen {
-    case login
-    case home
     case profile
     case request
     case posting
@@ -19,8 +17,13 @@ enum AppScreen {
 }
 
 class Router: ObservableObject {
-    @Published var currentScreen: AppScreen = .login
+<<<<<<< Updated upstream
+    @Published var currentScreen: AppScreen = .profile
+    
+=======
+    @Published var currentScreen: AppScreen = .chat
 
+>>>>>>> Stashed changes
     static let singleton = Router()
 
     private init() { }

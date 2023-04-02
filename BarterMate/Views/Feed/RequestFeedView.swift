@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RequestFeedView: View {
-    @ObservedObject var viewModel = RequestFeedViewModel()
+    @ObservedObject var viewModel = RequestFeedViewModel(modelType: BarterMateRequest.self)
     
     var body: some View {
         ScrollView(.vertical) {
             VStack {
                 LazyVStack {
-                    ForEach(viewModel.requestList.elements, id: \.self) { request in
-                        if let user = viewModel.userIdToUser[request.ownerId] {
+                    ForEach(viewModel.modelList.elements, id: \.self) { request in
+                        if var user = viewModel.userIdToUser[request.ownerId] {
                             RequestCardView(request: request, user: user)
                         }
                     }
@@ -25,7 +25,7 @@ struct RequestFeedView: View {
 //                    Text("Loading Request")
 //                        .padding()
 //                } else
-                if viewModel.requestList.elements.count == 0 {
+                if viewModel.modelList.elements.count == 0 {
                     Text("No More Request")
                         .padding()
                 } else {

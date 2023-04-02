@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AmplifyRequestAdapter {
+struct AmplifyRequestConverter {
     
     static func toBarterMateModel(request: Request) -> BarterMateRequest? {
         guard let description = request.description,
