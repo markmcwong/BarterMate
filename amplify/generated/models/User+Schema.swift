@@ -12,6 +12,7 @@ extension User {
     case Requests
     case Items
     case Chats
+    case SentMessages
     case createdAt
     case updatedAt
   }
@@ -40,6 +41,7 @@ extension User {
       .hasMany(user.Requests, is: .optional, ofType: Request.self, associatedWith: Request.keys.userID),
       .hasMany(user.Items, is: .optional, ofType: Item.self, associatedWith: Item.keys.userID),
       .hasMany(user.Chats, is: .optional, ofType: UserChat.self, associatedWith: UserChat.keys.user),
+      .hasMany(user.SentMessages, is: .optional, ofType: Message.self, associatedWith: Message.keys.SentBy),
       .field(user.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(user.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )

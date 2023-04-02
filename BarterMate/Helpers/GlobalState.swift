@@ -9,18 +9,20 @@ import Foundation
 import Amplify
 import Combine
 
-class GlobalState {
+class GlobalState: ObservableObject {
     static let shared = GlobalState()
     
 //    private let authService: AuthService
     private var subscribers = Set<AnyCancellable>()
     
-    var userId: String?
+    @Published var userId: String?
     
-    var currentChat: BarterMateChat?
+    @Published var currentChat: BarterMateChat?
     
-    init() {
-        
+    private init() { }
+    
+    func updateUser(userId: String) {
+        self.userId = userId
     }
 //    private init(manager: ServiceManager = AppServiceManager.shared) {
 //        manager.eventsPublisher.toAnyPublisher

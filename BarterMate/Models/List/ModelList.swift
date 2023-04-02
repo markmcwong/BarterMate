@@ -43,10 +43,12 @@ class ModelList<T: ListElement>: ObservableObject {
     }
     
     static func allMessage(chatId: String) -> ModelList {
+        print("all Message: ", chatId)
         let modelList = ModelList()
         modelList.modelListFacade = AmplifyListFacade<T>()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         modelList.modelListFacade?.getMessageModelsByChatId(chatId: chatId)
+        print(modelList.elements.description)
         return modelList
     }
     

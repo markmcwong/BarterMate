@@ -21,7 +21,7 @@ struct ChatListItemView: View {
     var body: some View {
         Button(action: {
             Task {
-                await chat.fetchMessages {}
+//                await chat.fetchMessages {}
                 GlobalState.shared.currentChat = chat
                 Router.singleton.navigate(to: .message)
             }

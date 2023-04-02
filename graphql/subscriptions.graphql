@@ -3,6 +3,26 @@ subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
   onCreateMessage(filter: $filter) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -26,25 +46,46 @@ subscription OnCreateMessage($filter: ModelSubscriptionMessageFilterInput) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
   onUpdateMessage(filter: $filter) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -68,25 +109,46 @@ subscription OnUpdateMessage($filter: ModelSubscriptionMessageFilterInput) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
   onDeleteMessage(filter: $filter) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -110,19 +172,20 @@ subscription OnDeleteMessage($filter: ModelSubscriptionMessageFilterInput) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 subscription OnCreateChat($filter: ModelSubscriptionChatFilterInput) {
@@ -134,11 +197,11 @@ subscription OnCreateChat($filter: ModelSubscriptionChatFilterInput) {
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -174,11 +237,11 @@ subscription OnUpdateChat($filter: ModelSubscriptionChatFilterInput) {
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -214,11 +277,11 @@ subscription OnDeleteChat($filter: ModelSubscriptionChatFilterInput) {
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -321,6 +384,21 @@ subscription OnCreateUser($filter: ModelSubscriptionUserFilterInput) {
       nextToken
       startedAt
     }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -404,6 +482,21 @@ subscription OnUpdateUser($filter: ModelSubscriptionUserFilterInput) {
       nextToken
       startedAt
     }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -479,6 +572,21 @@ subscription OnDeleteUser($filter: ModelSubscriptionUserFilterInput) {
         chatId
         userId
         createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
         updatedAt
         _version
         _deleted
@@ -896,6 +1004,10 @@ subscription OnCreateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -951,6 +1063,10 @@ subscription OnUpdateUserChat($filter: ModelSubscriptionUserChatFilterInput) {
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -1012,6 +1128,10 @@ subscription OnDeleteUserChat($filter: ModelSubscriptionUserChatFilterInput) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1052,6 +1172,10 @@ subscription OnCreateUserTransaction(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -1111,6 +1235,10 @@ subscription OnUpdateUserTransaction(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1164,6 +1292,10 @@ subscription OnDeleteUserTransaction(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }

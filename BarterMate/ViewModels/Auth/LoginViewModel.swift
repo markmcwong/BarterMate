@@ -36,8 +36,7 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            user = authService.getUser()
-            isLoggedIn = true
+            successCallback()
         }
     }
     
@@ -46,8 +45,7 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            user = authService.getUser()
-            isLoggedIn = true
+            successCallback()
         }
     }
     
@@ -56,8 +54,7 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            user = authService.getUser()
-            isLoggedIn = true
+            successCallback()
         }
     }
     
@@ -66,9 +63,13 @@ class LoginViewModel: ObservableObject {
         if !res.isSuccess {
             errorMessage = res.message
         } else {
-            user = authService.getUser()
-            isLoggedIn = true
+            successCallback()
         }
+    }
+    
+    func successCallback() {
+        user = authService.getUser()
+        isLoggedIn = true
     }
     
     private func getUser() -> BarterMateUser {

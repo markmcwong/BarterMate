@@ -11,24 +11,44 @@ import Amplify
 struct AmplifyPostingConverter {
     
     static func toBarterMateModel(posting: Posting) -> BarterMatePosting? {
-        
-        guard let item = posting.item,
+
+        guard let itemId = posting.postingItemId,
               let createdAt = posting.createdAt,
               let updatedAt = posting.updatedAt else {
             return nil
         }
         
-        let convertedItem = AmplifyConverter.toBarterMateModel(model: item)
+//        Task {
+//            do {
+//                let item = try await Amplify.DataStore.query(Item.self, byId: itemId)
+//
+//                guard let item = item else {
+//                    return
+//                }
+//
+//                let convertedItem = AmplifyConverter.toBarterMateModel(model: item)
+//
+//                guard let convertedItem = convertedItem as? BarterMateItem else {
+//                    return
+//                }
+//
+//                let barterMatePosting = BarterMatePosting(id: Identifier(value: posting.id),
+//                                                          item: convertedItem,
+//                                                          createdAt: createdAt.foundationDate,
+//                                                          updatedAt: updatedAt.foundationDate)
+//
+//                return barterMatePosting
+//            }
+//        }
         
-        guard let convertedItem = convertedItem as? BarterMateItem else {
-            return nil
-        }
-        
+        let convertedItem = BarterMateItem.getItemWithId(id: Identifier(value: itemId))
+
+
         let barterMatePosting = BarterMatePosting(id: Identifier(value: posting.id),
                                                   item: convertedItem,
                                                   createdAt: createdAt.foundationDate,
                                                   updatedAt: updatedAt.foundationDate)
-        
+
         return barterMatePosting
     }
     

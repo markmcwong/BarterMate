@@ -19,7 +19,7 @@ class AppServiceManager: ServiceManager {
 //    let postingService: PostingService = AmplifyPostingService()
 //    let userService: UserService = AmplifyUserService()
     let eventsPublisher: EventsPublisher = AmplifyEventsPublisher.shared
-    var chatService: ChatService = AmplifyChatService()
+//    var chatService: ChatService = AmplifyChatService()
     func configure() { }
 }
 
