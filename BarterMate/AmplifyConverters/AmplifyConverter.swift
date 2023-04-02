@@ -17,13 +17,9 @@ struct AmplifyConverter {
         case is Request:
             return AmplifyRequestConverter.toBarterMateModel(request: model as! Request)
         case is Posting:
-<<<<<<< Updated upstream:BarterMate/AmplifyConverters/AmplifyConverter.swift
             return AmplifyPostingConverter.toBarterMateModel(posting: model as! Posting)
-=======
-            return AmplifyPostingAdapter.toBarterMateModel(posting: model as! Posting)
 //        case is Chat:
 //            return AmplifyChatAdapter.toBarterMateModel(chat: model as! Chat)
->>>>>>> Stashed changes:BarterMate/AmplifyAdapters/AmplifyAdapter.swift
         default:
             return nil
         }
@@ -36,13 +32,9 @@ struct AmplifyConverter {
         case is BarterMateRequest:
             return AmplifyRequestConverter.toAmplifyModel(request: model as! BarterMateRequest)
         case is BarterMatePosting:
-<<<<<<< Updated upstream:BarterMate/AmplifyConverters/AmplifyConverter.swift
             return AmplifyPostingConverter.toAmplifyModel(posting: model as! BarterMatePosting)
-=======
-            return AmplifyPostingAdapter.toAmplifyModel(posting: model as! BarterMatePosting)
         case is BarterMateChat:
             return AmplifyChatAdapter.toAmplifyModel(chat: model as! BarterMateChat)
->>>>>>> Stashed changes:BarterMate/AmplifyAdapters/AmplifyAdapter.swift
         default:
             return nil
         }

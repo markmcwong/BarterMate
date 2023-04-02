@@ -12,16 +12,34 @@ class BarterMateChat: Hashable, Identifiable, ListElement {
     var name: String?
     var messages: [BarterMateMessage]
     var users: [BarterMateUser]
-    
+//    var fetchMessagesClosure: (() -> Task<(), Never>)?
+    var fetchMessagesClosure: (() async -> ())?
+
     init(id: Identifier<Chat> = Identifier(value: UUID().uuidString),
          name: String?,
          messages: [BarterMateMessage] = [],
-         users: [BarterMateUser] = []) {
+         users: [BarterMateUser] = [],
+         fetchMessagesClosure: @escaping (() async -> ())) {
+//         fetchMessagesClosure: (() -> Task<(), Never>)? = nil) {
         self.id = id
         self.name = name
         self.messages = messages
         self.users = users
+        self.fetchMessagesClosure = fetchMessagesClosure
     }
+    
+    
+    func fetchMessages(completion: @escaping () -> Void) async {
+        if let fetchMessagesClosure = fetchMessagesClosure {
+            await fetchMessagesClosure()
+//                completion()
+        } else {
+//            completion()
+        }
+    }
+//    func setFetchMessages(_ fetchMessages: @escaping () async -> Void) {
+//        self.fetchMessages = fetchMessages
+//    }
     
     static func == (lhs: BarterMateChat, rhs: BarterMateChat) -> Bool {
         lhs.id == rhs.id

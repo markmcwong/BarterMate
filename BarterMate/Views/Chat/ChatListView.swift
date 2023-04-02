@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 
 struct ChatListView: View {
-//    @ObservedObject var viewModel: ListViewModel<BarterMateChat> = ListViewModel(user: SampleUser.bill, modelList: ModelList<BarterMateChat>.all())
-
     @ObservedObject var viewModel = ChatListViewModel()
     
     var body: some View {

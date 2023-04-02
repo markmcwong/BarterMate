@@ -122,6 +122,24 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     }
     
     
+    func getMessageModelsByChatId(chatId: String) {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        Task {
+            let m = Message.keys
+            let amplifyMessageModels = try await Amplify.DataStore.query(Message.self, where: m.chatID.eq(chatId))
+            let barterMateModels = amplifyMessageModels.compactMap {
+                AmplifyMessageAdapter.toBarterMateModel(message: $0)
+            }
+
+            if let barterMateModels = barterMateModels as? [U] {
+                delegate.insertAll(models: barterMateModels)
+            }
+        }
+    }
+    
     func getChatModels() {
         guard let delegate = delegate else {
             return

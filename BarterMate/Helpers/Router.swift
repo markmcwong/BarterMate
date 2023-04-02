@@ -14,16 +14,12 @@ enum AppScreen {
     case request
     case posting
     case chat
+    case message
 }
 
 class Router: ObservableObject {
-<<<<<<< Updated upstream
-    @Published var currentScreen: AppScreen = .profile
-    
-=======
     @Published var currentScreen: AppScreen = .chat
 
->>>>>>> Stashed changes
     static let singleton = Router()
 
     private init() { }
