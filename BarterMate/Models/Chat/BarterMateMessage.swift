@@ -8,13 +8,13 @@
 import Foundation
 
 class BarterMateMessage: Hashable, Identifiable, ListElement {
-    let id: Identifier<Message>
+    let id: Identifier<BarterMateMessage>
     let chatId: Identifier<Chat>
     let sentBy: BarterMateUser
     let createdAt: Date
     let content: String
     
-    init(id: Identifier<Message> = Identifier(value: UUID().uuidString),
+    init(id: Identifier<BarterMateMessage> = Identifier(value: UUID().uuidString),
          chatId: Identifier<Chat>,
          sentBy: BarterMateUser,
          createdAt: Date,

@@ -10,11 +10,15 @@ import SwiftUI
 
 struct MessageView: View {
     @ObservedObject var viewModel: BaseViewModel<BarterMateMessage>
-    let chat: BarterMateChat
+    let chat: BarterMateChat?
     
-    init(viewModel: BaseViewModel<BarterMateMessage>, chat: BarterMateChat) {
-        self.viewModel = MessageListViewModel(modelType: BarterMateMessage.self, modelId: chat.id)
+    init(chat: BarterMateChat?) {
+        guard let chat = chat else {
+            fatalError("Chat cannot be nil")
+        }
         self.chat = chat
+            
+        self.viewModel = MessageListViewModel(modelType: BarterMateMessage.self, modelId: chat.id)
     }
     
 //    @State private var messages: [BarterMateMessage] = []
