@@ -8,14 +8,14 @@
 import Foundation
 
 class BarterMateChat: Hashable, Identifiable, ListElement {
-    let id: Identifier<Chat>
+    let id: Identifier<BarterMateChat>
     var name: String?
     var messages: [BarterMateMessage]
     var users: [BarterMateUser]
 //    var fetchMessagesClosure: (() -> Task<(), Never>)?
     var fetchMessagesClosure: (() async -> ())?
 
-    init(id: Identifier<Chat> = Identifier(value: UUID().uuidString),
+    init(id: Identifier<BarterMateChat> = Identifier(value: UUID().uuidString),
          name: String?,
          messages: [BarterMateMessage] = [],
          users: [BarterMateUser] = [],

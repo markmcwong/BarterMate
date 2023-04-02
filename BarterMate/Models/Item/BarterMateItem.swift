@@ -7,17 +7,36 @@
 
 import Foundation
 
-class BarterMateItem: Hashable, ListElement {
+class BarterMateItem: Hashable, ListElement, BarterMateUpdatableModel {
     
-    let id: Identifier<BarterMateItem>
-    let name: String
-    let description: String
-    let imageUrl: String?
-    let ownerId: Identifier<BarterMateUser>
-    let createdAt: Date
-    let updatedAt: Date
+    var id: Identifier<BarterMateItem>
+    var name: String
+    var description: String
+    var imageUrl: String?
+    var ownerId: Identifier<BarterMateUser>
+    var createdAt: Date
+    var updatedAt: Date
     
+    private var itemFacade: (any ItemFacade)?
     
+    static func getItemWithId(id: Identifier<BarterMateItem>) -> BarterMateItem {
+        let item = createUnavailableItem()
+        let facade = AmplifyItemFacade()
+        item.itemFacade = facade
+        facade.delegate = item
+        item.itemFacade?.getItemById(id: id)
+        return item
+    }
+    
+    static func createUnavailableItem() -> BarterMateItem {
+        BarterMateItem(id: Identifier(value: ""),
+                       name: "",
+                       description: "",
+                       imageUrl: nil,
+                       ownerId: Identifier(value: ""),
+                       createdAt: .distantPast,
+                       updatedAt: .distantPast)
+    }
     
     init(id: Identifier<BarterMateItem> = Identifier(value: UUID().uuidString), name: String, description: String, imageUrl: String?, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
         self.id = id
@@ -35,5 +54,17 @@ class BarterMateItem: Hashable, ListElement {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+    }
+}
+
+extension BarterMateItem: ItemFacadeDelegate {
+    func update(item: BarterMateItem) {
+        self.id = item.id
+        self.name = item.name
+        self.description = item.description
+        self.imageUrl = item.imageUrl
+        self.ownerId = item.ownerId
+        self.createdAt = item.createdAt
+        self.updatedAt = item.updatedAt
     }
 }

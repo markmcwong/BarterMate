@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateUser: ObservableObject {
+class BarterMateUser: ObservableObject, BarterMateUpdatableModel {
     var id: Identifier<BarterMateUser>
     var username: String
     
