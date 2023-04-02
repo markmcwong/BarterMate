@@ -7,18 +7,15 @@
 
 import SwiftUI
 
-struct PostingView: View, GenericListItemView {
-    typealias ListItemType = Posting
+struct PostingView: View {
+
+    let posting: BarterMatePosting
+    let user: BarterMateUser
     
-//    init(viewModel: any GenericListItemViewModel) {
-//        self._viewModel = StateObject(wrappedValue: viewModel as! PostingViewModel)
-//
-    
-    init(item: Posting) {
-        self._viewModel = ObservedObject(wrappedValue: ListItemViewModel(item: item))
+    init(posting: BarterMatePosting, user: BarterMateUser) {
+        self.posting = posting
+        self.user = user
     }
-    
-    @ObservedObject var viewModel: ListItemViewModel<Posting>
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,14 +25,14 @@ struct PostingView: View, GenericListItemView {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
-                        Text("Bob")
+                    Text(user.username)
                             .font(.system(size: 20))
                             .bold()
                 }
                 Spacer()
                 Image(systemName: "ellipsis")
             }
-            Text("Water Bottle 500 ml")
+            Text(posting.item.description)
             ZStack {
                 Image(systemName: "plus.square.fill")
                     .resizable()
@@ -44,16 +41,11 @@ struct PostingView: View, GenericListItemView {
         }
         .padding()
     }
-
-//    static func createFrom(_ genericItem: Posting) -> any V {
-//        return PostingView(viewModel: genericItem)
-//    }
-                             
 }
-//
-//struct PostingView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostingView(item: Posting(userID: "abc",item: Item(description: "Random item",userID: "abc")))
-//    }
-//}
+
+struct PostingView_Previews: PreviewProvider {
+    static var previews: some View {
+        PostingView(posting: SamplePosting.bottlePosting, user: SampleUser.bill)
+    }
+}
 

@@ -48,4 +48,5 @@ class AmplifyGenericModelService<T: BarterMateModel>: GenericModelService {
         print("test ", items)
         return items
     }
+    
 }

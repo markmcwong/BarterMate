@@ -12,27 +12,11 @@ struct ContentView: View {
     var globalState = GlobalState.shared
 
     var body: some View {
-        VStack {
-            switch router.currentScreen {
-            case .home:
-                LoginView(onLoginSuccess: {
-                    router.navigate(to: .home)
-//                    appState.isLoggedIn = true
-                })
-            case .login:
-                ListView<Item, ItemCardView>()
-                
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-//            case .profile:
-//                ProfileView()
-//                    .onSignOut {
-//                        router.navigate(to: .login)
-//                    }
-            // Add other cases for different screens as needed
-            }
+        NavigationView {
+            LoginView()
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+
 //        .environmentObject(appState)
     }
 }

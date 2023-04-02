@@ -9,13 +9,22 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
-    
+    @StateObject private var router = Router.singleton
+    let viewModel: HomeViewModel
+
+
     var body: some View {
         VStack {
-            Button("Home View") {
+            switch router.currentScreen {
+            case .profile:
+                UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
+            case .request:
+                RequestFeedView()
+            case .posting:
+                PostingFeedView()
             }
-            .padding()
+            NavBarView()
+
         }
-        .padding()
     }
 }
