@@ -21,7 +21,6 @@ struct BarterMateApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //HomeView(viewModel: HomeViewModel(user: SampleUser.bill))
         }
     }
 }

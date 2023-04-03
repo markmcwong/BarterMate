@@ -15,9 +15,9 @@ class ImageProvider {
     private var storageService: StorageService
     private var subscribers = Set<AnyCancellable>()
     
-    init(key: String, manager: ServiceManager = AppServiceManager.shared) {
+    init(key: String) {
         self.cacheKey = key
-        self.storageService = manager.storageService
+        self.storageService = AmplifyStorageService()
     }
     
     public func getImageFromKey(completed: @escaping (Data) -> Void) {
