@@ -21,18 +21,19 @@ class ImageProvider {
     }
     
     public func getImageFromKey(completed: @escaping (Data) -> Void) {
-        let downloadTask = Amplify.Storage.downloadData(key: cacheKey)
-
+        let downloadTask = storageService.downloadImage(key: cacheKey)
         Task {
             for await progress in await downloadTask.progress {
-                // optionally update a progress bar here
+                print(progress.description)
+                if progress.isFinished {
+                    break
+                }
             }
+            print("done downloading")
             do {
                 let data = try await downloadTask.value
-                print("Image loaded")
                 completed(data)
             } catch {
-                print("Cannot download image")
             }
         }
     }

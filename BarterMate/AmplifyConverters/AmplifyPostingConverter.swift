@@ -18,28 +18,6 @@ struct AmplifyPostingConverter {
             return nil
         }
         
-//        Task {
-//            do {
-//                let item = try await Amplify.DataStore.query(Item.self, byId: itemId)
-//
-//                guard let item = item else {
-//                    return
-//                }
-//
-//                let convertedItem = AmplifyConverter.toBarterMateModel(model: item)
-//
-//                guard let convertedItem = convertedItem as? BarterMateItem else {
-//                    return
-//                }
-//
-//                let barterMatePosting = BarterMatePosting(id: Identifier(value: posting.id),
-//                                                          item: convertedItem,
-//                                                          createdAt: createdAt.foundationDate,
-//                                                          updatedAt: updatedAt.foundationDate)
-//
-//                return barterMatePosting
-//            }
-//        }
         
         let convertedItem = BarterMateItem.getItemWithId(id: Identifier(value: itemId))
 

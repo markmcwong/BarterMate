@@ -19,7 +19,7 @@ struct RequestCardView: View {
     var body: some View {
         HStack {
             HStack {
-                Image("blaa")
+                UserProfileImageView()
                     .frame(width: 50, height: 50)
                     .background(Circle().fill(Color.gray))
                     .clipShape(Circle())

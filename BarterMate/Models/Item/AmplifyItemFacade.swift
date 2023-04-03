@@ -17,7 +17,6 @@ class AmplifyItemFacade: ItemFacade {
         }
         
         Task {
-            print("id is: " + "\(id)")
             
             guard let amplifyItem = try await Amplify.DataStore.query(Item.self, byId: id.value) else {
                 return

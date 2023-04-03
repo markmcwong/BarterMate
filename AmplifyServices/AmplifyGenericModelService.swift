@@ -45,7 +45,6 @@ class AmplifyGenericModelService<T: BarterMateModel>: GenericModelService {
 //        }
 
         let items = try await Amplify.DataStore.query(T.self)
-        print("test ", items)
         return items
     }
     

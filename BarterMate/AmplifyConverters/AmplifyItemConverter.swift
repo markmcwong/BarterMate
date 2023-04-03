@@ -14,14 +14,15 @@ struct AmplifyItemConverter {
         guard let name = item.name,
               let description = item.description,
               let createdAt = item.createdAt,
-              let updatedAt = item.updatedAt else {
+              let updatedAt = item.updatedAt,
+              let key = item.imageKey else {
             return nil
         }
         
         let barterMateItem = BarterMateItem(id: Identifier(value: item.id),
                                   name: name,
                                   description: description,
-                                  imageUrl: item.image,
+                                  imageUrl: key,
                                   ownerId: Identifier<BarterMateUser>(value: item.userID),
                                   createdAt: createdAt.foundationDate,
                                   updatedAt: updatedAt.foundationDate)
@@ -33,8 +34,8 @@ struct AmplifyItemConverter {
         let amplifyItem = Item(id: item.id.value,
                                name: item.name,
                                description: item.description,
-                               image: item.imageUrl,
-                               userID: item.ownerId.value)
+                               userID: item.ownerId.value,
+                               imageKey: item.imageUrl)
         
         return amplifyItem
     }

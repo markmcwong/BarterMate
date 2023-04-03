@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateItem: Hashable, ListElement {
+class BarterMateItem: Hashable, ListElement, ObservableObject{
     
     var id: Identifier<BarterMateItem>
     var name: String
@@ -16,6 +16,7 @@ class BarterMateItem: Hashable, ListElement {
     var ownerId: Identifier<BarterMateUser>
     var createdAt: Date
     var updatedAt: Date
+    @Published var imageData: Data?
     
     private var itemFacade: (any ItemFacade)?
     
@@ -46,6 +47,19 @@ class BarterMateItem: Hashable, ListElement {
         self.ownerId = ownerId
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        loadImage()
+    }
+    
+    func loadImage() {
+        guard let imageUrl = imageUrl else {
+            return
+        }
+        print("start provider")
+        ImageProvider(key: imageUrl).getImageFromKey { data in
+            DispatchQueue.main.async {
+                self.imageData = data
+            }
+        }
     }
     
     static func == (lhs: BarterMateItem, rhs: BarterMateItem) -> Bool {
@@ -66,5 +80,6 @@ extension BarterMateItem: ItemFacadeDelegate {
         self.ownerId = item.ownerId
         self.createdAt = item.createdAt
         self.updatedAt = item.updatedAt
+        loadImage()
     }
 }

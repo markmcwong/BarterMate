@@ -8,13 +8,13 @@
 import Foundation
 
 class BarterMateRequest: Hashable, ListElement {
-    let id: Identifier<Request>
+    let id: Identifier<BarterMateRequest>
     var description: String
     let ownerId: Identifier<BarterMateUser>
     var createdAt: Date
     var updatedAt: Date
     
-    init(id: Identifier<Request> = Identifier(value: UUID().uuidString), description: String, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
+    init(id: Identifier<BarterMateRequest> = Identifier(value: UUID().uuidString), description: String, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
         self.id = id
         self.description = description
         self.ownerId = ownerId

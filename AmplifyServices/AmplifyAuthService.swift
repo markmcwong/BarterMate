@@ -68,11 +68,9 @@ public class AmplifyAuthService: AuthService {
                 let user = try await Amplify.Auth.getCurrentUser()
                 authUser = user
                 GlobalState.shared.updateUser(userId: user.userId)
-                print("Email login - id: ", GlobalState.shared.userId)
             }
             return ActionResult(res.isSignedIn, res.isSignedIn ? "" : "Invalid Credentials")
         } catch let error as AuthError {
-            print(error.errorDescription)
             return ActionResult(false, "Sign in failed with error: \(error)")
         } catch {
             return ActionResult(false, "Unexpected error: \(error)")

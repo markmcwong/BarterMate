@@ -10,18 +10,31 @@ import SwiftUI
 
 struct MyItemCardView: View {
 
-    let item: BarterMateItem
+    @ObservedObject var item: BarterMateItem
     @ObservedObject var parentViewModel: ListViewModel<BarterMateItem>
+    @State var image: Image? = nil
 
     init(item: BarterMateItem, parentViewModel: ListViewModel<BarterMateItem>) {
         self.item = item
         self.parentViewModel = parentViewModel
+        loadImage()
     }
+    
+    func loadImage() {
+        guard let data = item.imageData else {
+            return
+        }
+        guard let uiImage = UIImage(data: data) else {
+            return
+        }
+        image = Image(uiImage: uiImage)
+    }
+
     
     var body: some View {
         HStack {
             HStack {
-                Image(systemName: "person")
+                ItemImageView(item: item)
                     .frame(width: 150, height: 150)
                     .padding(.trailing, 10)
                 VStack(spacing: 5) {
@@ -47,6 +60,7 @@ struct MyItemCardView: View {
             .border(.green)
             .shadow(color: .gray, radius: 3, x: 2, y: 2)
         }
+
     }
 }
 

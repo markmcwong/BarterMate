@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostingFeedView: View {
-    @ObservedObject var viewModel = PostingFeedViewModel(modelType: BarterMatePosting.self)
+    @ObservedObject var viewModel: PostingFeedViewModel
     
     var body: some View {
         ScrollView(.vertical) {
@@ -34,6 +34,6 @@ struct PostingFeedView: View {
 
 struct PostingFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        PostingFeedView()
+        PostingFeedView(viewModel: PostingFeedViewModel(modelType: BarterMatePosting.self))
     }
 }
