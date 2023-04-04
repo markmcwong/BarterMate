@@ -3,6 +3,26 @@ query GetMessage($id: ID!) {
   getMessage(id: $id) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -26,19 +46,20 @@ query GetMessage($id: ID!) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 query ListMessages(
@@ -50,6 +71,18 @@ query ListMessages(
     items {
       id
       chatID
+      createdAt
+      content
+      SentIn {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      userID
       SentBy {
         id
         username
@@ -59,13 +92,10 @@ query ListMessages(
         _deleted
         _lastChangedAt
       }
-      createdAt
-      content
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      messageSentById
     }
     nextToken
     startedAt
@@ -86,6 +116,18 @@ query SyncMessages(
     items {
       id
       chatID
+      createdAt
+      content
+      SentIn {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      userID
       SentBy {
         id
         username
@@ -95,13 +137,10 @@ query SyncMessages(
         _deleted
         _lastChangedAt
       }
-      createdAt
-      content
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      messageSentById
     }
     nextToken
     startedAt
@@ -124,6 +163,18 @@ query MessagesByChatID(
     items {
       id
       chatID
+      createdAt
+      content
+      SentIn {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      userID
       SentBy {
         id
         username
@@ -133,13 +184,57 @@ query MessagesByChatID(
         _deleted
         _lastChangedAt
       }
-      createdAt
-      content
       updatedAt
       _version
       _deleted
       _lastChangedAt
-      messageSentById
+    }
+    nextToken
+    startedAt
+  }
+}
+query MessagesByUserID(
+  $userID: ID!
+  $sortDirection: ModelSortDirection
+  $filter: ModelMessageFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  messagesByUserID(
+    userID: $userID
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      chatID
+      createdAt
+      content
+      SentIn {
+        id
+        name
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      userID
+      SentBy {
+        id
+        username
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
     }
     nextToken
     startedAt
@@ -154,11 +249,11 @@ query GetChat($id: ID!) {
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -321,6 +416,21 @@ query GetUser($id: ID!) {
       nextToken
       startedAt
     }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -354,6 +464,10 @@ query ListUsers(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -399,6 +513,10 @@ query SyncUsers(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -1022,6 +1140,10 @@ query GetUserChat($id: ID!) {
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1234,6 +1356,10 @@ query GetUserTransaction($id: ID!) {
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }

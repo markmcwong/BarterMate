@@ -10,6 +10,7 @@ public struct User: Model {
   public var Requests: List<Request>?
   public var Items: List<Item>?
   public var Chats: List<UserChat>?
+  public var SentMessages: List<Message>?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
   
@@ -19,7 +20,8 @@ public struct User: Model {
       Postings: List<Posting>? = [],
       Requests: List<Request>? = [],
       Items: List<Item>? = [],
-      Chats: List<UserChat>? = []) {
+      Chats: List<UserChat>? = [],
+      SentMessages: List<Message>? = []) {
     self.init(id: id,
       username: username,
       Transactions: Transactions,
@@ -27,6 +29,7 @@ public struct User: Model {
       Requests: Requests,
       Items: Items,
       Chats: Chats,
+      SentMessages: SentMessages,
       createdAt: nil,
       updatedAt: nil)
   }
@@ -37,6 +40,7 @@ public struct User: Model {
       Requests: List<Request>? = [],
       Items: List<Item>? = [],
       Chats: List<UserChat>? = [],
+      SentMessages: List<Message>? = [],
       createdAt: Temporal.DateTime? = nil,
       updatedAt: Temporal.DateTime? = nil) {
       self.id = id
@@ -46,6 +50,7 @@ public struct User: Model {
       self.Requests = Requests
       self.Items = Items
       self.Chats = Chats
+      self.SentMessages = SentMessages
       self.createdAt = createdAt
       self.updatedAt = updatedAt
   }

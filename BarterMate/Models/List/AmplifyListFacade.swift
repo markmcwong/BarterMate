@@ -129,13 +129,39 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         
         Task {
             let m = Message.keys
-            let amplifyMessageModels = try await Amplify.DataStore.query(Message.self, where: m.chatID.eq(chatId))
-            let barterMateModels = amplifyMessageModels.compactMap {
-                AmplifyMessageAdapter.toBarterMateModel(message: $0)
-            }
+//            guard let type = convertToAmplifyType(type: U.typeName) else {
+//                print("cannot convert to amplify type")
+//                return
+//            }
+            print("before querying")
+            do {
+//                let sink = Amplify.Publisher.create {
+//                    try await Amplify.DataStore.query(
+//                        Message.self
+////                        , where: p.rating > 4 && p.status == PostStatus.active
+//                    )
+//                }.sink {
+//                    if case let .failure(error) = $0 {
+//                        print("Error listing posts - \(error)")
+//                    }
+//                }
+//                receiveValue: { result in
+//                    print("Published posts with rating greater than 4: \(reGsult)")
+//                }
+                let amplifyMessageModels = try await Amplify.DataStore.query(Message.self)
+//                                                                             , where: m.chatID.eq(chatId))
+//                print("message models: ", amplifyMessageModels)
+                let barterMateModels = amplifyMessageModels.compactMap {
+                    AmplifyMessageAdapter.toBarterMateModel(message: $0 as! Message)
+                }
 
-            if let barterMateModels = barterMateModels as? [U] {
-                delegate.insertAll(models: barterMateModels)
+                print("description : ", barterMateModels.description)
+
+                if let barterMateModels = barterMateModels as? [U] {
+                    delegate.insertAll(models: barterMateModels)
+                }
+            } catch let error {
+                print("Error messages : ", error.localizedDescription)
             }
         }
     }
@@ -157,7 +183,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
                     delegate.insert(model: barterMateChat as! U)
                 }
             }
-
+            
             if let barterMateModels = barterMateModels as? [U] {
                 delegate.insertAll(models: barterMateModels)
             }
@@ -171,6 +197,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
+                print("cannot convert to amplify type")
                 return
             }
             
@@ -197,6 +224,8 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             return Posting.self
         case "BarterMateChat":
             return Chat.self
+        case "BarterMateMessage":
+            return Message.self
         default:
             return nil
         }

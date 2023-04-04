@@ -4,40 +4,35 @@ import Foundation
 
 public struct Message: Model {
   public let id: String
-  public var chatID: String
-  public var SentBy: User
   public var createdAt: Temporal.DateTime
   public var content: String
+  public var SentIn: Chat?
+  public var SentBy: User?
   public var updatedAt: Temporal.DateTime?
-  public var messageSentById: String
   
   public init(id: String = UUID().uuidString,
-      chatID: String,
-      SentBy: User,
       createdAt: Temporal.DateTime,
       content: String,
-      messageSentById: String) {
+      SentIn: Chat? = nil,
+      SentBy: User? = nil) {
     self.init(id: id,
-      chatID: chatID,
-      SentBy: SentBy,
       createdAt: createdAt,
       content: content,
-      updatedAt: nil,
-      messageSentById: messageSentById)
+      SentIn: SentIn,
+      SentBy: SentBy,
+      updatedAt: nil)
   }
   internal init(id: String = UUID().uuidString,
-      chatID: String,
-      SentBy: User,
       createdAt: Temporal.DateTime,
       content: String,
-      updatedAt: Temporal.DateTime? = nil,
-      messageSentById: String) {
+      SentIn: Chat? = nil,
+      SentBy: User? = nil,
+      updatedAt: Temporal.DateTime? = nil) {
       self.id = id
-      self.chatID = chatID
-      self.SentBy = SentBy
       self.createdAt = createdAt
       self.content = content
+      self.SentIn = SentIn
+      self.SentBy = SentBy
       self.updatedAt = updatedAt
-      self.messageSentById = messageSentById
   }
 }

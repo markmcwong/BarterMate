@@ -6,12 +6,11 @@ extension Message {
   // MARK: - CodingKeys 
    public enum CodingKeys: String, ModelKey {
     case id
-    case chatID
-    case SentBy
     case createdAt
     case content
+    case SentIn
+    case SentBy
     case updatedAt
-    case messageSentById
   }
   
   public static let keys = CodingKeys.self
@@ -28,17 +27,17 @@ extension Message {
     
     model.attributes(
       .index(fields: ["chatID"], name: "byChat"),
+      .index(fields: ["userID"], name: "byUser"),
       .primaryKey(fields: [message.id])
     )
     
     model.fields(
       .field(message.id, is: .required, ofType: .string),
-      .field(message.chatID, is: .required, ofType: .string),
-      .hasOne(message.SentBy, is: .required, ofType: User.self, associatedWith: User.keys.id, targetNames: ["messageSentById"]),
       .field(message.createdAt, is: .required, ofType: .dateTime),
       .field(message.content, is: .required, ofType: .string),
-      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime),
-      .field(message.messageSentById, is: .required, ofType: .string)
+      .belongsTo(message.SentIn, is: .optional, ofType: Chat.self, targetNames: ["chatID"]),
+      .belongsTo(message.SentBy, is: .optional, ofType: User.self, targetNames: ["userID"]),
+      .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
 }

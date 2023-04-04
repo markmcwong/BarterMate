@@ -6,6 +6,26 @@ mutation CreateMessage(
   createMessage(input: $input, condition: $condition) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -29,19 +49,20 @@ mutation CreateMessage(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 mutation UpdateMessage(
@@ -51,6 +72,26 @@ mutation UpdateMessage(
   updateMessage(input: $input, condition: $condition) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -74,19 +115,20 @@ mutation UpdateMessage(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 mutation DeleteMessage(
@@ -96,6 +138,26 @@ mutation DeleteMessage(
   deleteMessage(input: $input, condition: $condition) {
     id
     chatID
+    createdAt
+    content
+    SentIn {
+      id
+      ChatMessages {
+        nextToken
+        startedAt
+      }
+      ChatUsers {
+        nextToken
+        startedAt
+      }
+      name
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+    userID
     SentBy {
       id
       username
@@ -119,19 +181,20 @@ mutation DeleteMessage(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
       _deleted
       _lastChangedAt
     }
-    createdAt
-    content
     updatedAt
     _version
     _deleted
     _lastChangedAt
-    messageSentById
   }
 }
 mutation CreateChat(
@@ -146,11 +209,11 @@ mutation CreateChat(
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -189,11 +252,11 @@ mutation UpdateChat(
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -232,11 +295,11 @@ mutation DeleteChat(
         chatID
         createdAt
         content
+        userID
         updatedAt
         _version
         _deleted
         _lastChangedAt
-        messageSentById
       }
       nextToken
       startedAt
@@ -342,6 +405,21 @@ mutation CreateUser(
       nextToken
       startedAt
     }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -428,6 +506,21 @@ mutation UpdateUser(
       nextToken
       startedAt
     }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
     createdAt
     updatedAt
     _version
@@ -506,6 +599,21 @@ mutation DeleteUser(
         chatId
         userId
         createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+    SentMessages {
+      items {
+        id
+        chatID
+        createdAt
+        content
+        userID
         updatedAt
         _version
         _deleted
@@ -974,6 +1082,10 @@ mutation CreateUserChat(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1032,6 +1144,10 @@ mutation UpdateUserChat(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -1096,6 +1212,10 @@ mutation DeleteUserChat(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1137,6 +1257,10 @@ mutation CreateUserTransaction(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }
@@ -1197,6 +1321,10 @@ mutation UpdateUserTransaction(
         nextToken
         startedAt
       }
+      SentMessages {
+        nextToken
+        startedAt
+      }
       createdAt
       updatedAt
       _version
@@ -1251,6 +1379,10 @@ mutation DeleteUserTransaction(
         startedAt
       }
       Chats {
+        nextToken
+        startedAt
+      }
+      SentMessages {
         nextToken
         startedAt
       }

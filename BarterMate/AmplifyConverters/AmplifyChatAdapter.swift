@@ -11,14 +11,27 @@ import Combine
 
 struct AmplifyChatAdapter {
     static func toBarterMateModel(chat: Chat, completion: @escaping (BarterMateChat?) -> Void) {
-        guard let name = chat.name else {
-            completion(nil)
-            return
-        }
+//        guard let name = chat.name else {
+//            completion(nil)
+//            thro
+//        }
 
 
         Task {
             try await chat.ChatUsers?.fetch()
+            do {
+                try await chat.ChatMessages?.fetch()
+            } catch let error as DataStoreError {
+                print("DataStoreError: ", error.recoverySuggestion)
+                //                                barterMateChat.messages = []
+            } catch let error as CoreError {
+                print("CoreError: ", error.recoverySuggestion)
+                print(error.debugDescription, error.localizedDescription)
+                //                                barterMateChat.messages = []
+            } catch let error {
+                print("Barter Mate Chat Message error: ", error.localizedDescription)
+                //                                barterMateChat.messages = []
+            }
             let chatUsers = chat.ChatUsers?.compactMap { chatUser in
                 return AmplifyUserConverter.toBarterMateModel(user: chatUser.user)
                 // return Identifier<BarterMateUser>(value: user.id)
@@ -46,7 +59,7 @@ struct AmplifyChatAdapter {
             
 
             let barterMateChat = BarterMateChat(id: Identifier(value: chat.id),
-                                      name: name,
+                                                name: chat.name,
                                       messages: [], // chatMessages,
                                       users: chatUsers!,
                                       fetchMessagesClosure: task
@@ -70,6 +83,7 @@ struct AmplifyChatAdapter {
 //            }
 //
             completion(barterMateChat)
+//            return barterMateChat
         }
     }
 //
