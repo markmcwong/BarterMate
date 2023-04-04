@@ -19,9 +19,9 @@ struct HomeView: View {
             case .profile:
                 UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
             case .request:
-                RequestFeedView()
+                RequestFeedView(viewModel: viewModel.requestFeedViewModel)
             case .posting:
-                PostingFeedView()
+                PostingFeedView(viewModel: viewModel.postingFeedViewModel)
             case .chat:
                 ChatListView()
             case .message:

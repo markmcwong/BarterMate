@@ -9,6 +9,7 @@ public struct Item: Model {
   public var image: String?
   public var categories: List<Category>?
   public var userID: String
+  public var imageKey: String?
   public var createdAt: Temporal.DateTime?
   public var updatedAt: Temporal.DateTime?
   
@@ -17,13 +18,15 @@ public struct Item: Model {
       description: String? = nil,
       image: String? = nil,
       categories: List<Category>? = [],
-      userID: String) {
+      userID: String,
+      imageKey: String? = nil) {
     self.init(id: id,
       name: name,
       description: description,
       image: image,
       categories: categories,
       userID: userID,
+      imageKey: imageKey,
       createdAt: nil,
       updatedAt: nil)
   }
@@ -33,6 +36,7 @@ public struct Item: Model {
       image: String? = nil,
       categories: List<Category>? = [],
       userID: String,
+      imageKey: String? = nil,
       createdAt: Temporal.DateTime? = nil,
       updatedAt: Temporal.DateTime? = nil) {
       self.id = id
@@ -41,6 +45,7 @@ public struct Item: Model {
       self.image = image
       self.categories = categories
       self.userID = userID
+      self.imageKey = imageKey
       self.createdAt = createdAt
       self.updatedAt = updatedAt
   }

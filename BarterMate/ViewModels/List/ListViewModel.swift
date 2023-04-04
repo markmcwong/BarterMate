@@ -21,3 +21,4 @@ class ListViewModel<T: ListElement>: ObservableObject {
         modelList.remove(model: item)
     }
 }
+

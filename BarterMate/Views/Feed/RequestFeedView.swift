@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RequestFeedView: View {
-    @ObservedObject var viewModel = RequestFeedViewModel(modelType: BarterMateRequest.self)
+    @ObservedObject var viewModel: RequestFeedViewModel
     
     var body: some View {
         ScrollView(.vertical) {
@@ -21,15 +21,15 @@ struct RequestFeedView: View {
                     }
                 }.id(UUID())
 
-//                if !viewModel.requestList.e {
-//                    Text("Loading Request")
-//                        .padding()
-//                } else
                 if viewModel.modelList.elements.count == 0 {
                     Text("No More Request")
                         .padding()
                 } else {
 
+                }
+                
+                Button("Refresh Request Feed") {
+                    viewModel.refresh()
                 }
             }
         }
@@ -39,6 +39,6 @@ struct RequestFeedView: View {
 
 struct RequestFeedView_Previews: PreviewProvider {
     static var previews: some View {
-        RequestFeedView()
+        RequestFeedView(viewModel: RequestFeedViewModel(modelType: BarterMateRequest.self))
     }
 }

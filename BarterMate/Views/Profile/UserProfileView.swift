@@ -11,7 +11,16 @@ struct UserProfileView: View {
     
     @State var showModal: Bool = false
     @ObservedObject var viewModel: UserProfileViewModel
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    @State private var image: Image?
     
+    func loadImage() {
+        guard let inputImage = inputImage else {
+            return
+        }
+        image = Image(uiImage: inputImage)
+    }
     var body: some View {
         VStack {
             ScrollView(.vertical) {
@@ -21,10 +30,17 @@ struct UserProfileView: View {
                             .frame(width: 200,  height: 200)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(lineWidth: 1))
+                            .onTapGesture {
+                                showingImagePicker = true
+                            }
+                            .onChange(of: inputImage) { _ in
+                                loadImage()
+                            }
+                        
                         Text(viewModel.user.username)
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                        Text("Post " + "\(viewModel.itemList.elements.count)")
+                        Text("Item " + "\(viewModel.itemList.elements.count)")
                             .font(.subheadline)
                             .fontWeight(.bold)
                         MyItemListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.itemList))
@@ -39,6 +55,9 @@ struct UserProfileView: View {
                                                      ownerId: viewModel.user.id),
                      showModal: $showModal)
         }, showModal: $showModal))
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
     }
 }
 

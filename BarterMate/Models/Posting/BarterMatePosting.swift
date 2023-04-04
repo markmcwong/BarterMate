@@ -7,9 +7,9 @@
 
 import Foundation
 
-class BarterMatePosting: Hashable, ListElement {
+class BarterMatePosting: Hashable, ListElement, ObservableObject {
     let id: Identifier<BarterMatePosting>
-    let item: BarterMateItem
+    @Published var item: BarterMateItem
     var createdAt: Date
     var updatedAt: Date
     

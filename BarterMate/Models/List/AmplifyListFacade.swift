@@ -20,7 +20,6 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             print("No delegate available")
             return
         }
-//        print("Correct delegate type")
         self.delegate = delegate
     }
     
@@ -28,8 +27,10 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         Task {
             do {
                 guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
+                    print("erorr converting")
                     return
                 }
+                print("saving")
                 _ = try await Amplify.DataStore.save(amplifyModel)
             } catch {
                 os_log("Error saving item into Amplify")

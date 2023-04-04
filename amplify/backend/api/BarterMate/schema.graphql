@@ -24,6 +24,7 @@ type User @model @auth(rules: [{allow: public}]) {
   Items: [Item] @hasMany(indexName: "byUser", fields: ["id"])
   Chats: [Chat] @manyToMany(relationName: "UserChat")
   SentMessages: [Message] @hasMany(indexName: "byUser", fields: ["id"])
+  profilePic: String
 }
 
 type Request @model @auth(rules: [{allow: public}]) {
@@ -71,5 +72,6 @@ type Item @model @auth(rules: [{allow: public}]) {
   image: AWSURL
   categories: [Category] @hasMany(indexName: "byItem", fields: ["id"])
   userID: ID! @index(name: "byUser")
+  imageKey: String
 }
  

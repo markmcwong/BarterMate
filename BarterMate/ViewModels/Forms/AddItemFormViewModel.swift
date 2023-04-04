@@ -5,6 +5,7 @@
 //  Created by Zico on 31/3/23.
 //
 import Combine
+import UIKit
 
 class AddItemFormViewModel: ObservableObject {
     @Published var name: String = ""
@@ -12,7 +13,10 @@ class AddItemFormViewModel: ObservableObject {
     @Published var imageUrl: String?
     @Published var errorMessage = ""
     @Published var itemList: ModelList<BarterMateItem>
+    @Published var image: UIImage?
     let ownerId: Identifier<BarterMateUser>
+    
+    let storageService = AmplifyStorageService()
     
     init(itemList: ModelList<BarterMateItem>,
          ownerId: Identifier<BarterMateUser>) {
@@ -30,6 +34,16 @@ class AddItemFormViewModel: ObservableObject {
                                      ownerId: ownerId,
                                      createdAt: .now,
                                      updatedAt: .now)
+        if let image = image {
+            let pictureKey = "\(ownerId.value)\(newItem.id.value)"
+            newItem.imageUrl = pictureKey
+            if let pngData = image.pngData() {
+                newItem.imageData = pngData
+                Task {
+                    storageService.uploadImage(key: pictureKey, pngData)
+                }
+            }
+        }
         itemList.saveItem(element: newItem)
         itemList.insert(model: newItem)
     }
@@ -47,5 +61,4 @@ class AddItemFormViewModel: ObservableObject {
         
         return true
     }
-    
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PostingView: View {
 
-    let posting: BarterMatePosting
+    @ObservedObject var posting: BarterMatePosting
     let user: BarterMateUser
     
     init(posting: BarterMatePosting, user: BarterMateUser) {
@@ -32,10 +32,13 @@ struct PostingView: View {
                 Spacer()
                 Image(systemName: "ellipsis")
             }
-            Text(posting.item.description)
+
+                Text(posting.item.name)
+                Text(posting.item.description)
+            
+
             ZStack {
-                Image(systemName: "plus.square.fill")
-                    .resizable()
+                ItemImageView(item: posting.item)
                     .scaledToFit()
             }
         }

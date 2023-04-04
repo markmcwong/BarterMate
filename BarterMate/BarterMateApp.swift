@@ -21,7 +21,6 @@ struct BarterMateApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //HomeView(viewModel: HomeViewModel(user: SampleUser.bill))
         }
     }
 }
@@ -33,8 +32,9 @@ func configureAmplify() {
         try Amplify.add(plugin: AWSAPIPlugin(modelRegistration: AmplifyModels()))
         try Amplify.add(plugin: dataStorePlugin)
         try Amplify.add(plugin: AWSCognitoAuthPlugin())
-//        try Amplify.add(plugin: AWSS3StoragePlugin())
+        try Amplify.add(plugin: AWSS3StoragePlugin())
         try Amplify.configure()
+
         print("Initialized Amplify");
     } catch {
         // simplified error handling for the tutorial

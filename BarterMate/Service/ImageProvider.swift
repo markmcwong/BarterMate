@@ -15,24 +15,25 @@ class ImageProvider {
     private var storageService: StorageService
     private var subscribers = Set<AnyCancellable>()
     
-    init(key: String, manager: ServiceManager = AppServiceManager.shared) {
+    init(key: String) {
         self.cacheKey = key
-        self.storageService = manager.storageService
+        self.storageService = AmplifyStorageService()
     }
     
     public func getImageFromKey(completed: @escaping (Data) -> Void) {
-        let downloadTask = Amplify.Storage.downloadData(key: cacheKey)
-
+        let downloadTask = storageService.downloadImage(key: cacheKey)
         Task {
             for await progress in await downloadTask.progress {
-                // optionally update a progress bar here
+                print(progress.description)
+                if progress.isFinished {
+                    break
+                }
             }
+            print("done downloading")
             do {
                 let data = try await downloadTask.value
-                print("Image loaded")
                 completed(data)
             } catch {
-                print("Cannot download image")
             }
         }
     }

@@ -43,6 +43,16 @@ class BaseViewModel<T: ListElement>: ObservableObject {
         }
     }
     
+    
+    func refresh() {
+        self.modelList = ModelList<T>.all()
+        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
+            self?.objectWillChange.send()
+            self?.populateUserMap()
+        }.store(in: &cancellables)
+    }
+    
     func getUserIdFromModel(_ model: T) -> Identifier<BarterMateUser> {
         fatalError("getUserIdFromModel must be implemented in subclass")
     }

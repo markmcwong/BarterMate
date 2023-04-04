@@ -24,8 +24,6 @@ public class AmplifyAuthService: AuthService {
         
         do {
             let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
-//            let userId = try await Amplify.Auth.getCurrentUser().userId
-//            let _ = try await AmplifyGenericModelService<User>().save(User(id: userId, username: username))
             switch res.nextStep {
             case .confirmUser:
                 self.username = username
@@ -49,7 +47,7 @@ public class AmplifyAuthService: AuthService {
                 let signInRes = try await Amplify.Auth.signIn(username: email, password: password)
                 if signInRes.isSignedIn {
                     let user = try await Amplify.Auth.getCurrentUser()
-                    let _ = try await AmplifyGenericModelService<User>().save(User(id: user.userId, username: username))
+                    let _ = try await Amplify.DataStore.save(User(id: user.userId, username: username))
                 }
             }
             return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
@@ -68,11 +66,9 @@ public class AmplifyAuthService: AuthService {
                 let user = try await Amplify.Auth.getCurrentUser()
                 authUser = user
                 GlobalState.shared.updateUser(userId: user.userId)
-                print("Email login - id: ", GlobalState.shared.userId)
             }
             return ActionResult(res.isSignedIn, res.isSignedIn ? "" : "Invalid Credentials")
         } catch let error as AuthError {
-            print(error.errorDescription)
             return ActionResult(false, "Sign in failed with error: \(error)")
         } catch {
             return ActionResult(false, "Unexpected error: \(error)")
