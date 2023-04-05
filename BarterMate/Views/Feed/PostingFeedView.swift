@@ -11,6 +11,7 @@ struct PostingFeedView: View {
     @ObservedObject var viewModel: PostingFeedViewModel
     
     var body: some View {
+        
         ScrollView(.vertical) {
             VStack {
                 LazyVStack {
@@ -26,6 +27,10 @@ struct PostingFeedView: View {
                         .padding()
                 } else {
                     
+                }
+                
+                Button("Refresh Posting Feed") {
+                    viewModel.refresh()
                 }
             }
         }

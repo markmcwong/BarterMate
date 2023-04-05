@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FormView: View {
+struct AddItemFormView: View {
     @ObservedObject var viewModel: AddItemFormViewModel
     @Binding var showModal: Bool
     @State private var showingImagePicker = false
@@ -73,6 +73,6 @@ struct FormView_Previews: PreviewProvider {
     static var viewModel = AddItemFormViewModel(itemList: itemList, ownerId: SampleUser.bill.id)
     
     static var previews: some View {
-        FormView(viewModel: viewModel, showModal: .constant(true))
+        AddItemFormView(viewModel: viewModel, showModal: .constant(true))
     }
 }

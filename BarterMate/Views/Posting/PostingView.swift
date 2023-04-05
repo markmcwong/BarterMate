@@ -11,6 +11,13 @@ struct PostingView: View {
 
     @ObservedObject var posting: BarterMatePosting
     let user: BarterMateUser
+    var parentViewModel: ListViewModel<BarterMatePosting>?
+    
+    init(posting: BarterMatePosting, user: BarterMateUser, parentViewModel: ListViewModel<BarterMatePosting>) {
+        self.posting = posting
+        self.user = user
+        self.parentViewModel = parentViewModel
+    }
     
     init(posting: BarterMatePosting, user: BarterMateUser) {
         self.posting = posting
@@ -30,6 +37,12 @@ struct PostingView: View {
                             .bold()
                 }
                 Spacer()
+                if parentViewModel != nil {
+                    Image(systemName: "cross")
+                        .onTapGesture {
+                            parentViewModel?.deleteItem(item: posting)
+                        }
+                }
                 Image(systemName: "ellipsis")
             }
 

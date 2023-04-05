@@ -8,15 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct MyItemCardView: View {
+struct ItemCardView: View {
 
     @ObservedObject var item: BarterMateItem
-    @ObservedObject var parentViewModel: ListViewModel<BarterMateItem>
+    var parentViewModel: ListViewModel<BarterMateItem>?
     @State var image: Image? = nil
 
     init(item: BarterMateItem, parentViewModel: ListViewModel<BarterMateItem>) {
         self.item = item
         self.parentViewModel = parentViewModel
+        loadImage()
+    }
+    
+    init(item: BarterMateItem) {
+        self.item = item
         loadImage()
     }
     
@@ -50,8 +55,10 @@ struct MyItemCardView: View {
                             .lineLimit(1)
                         Spacer()
                     }
-                    Button("Delete Item") {
-                        parentViewModel.deleteItem(item: item)
+                    if parentViewModel != nil {
+                        Button("Delete Item") {
+                            parentViewModel?.deleteItem(item: item)
+                        }
                     }
                 }
             }
@@ -74,8 +81,8 @@ struct MyItemCardView_Previews: PreviewProvider {
         let viewModel = ListViewModel(user: SampleUser.bill, modelList: ModelList<BarterMateItem>.of(SampleUser.bill.id))
         
         VStack {
-            MyItemCardView(item: SampleItem.waterBottle, parentViewModel: viewModel)
-            MyItemCardView(item: SampleItem.guitar, parentViewModel: viewModel)
+            ItemCardView(item: SampleItem.waterBottle, parentViewModel: viewModel)
+            ItemCardView(item: SampleItem.guitar, parentViewModel: viewModel)
         }
 
     }

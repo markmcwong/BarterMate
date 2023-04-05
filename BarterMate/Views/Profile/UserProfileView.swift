@@ -9,7 +9,6 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-    @State var showModal: Bool = false
     @ObservedObject var viewModel: UserProfileViewModel
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
@@ -23,39 +22,25 @@ struct UserProfileView: View {
     }
     var body: some View {
         VStack {
-            ScrollView(.vertical) {
-                ScrollViewReader { scrollView in
-                    LazyVStack {
-                        UserProfileImageView()
-                            .frame(width: 200,  height: 200)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(lineWidth: 1))
-                            .onTapGesture {
-                                showingImagePicker = true
-                            }
-                            .onChange(of: inputImage) { _ in
-                                loadImage()
-                            }
-                        
-                        Text(viewModel.user.username)
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        Text("Item " + "\(viewModel.itemList.elements.count)")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                        MyItemListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.itemList))
-                    }
+            UserProfileImageView()
+                .frame(width: 150,  height: 150)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(lineWidth: 0.5))
+                .onTapGesture {
+                    showingImagePicker = true
                 }
+                .onChange(of: inputImage) { _ in
+                    loadImage()
+                }
+            
+            Text(viewModel.user.username)
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            VStack {
+                Spacer()
+                ProfileDetailsTabView(viewModel: viewModel)
             }
-            ProfileButtonsView().onTapGesture {
-                showModal = true
-            }
-        }.overlay(ModalView(displayView: {
-            FormView(viewModel: AddItemFormViewModel(itemList: viewModel.itemList,
-                                                     ownerId: viewModel.user.id),
-                     showModal: $showModal)
-        }, showModal: $showModal))
-        .sheet(isPresented: $showingImagePicker) {
+        }.sheet(isPresented: $showingImagePicker) {
             ImagePicker(image: $inputImage)
         }
     }

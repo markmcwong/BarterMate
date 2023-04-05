@@ -15,7 +15,7 @@ struct RequestFeedView: View {
             VStack {
                 LazyVStack {
                     ForEach(viewModel.modelList.elements, id: \.self) { request in
-                        if var user = viewModel.userIdToUser[request.ownerId] {
+                        if let user = viewModel.userIdToUser[request.ownerId] {
                             RequestCardView(request: request, user: user)
                         }
                     }

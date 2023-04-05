@@ -1,27 +1,27 @@
 //
-//  MyPostingListView.swift
+//  MyRequestView.swift
 //  BarterMate
 //
-//  Created by Zico on 1/4/23.
+//  Created by Zico on 2/4/23.
 //
 
 import SwiftUI
 
-struct MyPostingListView: View {
+struct MyRequestListView: View {
     
-    @ObservedObject var viewModel: ListViewModel<BarterMatePosting>
-    @State private var addPosting = false
+    @ObservedObject var viewModel: ListViewModel<BarterMateRequest>
     
     var body: some View {
         VStack {
-            Text("Posting " + "\(viewModel.modelList.elements.count)")
+            Text("Request " + "\(viewModel.modelList.elements.count)")
                 .font(.subheadline)
                 .fontWeight(.bold)
+            
             ScrollView(.vertical) {
                 VStack {
                     LazyVStack {
-                        ForEach(viewModel.modelList.elements, id: \.self) { posting in
-                            PostingView(posting: posting, user: viewModel.user, parentViewModel: viewModel)
+                        ForEach(viewModel.modelList.elements, id: \.self) { request in
+                            RequestCardView(request: request, user: viewModel.user, parentViewModel: viewModel)
                         }
                     }.id(UUID())
                     
@@ -33,25 +33,11 @@ struct MyPostingListView: View {
                     }
                 }
             }
-            ProfileButtonsView().onTapGesture {
-                addPosting = true
-            }
-            NavigationLink(
-                "",
-                destination: LazyView {
-                    ItemSelectionView(userid: viewModel.user.id)
-                },
-                isActive: $addPosting
-            )
-            .hidden()
-
         }
-
-
     }
 }
 
-struct MyPostingListView_Previews: PreviewProvider {
+struct MyRequestListView_Previews: PreviewProvider {
     
     static var postingList = ModelList<BarterMatePosting>.of(SampleUser.bill.id)
     

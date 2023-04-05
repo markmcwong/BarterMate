@@ -39,8 +39,10 @@ class BaseViewModel<T: ListElement>: ObservableObject {
                 continue
             }
             let user = BarterMateUser.getUserWithId(id: userId)
+            while user.username == "" {}
             userIdToUser[userId] = user
         }
+        self.objectWillChange.send()
     }
     
     
