@@ -39,8 +39,14 @@ class BaseViewModel<T: ListElement>: ObservableObject {
                 continue
             }
             let user = BarterMateUser.getUserWithId(id: userId)
-            while user.username == "" {}
-            userIdToUser[userId] = user
+            if user.username == "" {
+                user.objectWillChange.receive(on: DispatchQueue.main).sink {
+                    [weak self] _ in
+                    self?.userIdToUser[userId] = user
+                }.store(in: &cancellables)
+            } else {
+                userIdToUser[userId] = user
+            }
         }
         self.objectWillChange.send()
     }
