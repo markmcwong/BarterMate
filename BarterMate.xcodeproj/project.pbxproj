@@ -116,6 +116,7 @@
 		4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99529D9528200C99D2A /* PostingFeedView.swift */; };
 		4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99829D954AF00C99D2A /* MessageView.swift */; };
 		4DD3E99B29D96E6E00C99D2A /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */; };
+		4DD92C0829DF26B500FA8A90 /* SubscribableList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0729DF26B500FA8A90 /* SubscribableList.swift */; };
 		4DF9851C29DE913400646C33 /* BarterMateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9851B29DE913400646C33 /* BarterMateModel.swift */; };
 		51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADF62A9DFD8D7DFA848084 /* Message.swift */; };
 		5365083C8F89716DB167D767 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181792E4D02494E509A6DAD9 /* User+Schema.swift */; };
@@ -257,6 +258,7 @@
 		4DD3E99529D9528200C99D2A /* PostingFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingFeedView.swift; sourceTree = "<group>"; };
 		4DD3E99829D954AF00C99D2A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		4DD92C0729DF26B500FA8A90 /* SubscribableList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableList.swift; sourceTree = "<group>"; };
 		4DF9851B29DE913400646C33 /* BarterMateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateModel.swift; sourceTree = "<group>"; };
 		4EBEA87649BE7B1792832AD8 /* Posting.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Posting.swift; path = amplify/generated/models/Posting.swift; sourceTree = "<group>"; };
 		50ADF62A9DFD8D7DFA848084 /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
@@ -561,6 +563,7 @@
 		4D17C6F629CABD40001CB84E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4DD92C0629DF269200FA8A90 /* SubscribableList */,
 				4D06B88B29D7F4F900CD5BD4 /* Chat */,
 				172BC8B329D34491000EB398 /* List */,
 				1703C6FA29D0AFAB006466D3 /* Posting */,
@@ -736,6 +739,14 @@
 			name = Feed;
 			path = BarterMate/Views/Feed;
 			sourceTree = SOURCE_ROOT;
+		};
+		4DD92C0629DF269200FA8A90 /* SubscribableList */ = {
+			isa = PBXGroup;
+			children = (
+				4DD92C0729DF26B500FA8A90 /* SubscribableList.swift */,
+			);
+			path = SubscribableList;
+			sourceTree = "<group>";
 		};
 		8CB6AEB7278AC47DC239B200 /* AmplifyModels */ = {
 			isa = PBXGroup;
@@ -985,6 +996,7 @@
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
 				172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */,
 				4DA9D02D29D80C2100E06738 /* ChatList.swift in Sources */,
+				4DD92C0829DF26B500FA8A90 /* SubscribableList.swift in Sources */,
 				17375A1129CDB7C6008C31B4 /* BarterMateUser.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				4D2547C929DC1FA200AF8F7F /* AmplifyPredicate.swift in Sources */,

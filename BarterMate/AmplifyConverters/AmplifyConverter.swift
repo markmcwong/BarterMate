@@ -39,4 +39,13 @@ struct AmplifyConverter {
             return nil
         }
     }
+    
+    static func toAmplifyModelType(type: any ListElement.Type) -> (Model.Type)? {
+        switch type {
+        case is BarterMateChat.Type:
+            return Chat.self
+        default:
+            return nil
+        }
+    }
 }

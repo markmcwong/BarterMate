@@ -115,13 +115,17 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
 //            let predicate: BarterMatePredicate = BarterMatePredicateOperation(field: "test", operator: .equals(4))
 //            let predicateGroup: BarterMatePredicate = BarterMatePredicateGroup(type: .not, predicates: [predicate])
 //
-//            let ampQuery: QueryPredicate = QueryPredicateOperation(field: Chat.keys.name.rawValue, operator: .lessThan(test))
+//            let ampQuery: QueryPredicate = QueryPredicateOperation(field: Request.keys.updatedAt(), operator: .lessThan()
             
 //            print("ampQuery: ", ampQuery)
 //            print("predicateGroup", predicateGroup)
 //            print("converted", predicate.toAmplifyQueryPredicate(field: "test"))
 //            let _ = try await Amplify.DataStore.query(Chat.self, where: Chat.keys.name == "test")
             
+            let test = AmplifySubscriptionProvider<U>()
+            let keys = Message.keys
+            let subscription = test.querySubscription(Message.self, where: keys.SentBy == "213f11fc-0384-4c44-a8c0-e87f1b77b41e") { print($0) }
+//
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
             }

@@ -23,8 +23,8 @@ import Amplify
 //    func query(byId: String) async throws -> Posting?
 //}
 
-protocol MessageClientProtocol {
-    func subscribe(chatId: String, completion: @escaping (Result<Message, Error>) -> Void) -> Cancellable
-    func unsubscribe(chatId: String)
-    func sendMessage(_ message: Message, completion: @escaping (Result<Void, Error>) -> Void)
-}
+//protocol MessageClientProtocol {
+//    func subscribe(chatId: String, completion: @escaping (Result<Message, Error>) -> Void) -> Cancellable
+//    func unsubscribe(chatId: String)
+//    func sendMessage(_ message: Message, completion: @escaping (Result<Void, Error>) -> Void)
+//}
