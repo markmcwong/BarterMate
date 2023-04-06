@@ -10,6 +10,7 @@ import SwiftUI
 struct MyRequestListView: View {
     
     @ObservedObject var viewModel: ListViewModel<BarterMateRequest>
+    @State var showModal = false
     
     var body: some View {
         VStack {
@@ -33,7 +34,14 @@ struct MyRequestListView: View {
                     }
                 }
             }
+            
+            ProfileButtonsView().onTapGesture {
+                showModal = true
+            }
         }
+        .overlay(ModalView(displayView: {
+            AddRequestFormView(ownerId: viewModel.user.id, requestList: viewModel.modelList, showModal: $showModal)
+        }, showModal: $showModal))
     }
 }
 

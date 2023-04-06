@@ -11,20 +11,27 @@ import Combine
 class ItemSelectionViewModel: ObservableObject {
     var postingList: ModelList<BarterMatePosting>
     var itemList: ModelList<BarterMateItem>
-    var highlightedItem: BarterMateItem?
+    @Published var highlightedItem: BarterMateItem?
     private var cancellables: Set<AnyCancellable> = []
     
-    init(userid: Identifier<BarterMateUser>) {
-        postingList = ModelList<BarterMatePosting>.of(userid)
+    init(userid: Identifier<BarterMateUser>, postingList: ModelList<BarterMatePosting>) {
+        self.postingList = postingList
         itemList = ModelList<BarterMateItem>.of(userid)
-        postingList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
-            self?.objectWillChange.send()
-        }.store(in: &cancellables)
         itemList.objectWillChange.receive(on: DispatchQueue.main).sink {
             [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)
+    }
+    
+    var filteredItemLists : [BarterMateItem] {
+        itemList.elements.filter { item in
+            for posting in postingList.elements {
+                if posting.item == item {
+                    return false
+                }
+            }
+            return true
+        }
     }
     
     func highlightItem(item: BarterMateItem) {

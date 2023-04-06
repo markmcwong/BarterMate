@@ -10,16 +10,30 @@ import SwiftUI
 struct ItemSelectionView: View {
     
     @ObservedObject var viewModel: ItemSelectionViewModel
+    @Binding var addPosting: Bool
     
-    init(userid: Identifier<BarterMateUser>) {
-        viewModel = ItemSelectionViewModel(userid: userid)
+    init(userid: Identifier<BarterMateUser>, postingList: ModelList<BarterMatePosting>, addPosting: Binding<Bool>) {
+        viewModel = ItemSelectionViewModel(userid: userid, postingList: postingList)
+        self._addPosting = addPosting
     }
     
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack {
-                ForEach(viewModel.itemList.elements, id: \.self) { item in
-                    ItemCardView(item: item)
+                ForEach(viewModel.filteredItemLists, id: \.self) { item in
+                    if viewModel.highlightedItem == item {
+                        ItemCardView(item: item)
+                            .border(Color(.red))
+                            .onTapGesture {
+                                viewModel.highlightedItem = nil
+                            }
+                    } else {
+                        ItemCardView(item: item)
+                            .onTapGesture {
+                                viewModel.highlightedItem = item
+                            }
+                    }
+
                 }
             }.id(UUID())
             
@@ -29,12 +43,20 @@ struct ItemSelectionView: View {
             } else {
 
             }
+            
+            Button("Make Posting") {
+                guard viewModel.highlightedItem != nil else {
+                    return
+                }
+                viewModel.makePosting()
+                addPosting = false
+            }
         }
     }
 }
 
 struct ItemSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        ItemSelectionView(userid: SampleUser.bill.id)
+        ItemSelectionView(userid: SampleUser.bill.id, postingList: ModelList<BarterMatePosting>.empty(), addPosting: .constant(true))
     }
 }

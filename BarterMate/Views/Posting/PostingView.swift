@@ -38,12 +38,11 @@ struct PostingView: View {
                 }
                 Spacer()
                 if parentViewModel != nil {
-                    Image(systemName: "cross")
+                    Image(systemName: "x.circle.fill")
                         .onTapGesture {
                             parentViewModel?.deleteItem(item: posting)
                         }
                 }
-                Image(systemName: "ellipsis")
             }
 
                 Text(posting.item.name)

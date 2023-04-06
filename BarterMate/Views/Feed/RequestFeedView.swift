@@ -19,7 +19,9 @@ struct RequestFeedView: View {
                             RequestCardView(request: request, user: user)
                         }
                     }
+
                 }.id(UUID())
+                    
 
                 if viewModel.modelList.elements.count == 0 {
                     Text("No More Request")
@@ -32,6 +34,9 @@ struct RequestFeedView: View {
                     viewModel.refresh()
                 }
             }
+        }
+        .refreshable {
+            viewModel.refresh()
         }
     }
     

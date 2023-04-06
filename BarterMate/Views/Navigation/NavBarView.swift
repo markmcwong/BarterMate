@@ -10,7 +10,6 @@ import SwiftUI
 //TODO: Replace with styled Button
 
 struct NavBarView: View {
-    @StateObject private var router = Router.singleton
     @Binding var state: String
     
     var body: some View {

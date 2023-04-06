@@ -39,7 +39,7 @@ struct MyPostingListView: View {
             NavigationLink(
                 "",
                 destination: LazyView {
-                    ItemSelectionView(userid: viewModel.user.id)
+                    ItemSelectionView(userid: viewModel.user.id, postingList: viewModel.modelList, addPosting: $addPosting)
                 },
                 isActive: $addPosting
             )

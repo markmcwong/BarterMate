@@ -22,6 +22,11 @@ struct AddItemFormView: View {
         viewModel.image = inputImage
     }
     
+    init(ownerId: Identifier<BarterMateUser>, itemList: ModelList<BarterMateItem>, showModal: Binding<Bool>) {
+        viewModel = AddItemFormViewModel(ownerId: ownerId, itemList: itemList)
+        self._showModal = showModal
+    }
+    
     var body: some View {
         VStack {
             TextField("Name", text: $viewModel.name)
@@ -70,9 +75,9 @@ struct AddItemFormView: View {
 struct FormView_Previews: PreviewProvider {
     static var itemList = ModelList<BarterMateItem>.of(SampleUser.bill.id)
     
-    static var viewModel = AddItemFormViewModel(itemList: itemList, ownerId: SampleUser.bill.id)
+    static var viewModel = AddItemFormViewModel(ownerId: SampleUser.bill.id, itemList: itemList)
     
     static var previews: some View {
-        AddItemFormView(viewModel: viewModel, showModal: .constant(true))
+        AddItemFormView(ownerId: SampleUser.bill.id, itemList: ModelList<BarterMateItem>.empty(), showModal: .constant(true))
     }
 }

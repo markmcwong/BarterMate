@@ -20,6 +20,7 @@ struct PostingFeedView: View {
                             PostingView(posting: posting, user: user)
                         }
                     }
+
                 }.id(UUID())
                 
                 if viewModel.modelList.elements.count == 0 {
@@ -33,6 +34,9 @@ struct PostingFeedView: View {
                     viewModel.refresh()
                 }
             }
+        }
+        .refreshable {
+            viewModel.refresh()
         }
     }
 }

@@ -64,6 +64,8 @@
 		176DEEF229DDE845002F0B2D /* ProfileDetailsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF129DDE845002F0B2D /* ProfileDetailsTabView.swift */; };
 		176DEEF429DDF764002F0B2D /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */; };
 		176DEEF629DDFABB002F0B2D /* ItemSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */; };
+		176DEEF829DF0C73002F0B2D /* AddRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */; };
+		176DEEFC29DF0DA6002F0B2D /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
@@ -208,6 +210,8 @@
 		176DEEF129DDE845002F0B2D /* ProfileDetailsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsTabView.swift; sourceTree = "<group>"; };
 		176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
 		176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewModel.swift; sourceTree = "<group>"; };
+		176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestViewModel.swift; sourceTree = "<group>"; };
+		176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		17EF300429DB092D00FA2C82 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 			children = (
 				172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */,
 				176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */,
+				176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -391,6 +396,7 @@
 			children = (
 				172BC8E129D613A6000EB398 /* AddItemFormView.swift */,
 				176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */,
+				176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -979,6 +985,7 @@
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */,
 				BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */,
+				176DEEFC29DF0DA6002F0B2D /* AddRequestFormView.swift in Sources */,
 				1703C71329D21245006466D3 /* SampleItem.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
 				172BC8D529D5EFE9000EB398 /* AmplifyRequestConverter.swift in Sources */,
@@ -993,6 +1000,7 @@
 				B27F5D222D23E58CB0AAA4C6 /* Transaction.swift in Sources */,
 				4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */,
 				4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */,
+				176DEEF829DF0C73002F0B2D /* AddRequestViewModel.swift in Sources */,
 				2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */,
 				172BC8BB29D34965000EB398 /* ListElement.swift in Sources */,
 				17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */,
