@@ -21,8 +21,6 @@ struct ModalView<DisplayView: View>: View {
         SwiftUI.Group {
             if showModal {
                 VStack {
-                    Text("Hello")
-                    
                     Rectangle()
                         .foregroundColor(Color.black.opacity(0.5))
                         .edgesIgnoringSafeArea(.all)
