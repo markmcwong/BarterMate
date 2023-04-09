@@ -50,6 +50,7 @@ query GetMessage($id: ID!) {
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -86,6 +87,7 @@ query ListMessages(
       SentBy {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -131,6 +133,7 @@ query SyncMessages(
       SentBy {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -178,6 +181,7 @@ query MessagesByChatID(
       SentBy {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -225,6 +229,7 @@ query MessagesByUserID(
       SentBy {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -393,6 +398,7 @@ query GetUser($id: ID!) {
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -431,6 +437,7 @@ query GetUser($id: ID!) {
       nextToken
       startedAt
     }
+    profilePic
     createdAt
     updatedAt
     _version
@@ -471,6 +478,7 @@ query ListUsers(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -520,6 +528,7 @@ query SyncUsers(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -631,6 +640,7 @@ query GetPosting($id: ID!) {
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -660,6 +670,7 @@ query ListPostings(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -698,6 +709,7 @@ query SyncPostings(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -738,6 +750,7 @@ query PostingsByUserID(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -996,6 +1009,7 @@ query GetItem($id: ID!) {
       startedAt
     }
     userID
+    imageKey
     createdAt
     updatedAt
     _version
@@ -1019,6 +1033,7 @@ query ListItems(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -1051,6 +1066,7 @@ query SyncItems(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -1085,6 +1101,7 @@ query ItemsByUserID(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -1144,6 +1161,7 @@ query GetUserChat($id: ID!) {
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1179,6 +1197,7 @@ query ListUserChats(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1223,6 +1242,7 @@ query SyncUserChats(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1269,6 +1289,7 @@ query UserChatsByChatId(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1315,6 +1336,7 @@ query UserChatsByUserId(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1363,6 +1385,7 @@ query GetUserTransaction($id: ID!) {
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1402,6 +1425,7 @@ query ListUserTransactions(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1446,6 +1470,7 @@ query SyncUserTransactions(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1492,6 +1517,7 @@ query UserTransactionsByUserId(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version
@@ -1538,6 +1564,7 @@ query UserTransactionsByTransactionId(
       user {
         id
         username
+        profilePic
         createdAt
         updatedAt
         _version

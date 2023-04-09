@@ -20,18 +20,19 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
         }
         
         let saveSink = Amplify.Publisher.create {
-            try await Amplify.DataStore.save(
-                amplifiedItem
-            )}.sink {
-                if case let .failure(error) = $0 {
-                    completion(.failure(error))
-                }
-            } receiveValue: {
-                completion(.success(()))
+            try await Amplify.DataStore.save(amplifiedItem)
+        }.sink {
+            if case let .failure(error) = $0 {
+                completion(.failure(error))
             }
+        } receiveValue: {
+            completion(.success(()))
+        }
     }
     
-    func querySubscriptionHelper<H: Model, I: ListElement>(_ modelType: H.Type, _ origModelType: I.Type, where predicate: QueryPredicate? = nil, sort: QuerySortInput? = nil, completion: @escaping (Result<I, DataStoreError>) -> Void) -> Cancellable {
+    func querySubscriptionHelper<H: Model, I: ListElement>(_ modelType: H.Type, _ origModelType: I.Type, where predicate: QueryPredicate? = nil, sort: QuerySortInput? = nil,
+                                                           completion: @escaping ([I]) -> Void) -> Cancellable {
+//                                                           completion: @escaping (Result<[I], DataStoreError>) -> Void) -> Cancellable {
 //        guard let amplifiedType = AmplifyConverter.toAmplifyModelType(type: modelType) else {
 //            fatalError("Cannot convert to Amplify Model's equivalent")
 //        }
@@ -45,18 +46,17 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
                     break
                 }
             }, receiveValue: { querySnapshot in
-                guard let item = querySnapshot.items.first else {
-                    return
-                }
-                guard let convertedItem = AmplifyConverter.toBarterMateModel(model: item) else {
-                    return
-                }
-                completion(.success(convertedItem as! I))
+                print("Query Snapshot incoming: ", querySnapshot)
+                let convertedItems: [I] = querySnapshot.items.compactMap({
+                    AmplifyConverter.toBarterMateModel(model: $0)
+                }) as! [I]
+                print("Converted items: ", convertedItems)
+                completion(convertedItems)
             })
-        return subscription as! Cancellable
+        return subscription
     }
     
-    func querySubscription<L: ListElement>(_ modelType: L.Type, where predicate: QueryPredicate? = nil, sort: QuerySortInput? = nil, completion: @escaping (Result<L, DataStoreError>) -> Void) -> Cancellable {
+    func querySubscription<L: ListElement>(_ modelType: L.Type, where predicate: QueryPredicate? = nil, sort: QuerySortInput? = nil, completion: @escaping ([L]) -> Void) -> Cancellable {
         
         guard let amplifiedType: Model.Type = AmplifyConverter.toAmplifyModelType(type: modelType) else {
             fatalError("Cannot convert to Amplify Model's equivalent")
@@ -65,4 +65,10 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
         return querySubscriptionHelper(amplifiedType, modelType, where: predicate, sort: sort, completion: completion)
     }
 
+}
+
+extension AnyCancellable: Cancellable {
+    func cancelSubscription() {
+        self.cancel()
+    }
 }

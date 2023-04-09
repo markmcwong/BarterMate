@@ -12,6 +12,7 @@ extension Item {
     case categories
     case userID
     case imageKey
+    case transactionID
     case createdAt
     case updatedAt
   }
@@ -30,6 +31,7 @@ extension Item {
     
     model.attributes(
       .index(fields: ["userID"], name: "byUser"),
+      .index(fields: ["transactionID"], name: "byTransaction"),
       .primaryKey(fields: [item.id])
     )
     
@@ -41,13 +43,49 @@ extension Item {
       .hasMany(item.categories, is: .optional, ofType: Category.self, associatedWith: Category.keys.itemID),
       .field(item.userID, is: .required, ofType: .string),
       .field(item.imageKey, is: .optional, ofType: .string),
+      .field(item.transactionID, is: .optional, ofType: .string),
       .field(item.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(item.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
+    public class Path: ModelPath<Item> { }
+    
+    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Item: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
+}
+extension ModelPath where ModelType == Item {
+  public var id: FieldPath<String>   {
+      string("id") 
+    }
+  public var name: FieldPath<String>   {
+      string("name") 
+    }
+  public var description: FieldPath<String>   {
+      string("description") 
+    }
+  public var image: FieldPath<String>   {
+      string("image") 
+    }
+  public var categories: ModelPath<Category>   {
+      Category.Path(name: "categories", isCollection: true, parent: self) 
+    }
+  public var userID: FieldPath<String>   {
+      string("userID") 
+    }
+  public var imageKey: FieldPath<String>   {
+      string("imageKey") 
+    }
+  public var transactionID: FieldPath<String>   {
+      string("transactionID") 
+    }
+  public var createdAt: FieldPath<Temporal.DateTime>   {
+      datetime("createdAt") 
+    }
+  public var updatedAt: FieldPath<Temporal.DateTime>   {
+      datetime("updatedAt") 
+    }
 }

@@ -11,12 +11,15 @@ import Foundation
 struct AmplifyMessageAdapter {
     
     static func toBarterMateModel(message: Message) -> BarterMateMessage {
-        let sentBy = AmplifyUserConverter.toBarterMateModel(user: message.SentBy!)
+//        let amplifyUser = message.SentBy
+//        let sentBy = AmplifyUserConverter.toBarterMateModel(user: message.SentBy)
 //        let sentIn = AmplifyChatAdapter.toBarterMateModel(chat: message.SentIn!, completion: {_ in })
 
         let barterMateMessage = BarterMateMessage(id: Identifier(value: message.id),
                                                   sentIn: nil,
-                                                  sentBy: (sentBy ?? AmplifyUserConverter.toBarterMateModel(user: User(id: "404", username: "User not Found")))!,
+                                                  sentBy: (
+//                                                    sentBy ??
+                                                    AmplifyUserConverter.toBarterMateModel(user: User(id: "404", username: "User not Found")))!,
                                             createdAt: message.createdAt.foundationDate,
                                             content: message.content)
         

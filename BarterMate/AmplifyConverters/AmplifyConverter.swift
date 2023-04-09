@@ -18,8 +18,8 @@ struct AmplifyConverter {
             return AmplifyRequestConverter.toBarterMateModel(request: model as! Request)
         case is Posting:
             return AmplifyPostingConverter.toBarterMateModel(posting: model as! Posting)
-//        case is Chat:
-//            return AmplifyChatAdapter.toBarterMateModel(chat: model as! Chat)
+        case is Chat:
+            return AmplifyChatAdapter.toBarterMateModel(chat: model as! Chat)
         default:
             return nil
         }
