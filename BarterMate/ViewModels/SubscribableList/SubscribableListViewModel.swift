@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Amplify
 
 class SubscribableListViewModel<U: ListElement>: ObservableObject {
     @Published var items: [U] = []
@@ -16,6 +17,11 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
     init() {
         self.provider = AmplifySubscriptionProvider<U>()
         subscribeToUpdates()
+    }
+    
+    init(where predicate: QueryPredicate) {
+        self.provider = AmplifySubscriptionProvider<U>()
+        subscribeToUpdatesWithPredicate(where: predicate)
     }
 
     func subscribeToUpdates() {
@@ -33,7 +39,16 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
 //        }
         cancellable = provider.querySubscription(U.self) { [weak self] result in
             DispatchQueue.main.async {
-                self!.items = result
+                self?.items = result
+            }
+        }
+    }
+    
+    func subscribeToUpdatesWithPredicate(where predicate: QueryPredicate) {
+        print("subscribeToUpdates called")
+        cancellable = provider.querySubscription(U.self, where: predicate) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.items = result
             }
         }
     }

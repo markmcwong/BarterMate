@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class MessageListViewModel: BaseViewModel<BarterMateMessage> {
-    override func getUserIdFromModel(_ model: BarterMateMessage) -> Identifier<BarterMateUser> {
-        return model.sentBy.id
+    override func getUserIdFromModel(_ model: BarterMateMessage) -> Identifier<BarterMateUser>? {
+        return model.sentBy?.id
     }
 }

@@ -14,11 +14,14 @@ struct ChatListItemView: ListItemView, View {
         return ChatListItemView(item: item)
     }
     
-    var item: BarterMateChat
+    @ObservedObject var item: BarterMateChat
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
 
     internal init(item: BarterMateChat) {
         self.item = item
+        if(!item.hasFetchedDetails) {
+            item.fetchDetails()
+        }
 //        self.parentViewModel = parentViewModel
     }
     
@@ -43,8 +46,10 @@ struct ChatListItemView: ListItemView, View {
                             Spacer()
                         }
                         HStack {
-                            ForEach(item.users, id: \.id) { user in
-                                Text(user.username).font(.callout)
+                            if((item.users) != nil){
+                                ForEach(item.users!, id: \.id) { user in
+                                    Text(user.username).font(.callout)
+                                }
                             }
                             Spacer()
                         }

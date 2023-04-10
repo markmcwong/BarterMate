@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Amplify
 
 struct SubscribableListView<U: ListElement, Content: ListItemView<U>> : View {
     typealias T = any ListItemView<U>
@@ -18,19 +19,23 @@ struct SubscribableListView<U: ListElement, Content: ListItemView<U>> : View {
         self.content = content
     }
     
+    init(content: @escaping (U) -> Content, where predicate: QueryPredicate) {
+        self.viewModel = SubscribableListViewModel<U>(where: predicate)
+        self.content = content
+    }
+    
     var body: some View {
-        Text("SubscribableListView " + viewModel.items.description)
+//        Text("SubscribableListView " + viewModel.items.description)
         LazyVStack {
-            ForEach(viewModel.items, id: \.self) { item in
+            ForEach(viewModel.items, id: \.self.id) { item in
                 Content.build(for: item)
-                Text(item.typeName)
             }
         }.id(UUID())
-        .onAppear {
-            viewModel.subscribeToUpdates()
-        }
-        .onDisappear {
-            viewModel.unsubscribeFromUpdates()
-        }
+//        .onAppear {
+//            viewModel.subscribeToUpdates()
+//        }
+//        .onDisappear {
+//            viewModel.unsubscribeFromUpdates()
+//        }
     }
 }

@@ -23,8 +23,8 @@ class BaseViewModel<T: ListElement>: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    init(modelType: T.Type, modelId: Identifier<any ListElement>) {
-        self.modelList = ModelList<T>.allMessage(chatId: modelId.value)
+    init(modelType: T.Type, modelId: String) {
+        self.modelList = ModelList<T>.allMessage(chatId: modelId)
         modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
             [weak self] _ in
             self?.objectWillChange.send()
@@ -34,7 +34,9 @@ class BaseViewModel<T: ListElement>: ObservableObject {
     
     private func populateUserMap() {
         for model in modelList.elements {
-            let userId = getUserIdFromModel(model)
+            guard let userId = getUserIdFromModel(model) else {
+                continue
+            }
             if userIds.contains(userId) {
                 continue
             }
@@ -53,7 +55,7 @@ class BaseViewModel<T: ListElement>: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    func getUserIdFromModel(_ model: T) -> Identifier<BarterMateUser> {
+    func getUserIdFromModel(_ model: T) -> Identifier<BarterMateUser>? {
         fatalError("getUserIdFromModel must be implemented in subclass")
     }
 }

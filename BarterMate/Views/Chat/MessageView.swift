@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-    @ObservedObject var viewModel: BaseViewModel<BarterMateMessage>
     let chat: BarterMateChat?
     
     init(chat: BarterMateChat?) {
@@ -17,7 +16,7 @@ struct MessageView: View {
             fatalError("Chat cannot be nil")
         }
         self.chat = chat
-        self.viewModel = MessageListViewModel(modelType: BarterMateMessage.self, modelId: chat.id)
+//        self.viewModel = MessageListViewModel(modelType: BarterMateMessage.self, modelId: chat.id.value)
     }
     
     //    @State private var messages: [BarterMateMessage] = []
@@ -28,15 +27,17 @@ struct MessageView: View {
         //        }else {
         
         VStack {
-            Text("Total message count: " + viewModel.modelList.elements.count.description)
+//            Text("Total message count: " + viewModel.modelList.elements.count.description)
 //            Text(GlobalState.shared.userId ?? "")
-            LazyVStack {
-                ForEach(viewModel.modelList.elements, id: \.self) { message in
-                    //                    if var user = viewModel.userIdToUser[message.sendBy] {
-                    MessageRow(message: message, isSentByMe: message.sentBy.id.value == GlobalState.shared.userId)
-                    //                    }
-                }
-            }.id(UUID())
+            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(chat!.id.value))
+//            LazyVStack {
+//                ForEach(viewModel.modelList.elements, id: \.self) { message in
+////                    Text(GlobalState.shared.userId ?? "")
+//                    //                    if var user = viewModel.userIdToUser[message.sendBy] {
+//                    MessageRow(item: message)
+//                    //                    }
+//                }
+//            }.id(UUID())
             //            List(viewModel.modelList.elements) { message in
             //                MessageRow(message: message, isSentByMe: message.sentBy.id.value == GlobalState.shared.userId)
             //            }
@@ -111,26 +112,42 @@ struct MessageView: View {
 ////    }
 //}
 
-struct MessageRow: View {
-    let message: BarterMateMessage
+struct MessageRow: View, ListItemView {
+    @ObservedObject var item: BarterMateMessage
     let isSentByMe: Bool
+    
+    static func build(for item: BarterMateMessage) -> MessageRow {
+        print("built called")
+        return MessageRow(item: item)
+    }
+    
+    internal init(item: BarterMateMessage) {
+        self.item = item
+        if(!item.hasFetchedDetails) {
+            item.fetchDetails()
+        }
+        self.isSentByMe = !(item.sentBy == nil) && (item.sentBy?.id.value == GlobalState.shared.userId)
+    }
     
     var body: some View {
         HStack {
             if isSentByMe {
                 Spacer()
-                Text(message.content)
+                Text(item.content)
                     .padding()
                     .foregroundColor(.white)
                     .background(Color.blue)
                     .cornerRadius(10)
             } else {
-                Text(message.content)
+                Text(item.content)
                     .padding()
                     .foregroundColor(.white)
                     .background(Color.gray)
                     .cornerRadius(10)
-                Text("Sent by: " + message.sentBy.username)
+                if(item.sentBy != nil) {
+                    Text("Sent by: " + item.sentBy!.username)
+//                         + item.sentBy!.id.value)
+                }
                 Spacer()
             }
         }

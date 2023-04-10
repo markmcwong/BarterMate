@@ -7,30 +7,57 @@
 
 import Foundation
 
-class BarterMateMessage: Hashable, Identifiable, ListElement {
+class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject {
     let id: Identifier<BarterMateMessage>
     let sentIn: BarterMateChat?
-    let sentBy: BarterMateUser
+    @Published var sentBy: BarterMateUser?
+    var fetchUserClosure: ((@escaping (BarterMateUser) -> BarterMateUser) -> Void)?
     let createdAt: Date
     let content: String
-    
+    var hasFetchedDetails: Bool = false
+
     init(id: Identifier<BarterMateMessage> = Identifier(value: UUID().uuidString),
          sentIn: BarterMateChat?,
-         sentBy: BarterMateUser,
+         sentBy: BarterMateUser?,
+         fetchUserClosure: ((@escaping (BarterMateUser) -> BarterMateUser) -> Void)?,
          createdAt: Date,
          content: String) {
         self.id = id
         self.sentIn = sentIn
         self.sentBy = sentBy
         self.createdAt = createdAt
+        self.fetchUserClosure = fetchUserClosure
         self.content = content
     }
     
     static func == (lhs: BarterMateMessage, rhs: BarterMateMessage) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id && lhs.sentBy?.id == rhs.sentBy?.id
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(sentBy?.hashValue)
+    }
+    
+    func fetchDetails() {
+        fetchUser()
+        self.hasFetchedDetails = true
+    }
+    
+    func fetchUser() {
+        print("fetch user called")
+        if self.sentBy == nil {
+            guard let fetchUserClosure = fetchUserClosure else {
+                print("fetch user closuer wrong")
+                self.sentBy = nil
+                return
+            }
+            fetchUserClosure {
+                self.sentBy = $0
+                print("message sentBY: ", $0.id)
+                return $0
+            }
+            return
+        }
     }
 }

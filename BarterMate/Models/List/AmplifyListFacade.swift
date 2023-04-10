@@ -159,8 +159,8 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
 //                receiveValue: { result in
 //                    print("Published posts with rating greater than 4: \(reGsult)")
 //                }
-                let amplifyMessageModels = try await Amplify.DataStore.query(Message.self)
-//                                                                             , where: m.chatID.eq(chatId))
+                let amplifyMessageModels = try await Amplify.DataStore.query(Message.self
+                                                                             , where: m.SentIn.eq(chatId))
 //                print("message models: ", amplifyMessageModels)
                 let barterMateModels = amplifyMessageModels.compactMap {
                     AmplifyMessageAdapter.toBarterMateModel(message: $0 as! Message)

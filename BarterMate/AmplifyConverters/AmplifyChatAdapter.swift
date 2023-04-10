@@ -34,63 +34,74 @@ struct AmplifyChatAdapter {
 //            }
 //            print("Chat Messages: ", chat.ChatMessages?.elements.description)
             
-            let BarterMateUserTask: () async -> [BarterMateUser] = {
+        func barterMateUserTask (completion: @escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void {
                 do {
-                    try await chat.ChatUsers!.fetch()
-                    let chatUsersList: List<UserChat> = chat.ChatUsers!
-                    let group = DispatchGroup()
-                    var chatUserResults: [BarterMateUser] = []
-                    for chatUser in chatUsersList {
-                        Future(asyncFunc: {
+                    Task {
+                        try await chat.ChatUsers!.fetch()
+                        let chatUsersList: List<UserChat> = chat.ChatUsers!
+                        let group = DispatchGroup()
+                        var chatUserResults: [BarterMateUser] = []
+                        for chatUser in chatUsersList {
                             group.enter()
-                            let amplifiedUser: User = try await chatUser._user.get() ?? User(id: "404", username: "User not Found")
+                            let amplifiedUser: User = try await chatUser.user
+//                            ?? User(id: "404", username: "User not Found")
                             let barterMateUser: BarterMateUser = AmplifyUserConverter.toBarterMateModel(user: amplifiedUser)!
                             chatUserResults.append(barterMateUser)
                             group.leave()
-                        })
+                        }
+                        //                    let chatUsers: [Future<BarterMateUser, Never>] = chatUsersList.map { chatUser in
+                        //                        return Future(asyncFunc: {
+                        //                            group.enter()
+                        //                            let amplifiedUser: User = try await chatUser._user.get() ?? User(id: "404", username: "User not Found")
+                        //                            group.leave()
+                        //                            return AmplifyUserConverter.toBarterMateModel(user: amplifiedUser)!
+                        //                        })
+                        //                    }
+                        group.notify(queue: DispatchQueue.main) {
+                            completion (chatUserResults)
+                        }
+                        return chatUserResults
                     }
-                    //                    let chatUsers: [Future<BarterMateUser, Never>] = chatUsersList.map { chatUser in
-                    //                        return Future(asyncFunc: {
-                    //                            group.enter()
-                    //                            let amplifiedUser: User = try await chatUser._user.get() ?? User(id: "404", username: "User not Found")
-                    //                            group.leave()
-                    //                            return AmplifyUserConverter.toBarterMateModel(user: amplifiedUser)!
-                    //                        })
-                    //                    }
-                    return chatUserResults
-                } catch {
-                    return []
                 }
             }
 //        let BarterMateMessageTask: (() async -> [BarterMateMessage])? =
-        func BarterMateMessageTask (completion: @escaping ([BarterMateMessage]) -> Void) -> Void {
+        func barterMateMessageTask (completion: @escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void {
 //        func BarterMateMessageTask (completion: @escaping ([BarterMateMessage]) -> Void) {
-            Task {
-                try await chat.ChatMessages!.fetch()
-                let chatMessagesList: List<Message> = chat.ChatMessages!
-                let group = DispatchGroup()
-                var chatMessageResults: [BarterMateMessage] = []
-                for chatMessage in chatMessagesList {
-                    Future(asyncFunc: {
-                        group.enter()
-                        let barterMateMessage: BarterMateMessage = AmplifyMessageAdapter.toBarterMateModel(message: chatMessage)
-                        chatMessageResults.append(barterMateMessage)
-                        group.leave()
-                    })
+//            Task {
+                do {
+                    Task{
+                        try await chat.ChatMessages!.fetch()
+                        let chatMessagesList: List<Message> = chat.ChatMessages!
+                        let group = DispatchGroup()
+                        var chatMessageResults: [BarterMateMessage] = []
+                        for chatMessage in chatMessagesList {
+//                            Future(asyncFunc: {
+                                group.enter()
+                                let barterMateMessage: BarterMateMessage = AmplifyMessageAdapter.toBarterMateModel(message: chatMessage)
+                                chatMessageResults.append(barterMateMessage)
+                                group.leave()
+//                            })
+                        }
+                        group.notify(queue: DispatchQueue.main) {
+                            completion (chatMessageResults)
+                        }
+                        return chatMessageResults
+                    }
                 }
-                group.notify(queue: DispatchQueue.main) {
-                       completion (chatMessageResults)
-                }
-            }
+//                } catch {
+//                    return []
+//                }
+//            }
         }
         
             let barterMateChat = BarterMateChat(
                 id: Identifier(value: chat.id),
                                 name: chat.name,
-                                messages: [],
-                                users: [],
-                                fetchMessagesClosure: BarterMateMessageTask,
-                                fetchUsersClosure: BarterMateUserTask
+                                messages: nil,
+                                users: nil,
+                                fetchMessagesClosure: barterMateMessageTask,
+//                                fetchUsersClosure: nil
+                                fetchUsersClosure: barterMateUserTask
              )
             
 //            barterMateChat.setFetchMessages {
@@ -115,7 +126,7 @@ struct AmplifyChatAdapter {
     }
     
     static func toAmplifyModel(chat: BarterMateChat) -> Chat {
-        let amplifyChatMessages: List<Message> = List(elements: chat.messages.map { message in
+        let amplifyChatMessages: List<Message> = List(elements: chat.messages!.map { message in
             return AmplifyMessageAdapter.toAmplifyModel(message: message)
         })
         

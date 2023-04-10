@@ -8,7 +8,8 @@
 import Foundation
 
 protocol ListElement: Hashable, NameDescribable {
-    
+    associatedtype U
+    var id: Identifier<U> { get }
 }
 
 protocol LazyListElement: ListElement {

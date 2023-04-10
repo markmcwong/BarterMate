@@ -13,8 +13,8 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-//            LoginView()
-            HomeView(viewModel: HomeViewModel(user: AmplifyUserConverter.toBarterMateModel(user: User(id: "213f11fc-0384-4c44-a8c0-e87f1b77b41e", username: "Lawrence"))!))
+            LoginView()
+//            HomeView(viewModel: HomeViewModel(user: AmplifyUserConverter.toBarterMateModel(user: User(id: "213f11fc-0384-4c44-a8c0-e87f1b77b41e", username: "Lawrence"))!))
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

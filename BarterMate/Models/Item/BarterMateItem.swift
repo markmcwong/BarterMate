@@ -8,7 +8,6 @@
 import Foundation
 
 class BarterMateItem: Hashable, ListElement, ObservableObject{
-    
     var id: Identifier<BarterMateItem>
     var name: String
     var description: String

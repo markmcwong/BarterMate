@@ -17,7 +17,7 @@ struct ChatListView: View {
                 SubscribableListView<BarterMateChat, ChatListItemView>(content: ChatListItemView.build)
 //                VStack {
 //                    ForEach(viewModel.chatList.elements, id: \.self) { chat in
-//                        ChatListItemView(chat: chat)
+//                        ChatListItemView(item: chat)
 //                    }
 //                }.id(UUID())
                 Text(viewModel.chatList.elements.count.description)
