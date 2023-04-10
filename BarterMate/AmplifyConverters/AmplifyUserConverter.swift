@@ -27,7 +27,7 @@ struct AmplifyUserConverter {
 //        let convertedPostings = user.postings.compactMap {
 //            AmplifyAdapter.toAmplifyModel(model: $0)
 //        }
-//        
+//
 //        let amplifyUser = User(id: user.id.value,
 //                               username: user.username,
 //                               )
@@ -39,7 +39,7 @@ struct AmplifyUserConverter {
 //                return nil
 //            }
 //        }
-//        
+//
 //        amplifyUser.id
 //    }
     
@@ -48,3 +48,4 @@ struct AmplifyUserConverter {
         return amplifyUser
     }
 }
+

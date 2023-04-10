@@ -10,10 +10,17 @@ import SwiftUI
 struct RequestCardView: View {
     let request: BarterMateRequest
     let user: BarterMateUser
+    var parentViewModel: ListViewModel<BarterMateRequest>?
 
     init(request: BarterMateRequest, user: BarterMateUser) {
         self.request = request
         self.user = user
+    }
+
+    init(request: BarterMateRequest, user: BarterMateUser, parentViewModel: ListViewModel<BarterMateRequest>) {
+        self.request = request
+        self.user = user
+        self.parentViewModel = parentViewModel
     }
 
     var body: some View {
@@ -40,15 +47,16 @@ struct RequestCardView: View {
 
                     }
                 }
-//                Image(systemName: "xmark")
-//                    .frame(width: 25, height: 25)
-//                    .background(Circle().fill(Color.gray))
-//                    .padding(.leading, 10)
-//                    .onTapGesture {
-//                        Task {
-//                            await                         viewModel.deleteRequest()
-//                        }
-//                    }
+                if parentViewModel != nil {
+                    Image(systemName: "xmark")
+                        .frame(width: 25, height: 25)
+                        .background(Circle().fill(Color.gray))
+                        .padding(.leading, 10)
+                        .onTapGesture {
+                            parentViewModel?.deleteItem(item: request)
+                        }
+                }
+
             }
             .padding()
             .background(Rectangle().fill(Color.white))
@@ -63,3 +71,4 @@ struct RequestCardView: View {
 //        RequestCardView(request: Request(id: "a", description: "Hello World", createdAt: nil, owner: User())
 //    }
 //}
+

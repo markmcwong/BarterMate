@@ -36,29 +36,9 @@ extension Group {
       .field(group.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
-    public class Path: ModelPath<Group> { }
-    
-    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Group: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
-}
-extension ModelPath where ModelType == Group {
-  public var id: FieldPath<String>   {
-      string("id") 
-    }
-  public var name: FieldPath<String>   {
-      string("name") 
-    }
-  public var description: FieldPath<String>   {
-      string("description") 
-    }
-  public var createdAt: FieldPath<Temporal.DateTime>   {
-      datetime("createdAt") 
-    }
-  public var updatedAt: FieldPath<Temporal.DateTime>   {
-      datetime("updatedAt") 
-    }
 }

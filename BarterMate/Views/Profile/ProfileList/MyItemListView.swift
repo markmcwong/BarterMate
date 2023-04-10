@@ -16,7 +16,7 @@ struct MyItemListView: View {
             VStack {
                 LazyVStack {
                     ForEach(viewModel.modelList.elements, id: \.self) { item in
-                        MyItemCardView(item: item, parentViewModel: viewModel)
+                        ItemCardView(item: item, parentViewModel: viewModel)
                     }
                 }.id(UUID())
                 

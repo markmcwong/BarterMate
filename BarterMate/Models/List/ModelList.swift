@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Attempt to make generic List 
+// Attempt to make generic List
 
 class ModelList<T: ListElement>: ObservableObject {
     @Published var elements: [T] = []
@@ -16,14 +16,14 @@ class ModelList<T: ListElement>: ObservableObject {
     
     static func empty() -> ModelList {
         let modelList = ModelList()
-        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         return modelList
     }
     
     static func of(_ ownerId: Identifier<BarterMateUser>) -> ModelList {
         let modelList = ModelList()
-        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         modelList.modelListFacade?.getModelsById(of: ownerId)
         return modelList
@@ -31,7 +31,7 @@ class ModelList<T: ListElement>: ObservableObject {
     
     static func all() -> ModelList {
         let modelList = ModelList()
-        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         if(T.self.typeName == "BarterMateChat") {
             print("Getting chat models")
@@ -45,7 +45,7 @@ class ModelList<T: ListElement>: ObservableObject {
     static func allMessage(chatId: String) -> ModelList {
         print("all Message: ", chatId)
         let modelList = ModelList()
-        modelList.modelListFacade = AmplifyListFacade<T>()
+        modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         modelList.modelListFacade?.getMessageModelsByChatId(chatId: chatId)
         print(modelList.elements.description)
@@ -54,18 +54,9 @@ class ModelList<T: ListElement>: ObservableObject {
     
     private init() {}
     
-    func saveItem(element: T) {
-        modelListFacade?.save(model: element)
+    func setFacade() {
+        modelListFacade = AmplifyListFacade<T>()
     }
-    
-    func delete(element: T) {
-        modelListFacade?.delete(model: element)
-    }
-}
-
-extension ModelList: ModelListFacadeDelegate {
-    
-    typealias Model = T
     
     func insert(model: T) {
         if !elements.contains(model) {
@@ -83,6 +74,27 @@ extension ModelList: ModelListFacadeDelegate {
             self.elements.remove(at: index)
         }
     }
+    
+    func saveItem(element: T) {
+        modelListFacade?.save(model: element)
+        insert(model: element)
+    }
+    
+    func delete(element: T) {
+        modelListFacade?.delete(model: element)
+        remove(model: element)
+    }
+    
+    func filter(_ isIncluded: (any ListElement) -> Bool) {
+        elements = elements.filter(isIncluded)
+    }
+    
+    
 
 }
+
+extension ModelList: ModelListFacadeDelegate {
+    typealias Model = T
+}
+
 

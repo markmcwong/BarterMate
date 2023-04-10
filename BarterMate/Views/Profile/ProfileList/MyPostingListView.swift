@@ -10,24 +10,43 @@ import SwiftUI
 struct MyPostingListView: View {
     
     @ObservedObject var viewModel: ListViewModel<BarterMatePosting>
+    @State private var addPosting = false
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                LazyVStack {
-                    ForEach(viewModel.modelList.elements, id: \.self) { posting in
-                        MyPostingView(posting: posting, parentViewModel: viewModel)
-                    }
-                }.id(UUID())
-                
-                if viewModel.modelList.elements.count == 0 {
-                   Text("No More Item")
-                       .padding()
-                } else {
+        VStack {
+            Text("Posting " + "\(viewModel.modelList.elements.count)")
+                .font(.subheadline)
+                .fontWeight(.bold)
+            ScrollView(.vertical) {
+                VStack {
+                    LazyVStack {
+                        ForEach(viewModel.modelList.elements, id: \.self) { posting in
+                            PostingView(posting: posting, user: viewModel.user, parentViewModel: viewModel)
+                        }
+                    }.id(UUID())
+                    
+                    if viewModel.modelList.elements.count == 0 {
+                       Text("No More Item")
+                           .padding()
+                    } else {
 
+                    }
                 }
             }
+            ProfileButtonsView().onTapGesture {
+                addPosting = true
+            }
+            NavigationLink(
+                "",
+                destination: LazyView {
+                    ItemSelectionView(userid: viewModel.user.id, postingList: viewModel.modelList, addPosting: $addPosting)
+                },
+                isActive: $addPosting
+            )
+            .hidden()
+
         }
+
 
     }
 }
@@ -42,3 +61,4 @@ struct MyPostingListView_Previews: PreviewProvider {
         MyPostingListView(viewModel: viewModel)
     }
 }
+

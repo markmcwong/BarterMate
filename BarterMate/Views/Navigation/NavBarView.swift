@@ -10,32 +10,32 @@ import SwiftUI
 //TODO: Replace with styled Button
 
 struct NavBarView: View {
-    @StateObject private var router = Router.singleton
+    @Binding var state: String
     
     var body: some View {
         HStack {
             SwiftUI.Group {
                 Spacer()
                 Button("Posting") {
-                    router.navigate(to: .posting)
+                    state = "Posting"
                 }
             }
 
             Spacer()
             Button("Request") {
-                router.navigate(to: .request)
+                state = "Request"
             }
             Spacer()
             Button("Profile") {
-                router.navigate(to: .profile)
+                state = "Profile"
             }
             Spacer()
             Button("Transaction") {
-                print("Click Chat")
+                state = "Transaction"
             }
             Spacer()
             Button("Chat") {
-                router.navigate(to: .chat)
+                state = "Chat"
             }
             Spacer()
         }
@@ -44,6 +44,7 @@ struct NavBarView: View {
 
 struct NavBarView_Previews: PreviewProvider {
     static var previews: some View {
-        NavBarView()
+        NavBarView(state: .constant("Posting"))
     }
 }
+

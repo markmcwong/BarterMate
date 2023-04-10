@@ -10,4 +10,7 @@ import Foundation
 struct SampleUser {
     static let bill = BarterMateUser(id: Identifier(value: "1111"),
                                      username: "Bill")
+    static let bob = BarterMateUser(id: Identifier(value: "1234"),
+                                    username: "Bob")
+
 }
