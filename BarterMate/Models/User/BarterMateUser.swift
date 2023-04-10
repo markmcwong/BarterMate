@@ -9,8 +9,8 @@ import Foundation
 
 class BarterMateUser: Hashable, ObservableObject {
     var id: Identifier<BarterMateUser>
-    var username: String
-    var profilePicUrl: String?
+    @Published var username: String
+    @Published var profilePicUrl: String?
     
     static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
         lhs.id == rhs.id && lhs.username == rhs.username && lhs.profilePicUrl == rhs.profilePicUrl

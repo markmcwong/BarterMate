@@ -11,25 +11,27 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var router = Router.singleton
     let viewModel: HomeViewModel
-
+    @State var state: String = "Profile"
 
     var body: some View {
         VStack {
-            switch router.currentScreen {
-            case .profile:
+            switch state {
+            case "Profile":
                 UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
-            case .request:
+            case "Request":
                 RequestFeedView(viewModel: viewModel.requestFeedViewModel)
-            case .posting:
+            case "Posting":
                 PostingFeedView(viewModel: viewModel.postingFeedViewModel)
-            case .chat:
+            case "Chat":
                 ChatListView()
-            case .message:
+            case "Message":
 //                EmptyView()
                 MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+            default:
+                UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
             }
-            NavBarView()
+            NavBarView(state: $state)
 
-        }
+        }.navigationBarBackButtonHidden(true)
     }
 }

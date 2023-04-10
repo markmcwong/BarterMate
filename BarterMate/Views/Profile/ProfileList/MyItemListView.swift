@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct MyItemListView: View {
-    
+    @State var showModal = false
     @ObservedObject var viewModel: ListViewModel<BarterMateItem>
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
+        VStack {
+            Text("Item " + "\(viewModel.modelList.elements.count)")
+                .font(.subheadline)
+                .fontWeight(.bold)
+            ScrollView(.vertical) {
                 LazyVStack {
                     ForEach(viewModel.modelList.elements, id: \.self) { item in
-                        MyItemCardView(item: item, parentViewModel: viewModel)
+                        ItemCardView(item: item, parentViewModel: viewModel)
                     }
                 }.id(UUID())
                 
@@ -27,7 +30,13 @@ struct MyItemListView: View {
 
                 }
             }
+            ProfileButtonsView().onTapGesture {
+                showModal = true
+            }
         }
+        .overlay(ModalView(displayView: {
+            AddItemFormView(ownerId: viewModel.user.id, itemList: viewModel.modelList, showModal: $showModal)
+        }, showModal: $showModal))
     }
 }
 
