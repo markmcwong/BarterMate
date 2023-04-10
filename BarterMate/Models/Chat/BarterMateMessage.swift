@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject {
+class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject, CustomStringConvertible {
     let id: Identifier<BarterMateMessage>
     let sentIn: BarterMateChat?
     @Published var sentBy: BarterMateUser?
@@ -15,6 +15,10 @@ class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject {
     let createdAt: Date
     let content: String
     var hasFetchedDetails: Bool = false
+    
+    var description: String {
+        return "BarterMateMessage[\(id): { \(sentIn.debugDescription), \(sentBy.debugDescription)}"
+    }
 
     init(id: Identifier<BarterMateMessage> = Identifier(value: UUID().uuidString),
          sentIn: BarterMateChat?,
@@ -45,7 +49,7 @@ class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject {
     }
     
     func fetchUser() {
-        print("fetch user called")
+//        print("fetch user called")
         if self.sentBy == nil {
             guard let fetchUserClosure = fetchUserClosure else {
                 print("fetch user closuer wrong")

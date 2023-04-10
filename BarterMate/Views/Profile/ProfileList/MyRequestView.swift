@@ -16,7 +16,7 @@ struct MyRequestListView: View {
             VStack {
                 LazyVStack {
                     ForEach(viewModel.modelList.elements, id: \.self) { request in
-                        RequestCardView(request: request, user: viewModel.user)
+                        RequestCardView(request: request, user: viewModel.user!)
                     }
                 }.id(UUID())
                 

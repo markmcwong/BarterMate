@@ -9,12 +9,13 @@ import Foundation
 import SwiftUI
 
 protocol ListItemView<itemType>: View {
-    associatedtype itemType
+    associatedtype itemType: ListElement
     var item: itemType { get }
-    init(item: itemType)
+    var model: ListViewModel<itemType>? { get }
+    init(item: itemType, model: ListViewModel<itemType>?)
     
 //    associatedtype Content: View
-    static func build(for item: itemType    ) -> Self
+    static func build(for item: itemType, model: ListViewModel<itemType>?) -> Self
 }
 
 //protocol ListItemView<itemType>: View {

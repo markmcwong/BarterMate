@@ -38,7 +38,7 @@ class BarterMateChat: Hashable, Identifiable, ListElement, ObservableObject {
     }
     
     func fetchMessages() {
-        print("fetch messages called")
+//        print("fetch messages called")
         if self.messages == nil {
             print("inner fetch")
             guard let fetchMessagesClosure = fetchMessagesClosure else {
@@ -56,7 +56,7 @@ class BarterMateChat: Hashable, Identifiable, ListElement, ObservableObject {
     }
 
     func fetchUsers() {
-        print("fetch users called")
+//        print("fetch users called")
         if self.users == nil {
             guard let fetchUsersClosure = fetchUsersClosure else {
                 print("fetch user closuer wrong")

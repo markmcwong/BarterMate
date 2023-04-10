@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-    @State private var messageText = ""
+//    @State private var messageText = ""
 //    let chat: BarterMateChat?
+//    let listModel: MessageListViewModel = MessageListViewModel(modelType: BarterMateMessage.self)
     let viewModel: MessageViewModel
 
     init(viewModel: MessageViewModel) {
@@ -23,21 +24,49 @@ struct MessageView: View {
     
     var body: some View {
         VStack {
-            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(viewModel.chatId))
+//            Text(listModel.modelList.elements.count.description)
+            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build
+//                                                                , where: Message.self.keys.SentIn.eq(viewModel.chatId))
+                                                                )
+            MessageInputView(viewModel: viewModel)
+//            HStack {
+//                TextField("Enter message...", text: $messageText)
+//                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+//                Button("Send") {
+//                    viewModel.sendMessage(messageText)
+//                    messageText = ""
+//                }
+//            }
             // Message input field and send button
-            HStack {
-                TextField("Enter message...", text: $messageText)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Button("Send") {
-                    viewModel.sendMessage(messageText)
-                    messageText = ""
-                }
-            }
-            .padding()
         }.navigationTitle(viewModel.chatName)
     }
 }
     
+
+struct MessageInputView: View {
+    @State private var messageText = ""
+    let viewModel: MessageViewModel
+
+    init(viewModel: MessageViewModel) {
+//        guard let chat = chat else {
+//            fatalError("Chat cannot be nil")
+//        }
+//        self.chat = chat
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
+        HStack {
+            TextField("Enter message...", text: $messageText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Send") {
+                viewModel.sendMessage(messageText)
+                messageText = ""
+            }
+        }
+        .padding()
+    }
+}
 //    private func loadMessages() {
 //        // Load messages related to the chat using Amplify DataStore query
 //        guard let messages = chat?.messages else {
@@ -93,16 +122,17 @@ struct MessageView: View {
 //}
 
 struct MessageRow: View, ListItemView {
+    var model: ListViewModel<BarterMateMessage>? = nil
     @ObservedObject var item: BarterMateMessage
     let isSentByMe: Bool
     
-    static func build(for item: BarterMateMessage) -> MessageRow {
-        print("built called")
-        return MessageRow(item: item)
+    static func build(for item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) -> MessageRow {
+        return MessageRow(item: item, model: model)
     }
     
-    internal init(item: BarterMateMessage) {
+    internal init(item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) {
         self.item = item
+        self.model = model
         if(!item.hasFetchedDetails) {
             item.fetchDetails()
         }

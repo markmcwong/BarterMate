@@ -33,27 +33,25 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
     
     func querySubscriptionHelper<H: Model, I: ListElement>(_ modelType: H.Type, _ origModelType: I.Type, where predicate: QueryPredicate? = nil, sort: QuerySortInput? = nil,
                                                            completion: @escaping ([I]) -> Void) -> Cancellable {
-//                                                           completion: @escaping (Result<[I], DataStoreError>) -> Void) -> Cancellable {
-//        guard let amplifiedType = AmplifyConverter.toAmplifyModelType(type: modelType) else {
-//            fatalError("Cannot convert to Amplify Model's equivalent")
-//        }
-//
-        let subscription = Amplify.Publisher.create(Amplify.DataStore.observeQuery(for: modelType, where: predicate, sort: sort))
-            .sink(receiveCompletion: { completion in
+        let subscription = Amplify.Publisher.create(Amplify.DataStore.observeQuery(for: modelType, where: predicate, sort: sort)).sink(
+            receiveCompletion: { completion in
                 switch completion {
                 case .failure(let dataStoreError):
                     fatalError(dataStoreError.localizedDescription)
                 case .finished:
+                    print("finished")
                     break
                 }
             }, receiveValue: { querySnapshot in
+                print("Query snapshot synced? \(querySnapshot.isSynced)")
                 print("Query Snapshot incoming: ", querySnapshot)
                 let convertedItems: [I] = querySnapshot.items.compactMap({
                     AmplifyConverter.toBarterMateModel(model: $0)
                 }) as! [I]
                 print("Converted items: ", convertedItems)
                 completion(convertedItems)
-            })
+        })
+        
         return subscription
     }
     

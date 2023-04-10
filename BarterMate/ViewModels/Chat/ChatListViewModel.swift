@@ -8,33 +8,19 @@
 import Foundation
 import Combine
 
-class ChatListViewModel: ObservableObject {
-    @Published var chatList: ModelList<BarterMateChat>
-    @Published var userMap: [Identifier<BarterMateUser>: BarterMateUser] = [:]
-    private var cancellables: Set<AnyCancellable> = []
-    
+class ChatListViewModel: ListViewModel<BarterMateChat> {
     init() {
-        self.chatList = ModelList<BarterMateChat>.all()
-        chatList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
-            self?.objectWillChange.send()
-            self?.populateUserMap()
-        }.store(in: &cancellables)
+        super.init(user: nil, modelList: ModelList<BarterMateChat>.empty())
+        self.fetchChatUserBelongsTo()
     }
     
-    private func populateUserMap() {
-        for chat in chatList.elements {
-            if(chat.users != nil){
-                for user in chat.users! {
-                    let userId = user.id
-                    if userMap.keys.contains(userId) {
-                        continue
-                    }
-                    let barterMateUser = BarterMateUser.getUserWithId(id: userId)
-                    userMap[userId] = barterMateUser
-                }
+    func fetchChatUserBelongsTo() {
+        DispatchQueue.main.async {
+            Task {
+                let items = await ChatService.getCurrentUserChats(id: GlobalState.shared.userId!)
+                self.modelList.insertAll(models: items)
+                self.objectWillChange.send()
             }
         }
-        print("populateUserMap : ", userMap)
     }
 }
