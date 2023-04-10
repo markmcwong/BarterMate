@@ -18,10 +18,10 @@ class AddItemFormViewModel: ObservableObject {
     
     let storageService = AmplifyStorageService()
     
-    init(itemList: ModelList<BarterMateItem>,
-         ownerId: Identifier<BarterMateUser>) {
-        self.itemList = itemList
+    init(ownerId: Identifier<BarterMateUser>,
+         itemList: ModelList<BarterMateItem>) {
         self.ownerId = ownerId
+        self.itemList = itemList
     }
     
     func addItem() {
@@ -45,10 +45,9 @@ class AddItemFormViewModel: ObservableObject {
             }
         }
         itemList.saveItem(element: newItem)
-        itemList.insert(model: newItem)
     }
     
-    func validateItem() -> Bool {
+    private func validateItem() -> Bool {
         guard name != "" else {
             errorMessage = "Item Name Cannot be Empty"
             return false
@@ -56,6 +55,11 @@ class AddItemFormViewModel: ObservableObject {
         
         guard description != "" else {
             errorMessage = "Description Cannot be Empty"
+            return false
+        }
+        
+        guard image != nil else {
+            errorMessage = "Pls select an Image"
             return false
         }
         

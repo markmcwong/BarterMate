@@ -24,7 +24,6 @@ class ImageProvider {
         let downloadTask = storageService.downloadImage(key: cacheKey)
         Task {
             for await progress in await downloadTask.progress {
-                print(progress.description)
                 if progress.isFinished {
                     break
                 }

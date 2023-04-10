@@ -54,19 +54,6 @@ class ModelList<T: ListElement>: ObservableObject {
     
     private init() {}
     
-    func saveItem(element: T) {
-        modelListFacade?.save(model: element)
-    }
-    
-    func delete(element: T) {
-        modelListFacade?.delete(model: element)
-    }
-}
-
-extension ModelList: ModelListFacadeDelegate {
-    
-    typealias Model = T
-    
     func insert(model: T) {
         if !elements.contains(model) {
             elements.append(model)
@@ -83,6 +70,20 @@ extension ModelList: ModelListFacadeDelegate {
             self.elements.remove(at: index)
         }
     }
+    
+    func saveItem(element: T) {
+        modelListFacade?.save(model: element)
+        insert(model: element)
+    }
+    
+    func delete(element: T) {
+        modelListFacade?.delete(model: element)
+        remove(model: element)
+    }
 
+}
+
+extension ModelList: ModelListFacadeDelegate {
+    typealias Model = T
 }
 

@@ -9,8 +9,8 @@ import Foundation
 
 class BarterMateUser: ObservableObject {
     var id: Identifier<BarterMateUser>
-    var username: String
-    var profilePicUrl: String?
+    @Published var username: String
+    @Published var profilePicUrl: String?
     
     private var userFacade: (any UserFacade)?
     
