@@ -15,6 +15,7 @@ struct ChatListItemView: ListItemView, View {
     }
     
     @ObservedObject var item: BarterMateChat
+    @State var goToMessage = false
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
 
     internal init(item: BarterMateChat) {
@@ -30,7 +31,8 @@ struct ChatListItemView: ListItemView, View {
             Task {
 //                await chat.fetchMessages {}
                 GlobalState.shared.currentChat = item
-                Router.singleton.navigate(to: .message)
+                //Router.singleton.navigate(to: .message)
+                goToMessage = true
             }
         }) {
             HStack {
@@ -56,6 +58,15 @@ struct ChatListItemView: ListItemView, View {
                         Button("Delete Item") {
                             //                        parentViewModel.deleteItem(item: chat)
                         }
+                        
+                        NavigationLink(
+                            "",
+                            destination: LazyView {
+                                MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+                            },
+                            isActive: $goToMessage
+                        )
+                        .hidden()
                     }
                 }
                 .padding()
