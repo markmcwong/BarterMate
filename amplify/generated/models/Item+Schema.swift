@@ -12,6 +12,7 @@ extension Item {
     case categories
     case userID
     case imageKey
+    case transactionID
     case createdAt
     case updatedAt
   }
@@ -30,6 +31,7 @@ extension Item {
     
     model.attributes(
       .index(fields: ["userID"], name: "byUser"),
+      .index(fields: ["transactionID"], name: "byTransaction"),
       .primaryKey(fields: [item.id])
     )
     
@@ -41,6 +43,7 @@ extension Item {
       .hasMany(item.categories, is: .optional, ofType: Category.self, associatedWith: Category.keys.itemID),
       .field(item.userID, is: .required, ofType: .string),
       .field(item.imageKey, is: .optional, ofType: .string),
+      .field(item.transactionID, is: .optional, ofType: .string),
       .field(item.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(item.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
