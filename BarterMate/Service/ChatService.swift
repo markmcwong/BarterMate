@@ -38,13 +38,20 @@ class ChatService {
             case .success(let data):
                 if let items:JSONValue = data.value(at: "items") {
                     var chatArrayResult: [BarterMateChat] = []
-//                    print("todoJSON : ", items)
+                    print("todoJSON : ", items)
                     let encodedItems = try? JSONEncoder().encode(items)
                     let JSONArray = try? JSONDecoder().decode(Array<JSONValue>.self, from: encodedItems!)
                     for chatJSON in JSONArray! {
-                        if let chatData = try? JSONEncoder().encode(chatJSON.value(at: "chat")),
+                        if let item = chatJSON.value(at: "chat"),
+                            let chatData = try? JSONEncoder().encode(item),
                            let chat = try? JSONDecoder().decode(Chat.self, from: chatData) {
-                            chatArrayResult.append(BarterMateChat(id: Identifier(value: chat.id), name: chat.name,  messages: [], users: [], fetchMessagesClosure: nil, fetchUsersClosure: nil))
+                            let encodedIsDeleted = try? JSONEncoder().encode(item.value(at: "_deleted"))
+                            let bool = (try? JSONDecoder().decode(Bool.self, from: encodedIsDeleted!))
+                            print(item.value(at: "_deleted")!)
+//                            print(encodedIsDeleted)
+                            if(bool == nil || !bool!){
+                                chatArrayResult.append(BarterMateChat(id: Identifier(value: chat.id), name: chat.name,  messages: [], users: [], fetchMessagesClosure: nil, fetchUsersClosure: nil))
+                            }
                         }
                     }
                     print(chatArrayResult)
@@ -73,6 +80,7 @@ extension GraphQLRequest {
               chat {
                 id
                 name
+                _deleted
               }
             }
           }

@@ -29,8 +29,8 @@ struct SubscribableListView<U: ListElement, Content: ListItemView<U>> : View {
                 Content.build(for: item, model: nil)
             }
         }.id(UUID())
-        .onDisappear {
-            viewModel.unsubscribeFromUpdates()
-        }
+//        .onDisappear {
+//            viewModel.unsubscribeFromUpdates()
+//        }
     }
 }

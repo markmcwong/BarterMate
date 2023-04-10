@@ -22,6 +22,7 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
         
         let saveSink = Amplify.Publisher.create {
             try await Amplify.DataStore.save(amplifiedItem)
+            
         }.sink {
             if case let .failure(error) = $0 {
                 completion(.failure(error))

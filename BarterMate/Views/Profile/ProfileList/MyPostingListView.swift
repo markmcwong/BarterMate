@@ -21,7 +21,7 @@ struct MyPostingListView: View {
                 VStack {
                     LazyVStack {
                         ForEach(viewModel.modelList.elements, id: \.self) { posting in
-                            PostingView(posting: posting, user: viewModel.user, parentViewModel: viewModel)
+                            PostingView(posting: posting, user: viewModel.user!, parentViewModel: viewModel)
                         }
                     }.id(UUID())
                     
@@ -39,7 +39,7 @@ struct MyPostingListView: View {
             NavigationLink(
                 "",
                 destination: LazyView {
-                    ItemSelectionView(userid: viewModel.user.id, postingList: viewModel.modelList, addPosting: $addPosting)
+                    ItemSelectionView(userid: viewModel.user!.id, postingList: viewModel.modelList, addPosting: $addPosting)
                 },
                 isActive: $addPosting
             )

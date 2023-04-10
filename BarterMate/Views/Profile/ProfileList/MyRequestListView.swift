@@ -22,7 +22,7 @@ struct MyRequestListView: View {
                 VStack {
                     LazyVStack {
                         ForEach(viewModel.modelList.elements, id: \.self) { request in
-                            RequestCardView(request: request, user: viewModel.user, parentViewModel: viewModel)
+                            RequestCardView(request: request, user: viewModel.user!, parentViewModel: viewModel)
                         }
                     }.id(UUID())
                     
@@ -40,7 +40,7 @@ struct MyRequestListView: View {
             }
         }
         .overlay(ModalView(displayView: {
-            AddRequestFormView(ownerId: viewModel.user.id, requestList: viewModel.modelList, showModal: $showModal)
+            AddRequestFormView(ownerId: viewModel.user!.id, requestList: viewModel.modelList, showModal: $showModal)
         }, showModal: $showModal))
     }
 }

@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-class MessageListViewModel: BaseViewModel<BarterMateMessage> {
-    override func getUserIdFromModel(_ model: BarterMateMessage) -> Identifier<BarterMateUser>? {
-        return model.sentBy?.id
-    }
-}
+//class MessageListViewModel: BaseViewModel<BarterMateMessage> {
+//    override func getUserIdFromModel(_ model: BarterMateMessage) -> Identifier<BarterMateUser>? {
+//        return model.sentBy?.id
+//    }
+//}
 
 class MessageViewModel: ObservableObject {
     private let chat: BarterMateChat

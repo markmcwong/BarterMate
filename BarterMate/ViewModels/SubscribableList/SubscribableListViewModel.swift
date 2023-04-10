@@ -48,6 +48,7 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
                 DispatchQueue.main.async {
                     print("subscribeToUpdatesWithPredicate:  " + result.debugDescription)
                     self?.items = result
+                    self?.objectWillChange.send()
                 }
             }
         } else {

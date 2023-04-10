@@ -15,16 +15,17 @@ struct HomeView: View {
 
     var body: some View {
         VStack {
-            switch state {
-            case "Profile":
+            Text(state)
+            switch router.currentScreen {
+            case .profile:
                 UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
-            case "Request":
+            case .request:
                 RequestFeedView(viewModel: viewModel.requestFeedViewModel)
-            case "Posting":
+            case .posting:
                 PostingFeedView(viewModel: viewModel.postingFeedViewModel)
-            case "Chat":
+            case .chat:
                 ChatListView()
-            case "Message":
+            case .message:
 //                EmptyView()
                 MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
             default:

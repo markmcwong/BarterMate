@@ -9,35 +9,16 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-//    @State private var messageText = ""
-//    let chat: BarterMateChat?
-//    let listModel: MessageListViewModel = MessageListViewModel(modelType: BarterMateMessage.self)
     let viewModel: MessageViewModel
 
     init(viewModel: MessageViewModel) {
-//        guard let chat = chat else {
-//            fatalError("Chat cannot be nil")
-//        }
-//        self.chat = chat
         self.viewModel = viewModel
     }
     
     var body: some View {
         VStack {
-//            Text(listModel.modelList.elements.count.description)
-            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build
-//                                                                , where: Message.self.keys.SentIn.eq(viewModel.chatId))
-                                                                )
+            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(viewModel.chatId))
             MessageInputView(viewModel: viewModel)
-//            HStack {
-//                TextField("Enter message...", text: $messageText)
-//                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-//                Button("Send") {
-//                    viewModel.sendMessage(messageText)
-//                    messageText = ""
-//                }
-//            }
-            // Message input field and send button
         }.navigationTitle(viewModel.chatName)
     }
 }
@@ -48,10 +29,6 @@ struct MessageInputView: View {
     let viewModel: MessageViewModel
 
     init(viewModel: MessageViewModel) {
-//        guard let chat = chat else {
-//            fatalError("Chat cannot be nil")
-//        }
-//        self.chat = chat
         self.viewModel = viewModel
     }
     

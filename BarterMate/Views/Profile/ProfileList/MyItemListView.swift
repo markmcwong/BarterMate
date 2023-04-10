@@ -35,7 +35,7 @@ struct MyItemListView: View {
             }
         }
         .overlay(ModalView(displayView: {
-            AddItemFormView(ownerId: viewModel.user.id, itemList: viewModel.modelList, showModal: $showModal)
+            AddItemFormView(ownerId: viewModel.user!.id, itemList: viewModel.modelList, showModal: $showModal)
         }, showModal: $showModal))
     }
 }

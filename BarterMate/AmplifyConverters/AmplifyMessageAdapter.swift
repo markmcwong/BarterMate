@@ -41,8 +41,8 @@ struct AmplifyMessageAdapter {
     }
     
     static func toAmplifyModel(message: BarterMateMessage) -> Message {
-        print("Sent IN: ", message.sentIn?.id.value)
-        print("Sent BY: ", message.sentBy?.id.value)
+//        print("Sent IN: ", message.sentIn?.id.value)
+//        print("Sent BY: ", message.sentBy?.id.value)
         let amplifyMessage = Message(id: message.id.value,
                                      createdAt: Temporal.DateTime(message.createdAt),
                                      content: message.content,
