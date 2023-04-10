@@ -63,11 +63,36 @@
 		17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1829CE7889008C31B4 /* BarterMateRequest.swift */; };
 		17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
+		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
+		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
+		178F183D29E447AE0087D018 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183C29E447AE0087D018 /* TransactionList.swift */; };
+		178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */; };
+		178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184029E447DA0087D018 /* TransactionListFacade.swift */; };
+		178F184329E447E90087D018 /* AmplifyTransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */; };
+		178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184529E448020087D018 /* BarterMateTransaction.swift */; };
+		178F184829E448160087D018 /* TransactionFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184729E448160087D018 /* TransactionFacade.swift */; };
+		178F184A29E448290087D018 /* AmplifyTransactionFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184929E448290087D018 /* AmplifyTransactionFacade.swift */; };
+		178F184C29E4483A0087D018 /* TransactionFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */; };
+		178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184D29E449130087D018 /* ItemSelectionViewModel.swift */; };
+		178F185029E449210087D018 /* AddRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184F29E449210087D018 /* AddRequestViewModel.swift */; };
+		178F185229E449350087D018 /* OfferSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185129E449350087D018 /* OfferSelectionViewModel.swift */; };
+		178F185429E449470087D018 /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185329E449470087D018 /* SelectionViewModel.swift */; };
+		178F185629E449FE0087D018 /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185529E449FE0087D018 /* ItemSelectionView.swift */; };
+		178F185A29E44A1F0087D018 /* OfferSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185929E44A1F0087D018 /* OfferSelectionView.swift */; };
+		178F185E29E44AF40087D018 /* ProfileDetailsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */; };
+		178F186129E44B370087D018 /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186029E44B370087D018 /* TransactionCardView.swift */; };
+		178F186329E44B470087D018 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186229E44B470087D018 /* TransactionListView.swift */; };
+		178F186529E44B550087D018 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186429E44B550087D018 /* TransactionView.swift */; };
+		178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186629E44B640087D018 /* TransactionHeaderView.swift */; };
+		178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionVIewModel.swift */; };
+		178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186B29E44BB60087D018 /* TransactionListViewModel.swift */; };
+		178F186E29E44F1B0087D018 /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186D29E44F1B0087D018 /* AddRequestFormView.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
 		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */; };
+		38A558C822780F04D4281533 /* UserLocked+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780FAEA55C9DEBB2641E819 /* UserLocked+Schema.swift */; };
 		3DE63DE4217676F0B159A18C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCECBB0F6B90DDC29E11EAD1 /* Category.swift */; };
 		3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5CF9E593E82920841EA30D /* UserChat.swift */; };
 		4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95A3A358495DAC8787FAAF /* Chat.swift */; };
@@ -76,6 +101,10 @@
 		4D06B88F29D7F57200CD5BD4 /* BarterMateChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B88E29D7F57200CD5BD4 /* BarterMateChat.swift */; };
 		4D06B89129D7F70E00CD5BD4 /* AmplifyChatAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B89029D7F70E00CD5BD4 /* AmplifyChatAdapter.swift */; };
 		4D06B89329D7F77600CD5BD4 /* AmplifyMessageAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B89229D7F77600CD5BD4 /* AmplifyMessageAdapter.swift */; };
+		4D2547C329DC146100AF8F7F /* Predicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2547C229DC146100AF8F7F /* Predicate.swift */; };
+		4D2547C529DC14BB00AF8F7F /* SubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2547C429DC14BB00AF8F7F /* SubscriptionProvider.swift */; };
+		4D2547C729DC159800AF8F7F /* AmplifySubscriptionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2547C629DC159800AF8F7F /* AmplifySubscriptionProvider.swift */; };
+		4D2547C929DC1FA200AF8F7F /* AmplifyPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2547C829DC1FA200AF8F7F /* AmplifyPredicate.swift */; };
 		4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */; };
 		4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */; };
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
@@ -108,24 +137,33 @@
 		4DC0F8AD29BE2F5D009EE2B5 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8AC29BE2F5D009EE2B5 /* AWSPluginsCore */; };
 		4DC0F8AF29BE2F5D009EE2B5 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8AE29BE2F5D009EE2B5 /* AWSS3StoragePlugin */; };
 		4DC0F8B129BE2F5D009EE2B5 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8B029BE2F5D009EE2B5 /* Amplify */; };
+		4DCB0C4D29E3D47800344065 /* BarterMateUserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */; };
 		4DD3E99629D9528200C99D2A /* RequestFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99429D9528200C99D2A /* RequestFeedView.swift */; };
 		4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99529D9528200C99D2A /* PostingFeedView.swift */; };
 		4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99829D954AF00C99D2A /* MessageView.swift */; };
-		4DD3E99B29D96E6E00C99D2A /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */; };
+		4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */; };
+		4DD92C0829DF26B500FA8A90 /* SubscribableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0729DF26B500FA8A90 /* SubscribableListViewModel.swift */; };
+		4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0A29DF2DC500FA8A90 /* SubscribableListView.swift */; };
+		4DD92C0D29DFDC4A00FA8A90 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0C29DFDC4A00FA8A90 /* ListItemView.swift */; };
+		4DD92C0F29E1BD0F00FA8A90 /* FutureFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0E29E1BD0F00FA8A90 /* FutureFactory.swift */; };
+		4DF9851C29DE913400646C33 /* BarterMateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9851B29DE913400646C33 /* BarterMateModel.swift */; };
 		51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50ADF62A9DFD8D7DFA848084 /* Message.swift */; };
 		5365083C8F89716DB167D767 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181792E4D02494E509A6DAD9 /* User+Schema.swift */; };
 		69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */; };
 		82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710F4B0BC88DFA18FC19011F /* User.swift */; };
 		850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBEA87649BE7B1792832AD8 /* Posting.swift */; };
+		8E1C8D6B2D82787471381896 /* UserLocked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EC967FB2C7CD0C92BC8693 /* UserLocked.swift */; };
 		AAAEBFC2D0D7C2E3823505C0 /* Item+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E92979881C70FABA79EA10 /* Item+Schema.swift */; };
 		AD47EC9B05D2C213951781BF /* Transaction+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491D08A2162D1CDC4CC3D6B /* Transaction+Schema.swift */; };
 		B27F5D222D23E58CB0AAA4C6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA264433AA3FA8A9B9E7B98 /* Transaction.swift */; };
 		BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D4AF6C1DA2D220109058C7 /* Request+Schema.swift */; };
 		BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */; };
 		BED414D8153876A3A805A563 /* Message+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED66004C83F6FE910A1CA5D /* Message+Schema.swift */; };
+		C26332EFCCC394F06D1E5F6C /* UserCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680E7F72C2EE187F8837BC74 /* UserCompleted.swift */; };
 		E1B56582B58967A02798E3D7 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953E51B8C8AEA2EB84D96FFE /* Group.swift */; };
 		E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D63B15824858EB42E6A9D164 /* UserChat+Schema.swift */; };
 		EAE1D5811D7F3A1FCBF3E7A2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72400523C3D47445D20F5F78 /* Item.swift */; };
+		EB41B49414E5ABC953ED7FAA /* UserCompleted+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000CAC4D74D6062D93F72AF9 /* UserCompleted+Schema.swift */; };
 		F079565F55A944F02A842875 /* UserTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15493AFE237D3F1405C834FA /* UserTransaction.swift */; };
 		F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73080FF9EBB7B943AF0763CE /* Category+Schema.swift */; };
 		F5061AC38556AC131C81D956 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C87690F81D7B273793CF891 /* Request.swift */; };
@@ -149,6 +187,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		000CAC4D74D6062D93F72AF9 /* UserCompleted+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserCompleted+Schema.swift"; path = "amplify/generated/models/UserCompleted+Schema.swift"; sourceTree = "<group>"; };
 		0C87690F81D7B273793CF891 /* Request.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Request.swift; path = amplify/generated/models/Request.swift; sourceTree = "<group>"; };
 		15493AFE237D3F1405C834FA /* UserTransaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserTransaction.swift; path = amplify/generated/models/UserTransaction.swift; sourceTree = "<group>"; };
 		1703C6FB29D0AFFF006466D3 /* UserFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFacade.swift; sourceTree = "<group>"; };
@@ -206,6 +245,30 @@
 		17375A1829CE7889008C31B4 /* BarterMateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateRequest.swift; sourceTree = "<group>"; };
 		17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMatePosting.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
+		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
+		178F183C29E447AE0087D018 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
+		178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacadeDelegate.swift; sourceTree = "<group>"; };
+		178F184029E447DA0087D018 /* TransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacade.swift; sourceTree = "<group>"; };
+		178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionListFacade.swift; sourceTree = "<group>"; };
+		178F184529E448020087D018 /* BarterMateTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateTransaction.swift; sourceTree = "<group>"; };
+		178F184729E448160087D018 /* TransactionFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFacade.swift; sourceTree = "<group>"; };
+		178F184929E448290087D018 /* AmplifyTransactionFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionFacade.swift; sourceTree = "<group>"; };
+		178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFacadeDelegate.swift; sourceTree = "<group>"; };
+		178F184D29E449130087D018 /* ItemSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewModel.swift; sourceTree = "<group>"; };
+		178F184F29E449210087D018 /* AddRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestViewModel.swift; sourceTree = "<group>"; };
+		178F185129E449350087D018 /* OfferSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionViewModel.swift; sourceTree = "<group>"; };
+		178F185329E449470087D018 /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
+		178F185529E449FE0087D018 /* ItemSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
+		178F185929E44A1F0087D018 /* OfferSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionView.swift; sourceTree = "<group>"; };
+		178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsTabView.swift; sourceTree = "<group>"; };
+		178F186029E44B370087D018 /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
+		178F186229E44B470087D018 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		178F186429E44B550087D018 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		178F186629E44B640087D018 /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
+		178F186929E44BA40087D018 /* TransactionVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVIewModel.swift; sourceTree = "<group>"; };
+		178F186B29E44BB60087D018 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
+		178F186D29E44F1B0087D018 /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		17EF300429DB092D00FA2C82 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
@@ -214,10 +277,15 @@
 		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Chat+Schema.swift"; path = "amplify/generated/models/Chat+Schema.swift"; sourceTree = "<group>"; };
 		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
+		48EC967FB2C7CD0C92BC8693 /* UserLocked.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserLocked.swift; path = amplify/generated/models/UserLocked.swift; sourceTree = "<group>"; };
 		4D06B88C29D7F54500CD5BD4 /* BarterMateMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateMessage.swift; sourceTree = "<group>"; };
 		4D06B88E29D7F57200CD5BD4 /* BarterMateChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateChat.swift; sourceTree = "<group>"; };
 		4D06B89029D7F70E00CD5BD4 /* AmplifyChatAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyChatAdapter.swift; sourceTree = "<group>"; };
 		4D06B89229D7F77600CD5BD4 /* AmplifyMessageAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyMessageAdapter.swift; sourceTree = "<group>"; };
+		4D2547C229DC146100AF8F7F /* Predicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Predicate.swift; sourceTree = "<group>"; };
+		4D2547C429DC14BB00AF8F7F /* SubscriptionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionProvider.swift; sourceTree = "<group>"; };
+		4D2547C629DC159800AF8F7F /* AmplifySubscriptionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifySubscriptionProvider.swift; sourceTree = "<group>"; };
+		4D2547C829DC1FA200AF8F7F /* AmplifyPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyPredicate.swift; sourceTree = "<group>"; };
 		4D4AD57429C6FBD400C2EEC6 /* ActionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionResult.swift; sourceTree = "<group>"; };
 		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -244,13 +312,20 @@
 		4DC0F88C29BE2D2A009EE2B5 /* BarterMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarterMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F89029BE2D2A009EE2B5 /* BarterMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITests.swift; sourceTree = "<group>"; };
 		4DC0F89229BE2D2A009EE2B5 /* BarterMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUserChat.swift; sourceTree = "<group>"; };
 		4DD3E99429D9528200C99D2A /* RequestFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFeedView.swift; sourceTree = "<group>"; };
 		4DD3E99529D9528200C99D2A /* PostingFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingFeedView.swift; sourceTree = "<group>"; };
 		4DD3E99829D954AF00C99D2A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		4DD92C0729DF26B500FA8A90 /* SubscribableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableListViewModel.swift; sourceTree = "<group>"; };
+		4DD92C0A29DF2DC500FA8A90 /* SubscribableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableListView.swift; sourceTree = "<group>"; };
+		4DD92C0C29DFDC4A00FA8A90 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		4DD92C0E29E1BD0F00FA8A90 /* FutureFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureFactory.swift; sourceTree = "<group>"; };
+		4DF9851B29DE913400646C33 /* BarterMateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateModel.swift; sourceTree = "<group>"; };
 		4EBEA87649BE7B1792832AD8 /* Posting.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Posting.swift; path = amplify/generated/models/Posting.swift; sourceTree = "<group>"; };
 		50ADF62A9DFD8D7DFA848084 /* Message.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Message.swift; path = amplify/generated/models/Message.swift; sourceTree = "<group>"; };
 		5ED66004C83F6FE910A1CA5D /* Message+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Message+Schema.swift"; path = "amplify/generated/models/Message+Schema.swift"; sourceTree = "<group>"; };
+		680E7F72C2EE187F8837BC74 /* UserCompleted.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserCompleted.swift; path = amplify/generated/models/UserCompleted.swift; sourceTree = "<group>"; };
 		710F4B0BC88DFA18FC19011F /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
 		72400523C3D47445D20F5F78 /* Item.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Item.swift; path = amplify/generated/models/Item.swift; sourceTree = "<group>"; };
 		73080FF9EBB7B943AF0763CE /* Category+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Category+Schema.swift"; path = "amplify/generated/models/Category+Schema.swift"; sourceTree = "<group>"; };
@@ -261,6 +336,7 @@
 		B1D4AF6C1DA2D220109058C7 /* Request+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Request+Schema.swift"; path = "amplify/generated/models/Request+Schema.swift"; sourceTree = "<group>"; };
 		B491D08A2162D1CDC4CC3D6B /* Transaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Transaction+Schema.swift"; path = "amplify/generated/models/Transaction+Schema.swift"; sourceTree = "<group>"; };
 		B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = TransactionStatus.swift; path = amplify/generated/models/TransactionStatus.swift; sourceTree = "<group>"; };
+		B780FAEA55C9DEBB2641E819 /* UserLocked+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserLocked+Schema.swift"; path = "amplify/generated/models/UserLocked+Schema.swift"; sourceTree = "<group>"; };
 		BCA264433AA3FA8A9B9E7B98 /* Transaction.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Transaction.swift; path = amplify/generated/models/Transaction.swift; sourceTree = "<group>"; };
 		C9E92979881C70FABA79EA10 /* Item+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Item+Schema.swift"; path = "amplify/generated/models/Item+Schema.swift"; sourceTree = "<group>"; };
 		CA95A3A358495DAC8787FAAF /* Chat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Chat.swift; path = amplify/generated/models/Chat.swift; sourceTree = "<group>"; };
@@ -349,6 +425,7 @@
 				1703C71029D20F32006466D3 /* SampleUser.swift */,
 				1703C71229D21245006466D3 /* SampleItem.swift */,
 				172BC8D829D5FEED000EB398 /* SamplePosting.swift */,
+				178F183729E446FF0087D018 /* SampleTransaction.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -379,6 +456,10 @@
 			isa = PBXGroup;
 			children = (
 				172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */,
+				178F184D29E449130087D018 /* ItemSelectionViewModel.swift */,
+				178F184F29E449210087D018 /* AddRequestViewModel.swift */,
+				178F185129E449350087D018 /* OfferSelectionViewModel.swift */,
+				178F185329E449470087D018 /* SelectionViewModel.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -387,6 +468,9 @@
 			isa = PBXGroup;
 			children = (
 				172BC8E129D613A6000EB398 /* FormView.swift */,
+				178F185529E449FE0087D018 /* ItemSelectionView.swift */,
+				178F185929E44A1F0087D018 /* OfferSelectionView.swift */,
+				178F186D29E44F1B0087D018 /* AddRequestFormView.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -460,6 +544,7 @@
 				172FC0E029C616FD00842C70 /* UserProfileImageView.swift */,
 				172BC8DA29D60D4C000EB398 /* CreateItemButton.swift */,
 				172BC8DC29D60DC6000EB398 /* ProfileButtonsView.swift */,
+				178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -487,6 +572,7 @@
 			children = (
 				17375A1329CDB85F008C31B4 /* Identifier.swift */,
 				172BC8CE29D4B436000EB398 /* NameDescribable.swift */,
+				4DD92C0E29E1BD0F00FA8A90 /* FutureFactory.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -501,6 +587,8 @@
 				172BC8BC29D349D2000EB398 /* AmplifyConverter.swift */,
 				172BC8D429D5EFE9000EB398 /* AmplifyRequestConverter.swift */,
 				172BC8D629D5F095000EB398 /* AmplifyPostingConverter.swift */,
+				4D2547C829DC1FA200AF8F7F /* AmplifyPredicate.swift */,
+				178F183929E447870087D018 /* AmplifyTransactionConverter.swift */,
 			);
 			path = AmplifyConverters;
 			sourceTree = "<group>";
@@ -512,8 +600,51 @@
 				172FC0FC29C6175700842C70 /* ImageProvider.swift */,
 				174ACAA629BFA454006222AF /* StorageService.swift */,
 				4DA7051929C84112004D3CBC /* ChatService.swift */,
+				4D2547C429DC14BB00AF8F7F /* SubscriptionProvider.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		178F183B29E447A00087D018 /* TransactionList */ = {
+			isa = PBXGroup;
+			children = (
+				178F183C29E447AE0087D018 /* TransactionList.swift */,
+				178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */,
+				178F184029E447DA0087D018 /* TransactionListFacade.swift */,
+				178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */,
+			);
+			path = TransactionList;
+			sourceTree = "<group>";
+		};
+		178F184429E447F30087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F184529E448020087D018 /* BarterMateTransaction.swift */,
+				178F184729E448160087D018 /* TransactionFacade.swift */,
+				178F184929E448290087D018 /* AmplifyTransactionFacade.swift */,
+				178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		178F185F29E44B260087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F186029E44B370087D018 /* TransactionCardView.swift */,
+				178F186229E44B470087D018 /* TransactionListView.swift */,
+				178F186429E44B550087D018 /* TransactionView.swift */,
+				178F186629E44B640087D018 /* TransactionHeaderView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		178F186829E44B850087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F186929E44BA40087D018 /* TransactionVIewModel.swift */,
+				178F186B29E44BB60087D018 /* TransactionListViewModel.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		17AB3A3529C7701A00FE6DCB /* AmplifyServices */ = {
@@ -522,6 +653,7 @@
 				17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */,
 				4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */,
 				4DA7051B29C841D4004D3CBC /* AmplifyChatService.swift */,
+				4D2547C629DC159800AF8F7F /* AmplifySubscriptionProvider.swift */,
 			);
 			path = AmplifyServices;
 			sourceTree = "<group>";
@@ -533,6 +665,7 @@
 				4D06B88E29D7F57200CD5BD4 /* BarterMateChat.swift */,
 				4DA9D02C29D80C2100E06738 /* ChatList.swift */,
 				4DA9D02E29D80D3700E06738 /* MessageList.swift */,
+				4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -548,6 +681,8 @@
 		4D17C6F629CABD40001CB84E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				178F184429E447F30087D018 /* Transaction */,
+				178F183B29E447A00087D018 /* TransactionList */,
 				4D06B88B29D7F4F900CD5BD4 /* Chat */,
 				172BC8B329D34491000EB398 /* List */,
 				1703C6FA29D0AFAB006466D3 /* Posting */,
@@ -555,6 +690,8 @@
 				1703C6F829D0AF99006466D3 /* Item */,
 				1703C6F729D0AF48006466D3 /* User */,
 				172BC8BA29D34965000EB398 /* ListElement.swift */,
+				4D2547C229DC146100AF8F7F /* Predicate.swift */,
+				4DF9851B29DE913400646C33 /* BarterMateModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -586,6 +723,8 @@
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				178F186829E44B850087D018 /* Transaction */,
+				4DD92C0629DF269200FA8A90 /* SubscribableList */,
 				172BC90629D83B7A000EB398 /* Home */,
 				172BC8F429D744D5000EB398 /* Feed */,
 				172BC8E729D73463000EB398 /* List */,
@@ -600,6 +739,8 @@
 		4D91955E29C58A0C003B5922 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				178F185F29E44B260087D018 /* Transaction */,
+				4DD92C0929DF2DB100FA8A90 /* SubscribableList */,
 				4DD3E99329D9528100C99D2A /* Feed */,
 				4D4AD57229C6F76D00C2EEC6 /* Auth */,
 				4DA7051329C835FB004D3CBC /* Chat */,
@@ -639,7 +780,7 @@
 			isa = PBXGroup;
 			children = (
 				4DA7051729C837DF004D3CBC /* ChatListViewModel.swift */,
-				4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */,
+				4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -722,6 +863,23 @@
 			path = BarterMate/Views/Feed;
 			sourceTree = SOURCE_ROOT;
 		};
+		4DD92C0629DF269200FA8A90 /* SubscribableList */ = {
+			isa = PBXGroup;
+			children = (
+				4DD92C0729DF26B500FA8A90 /* SubscribableListViewModel.swift */,
+			);
+			path = SubscribableList;
+			sourceTree = "<group>";
+		};
+		4DD92C0929DF2DB100FA8A90 /* SubscribableList */ = {
+			isa = PBXGroup;
+			children = (
+				4DD92C0A29DF2DC500FA8A90 /* SubscribableListView.swift */,
+				4DD92C0C29DFDC4A00FA8A90 /* ListItemView.swift */,
+			);
+			path = SubscribableList;
+			sourceTree = "<group>";
+		};
 		8CB6AEB7278AC47DC239B200 /* AmplifyModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +907,10 @@
 				1C5CF9E593E82920841EA30D /* UserChat.swift */,
 				4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */,
 				15493AFE237D3F1405C834FA /* UserTransaction.swift */,
+				000CAC4D74D6062D93F72AF9 /* UserCompleted+Schema.swift */,
+				680E7F72C2EE187F8837BC74 /* UserCompleted.swift */,
+				B780FAEA55C9DEBB2641E819 /* UserLocked+Schema.swift */,
+				48EC967FB2C7CD0C92BC8693 /* UserLocked.swift */,
 			);
 			name = AmplifyModels;
 			sourceTree = "<group>";
@@ -909,6 +1071,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */,
+				178F184329E447E90087D018 /* AmplifyTransactionListFacade.swift in Sources */,
 				172BC90529D769AF000EB398 /* RequestCardView.swift in Sources */,
 				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
 				172BC91429D89FAF000EB398 /* LazyView.swift in Sources */,
@@ -926,9 +1089,11 @@
 				172BC90829D83B85000EB398 /* HomeViewModel.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				172BC8D929D5FEED000EB398 /* SamplePosting.swift in Sources */,
+				4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */,
 				1703C71529D21631006466D3 /* MyItemListView.swift in Sources */,
 				4D06B88D29D7F54500CD5BD4 /* BarterMateMessage.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
+				4DD92C0F29E1BD0F00FA8A90 /* FutureFactory.swift in Sources */,
 				1703C6FE29D0B03C006466D3 /* AmplifyUserConverter.swift in Sources */,
 				17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */,
 				172BC8CD29D4A2C5000EB398 /* RequestList.swift in Sources */,
@@ -941,6 +1106,8 @@
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
 				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
 				172BC8D329D4BC48000EB398 /* AmplifyListFacade.swift in Sources */,
+				178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */,
+				178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */,
 				4D91956529C596D6003B5922 /* LoginView.swift in Sources */,
 				17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */,
 				1703C70029D0B21F006466D3 /* AmplifyItemConverter.swift in Sources */,
@@ -948,8 +1115,14 @@
 				4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */,
 				172FC0EA29C616FD00842C70 /* PostingView.swift in Sources */,
 				172BC8E029D60E98000EB398 /* ModalView.swift in Sources */,
+				178F184829E448160087D018 /* TransactionFacade.swift in Sources */,
+				178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */,
+				178F185029E449210087D018 /* AddRequestViewModel.swift in Sources */,
 				172BC8FA29D7543A000EB398 /* AmplifyUserFacade.swift in Sources */,
 				4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */,
+				178F184A29E448290087D018 /* AmplifyTransactionFacade.swift in Sources */,
+				178F186529E44B550087D018 /* TransactionView.swift in Sources */,
+				178F186129E44B370087D018 /* TransactionCardView.swift in Sources */,
 				172BC8DD29D60DC6000EB398 /* ProfileButtonsView.swift in Sources */,
 				172BC91929D97AA8000EB398 /* ItemFacade.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
@@ -965,15 +1138,22 @@
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
 				172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */,
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
-				4DD3E99B29D96E6E00C99D2A /* MessageListViewModel.swift in Sources */,
+				178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */,
+				4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */,
+				178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */,
+				178F183D29E447AE0087D018 /* TransactionList.swift in Sources */,
 				172BC92429D9F985000EB398 /* ImagePicker.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
 				172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */,
 				4DA9D02D29D80C2100E06738 /* ChatList.swift in Sources */,
+				4DD92C0829DF26B500FA8A90 /* SubscribableListViewModel.swift in Sources */,
+				178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */,
 				17375A1129CDB7C6008C31B4 /* BarterMateUser.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
+				4D2547C929DC1FA200AF8F7F /* AmplifyPredicate.swift in Sources */,
 				850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */,
 				BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */,
+				178F184C29E4483A0087D018 /* TransactionFacadeDelegate.swift in Sources */,
 				1703C71329D21245006466D3 /* SampleItem.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
 				172BC8D529D5EFE9000EB398 /* AmplifyRequestConverter.swift in Sources */,
@@ -981,6 +1161,7 @@
 				AD47EC9B05D2C213951781BF /* Transaction+Schema.swift in Sources */,
 				4DB1D7C629D94AB300AAFCD8 /* BaseFeedViewModel.swift in Sources */,
 				17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */,
+				178F185229E449350087D018 /* OfferSelectionViewModel.swift in Sources */,
 				172BC8B529D344B5000EB398 /* ModelListFacade.swift in Sources */,
 				172FC0FE29C6175700842C70 /* ImageProvider.swift in Sources */,
 				172BC8E929D736C0000EB398 /* ListViewModel.swift in Sources */,
@@ -988,10 +1169,16 @@
 				B27F5D222D23E58CB0AAA4C6 /* Transaction.swift in Sources */,
 				4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */,
 				4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */,
+				178F185629E449FE0087D018 /* ItemSelectionView.swift in Sources */,
+				4DF9851C29DE913400646C33 /* BarterMateModel.swift in Sources */,
 				2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */,
+				178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */,
 				172BC8BB29D34965000EB398 /* ListElement.swift in Sources */,
 				17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */,
+				4D2547C329DC146100AF8F7F /* Predicate.swift in Sources */,
 				5365083C8F89716DB167D767 /* User+Schema.swift in Sources */,
+				178F185E29E44AF40087D018 /* ProfileDetailsTabView.swift in Sources */,
+				178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */,
 				172BC90129D768C3000EB398 /* RequestFeedViewModel.swift in Sources */,
 				4D06B89329D7F77600CD5BD4 /* AmplifyMessageAdapter.swift in Sources */,
 				4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */,
@@ -999,21 +1186,34 @@
 				172BC90B29D88A7E000EB398 /* MyPostingListView.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
+				178F186E29E44F1B0087D018 /* AddRequestFormView.swift in Sources */,
+				178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
+				178F185A29E44A1F0087D018 /* OfferSelectionView.swift in Sources */,
 				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,
+				178F186329E44B470087D018 /* TransactionListView.swift in Sources */,
 				172BC8F029D74263000EB398 /* MyPostingView.swift in Sources */,
 				172BC8DB29D60D4C000EB398 /* CreateItemButton.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
+				178F185429E449470087D018 /* SelectionViewModel.swift in Sources */,
+				4D2547C529DC14BB00AF8F7F /* SubscriptionProvider.swift in Sources */,
 				172BC91229D88F0B000EB398 /* MyRequestView.swift in Sources */,
 				17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */,
+				4DCB0C4D29E3D47800344065 /* BarterMateUserChat.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
+				4DD92C0D29DFDC4A00FA8A90 /* ListItemView.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,
 				172BC8B729D34526000EB398 /* ModelListFacadeDelegate.swift in Sources */,
 				1703C70829D207C7006466D3 /* ItemList.swift in Sources */,
 				17375A1429CDB85F008C31B4 /* Identifier.swift in Sources */,
 				4DA7051829C837DF004D3CBC /* ChatListViewModel.swift in Sources */,
+				4D2547C729DC159800AF8F7F /* AmplifySubscriptionProvider.swift in Sources */,
 				172FC0E929C616FD00842C70 /* UserProfileImageView.swift in Sources */,
 				1703C71129D20F32006466D3 /* SampleUser.swift in Sources */,
+				EB41B49414E5ABC953ED7FAA /* UserCompleted+Schema.swift in Sources */,
+				C26332EFCCC394F06D1E5F6C /* UserCompleted.swift in Sources */,
+				38A558C822780F04D4281533 /* UserLocked+Schema.swift in Sources */,
+				8E1C8D6B2D82787471381896 /* UserLocked.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1180,7 +1380,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1210,7 +1410,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

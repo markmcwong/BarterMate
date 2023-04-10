@@ -11,6 +11,7 @@ struct PostingFeedView: View {
     @ObservedObject var viewModel: PostingFeedViewModel
     
     var body: some View {
+        
         ScrollView(.vertical) {
             VStack {
                 LazyVStack {
@@ -19,6 +20,7 @@ struct PostingFeedView: View {
                             PostingView(posting: posting, user: user)
                         }
                     }
+
                 }.id(UUID())
                 
                 if viewModel.modelList.elements.count == 0 {
@@ -27,7 +29,14 @@ struct PostingFeedView: View {
                 } else {
                     
                 }
+                
+                Button("Refresh Posting Feed") {
+                    viewModel.refresh()
+                }
             }
+        }
+        .refreshable {
+            viewModel.refresh()
         }
     }
 }
@@ -37,3 +46,4 @@ struct PostingFeedView_Previews: PreviewProvider {
         PostingFeedView(viewModel: PostingFeedViewModel(modelType: BarterMatePosting.self))
     }
 }
+

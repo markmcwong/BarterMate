@@ -65,7 +65,7 @@ public class AmplifyAuthService: AuthService {
             if res.isSignedIn {
                 let user = try await Amplify.Auth.getCurrentUser()
                 authUser = user
-                GlobalState.shared.updateUser(userId: user.userId)
+                GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
             }
             return ActionResult(res.isSignedIn, res.isSignedIn ? "" : "Invalid Credentials")
         } catch let error as AuthError {
@@ -103,7 +103,7 @@ public class AmplifyAuthService: AuthService {
     
     func getCurrentUser() async throws -> AuthUser? {
         let user = try await Amplify.Auth.getCurrentUser()
-        GlobalState.shared.updateUser(userId: user.userId)
+        GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
         print("Global State now: ", GlobalState.shared)
         return user
     }

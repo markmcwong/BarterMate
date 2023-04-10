@@ -19,16 +19,14 @@ class LoginViewModel: ObservableObject {
 
     private var user: BarterMateUser?
     private let authService: AuthService
-    private let router: Router
     
     var homeViewModel: HomeViewModel {
         let viewModel = HomeViewModel(user: getUser())
         return viewModel
     }
 
-    init(authService: AuthService, router: Router) {
+    init(authService: AuthService) {
         self.authService = authService
-        self.router = router
     }
     
     func loginWithEmail() async {

@@ -15,11 +15,13 @@ struct RequestFeedView: View {
             VStack {
                 LazyVStack {
                     ForEach(viewModel.modelList.elements, id: \.self) { request in
-                        if var user = viewModel.userIdToUser[request.ownerId] {
+                        if let user = viewModel.userIdToUser[request.ownerId] {
                             RequestCardView(request: request, user: user)
                         }
                     }
+
                 }.id(UUID())
+                    
 
                 if viewModel.modelList.elements.count == 0 {
                     Text("No More Request")
@@ -33,6 +35,9 @@ struct RequestFeedView: View {
                 }
             }
         }
+        .refreshable {
+            viewModel.refresh()
+        }
     }
     
 }
@@ -42,3 +47,4 @@ struct RequestFeedView_Previews: PreviewProvider {
         RequestFeedView(viewModel: RequestFeedViewModel(modelType: BarterMateRequest.self))
     }
 }
+

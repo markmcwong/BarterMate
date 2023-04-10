@@ -14,12 +14,13 @@ struct ChatListView: View {
     var body: some View {
         ScrollView(.vertical) {
             VStack {
-                VStack {
-                    ForEach(viewModel.chatList.elements, id: \.self) { chat in
-                        ChatListItemView(chat: chat)
-                    }
-                }.id(UUID())
-                
+                SubscribableListView<BarterMateChat, ChatListItemView>(content: ChatListItemView.build)
+//                VStack {
+//                    ForEach(viewModel.chatList.elements, id: \.self) { chat in
+//                        ChatListItemView(item: chat)
+//                    }
+//                }.id(UUID())
+                Text(viewModel.chatList.elements.count.description)
                 if viewModel.chatList.elements.count == 0 {
                    Text("No More Item")
                        .padding()

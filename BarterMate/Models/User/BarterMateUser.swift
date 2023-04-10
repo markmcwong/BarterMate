@@ -7,10 +7,10 @@
 
 import Foundation
 
-class BarterMateUser: ObservableObject {
+class BarterMateUser: ObservableObject, Hashable, ListElement {
     var id: Identifier<BarterMateUser>
-    var username: String
-    var profilePicUrl: String?
+    @Published var username: String
+    @Published var profilePicUrl: String?
     
     private var userFacade: (any UserFacade)?
     
@@ -32,6 +32,14 @@ class BarterMateUser: ObservableObject {
         self.username = username
     }
     
+    static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
 }
 
 extension BarterMateUser: UserFacadeDelegate {
@@ -40,3 +48,4 @@ extension BarterMateUser: UserFacadeDelegate {
         self.username = user.username
     }
 }
+

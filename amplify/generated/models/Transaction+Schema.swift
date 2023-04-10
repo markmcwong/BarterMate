@@ -8,6 +8,9 @@ extension Transaction {
     case id
     case status
     case users
+    case itemPool
+    case userLocked
+    case userCompleted
     case createdAt
     case updatedAt
   }
@@ -32,6 +35,9 @@ extension Transaction {
       .field(transaction.id, is: .required, ofType: .string),
       .field(transaction.status, is: .optional, ofType: .enum(type: TransactionStatus.self)),
       .hasMany(transaction.users, is: .optional, ofType: UserTransaction.self, associatedWith: UserTransaction.keys.transaction),
+      .hasMany(transaction.itemPool, is: .optional, ofType: Item.self, associatedWith: Item.keys.transactionID),
+      .field(transaction.userLocked, is: .optional, ofType: .embeddedCollection(of: UserLocked.self)),
+      .field(transaction.userCompleted, is: .optional, ofType: .embeddedCollection(of: UserCompleted.self)),
       .field(transaction.createdAt, is: .optional, isReadOnly: true, ofType: .dateTime),
       .field(transaction.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
