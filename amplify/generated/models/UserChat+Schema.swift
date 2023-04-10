@@ -34,9 +34,29 @@ extension UserChat {
       .field(userChat.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
+    public class Path: ModelPath<UserChat> { }
+    
+    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension UserChat: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
+}
+extension ModelPath where ModelType == UserChat {
+  public var id: FieldPath<String>   {
+      string("id") 
+    }
+  public var chat: ModelPath<Chat>   {
+      Chat.Path(name: "chat", parent: self) 
+    }
+  public var user: ModelPath<User>   {
+      User.Path(name: "user", parent: self) 
+    }
+  public var createdAt: FieldPath<Temporal.DateTime>   {
+      datetime("createdAt") 
+    }
+  public var updatedAt: FieldPath<Temporal.DateTime>   {
+      datetime("updatedAt") 
+    }
 }

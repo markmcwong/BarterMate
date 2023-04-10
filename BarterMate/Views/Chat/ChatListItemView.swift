@@ -8,13 +8,20 @@
 import Foundation
 import SwiftUI
 
-struct ChatListItemView: View {
-
-    let chat: BarterMateChat
+struct ChatListItemView: ListItemView, View {
+    static func build(for item: BarterMateChat) -> ChatListItemView {
+        print("built called")
+        return ChatListItemView(item: item)
+    }
+    
+    @ObservedObject var item: BarterMateChat
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
 
-    init(chat: BarterMateChat) {
-        self.chat = chat
+    internal init(item: BarterMateChat) {
+        self.item = item
+        if(!item.hasFetchedDetails) {
+            item.fetchDetails()
+        }
 //        self.parentViewModel = parentViewModel
     }
     
@@ -22,7 +29,7 @@ struct ChatListItemView: View {
         Button(action: {
             Task {
 //                await chat.fetchMessages {}
-                GlobalState.shared.currentChat = chat
+                GlobalState.shared.currentChat = item
                 Router.singleton.navigate(to: .message)
             }
         }) {
@@ -33,14 +40,16 @@ struct ChatListItemView: View {
                         .padding(.trailing, 10)
                     VStack(spacing: 5) {
                         HStack {
-                            Text(chat.name ?? "Default chat name")
+                            Text(item.name ?? "Default chat name")
                                 .font(.callout)
                                 .lineLimit(1)
                             Spacer()
                         }
                         HStack {
-                            ForEach(chat.users, id: \.id) { user in
-                                Text(user.username).font(.callout)
+                            if((item.users) != nil){
+                                ForEach(item.users!, id: \.id) { user in
+                                    Text(user.username).font(.callout)
+                                }
                             }
                             Spacer()
                         }

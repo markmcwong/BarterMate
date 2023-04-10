@@ -111,7 +111,17 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             }
             
             let amplifyModelList = try await Amplify.DataStore.query(type.self)
+//            let test = 4
+//            let predicate: BarterMatePredicate = BarterMatePredicateOperation(field: "test", operator: .equals(4))
+//            let predicateGroup: BarterMatePredicate = BarterMatePredicateGroup(type: .not, predicates: [predicate])
+//
+//            let ampQuery: QueryPredicate = QueryPredicateOperation(field: Request.keys.updatedAt(), operator: .lessThan()
             
+//            print("ampQuery: ", ampQuery)
+//            print("predicateGroup", predicateGroup)
+//            print("converted", predicate.toAmplifyQueryPredicate(field: "test"))
+//            let _ = try await Amplify.DataStore.query(Chat.self, where: Chat.keys.name == "test")
+
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
             }
@@ -149,8 +159,8 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
 //                receiveValue: { result in
 //                    print("Published posts with rating greater than 4: \(reGsult)")
 //                }
-                let amplifyMessageModels = try await Amplify.DataStore.query(Message.self)
-//                                                                             , where: m.chatID.eq(chatId))
+                let amplifyMessageModels = try await Amplify.DataStore.query(Message.self
+                                                                             , where: m.SentIn.eq(chatId))
 //                print("message models: ", amplifyMessageModels)
                 let barterMateModels = amplifyMessageModels.compactMap {
                     AmplifyMessageAdapter.toBarterMateModel(message: $0 as! Message)
@@ -180,9 +190,10 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             
             let amplifyModelList = try await Amplify.DataStore.query(type.self)
             let barterMateModels = amplifyModelList.compactMap {
-                AmplifyChatAdapter.toBarterMateModel(chat: $0 as! Chat) { barterMateChat in
-                    delegate.insert(model: barterMateChat as! U)
-                }
+                AmplifyChatAdapter.toBarterMateModel(chat: $0 as! Chat)
+//                { barterMateChat in
+//                    delegate.insert(model: barterMateChat as! U)
+//                }
             }
             
             if let barterMateModels = barterMateModels as? [U] {

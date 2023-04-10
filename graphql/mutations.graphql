@@ -53,6 +53,7 @@ mutation CreateMessage(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -119,6 +120,7 @@ mutation UpdateMessage(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -185,6 +187,7 @@ mutation DeleteMessage(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -382,6 +385,7 @@ mutation CreateUser(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -420,6 +424,7 @@ mutation CreateUser(
       nextToken
       startedAt
     }
+    profilePic
     createdAt
     updatedAt
     _version
@@ -483,6 +488,7 @@ mutation UpdateUser(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -521,6 +527,7 @@ mutation UpdateUser(
       nextToken
       startedAt
     }
+    profilePic
     createdAt
     updatedAt
     _version
@@ -584,6 +591,7 @@ mutation DeleteUser(
         description
         image
         userID
+        imageKey
         createdAt
         updatedAt
         _version
@@ -622,6 +630,7 @@ mutation DeleteUser(
       nextToken
       startedAt
     }
+    profilePic
     createdAt
     updatedAt
     _version
@@ -692,6 +701,7 @@ mutation CreatePosting(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -723,6 +733,7 @@ mutation UpdatePosting(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -754,6 +765,7 @@ mutation DeletePosting(
         startedAt
       }
       userID
+      imageKey
       createdAt
       updatedAt
       _version
@@ -965,6 +977,7 @@ mutation CreateItem(
       startedAt
     }
     userID
+    imageKey
     createdAt
     updatedAt
     _version
@@ -996,6 +1009,7 @@ mutation UpdateItem(
       startedAt
     }
     userID
+    imageKey
     createdAt
     updatedAt
     _version
@@ -1027,6 +1041,7 @@ mutation DeleteItem(
       startedAt
     }
     userID
+    imageKey
     createdAt
     updatedAt
     _version
@@ -1086,6 +1101,7 @@ mutation CreateUserChat(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1151,6 +1167,7 @@ mutation UpdateUserChat(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1216,6 +1233,7 @@ mutation DeleteUserChat(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1264,6 +1282,7 @@ mutation CreateUserTransaction(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1325,6 +1344,7 @@ mutation UpdateUserTransaction(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version
@@ -1386,6 +1406,7 @@ mutation DeleteUserTransaction(
         nextToken
         startedAt
       }
+      profilePic
       createdAt
       updatedAt
       _version

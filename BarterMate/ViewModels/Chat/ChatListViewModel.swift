@@ -24,14 +24,17 @@ class ChatListViewModel: ObservableObject {
     
     private func populateUserMap() {
         for chat in chatList.elements {
-            for user in chat.users {
-                let userId = user.id
-                if userMap.keys.contains(userId) {
-                    continue
+            if(chat.users != nil){
+                for user in chat.users! {
+                    let userId = user.id
+                    if userMap.keys.contains(userId) {
+                        continue
+                    }
+                    let barterMateUser = BarterMateUser.getUserWithId(id: userId)
+                    userMap[userId] = barterMateUser
                 }
-                let barterMateUser = BarterMateUser.getUserWithId(id: userId)
-                userMap[userId] = barterMateUser
             }
         }
+        print("populateUserMap : ", userMap)
     }
 }

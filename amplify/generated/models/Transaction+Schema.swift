@@ -42,9 +42,29 @@ extension Transaction {
       .field(transaction.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
+    public class Path: ModelPath<Transaction> { }
+    
+    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Transaction: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
+}
+extension ModelPath where ModelType == Transaction {
+  public var id: FieldPath<String>   {
+      string("id") 
+    }
+  public var users: ModelPath<UserTransaction>   {
+      UserTransaction.Path(name: "users", isCollection: true, parent: self) 
+    }
+  public var itemPool: ModelPath<Item>   {
+      Item.Path(name: "itemPool", isCollection: true, parent: self) 
+    }
+  public var createdAt: FieldPath<Temporal.DateTime>   {
+      datetime("createdAt") 
+    }
+  public var updatedAt: FieldPath<Temporal.DateTime>   {
+      datetime("updatedAt") 
+    }
 }

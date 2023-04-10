@@ -7,10 +7,20 @@
 
 import Foundation
 
-class BarterMateUser: ObservableObject {
+class BarterMateUser: Hashable, ObservableObject {
     var id: Identifier<BarterMateUser>
     var username: String
     var profilePicUrl: String?
+    
+    static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
+        lhs.id == rhs.id && lhs.username == rhs.username && lhs.profilePicUrl == rhs.profilePicUrl
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(username)
+        hasher.combine(profilePicUrl)
+    }
     
     private var userFacade: (any UserFacade)?
     

@@ -7,6 +7,12 @@
 
 import Foundation
 
-protocol ListElement : Hashable, NameDescribable {
-    
+protocol ListElement: Hashable, NameDescribable {
+    associatedtype U
+    var id: Identifier<U> { get }
+}
+
+protocol LazyListElement: ListElement {
+    associatedtype U
+    func fetch(closure: (() async -> [U])) -> [U]
 }

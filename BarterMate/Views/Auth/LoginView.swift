@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = LoginViewModel(authService: AmplifyAuthService(), router: Router.singleton)
+    @StateObject private var viewModel = LoginViewModel(authService: AmplifyAuthService())
     
     var body: some View {
    
