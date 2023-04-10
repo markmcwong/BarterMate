@@ -23,15 +23,15 @@ class BaseViewModel<T: ListElement>: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    init(modelType: T.Type, modelId: String) {
-        self.modelList = ModelList<T>.allMessage(chatId: modelId)
-        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
-            self?.objectWillChange.send()
-            self?.populateUserMap()
-        }.store(in: &cancellables)
-    }
-    
+//    init(modelType: T.Type, modelId: String) {
+//        self.modelList = ModelList<T>.allMessage(chatId: modelId)
+//        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
+//            [weak self] _ in
+//            self?.objectWillChange.send()
+//            self?.populateUserMap()
+//        }.store(in: &cancellables)
+//    }
+
     private func populateUserMap() {
         for model in modelList.elements {
             guard let userId = getUserIdFromModel(model) else {

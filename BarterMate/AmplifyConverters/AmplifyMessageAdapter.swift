@@ -41,11 +41,16 @@ struct AmplifyMessageAdapter {
     }
     
     static func toAmplifyModel(message: BarterMateMessage) -> Message {
+        print("Sent IN: ", message.sentIn?.id.value)
+        print("Sent BY: ", message.sentBy?.id.value)
         let amplifyMessage = Message(id: message.id.value,
                                      createdAt: Temporal.DateTime(message.createdAt),
                                      content: message.content,
-                                     SentIn: AmplifyChatAdapter.toAmplifyModel(chat: message.sentIn!),
-                                     SentBy: AmplifyUserConverter.toAmplifyModel(user: message.sentBy!))
+                                     SentIn:
+                                        (message.sentIn != nil) ?
+                                     AmplifyChatAdapter.toAmplifyModel(chat: message.sentIn!) : nil,
+                                     SentBy:
+                                        (message.sentIn != nil) ? AmplifyUserConverter.toAmplifyModel(user: message.sentBy!) : nil)
         
         return amplifyMessage
     }

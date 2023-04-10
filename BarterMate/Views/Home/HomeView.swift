@@ -26,7 +26,7 @@ struct HomeView: View {
                 ChatListView()
             case .message:
 //                EmptyView()
-                MessageView(chat: GlobalState.shared.currentChat)
+                MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
             }
             NavBarView()
 

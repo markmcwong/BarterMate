@@ -15,6 +15,7 @@ struct AmplifySubscriptionProvider<U: ListElement>: SubscriptionProvider {
     func cancelSubscription() {}
     
     func save(_ item: ModelType, completion: @escaping (Result<Void, Error>) -> Void) {
+        print("Item: ", item)
         guard let amplifiedItem = AmplifyConverter.toAmplifyModel(model: item) else {
             fatalError("Cannot convert to Amplify Model's equivalent")
         }

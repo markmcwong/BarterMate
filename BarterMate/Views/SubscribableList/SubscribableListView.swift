@@ -25,7 +25,6 @@ struct SubscribableListView<U: ListElement, Content: ListItemView<U>> : View {
     }
     
     var body: some View {
-//        Text("SubscribableListView " + viewModel.items.description)
         LazyVStack {
             ForEach(viewModel.items, id: \.self.id) { item in
                 Content.build(for: item)

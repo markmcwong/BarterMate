@@ -113,10 +113,11 @@
 		4DC0F8AD29BE2F5D009EE2B5 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8AC29BE2F5D009EE2B5 /* AWSPluginsCore */; };
 		4DC0F8AF29BE2F5D009EE2B5 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8AE29BE2F5D009EE2B5 /* AWSS3StoragePlugin */; };
 		4DC0F8B129BE2F5D009EE2B5 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 4DC0F8B029BE2F5D009EE2B5 /* Amplify */; };
+		4DCB0C4D29E3D47800344065 /* BarterMateUserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */; };
 		4DD3E99629D9528200C99D2A /* RequestFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99429D9528200C99D2A /* RequestFeedView.swift */; };
 		4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99529D9528200C99D2A /* PostingFeedView.swift */; };
 		4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99829D954AF00C99D2A /* MessageView.swift */; };
-		4DD3E99B29D96E6E00C99D2A /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */; };
+		4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */; };
 		4DD92C0829DF26B500FA8A90 /* SubscribableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0729DF26B500FA8A90 /* SubscribableListViewModel.swift */; };
 		4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0A29DF2DC500FA8A90 /* SubscribableListView.swift */; };
 		4DD92C0D29DFDC4A00FA8A90 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD92C0C29DFDC4A00FA8A90 /* ListItemView.swift */; };
@@ -263,10 +264,11 @@
 		4DC0F88C29BE2D2A009EE2B5 /* BarterMateUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BarterMateUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DC0F89029BE2D2A009EE2B5 /* BarterMateUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITests.swift; sourceTree = "<group>"; };
 		4DC0F89229BE2D2A009EE2B5 /* BarterMateUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUserChat.swift; sourceTree = "<group>"; };
 		4DD3E99429D9528200C99D2A /* RequestFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestFeedView.swift; sourceTree = "<group>"; };
 		4DD3E99529D9528200C99D2A /* PostingFeedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostingFeedView.swift; sourceTree = "<group>"; };
 		4DD3E99829D954AF00C99D2A /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
-		4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
+		4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		4DD92C0729DF26B500FA8A90 /* SubscribableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableListViewModel.swift; sourceTree = "<group>"; };
 		4DD92C0A29DF2DC500FA8A90 /* SubscribableListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribableListView.swift; sourceTree = "<group>"; };
 		4DD92C0C29DFDC4A00FA8A90 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				4D06B88E29D7F57200CD5BD4 /* BarterMateChat.swift */,
 				4DA9D02C29D80C2100E06738 /* ChatList.swift */,
 				4DA9D02E29D80D3700E06738 /* MessageList.swift */,
+				4DCB0C4C29E3D47800344065 /* BarterMateUserChat.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -673,7 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				4DA7051729C837DF004D3CBC /* ChatListViewModel.swift */,
-				4DD3E99A29D96E6E00C99D2A /* MessageListViewModel.swift */,
+				4DD3E99A29D96E6E00C99D2A /* MessageViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1022,7 +1025,7 @@
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
 				172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */,
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
-				4DD3E99B29D96E6E00C99D2A /* MessageListViewModel.swift in Sources */,
+				4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */,
 				172BC92429D9F985000EB398 /* ImagePicker.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
 				172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */,
@@ -1068,6 +1071,7 @@
 				4D2547C529DC14BB00AF8F7F /* SubscriptionProvider.swift in Sources */,
 				172BC91229D88F0B000EB398 /* MyRequestView.swift in Sources */,
 				17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */,
+				4DCB0C4D29E3D47800344065 /* BarterMateUserChat.swift in Sources */,
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
 				4DD92C0D29DFDC4A00FA8A90 /* ListItemView.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,

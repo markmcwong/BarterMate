@@ -26,17 +26,6 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
 
     func subscribeToUpdates() {
         print("subscribeToUpdates called")
-//        cancellable = provider.querySubscription(U.self) { [weak self] result in
-//            switch result {
-//            case .success(let items):
-//                print("subscribeToUpdates success - items: ", items)
-//                DispatchQueue.main.async {
-//                    self!.items = items
-//                }
-//            case .failure(let error):
-//                print("Failed to receive updates with error: \(error)")
-//            }
-//        }
         cancellable = provider.querySubscription(U.self) { [weak self] result in
             DispatchQueue.main.async {
                 self?.items = result

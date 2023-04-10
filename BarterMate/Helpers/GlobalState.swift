@@ -16,13 +16,14 @@ class GlobalState: ObservableObject {
     private var subscribers = Set<AnyCancellable>()
     
     @Published var userId: String?
-    
+    @Published var user: BarterMateUser?
     @Published var currentChat: BarterMateChat?
     
     private init() { }
     
-    func updateUser(userId: String) {
+    func updateUser(userId: String, user: User) {
         self.userId = userId
+        self.user = AmplifyUserConverter.toBarterMateModel(user: user)
     }
 //    private init(manager: ServiceManager = AppServiceManager.shared) {
 //        manager.eventsPublisher.toAnyPublisher
