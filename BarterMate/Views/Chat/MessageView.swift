@@ -23,7 +23,10 @@ struct MessageView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(viewModel.chatId))
+                .padding()
             // Message input field and send button
             HStack {
                 TextField("Enter message...", text: $messageText)
@@ -33,7 +36,6 @@ struct MessageView: View {
                     messageText = ""
                 }
             }
-            .padding()
         }.navigationTitle(viewModel.chatName)
     }
 }

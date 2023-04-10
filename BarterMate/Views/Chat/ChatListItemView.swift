@@ -29,9 +29,7 @@ struct ChatListItemView: ListItemView, View {
     var body: some View {
         Button(action: {
             Task {
-//                await chat.fetchMessages {}
                 GlobalState.shared.currentChat = item
-                //Router.singleton.navigate(to: .message)
                 goToMessage = true
             }
         }) {
