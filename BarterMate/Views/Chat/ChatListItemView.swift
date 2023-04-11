@@ -9,17 +9,18 @@ import Foundation
 import SwiftUI
 
 struct ChatListItemView: ListItemView, View {
-    static func build(for item: BarterMateChat) -> ChatListItemView {
-        print("built called")
-        return ChatListItemView(item: item)
-    }
-    
+    var model: ListViewModel<BarterMateChat>? = nil
     @ObservedObject var item: BarterMateChat
+
+    static func build(for item: BarterMateChat, model: ListViewModel<BarterMateChat>?) -> ChatListItemView {
+        return ChatListItemView(item: item, model: model)
+    }
     @State var goToMessage = false
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
 
-    internal init(item: BarterMateChat) {
+    internal init(item: BarterMateChat, model: ListViewModel<BarterMateChat>?) {
         self.item = item
+        self.model = model
         if(!item.hasFetchedDetails) {
             item.fetchDetails()
         }
@@ -54,7 +55,11 @@ struct ChatListItemView: ListItemView, View {
                             Spacer()
                         }
                         Button("Delete Item") {
-                            //                        parentViewModel.deleteItem(item: chat)
+                            if(model != nil){
+                                model!.deleteItem(item: item)
+                            } else {
+                                print("model does not exist for deleting item")
+                            }
                         }
                         
                         NavigationLink(

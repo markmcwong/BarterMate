@@ -10,31 +10,27 @@ import SwiftUI
 import Amplify
 
 struct SubscribableListView<U: ListElement, Content: ListItemView<U>> : View {
-    typealias T = any ListItemView<U>
     @ObservedObject var viewModel: SubscribableListViewModel<U>
-    let content: (U) -> Content
+    let content: (U, ListViewModel<U>) -> Content
     
-    init(content: @escaping (U) -> Content) {
+    init(content: @escaping (U, ListViewModel<U>) -> Content) {
         self.viewModel = SubscribableListViewModel<U>()
         self.content = content
     }
     
-    init(content: @escaping (U) -> Content, where predicate: QueryPredicate) {
+    init(content: @escaping (U, ListViewModel<U>) -> Content, where predicate: QueryPredicate) {
         self.viewModel = SubscribableListViewModel<U>(where: predicate)
         self.content = content
     }
     
     var body: some View {
-        LazyVStack {
+        ScrollView {
             ForEach(viewModel.items, id: \.self.id) { item in
-                Content.build(for: item)
+                Content.build(for: item, model: nil)
             }
         }.id(UUID())
-//        .onAppear {
-//            viewModel.subscribeToUpdates()
-//        }
-//        .onDisappear {
-//            viewModel.unsubscribeFromUpdates()
-//        }
+       .onDisappear {
+           viewModel.unsubscribeFromUpdates()
+       }
     }
 }

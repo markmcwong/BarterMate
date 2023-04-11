@@ -39,4 +39,3 @@ struct AddRequestFormVIew_Previews: PreviewProvider {
         AddRequestFormView(ownerId: SampleUser.bill.id, requestList: ModelList<BarterMateRequest>.empty(), showModal: .constant(true))
     }
 }
-

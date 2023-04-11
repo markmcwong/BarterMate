@@ -41,17 +41,7 @@ class ModelList<T: ListElement>: ObservableObject {
         }
         return modelList
     }
-    
-    static func allMessage(chatId: String) -> ModelList {
-        print("all Message: ", chatId)
-        let modelList = ModelList()
-        modelList.setFacade()
-        modelList.modelListFacade?.setDelegate(delegate: modelList)
-        modelList.modelListFacade?.getMessageModelsByChatId(chatId: chatId)
-        print(modelList.elements.description)
-        return modelList
-    }
-    
+
     private init() {}
     
     func setFacade() {
@@ -89,12 +79,8 @@ class ModelList<T: ListElement>: ObservableObject {
         elements = elements.filter(isIncluded)
     }
     
-    
-
 }
 
 extension ModelList: ModelListFacadeDelegate {
     typealias Model = T
 }
-
-

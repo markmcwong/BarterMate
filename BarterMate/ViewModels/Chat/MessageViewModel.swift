@@ -16,9 +16,9 @@ import Combine
 
 class MessageViewModel: ObservableObject {
     private let chat: BarterMateChat
-    let messageProvider: AmplifySubscriptionProvider<BarterMateMessage>
-    let chatName: String
-    let chatId: String
+    @Published var messageProvider: AmplifySubscriptionProvider<BarterMateMessage>
+    @Published var chatName: String
+    @Published var chatId: String
     
     init(chat: BarterMateChat?) {
         guard let chat = chat else {

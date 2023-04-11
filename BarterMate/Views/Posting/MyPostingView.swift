@@ -25,7 +25,7 @@ struct MyPostingView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
-                    Text(parentViewModel.user.username)
+                    Text(parentViewModel.user!.username)
                             .font(.system(size: 20))
                             .bold()
                 }

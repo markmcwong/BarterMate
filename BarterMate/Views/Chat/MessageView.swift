@@ -9,37 +9,44 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-    @State private var messageText = ""
-//    let chat: BarterMateChat?
-    let viewModel: MessageViewModel
+    @ObservedObject var viewModel: MessageViewModel
 
     init(viewModel: MessageViewModel) {
-//        guard let chat = chat else {
-//            fatalError("Chat cannot be nil")
-//        }
-//        self.chat = chat
         self.viewModel = viewModel
     }
     
     var body: some View {
         VStack {
             Spacer()
-            
-            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(viewModel.chatId))
-                .padding()
-            // Message input field and send button
-            HStack {
-                TextField("Enter message...", text: $messageText)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                Button("Send") {
-                    viewModel.sendMessage(messageText)
-                    messageText = ""
-                }
-            }
+            Text(viewModel.chatId)
+            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build
+                                                                , where: Message.keys.sentInID.eq(viewModel.chatId))
+            MessageInputView(viewModel: viewModel)
         }.navigationTitle(viewModel.chatName)
     }
 }
     
+
+struct MessageInputView: View {
+    @State private var messageText = ""
+    let viewModel: MessageViewModel
+
+    init(viewModel: MessageViewModel) {
+        self.viewModel = viewModel
+    }
+    
+    var body: some View {
+        HStack {
+            TextField("Enter message...", text: $messageText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Send") {
+                viewModel.sendMessage(messageText)
+                messageText = ""
+            }
+        }
+        .padding()
+    }
+}
 //    private func loadMessages() {
 //        // Load messages related to the chat using Amplify DataStore query
 //        guard let messages = chat?.messages else {
@@ -95,16 +102,17 @@ struct MessageView: View {
 //}
 
 struct MessageRow: View, ListItemView {
+    var model: ListViewModel<BarterMateMessage>? = nil
     @ObservedObject var item: BarterMateMessage
     let isSentByMe: Bool
     
-    static func build(for item: BarterMateMessage) -> MessageRow {
-        print("built called")
-        return MessageRow(item: item)
+    static func build(for item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) -> MessageRow {
+        return MessageRow(item: item, model: model)
     }
     
-    internal init(item: BarterMateMessage) {
+    internal init(item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) {
         self.item = item
+        self.model = model
         if(!item.hasFetchedDetails) {
             item.fetchDetails()
         }

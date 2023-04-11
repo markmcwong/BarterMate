@@ -23,7 +23,7 @@ class ItemSelectionViewModel: ObservableObject {
         }.store(in: &cancellables)
     }
     
-    var filteredItems : [BarterMateItem] {
+    var filteredItemLists : [BarterMateItem] {
         itemList.elements.filter { item in
             for posting in postingList.elements {
                 if posting.item == item {
@@ -51,4 +51,3 @@ class ItemSelectionViewModel: ObservableObject {
     }
     
 }
-

@@ -7,5 +7,3 @@
 
 import Foundation
 
-class RequestList: ModelList<BarterMateRequest> {
-}

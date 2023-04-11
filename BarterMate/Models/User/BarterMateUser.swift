@@ -12,6 +12,16 @@ class BarterMateUser: ObservableObject, Hashable, ListElement {
     @Published var username: String
     @Published var profilePicUrl: String?
     
+    static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
+        lhs.id == rhs.id && lhs.username == rhs.username && lhs.profilePicUrl == rhs.profilePicUrl
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(username)
+        hasher.combine(profilePicUrl)
+    }
+    
     private var userFacade: (any UserFacade)?
     
     static func getUserWithId(id: Identifier<BarterMateUser>) -> BarterMateUser {
@@ -30,14 +40,6 @@ class BarterMateUser: ObservableObject, Hashable, ListElement {
     init(id: Identifier<BarterMateUser> = Identifier(value: UUID().uuidString), username: String) {
         self.id = id
         self.username = username
-    }
-    
-    static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
-        lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
     }
     
 }

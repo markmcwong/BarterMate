@@ -13,14 +13,17 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
     @Published var items: [U] = []
     private var cancellable: Cancellable?
     private let provider: AmplifySubscriptionProvider<U>
-
+    let predicate: QueryPredicate?
+    
     init() {
         self.provider = AmplifySubscriptionProvider<U>()
+        self.predicate = nil
         subscribeToUpdates()
     }
     
     init(where predicate: QueryPredicate) {
         self.provider = AmplifySubscriptionProvider<U>()
+        self.predicate = predicate
         subscribeToUpdatesWithPredicate(where: predicate)
     }
 
@@ -28,17 +31,32 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
         print("subscribeToUpdates called")
         cancellable = provider.querySubscription(U.self) { [weak self] result in
             DispatchQueue.main.async {
+                print("subscribeToUpdates : ")
+                for res in result{
+                    print(res)
+                }
+                print("res loop finished")
                 self?.items = result
             }
         }
     }
     
-    func subscribeToUpdatesWithPredicate(where predicate: QueryPredicate) {
-        print("subscribeToUpdates called")
-        cancellable = provider.querySubscription(U.self, where: predicate) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.items = result
+    func subscribeToUpdatesWithPredicate(where predicate: QueryPredicate?) {
+        if(predicate != nil){
+            print("subscribeToUpdatesWithPredicate called")
+            cancellable = provider.querySubscription(U.self, where: predicate) { [weak self] result in
+                DispatchQueue.main.async {
+                    print("subscribeToUpdatesWithPredicate:  " + result.debugDescription)
+//                    for res in result{
+//                        print(res)
+//                    }
+//                    print("res loop finished")
+                    self?.items = result
+                    self?.objectWillChange.send()
+                }
             }
+        } else {
+            subscribeToUpdates()
         }
     }
 

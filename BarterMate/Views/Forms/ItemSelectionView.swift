@@ -20,7 +20,7 @@ struct ItemSelectionView: View {
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack {
-                ForEach(viewModel.filteredItems, id: \.self) { item in
+                ForEach(viewModel.filteredItemLists, id: \.self) { item in
                     if viewModel.highlightedItem == item {
                         ItemCardView(item: item)
                             .border(Color(.red))
@@ -60,4 +60,3 @@ struct ItemSelectionView_Previews: PreviewProvider {
         ItemSelectionView(userid: SampleUser.bill.id, postingList: ModelList<BarterMatePosting>.empty(), addPosting: .constant(true))
     }
 }
-

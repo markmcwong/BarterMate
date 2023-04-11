@@ -93,7 +93,8 @@ public class AmplifyAuthService: AuthService {
     func signOut() async {
         do {
             let res = await Amplify.Auth.signOut()
-            
+            try await Amplify.DataStore.clear()
+            print("Datastore cleared")
         } catch let error as AuthError {
             print("Sign Out failed with error: \(error)")
         } catch {

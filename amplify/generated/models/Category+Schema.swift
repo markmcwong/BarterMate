@@ -37,9 +37,29 @@ extension Category {
       .field(category.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
+    public class Path: ModelPath<Category> { }
+    
+    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Category: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
+}
+extension ModelPath where ModelType == Category {
+  public var id: FieldPath<String>   {
+      string("id") 
+    }
+  public var categoryName: FieldPath<String>   {
+      string("categoryName") 
+    }
+  public var itemID: FieldPath<String>   {
+      string("itemID") 
+    }
+  public var createdAt: FieldPath<Temporal.DateTime>   {
+      datetime("createdAt") 
+    }
+  public var updatedAt: FieldPath<Temporal.DateTime>   {
+      datetime("updatedAt") 
+    }
 }
