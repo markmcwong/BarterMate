@@ -40,7 +40,7 @@
             "emitauthprovider": true,
             "generateindexrules": true,
             "enabledartnullsafety": true,
-            "generatemodelsforlazyloadandcustomselectionset": true
+            "generatemodelsforlazyloadandcustomselectionset": false
         },
         "appsync": {
             "generategraphqlpermissions": true

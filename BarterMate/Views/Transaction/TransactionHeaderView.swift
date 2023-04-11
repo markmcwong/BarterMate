@@ -15,20 +15,20 @@ struct TransactionHeaderView: View {
         HStack {
             Text(user.username)
 
-            if parentViewModel.transaction.hasLockedOffer.contains(user) {
-                Text("Item Locked")
-            } else if parentViewModel.transaction.hasCompletedBarter.contains(user) {
+            if parentViewModel.transaction.hasCompletedBarter.contains(user.id) {
                 Text("Completed Trade")
+            } else if parentViewModel.transaction.hasLockedOffer.contains(user.id) {
+                Text("Item Locked")
             } else {
                 Spacer()
             }
             
             if parentViewModel.user == user {
-                if parentViewModel.transaction.hasLockedOffer.contains(user) {
+                if parentViewModel.transaction.hasLockedOffer.contains(user.id) {
                     Button("Complete Trade") {
-                        print("Completed")
+                        parentViewModel.completeBarter()
                     }
-                } else if parentViewModel.transaction.hasCompletedBarter.contains(user) {
+                } else if parentViewModel.transaction.hasCompletedBarter.contains(user.id) {
                     Spacer()
                 } else {
                     Button("Lock Trade") {
@@ -45,4 +45,5 @@ struct TransactionHeaderView_Previews: PreviewProvider {
         TransactionHeaderView(parentViewModel: TransactionViewModel(user: SampleUser.bill, transaction: SampleTransaction.sampleTransaction), user: SampleUser.bob)
     }
 }
+
 

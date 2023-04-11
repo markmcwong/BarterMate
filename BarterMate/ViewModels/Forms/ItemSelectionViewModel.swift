@@ -8,22 +8,16 @@
 import Foundation
 import Combine
 
-class ItemSelectionViewModel: ObservableObject {
+class ItemSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
     var postingList: ModelList<BarterMatePosting>
-    var itemList: ModelList<BarterMateItem>
-    @Published var highlightedItem: BarterMateItem?
-    private var cancellables: Set<AnyCancellable> = []
     
     init(userid: Identifier<BarterMateUser>, postingList: ModelList<BarterMatePosting>) {
         self.postingList = postingList
-        itemList = ModelList<BarterMateItem>.of(userid)
-        itemList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
-            self?.objectWillChange.send()
-        }.store(in: &cancellables)
+        let itemList = ModelList<BarterMateItem>.of(userid)
+        super.init(itemList: itemList)
     }
     
-    var filteredItemLists : [BarterMateItem] {
+    var filteredItems : [BarterMateItem] {
         itemList.elements.filter { item in
             for posting in postingList.elements {
                 if posting.item == item {
@@ -32,10 +26,6 @@ class ItemSelectionViewModel: ObservableObject {
             }
             return true
         }
-    }
-    
-    func highlightItem(item: BarterMateItem) {
-        highlightedItem = item
     }
     
     func makePosting() {
@@ -51,3 +41,5 @@ class ItemSelectionViewModel: ObservableObject {
     }
     
 }
+
+

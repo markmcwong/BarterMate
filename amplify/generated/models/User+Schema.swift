@@ -48,47 +48,9 @@ extension User {
       .field(user.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
-    public class Path: ModelPath<User> { }
-    
-    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension User: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
-}
-extension ModelPath where ModelType == User {
-  public var id: FieldPath<String>   {
-      string("id") 
-    }
-  public var username: FieldPath<String>   {
-      string("username") 
-    }
-  public var Transactions: ModelPath<UserTransaction>   {
-      UserTransaction.Path(name: "Transactions", isCollection: true, parent: self) 
-    }
-  public var Postings: ModelPath<Posting>   {
-      Posting.Path(name: "Postings", isCollection: true, parent: self) 
-    }
-  public var Requests: ModelPath<Request>   {
-      Request.Path(name: "Requests", isCollection: true, parent: self) 
-    }
-  public var Items: ModelPath<Item>   {
-      Item.Path(name: "Items", isCollection: true, parent: self) 
-    }
-  public var Chats: ModelPath<UserChat>   {
-      UserChat.Path(name: "Chats", isCollection: true, parent: self) 
-    }
-  public var SentMessages: ModelPath<Message>   {
-      Message.Path(name: "SentMessages", isCollection: true, parent: self) 
-    }
-  public var profilePic: FieldPath<String>   {
-      string("profilePic") 
-    }
-  public var createdAt: FieldPath<Temporal.DateTime>   {
-      datetime("createdAt") 
-    }
-  public var updatedAt: FieldPath<Temporal.DateTime>   {
-      datetime("updatedAt") 
-    }
 }

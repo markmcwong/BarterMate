@@ -17,7 +17,9 @@ class AmplifyUserFacade: UserFacade {
         }
         
         Task {
+            print(id.value)
             guard let amplifyUser = try await Amplify.DataStore.query(User.self, byId: id.value) else {
+                print("no user")
                 return
             }
 

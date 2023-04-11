@@ -60,6 +60,11 @@
 		17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1629CDBC67008C31B4 /* BarterMateItem.swift */; };
 		17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1829CE7889008C31B4 /* BarterMateRequest.swift */; };
 		17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */; };
+		1745A49729E5E27F009A4ADD /* SelectableItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49629E5E27F009A4ADD /* SelectableItemViewModel.swift */; };
+		1745A49929E5E292009A4ADD /* MultiSelectableItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49829E5E292009A4ADD /* MultiSelectableItemViewModel.swift */; };
+		1745A49B29E5E2A1009A4ADD /* UserSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49A29E5E2A1009A4ADD /* UserSelectionViewModel.swift */; };
+		1745A49D29E5E342009A4ADD /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49C29E5E342009A4ADD /* UserCardView.swift */; };
+		1745A49F29E5E355009A4ADD /* UserSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49E29E5E355009A4ADD /* UserSelectionView.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
 		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
 		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
@@ -81,7 +86,7 @@
 		178F186329E44B470087D018 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186229E44B470087D018 /* TransactionListView.swift */; };
 		178F186529E44B550087D018 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186429E44B550087D018 /* TransactionView.swift */; };
 		178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186629E44B640087D018 /* TransactionHeaderView.swift */; };
-		178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionVIewModel.swift */; };
+		178F186A29E44BA40087D018 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionViewModel.swift */; };
 		178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186B29E44BB60087D018 /* TransactionListViewModel.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
@@ -240,6 +245,11 @@
 		17375A1629CDBC67008C31B4 /* BarterMateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateItem.swift; sourceTree = "<group>"; };
 		17375A1829CE7889008C31B4 /* BarterMateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateRequest.swift; sourceTree = "<group>"; };
 		17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMatePosting.swift; sourceTree = "<group>"; };
+		1745A49629E5E27F009A4ADD /* SelectableItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemViewModel.swift; sourceTree = "<group>"; };
+		1745A49829E5E292009A4ADD /* MultiSelectableItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectableItemViewModel.swift; sourceTree = "<group>"; };
+		1745A49A29E5E2A1009A4ADD /* UserSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionViewModel.swift; sourceTree = "<group>"; };
+		1745A49C29E5E342009A4ADD /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		1745A49E29E5E355009A4ADD /* UserSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionView.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
 		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
@@ -262,7 +272,7 @@
 		178F186229E44B470087D018 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		178F186429E44B550087D018 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		178F186629E44B640087D018 /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
-		178F186929E44BA40087D018 /* TransactionVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVIewModel.swift; sourceTree = "<group>"; };
+		178F186929E44BA40087D018 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		178F186B29E44BB60087D018 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		178F186D29E44F1B0087D018 /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
@@ -458,6 +468,9 @@
 				178F184F29E449210087D018 /* AddRequestViewModel.swift */,
 				178F185129E449350087D018 /* OfferSelectionViewModel.swift */,
 				178F185329E449470087D018 /* SelectionViewModel.swift */,
+				1745A49629E5E27F009A4ADD /* SelectableItemViewModel.swift */,
+				1745A49829E5E292009A4ADD /* MultiSelectableItemViewModel.swift */,
+				1745A49A29E5E2A1009A4ADD /* UserSelectionViewModel.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -469,6 +482,8 @@
 				4D87E22829E5737600A345AB /* AddRequestFormView.swift */,
 				4D87E22929E5737700A345AB /* ItemSelectionView.swift */,
 				178F185929E44A1F0087D018 /* OfferSelectionView.swift */,
+				1745A49C29E5E342009A4ADD /* UserCardView.swift */,
+				1745A49E29E5E355009A4ADD /* UserSelectionView.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -637,7 +652,7 @@
 		178F186829E44B850087D018 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				178F186929E44BA40087D018 /* TransactionVIewModel.swift */,
+				178F186929E44BA40087D018 /* TransactionViewModel.swift */,
 				178F186B29E44BB60087D018 /* TransactionListViewModel.swift */,
 			);
 			path = Transaction;
@@ -1089,6 +1104,7 @@
 				172BC8D929D5FEED000EB398 /* SamplePosting.swift in Sources */,
 				4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */,
 				1703C71529D21631006466D3 /* MyItemListView.swift in Sources */,
+				1745A49D29E5E342009A4ADD /* UserCardView.swift in Sources */,
 				4D06B88D29D7F54500CD5BD4 /* BarterMateMessage.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
 				4DD92C0F29E1BD0F00FA8A90 /* FutureFactory.swift in Sources */,
@@ -1135,10 +1151,11 @@
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
 				172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */,
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
+				1745A49F29E5E355009A4ADD /* UserSelectionView.swift in Sources */,
 				178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */,
 				4D87E22B29E5737700A345AB /* ItemSelectionView.swift in Sources */,
 				4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */,
-				178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */,
+				178F186A29E44BA40087D018 /* TransactionViewModel.swift in Sources */,
 				178F183D29E447AE0087D018 /* TransactionList.swift in Sources */,
 				172BC92429D9F985000EB398 /* ImagePicker.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
@@ -1178,6 +1195,7 @@
 				178F185E29E44AF40087D018 /* ProfileDetailsTabView.swift in Sources */,
 				178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */,
 				172BC90129D768C3000EB398 /* RequestFeedViewModel.swift in Sources */,
+				1745A49B29E5E2A1009A4ADD /* UserSelectionViewModel.swift in Sources */,
 				4D06B89329D7F77600CD5BD4 /* AmplifyMessageAdapter.swift in Sources */,
 				4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */,
 				82FC8FE3A0A7405BA7EF5E53 /* User.swift in Sources */,
@@ -1199,6 +1217,7 @@
 				69C3C2FD2822B086ABDB5612 /* UserTransaction+Schema.swift in Sources */,
 				4DD92C0D29DFDC4A00FA8A90 /* ListItemView.swift in Sources */,
 				F079565F55A944F02A842875 /* UserTransaction.swift in Sources */,
+				1745A49929E5E292009A4ADD /* MultiSelectableItemViewModel.swift in Sources */,
 				172BC8B729D34526000EB398 /* ModelListFacadeDelegate.swift in Sources */,
 				1703C70829D207C7006466D3 /* ItemList.swift in Sources */,
 				17375A1429CDB85F008C31B4 /* Identifier.swift in Sources */,
@@ -1207,6 +1226,7 @@
 				172FC0E929C616FD00842C70 /* UserProfileImageView.swift in Sources */,
 				1703C71129D20F32006466D3 /* SampleUser.swift in Sources */,
 				EB41B49414E5ABC953ED7FAA /* UserCompleted+Schema.swift in Sources */,
+				1745A49729E5E27F009A4ADD /* SelectableItemViewModel.swift in Sources */,
 				C26332EFCCC394F06D1E5F6C /* UserCompleted.swift in Sources */,
 				38A558C822780F04D4281533 /* UserLocked+Schema.swift in Sources */,
 				8E1C8D6B2D82787471381896 /* UserLocked.swift in Sources */,
