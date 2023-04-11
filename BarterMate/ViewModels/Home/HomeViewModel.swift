@@ -6,18 +6,21 @@
 //
 
 import Foundation
+import Combine
 
 class HomeViewModel: ObservableObject {
-    let user: BarterMateUser
+    @Published var user: BarterMateUser
     let requestFeedViewModel: RequestFeedViewModel
     let postingFeedViewModel: PostingFeedViewModel
-//    let itemList: ModelList<BarterMateItem>
-//    let postingList: ModelList<BarterMatePosting>
-//    let requestList: ModelList<BarterMateRequest>
+    private var cancellables: Set<AnyCancellable> = []
     
     init(user: BarterMateUser) {
         self.user = user
         self.postingFeedViewModel = PostingFeedViewModel(modelType: BarterMatePosting.self)
         self.requestFeedViewModel = RequestFeedViewModel(modelType: BarterMateRequest.self)
+        user.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
     }
 }

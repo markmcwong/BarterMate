@@ -34,6 +34,12 @@ func configureAmplify() {
         try Amplify.add(plugin: AWSCognitoAuthPlugin())
         try Amplify.add(plugin: AWSS3StoragePlugin())
         try Amplify.configure()
+        
+        let t = Transaction.keys
+        
+//        Task {
+//            try await Amplify.DataStore.delete(Transaction.self, where: t.id != ")
+//        }
 
         print("Initialized Amplify");
     } catch {

@@ -48,7 +48,6 @@ class ModelList<T: ListElement>: ObservableObject {
         modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
         modelList.modelListFacade?.getMessageModelsByChatId(chatId: chatId)
-        print(modelList.elements.description)
         return modelList
     }
     

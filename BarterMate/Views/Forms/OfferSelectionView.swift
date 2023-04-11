@@ -24,12 +24,12 @@ struct OfferSelectionView: View {
                         ItemCardView(item: item)
                             .border(Color(.red))
                             .onTapGesture {
-                                viewModel.highlightedItem = nil
+                                viewModel.setHighlightedItem(to: nil)
                             }
                     } else {
                         ItemCardView(item: item)
                             .onTapGesture {
-                                viewModel.highlightedItem = item
+                                viewModel.setHighlightedItem(to: item)
                             }
                     }
 

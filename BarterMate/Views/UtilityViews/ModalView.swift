@@ -20,19 +20,24 @@ struct ModalView<DisplayView: View>: View {
     var body: some View {
         SwiftUI.Group {
             if showModal {
-                Rectangle()
-                    .foregroundColor(Color.black.opacity(0.5))
-                    .edgesIgnoringSafeArea(.all)
-                    .overlay(
-                        GeometryReader { geometry in
-                            RoundedRectangle(cornerRadius: 16)
-                                .foregroundColor(.white)
-                                .frame(width: min(geometry.size.width + 100, 300), height: min(geometry.size.height + 100, 300))
-                                .overlay(alignment: .top) {
-                                    ModalContentView(displayView: {self.displayView}, showModal: self.$showModal)
+                VStack {
+                    Rectangle()
+                        .foregroundColor(Color.black.opacity(0.5))
+                        .edgesIgnoringSafeArea(.all)
+                        .overlay(
+                            GeometryReader { proxy in
+                                VStack {
+                                    Color.clear.overlay(                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundColor(.white)
+                                        .frame(width: proxy.size.width * 0.8, height: proxy.size.height * 0.8, alignment: .center)
+                                        .overlay(alignment: .center) {
+                                            ModalContentView(displayView: {self.displayView}, showModal: self.$showModal)
+                                        }
+                                    )
                                 }
-                        }
-                )
+                            }
+                        )
+                }
             }
         }
     }
@@ -51,15 +56,15 @@ struct ModalContentView<DisplayView: View>: View { // the real modal content
     var body: some View {
         VStack {
             self.displayView
-            Text("Modal Content")
 
+            Spacer()
             Button(action: {
                 self.showModal.toggle()
             }) {
                 HStack {
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.large)
-                    Text("Close Modal")
+                    Text("Cancel Request")
                 }
             }
         }
@@ -72,3 +77,4 @@ struct ModalView_Previews: PreviewProvider {
         ModalView(displayView: {EmptyView()}, showModal: .constant(true))
     }
 }
+

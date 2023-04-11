@@ -31,12 +31,14 @@ class TransactionList: TransactionListFacadeDelegate, ObservableObject {
 
     func insert(transaction: BarterMateTransaction) {
         transactions.append(transaction)
+        facade?.save(model: transaction)
     }
     
     func remove(transaction: BarterMateTransaction) {
         if let index = transactions.firstIndex(of: transaction) {
             self.transactions.remove(at: index)
         }
+        facade?.delete(model: transaction)
     }
     
     func insertAll(transactions: [BarterMateTransaction]) {

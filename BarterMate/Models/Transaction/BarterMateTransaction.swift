@@ -18,17 +18,27 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     var id: Identifier<BarterMateTransaction>
     @Published var participants: Set<BarterMateUser>
     @Published var itemPool: Set<BarterMateItem>
-    @Published var hasLockedOffer: Set<BarterMateUser>
-    @Published var hasCompletedBarter: Set<BarterMateUser>
+    @Published var hasLockedOffer: Set<Identifier<BarterMateUser>>
+    @Published var hasCompletedBarter: Set<Identifier<BarterMateUser>>
     @Published var state: TransactionState
     
     var facade: TransactionFacade?
     
+    static func createNewTransaction() -> BarterMateTransaction {
+        let transaction = BarterMateTransaction(participants: [],
+                                                itemPool: [],
+                                                hasLockedOffer: [],
+                                                hasCompletedBarter: [],
+                                                state: .INITIATED)
+        transaction.facade?.createTransaction(transaction: transaction)
+        return transaction
+    }
+    
     init(id: Identifier<BarterMateTransaction> = Identifier(value: UUID().uuidString),
          participants: Set<BarterMateUser>,
          itemPool: Set<BarterMateItem>,
-         hasLockedOffer: Set<BarterMateUser>,
-         hasCompletedBarter: Set<BarterMateUser>,
+         hasLockedOffer: Set<Identifier<BarterMateUser>>,
+         hasCompletedBarter: Set<Identifier<BarterMateUser>>,
          state: TransactionState) {
         self.id = id
         self.participants = participants
@@ -45,6 +55,9 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     func addUser(user: BarterMateUser) {
+        guard state == .INITIATED else {
+            return
+        }
         guard !participants.contains(user) else {
             return
         }
@@ -53,6 +66,9 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     func removeUser(user: BarterMateUser) {
+        guard state == .INITIATED else {
+            return
+        }
         guard participants.contains(user) else {
             return
         }
@@ -61,6 +77,9 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     func addItem(item: BarterMateItem) {
+        guard state == .INITIATED else {
+            return
+        }
         guard !itemPool.contains(item) else {
             return
         }
@@ -69,6 +88,9 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     func removeItem(item: BarterMateItem) {
+        guard state == .INITIATED else {
+            return
+        }
         guard itemPool.contains(item) else {
             return
         }
@@ -81,13 +103,45 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
             return
         }
         
-        hasLockedOffer.insert(user)
+        hasLockedOffer.insert(user.id)
         facade?.userLockTransaction(user: user)
+        lockTransaction()
     }
     
     func lockTransaction() {
+        guard state == .INITIATED else {
+            return
+        }
+        for participant in participants {
+            if !hasLockedOffer.contains(participant.id) {
+                return
+            }
+        }
         state = .ITEMLOCKED
         facade?.lockTransaction()
+    }
+    
+    func userCompleteBarter(user: BarterMateUser) {
+        guard state == .ITEMLOCKED else {
+            return
+        }
+
+        hasCompletedBarter.insert(user.id)
+        facade?.userCompleteBarter(user: user)
+        completeBarter()
+    }
+    
+    func completeBarter() {
+        guard state == .ITEMLOCKED else {
+            return
+        }
+        for participant in participants {
+            if !hasCompletedBarter.contains(participant.id) {
+                return
+            }
+        }
+        state = .COMPLETED
+        facade?.completeTransaction()
     }
     
     static func == (lhs: BarterMateTransaction, rhs: BarterMateTransaction) -> Bool {

@@ -33,7 +33,7 @@
 		172BC8DB29D60D4C000EB398 /* CreateItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8DA29D60D4C000EB398 /* CreateItemButton.swift */; };
 		172BC8DD29D60DC6000EB398 /* ProfileButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8DC29D60DC6000EB398 /* ProfileButtonsView.swift */; };
 		172BC8E029D60E98000EB398 /* ModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8DF29D60E98000EB398 /* ModalView.swift */; };
-		172BC8E229D613A6000EB398 /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E129D613A6000EB398 /* FormView.swift */; };
+		172BC8E229D613A6000EB398 /* AddItemFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E129D613A6000EB398 /* AddItemFormView.swift */; };
 		172BC8E529D71041000EB398 /* AddItemFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */; };
 		172BC8E929D736C0000EB398 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8E829D736C0000EB398 /* ListViewModel.swift */; };
 		172BC8EC29D73E2D000EB398 /* NavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172BC8EB29D73E2D000EB398 /* NavBarView.swift */; };
@@ -62,6 +62,14 @@
 		17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1629CDBC67008C31B4 /* BarterMateItem.swift */; };
 		17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1829CE7889008C31B4 /* BarterMateRequest.swift */; };
 		17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */; };
+		1745A48329E5A647009A4ADD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1745A48129E5A647009A4ADD /* amplifyconfiguration.json */; };
+		1745A48429E5A647009A4ADD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1745A48229E5A647009A4ADD /* awsconfiguration.json */; };
+		1745A48B29E5BD5F009A4ADD /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A48A29E5BD5F009A4ADD /* UserCardView.swift */; };
+		1745A48D29E5BD9F009A4ADD /* UserSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A48C29E5BD9F009A4ADD /* UserSelectionView.swift */; };
+		1745A48F29E5BEE2009A4ADD /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A48E29E5BEE2009A4ADD /* UserListView.swift */; };
+		1745A49129E5C15B009A4ADD /* SelectableItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49029E5C15B009A4ADD /* SelectableItemViewModel.swift */; };
+		1745A49329E5C44F009A4ADD /* MultiSelectableItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49229E5C44F009A4ADD /* MultiSelectableItemViewModel.swift */; };
+		1745A49529E5C563009A4ADD /* UserSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49429E5C563009A4ADD /* UserSelectionViewModel.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
 		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
 		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
@@ -84,19 +92,17 @@
 		178F186329E44B470087D018 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186229E44B470087D018 /* TransactionListView.swift */; };
 		178F186529E44B550087D018 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186429E44B550087D018 /* TransactionView.swift */; };
 		178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186629E44B640087D018 /* TransactionHeaderView.swift */; };
-		178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionVIewModel.swift */; };
+		178F186A29E44BA40087D018 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionViewModel.swift */; };
 		178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186B29E44BB60087D018 /* TransactionListViewModel.swift */; };
 		178F186E29E44F1B0087D018 /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186D29E44F1B0087D018 /* AddRequestFormView.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
-		2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */; };
 		2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7638E5ED5318B7DB9E6680B /* TransactionStatus.swift */; };
 		38A558C822780F04D4281533 /* UserLocked+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = B780FAEA55C9DEBB2641E819 /* UserLocked+Schema.swift */; };
 		3DE63DE4217676F0B159A18C /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCECBB0F6B90DDC29E11EAD1 /* Category.swift */; };
 		3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5CF9E593E82920841EA30D /* UserChat.swift */; };
 		4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA95A3A358495DAC8787FAAF /* Chat.swift */; };
-		414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */; };
 		4D06B88D29D7F54500CD5BD4 /* BarterMateMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B88C29D7F54500CD5BD4 /* BarterMateMessage.swift */; };
 		4D06B88F29D7F57200CD5BD4 /* BarterMateChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B88E29D7F57200CD5BD4 /* BarterMateChat.swift */; };
 		4D06B89129D7F70E00CD5BD4 /* AmplifyChatAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D06B89029D7F70E00CD5BD4 /* AmplifyChatAdapter.swift */; };
@@ -214,7 +220,7 @@
 		172BC8DA29D60D4C000EB398 /* CreateItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemButton.swift; sourceTree = "<group>"; };
 		172BC8DC29D60DC6000EB398 /* ProfileButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonsView.swift; sourceTree = "<group>"; };
 		172BC8DF29D60E98000EB398 /* ModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalView.swift; sourceTree = "<group>"; };
-		172BC8E129D613A6000EB398 /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		172BC8E129D613A6000EB398 /* AddItemFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFormView.swift; sourceTree = "<group>"; };
 		172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemFormViewModel.swift; sourceTree = "<group>"; };
 		172BC8E829D736C0000EB398 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		172BC8EB29D73E2D000EB398 /* NavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarView.swift; sourceTree = "<group>"; };
@@ -244,6 +250,14 @@
 		17375A1629CDBC67008C31B4 /* BarterMateItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateItem.swift; sourceTree = "<group>"; };
 		17375A1829CE7889008C31B4 /* BarterMateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateRequest.swift; sourceTree = "<group>"; };
 		17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMatePosting.swift; sourceTree = "<group>"; };
+		1745A48129E5A647009A4ADD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = amplifyconfiguration.json; path = amplify/amplifyconfiguration.json; sourceTree = "<group>"; };
+		1745A48229E5A647009A4ADD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = awsconfiguration.json; path = amplify/awsconfiguration.json; sourceTree = "<group>"; };
+		1745A48A29E5BD5F009A4ADD /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
+		1745A48C29E5BD9F009A4ADD /* UserSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionView.swift; sourceTree = "<group>"; };
+		1745A48E29E5BEE2009A4ADD /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
+		1745A49029E5C15B009A4ADD /* SelectableItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableItemViewModel.swift; sourceTree = "<group>"; };
+		1745A49229E5C44F009A4ADD /* MultiSelectableItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiSelectableItemViewModel.swift; sourceTree = "<group>"; };
+		1745A49429E5C563009A4ADD /* UserSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionViewModel.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
 		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
@@ -266,7 +280,7 @@
 		178F186229E44B470087D018 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
 		178F186429E44B550087D018 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		178F186629E44B640087D018 /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
-		178F186929E44BA40087D018 /* TransactionVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVIewModel.swift; sourceTree = "<group>"; };
+		178F186929E44BA40087D018 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		178F186B29E44BB60087D018 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		178F186D29E44F1B0087D018 /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
@@ -274,7 +288,6 @@
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		1B17F90476DAF2F25789B030 /* Posting+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Posting+Schema.swift"; path = "amplify/generated/models/Posting+Schema.swift"; sourceTree = "<group>"; };
 		1C5CF9E593E82920841EA30D /* UserChat.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserChat.swift; path = amplify/generated/models/UserChat.swift; sourceTree = "<group>"; };
-		312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		3CCB95C904F8E2A9BCBDB83D /* Chat+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Chat+Schema.swift"; path = "amplify/generated/models/Chat+Schema.swift"; sourceTree = "<group>"; };
 		4851009B2BD5D153484A4A27 /* UserTransaction+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "UserTransaction+Schema.swift"; path = "amplify/generated/models/UserTransaction+Schema.swift"; sourceTree = "<group>"; };
 		48EC967FB2C7CD0C92BC8693 /* UserLocked.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UserLocked.swift; path = amplify/generated/models/UserLocked.swift; sourceTree = "<group>"; };
@@ -329,7 +342,6 @@
 		710F4B0BC88DFA18FC19011F /* User.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
 		72400523C3D47445D20F5F78 /* Item.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Item.swift; path = amplify/generated/models/Item.swift; sourceTree = "<group>"; };
 		73080FF9EBB7B943AF0763CE /* Category+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Category+Schema.swift"; path = "amplify/generated/models/Category+Schema.swift"; sourceTree = "<group>"; };
-		7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
 		86594AA17B70D1270359DCA7 /* Group+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "Group+Schema.swift"; path = "amplify/generated/models/Group+Schema.swift"; sourceTree = "<group>"; };
 		8745E176A5DB60BA803E5D18 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		953E51B8C8AEA2EB84D96FFE /* Group.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Group.swift; path = amplify/generated/models/Group.swift; sourceTree = "<group>"; };
@@ -460,6 +472,9 @@
 				178F184F29E449210087D018 /* AddRequestViewModel.swift */,
 				178F185129E449350087D018 /* OfferSelectionViewModel.swift */,
 				178F185329E449470087D018 /* SelectionViewModel.swift */,
+				1745A49029E5C15B009A4ADD /* SelectableItemViewModel.swift */,
+				1745A49229E5C44F009A4ADD /* MultiSelectableItemViewModel.swift */,
+				1745A49429E5C563009A4ADD /* UserSelectionViewModel.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -467,7 +482,8 @@
 		172BC8E629D7193B000EB398 /* Forms */ = {
 			isa = PBXGroup;
 			children = (
-				172BC8E129D613A6000EB398 /* FormView.swift */,
+				1745A48929E5BD37009A4ADD /* AddTransaction */,
+				172BC8E129D613A6000EB398 /* AddItemFormView.swift */,
 				178F185529E449FE0087D018 /* ItemSelectionView.swift */,
 				178F185929E44A1F0087D018 /* OfferSelectionView.swift */,
 				178F186D29E44F1B0087D018 /* AddRequestFormView.swift */,
@@ -593,6 +609,16 @@
 			path = AmplifyConverters;
 			sourceTree = "<group>";
 		};
+		1745A48929E5BD37009A4ADD /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				1745A48A29E5BD5F009A4ADD /* UserCardView.swift */,
+				1745A48C29E5BD9F009A4ADD /* UserSelectionView.swift */,
+				1745A48E29E5BEE2009A4ADD /* UserListView.swift */,
+			);
+			path = AddTransaction;
+			sourceTree = "<group>";
+		};
 		174ACAA529BFA454006222AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -641,7 +667,7 @@
 		178F186829E44B850087D018 /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
-				178F186929E44BA40087D018 /* TransactionVIewModel.swift */,
+				178F186929E44BA40087D018 /* TransactionViewModel.swift */,
 				178F186B29E44BB60087D018 /* TransactionListViewModel.swift */,
 			);
 			path = Transaction;
@@ -918,8 +944,8 @@
 		A6A581AD5EE2E153BDDB950B /* AmplifyConfig */ = {
 			isa = PBXGroup;
 			children = (
-				7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */,
-				312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */,
+				1745A48129E5A647009A4ADD /* amplifyconfiguration.json */,
+				1745A48229E5A647009A4ADD /* awsconfiguration.json */,
 			);
 			name = AmplifyConfig;
 			sourceTree = "<group>";
@@ -1044,8 +1070,8 @@
 			files = (
 				4DC0F87D29BE2D2A009EE2B5 /* Preview Assets.xcassets in Resources */,
 				4DC0F87A29BE2D2A009EE2B5 /* Assets.xcassets in Resources */,
-				414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */,
-				2CABF6864C46483D590DE684 /* amplifyconfiguration.json in Resources */,
+				1745A48429E5A647009A4ADD /* awsconfiguration.json in Resources */,
+				1745A48329E5A647009A4ADD /* amplifyconfiguration.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,25 +1103,30 @@
 				172BC91429D89FAF000EB398 /* LazyView.swift in Sources */,
 				172BC8BD29D349D2000EB398 /* AmplifyConverter.swift in Sources */,
 				4DC0F87629BE2D27009EE2B5 /* BarterMateApp.swift in Sources */,
+				1745A49129E5C15B009A4ADD /* SelectableItemViewModel.swift in Sources */,
 				172BC91D29D97B51000EB398 /* AmplifyItemFacade.swift in Sources */,
 				172BC8C729D40820000EB398 /* PostingList.swift in Sources */,
 				4D91956329C596A3003B5922 /* Router.swift in Sources */,
 				172BC8CF29D4B436000EB398 /* NameDescribable.swift in Sources */,
+				1745A48D29E5BD9F009A4ADD /* UserSelectionView.swift in Sources */,
+				1745A49529E5C563009A4ADD /* UserSelectionViewModel.swift in Sources */,
 				4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */,
 				1703C6FC29D0AFFF006466D3 /* UserFacade.swift in Sources */,
 				172BC8C929D49D6F000EB398 /* ModelList.swift in Sources */,
 				4DA9D03129D80E9100E06738 /* ChatListItemView.swift in Sources */,
-				172BC8E229D613A6000EB398 /* FormView.swift in Sources */,
+				172BC8E229D613A6000EB398 /* AddItemFormView.swift in Sources */,
 				172BC90829D83B85000EB398 /* HomeViewModel.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				172BC8D929D5FEED000EB398 /* SamplePosting.swift in Sources */,
 				4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */,
 				1703C71529D21631006466D3 /* MyItemListView.swift in Sources */,
+				1745A48B29E5BD5F009A4ADD /* UserCardView.swift in Sources */,
 				4D06B88D29D7F54500CD5BD4 /* BarterMateMessage.swift in Sources */,
 				F1D4F45E14D6439ED953C78D /* Category+Schema.swift in Sources */,
 				4DD92C0F29E1BD0F00FA8A90 /* FutureFactory.swift in Sources */,
 				1703C6FE29D0B03C006466D3 /* AmplifyUserConverter.swift in Sources */,
 				17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */,
+				1745A49329E5C44F009A4ADD /* MultiSelectableItemViewModel.swift in Sources */,
 				172BC8CD29D4A2C5000EB398 /* RequestList.swift in Sources */,
 				172FC0F729C6171E00842C70 /* UserProfileViewModel.swift in Sources */,
 				172FC0EB29C616FD00842C70 /* PostingListView.swift in Sources */,
@@ -1140,7 +1171,7 @@
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
 				178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */,
 				4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */,
-				178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */,
+				178F186A29E44BA40087D018 /* TransactionViewModel.swift in Sources */,
 				178F183D29E447AE0087D018 /* TransactionList.swift in Sources */,
 				172BC92429D9F985000EB398 /* ImagePicker.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
@@ -1155,6 +1186,7 @@
 				BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */,
 				178F184C29E4483A0087D018 /* TransactionFacadeDelegate.swift in Sources */,
 				1703C71329D21245006466D3 /* SampleItem.swift in Sources */,
+				1745A48F29E5BEE2009A4ADD /* UserListView.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
 				172BC8D529D5EFE9000EB398 /* AmplifyRequestConverter.swift in Sources */,
 				4DD3E99629D9528200C99D2A /* RequestFeedView.swift in Sources */,

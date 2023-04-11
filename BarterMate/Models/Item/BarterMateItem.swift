@@ -53,7 +53,6 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
         guard let imageUrl = imageUrl else {
             return
         }
-        print("start provider")
         ImageProvider(key: imageUrl).getImageFromKey { data in
             DispatchQueue.main.async {
                 self.imageData = data

@@ -13,9 +13,7 @@ struct AmplifyTransactionConverter {
         
         guard let amplifyUsers = transaction.users,
               let amplifyItems = transaction.itemPool,
-              let status = transaction.status,
-              let userLocked = transaction.userLocked,
-              let userCompleted = transaction.userCompleted  else {
+              let status = transaction.status else {
             return nil
         }
         
@@ -32,16 +30,20 @@ struct AmplifyTransactionConverter {
             AmplifyItemConverter.toBarterMateModel(item: $0)
         }
         
+        let userLocked = transaction.userLocked ?? []
+        
         let hasLockedOffer = userLocked.compactMap {
             if let id = $0?.userId {
-                return BarterMateUser.getUserWithId(id: Identifier(value: id))
+                return Identifier<BarterMateUser>(value: id)
             }
             return nil
         }
         
+        let userCompleted = transaction.userCompleted ?? []
+        
         let hasCompletedBarter = userCompleted.compactMap {
             if let id = $0?.userId {
-                return BarterMateUser.getUserWithId(id: Identifier(value: id))
+                return Identifier<BarterMateUser>(value: id)
             }
             return nil
         }
@@ -49,6 +51,7 @@ struct AmplifyTransactionConverter {
         let userSet = Set(barterMateUsers)
         let itemSet = Set(barterMateItems)
         let state = toBarterMateState(status: status)
+
         
         let barterMateTransaction = BarterMateTransaction(id: Identifier(value: transaction.id),
                                                           participants:
@@ -59,6 +62,18 @@ struct AmplifyTransactionConverter {
                                                           state: state)
         
         return barterMateTransaction
+    }
+    
+    static func toAmplifyModel(transaction: BarterMateTransaction) -> Transaction {
+        
+        let id = transaction.id.value
+        let status = toAmplifyStatus(state: transaction.state)
+        
+        let amplifyTransaction = Transaction(id: id,
+                                             status: status)
+        
+        return amplifyTransaction
+        
     }
     
 
@@ -74,7 +89,7 @@ struct AmplifyTransactionConverter {
         }
     }
     
-    static func toAmplifyStatis(state: TransactionState) -> TransactionStatus {
+    static func toAmplifyStatus(state: TransactionState) -> TransactionStatus {
         switch state {
         case .INITIATED:
             return .confirmationPending

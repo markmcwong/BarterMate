@@ -51,7 +51,6 @@ struct TransactionView: View {
             )
             .hidden()
         }.onAppear {
-            print("view appear")
             viewModel.update()
         }
 

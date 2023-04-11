@@ -10,25 +10,40 @@ import SwiftUI
 struct TransactionListView: View {
     
     @ObservedObject var viewModel: TransactionListViewModel
+    @State private var addTransaction = false
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                LazyVStack {
-                    ForEach(viewModel.transactions.transactions, id: \.self) { transaction in
-                        TransactionCardView(user: viewModel.user, transaction: transaction)
-                    }.id(UUID())
-                    
-                    
-                    if viewModel.transactions.transactions.count == 0 {
-                        Text("No More Transaction")
-                            .padding()
-                    } else {
+        VStack {
+            ScrollView(.vertical) {
+                VStack {
+                    LazyVStack {
+                        ForEach(viewModel.transactions.transactions, id: \.self) { transaction in
+                            TransactionCardView(user: viewModel.user, transaction: transaction)
+                        }.id(UUID())
                         
+                        
+                        if viewModel.transactions.transactions.count == 0 {
+                            Text("No More Transaction")
+                                .padding()
+                        } else {
+                            
+                        }
                     }
                 }
             }
+            ProfileButtonsView().onTapGesture {
+                addTransaction = true
+            }
+            NavigationLink(
+                "",
+                destination: LazyView {
+                    UserSelectionView(user: viewModel.user, transactionList: viewModel.transactions, addTransaction: $addTransaction)
+                },
+                isActive: $addTransaction
+            )
+            .hidden()
         }
+
     }
 }
 

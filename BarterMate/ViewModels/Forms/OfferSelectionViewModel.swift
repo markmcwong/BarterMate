@@ -8,21 +8,14 @@
 import Foundation
 import Combine
 
-class OfferSelectionViewModel: ObservableObject {
+class OfferSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
+    
     var transaction: BarterMateTransaction
-    @Published var itemList: ModelList<BarterMateItem>
-    @Published var highlightedItem: BarterMateItem?
-    private var cancellables: Set<AnyCancellable> = []
     
     init(userId: Identifier<BarterMateUser>, transaction: BarterMateTransaction) {
-        print("Offer")
         self.transaction = transaction
-        self.itemList = ItemList.of(userId)
-        itemList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
-            self?.objectWillChange.send()
-            print(self?.itemList.elements.count)
-        }.store(in: &cancellables)
+        let itemList = ItemList.of(userId)
+        super.init(itemList: itemList)
     }
     
     var filteredItems: [BarterMateItem] {
@@ -37,4 +30,5 @@ class OfferSelectionViewModel: ObservableObject {
         transaction.addItem(item: highlightedItem)
     }
 }
+
 

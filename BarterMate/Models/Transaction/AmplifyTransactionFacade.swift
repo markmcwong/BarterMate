@@ -15,17 +15,36 @@ class AmplifyTransactionFacade: TransactionFacade {
         self.delegate = delegate
     }
     
+    func createTransaction(transaction: BarterMateTransaction) {
+        Task {
+            do {
+                let amplifyTransaction = AmplifyTransactionConverter.toAmplifyModel(transaction: transaction)
+                
+                try await Amplify.DataStore.save(amplifyTransaction)
+                
+                for user in transaction.participants {
+                    addUser(user: user)
+                }
+            } catch {
+                print("error creating transaction")
+            }
+        }
+    }
+    
     func addUser(user: BarterMateUser) {
         guard let delegate = delegate else {
+            print("no delegate")
             return
         }
         Task {
             do {
                 guard let amplifyUser = try await Amplify.DataStore.query(User.self, byId: user.id.value) else {
+                    print("cannot find user")
                     return
                 }
                 
                 guard let amplifyTransaction = try await Amplify.DataStore.query(Transaction.self, byId: delegate.id.value) else {
+                    print("cannot find transaction")
                     return
                 }
                 
@@ -33,6 +52,8 @@ class AmplifyTransactionFacade: TransactionFacade {
                                                          transaction: amplifyTransaction)
                 
                 try await Amplify.DataStore.save(newUserTransaction)
+                
+                try await Amplify.DataStore.save(amplifyTransaction)
             } catch {
                 print("error in adding user into Transaction")
             }
@@ -121,6 +142,24 @@ class AmplifyTransactionFacade: TransactionFacade {
         }
     }
     
+    func completeTransaction() {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        Task {
+            do {
+                guard var amplifyTransaction = try await Amplify.DataStore.query(Transaction.self, byId: delegate.id.value) else {
+                    return
+                }
+                
+                amplifyTransaction.status = .completed
+                
+                try await Amplify.DataStore.save(amplifyTransaction)
+            }
+        }
+    }
+    
     func userLockTransaction(user: BarterMateUser) {
         guard let delegate = delegate else {
             return
@@ -138,6 +177,26 @@ class AmplifyTransactionFacade: TransactionFacade {
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
                 
+            }
+        }
+    }
+    
+    func userCompleteBarter(user: BarterMateUser) {
+        guard let delegate = delegate else {
+            return
+        }
+        
+        Task {
+            do {
+                let userCompleted = UserCompleted(userId: user.id.value, completed: true)
+                
+                guard var amplifyTransaction = try await Amplify.DataStore.query(Transaction.self, byId: delegate.id.value) else {
+                    return
+                }
+                
+                amplifyTransaction.userCompleted?.append(userCompleted)
+                
+                try await Amplify.DataStore.save(amplifyTransaction)
             }
         }
     }
