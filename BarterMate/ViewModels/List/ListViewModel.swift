@@ -6,14 +6,20 @@
 //
 
 import Foundation
+import Combine
 
 class ListViewModel<T: ListElement>: ObservableObject {
     @Published var user: BarterMateUser?
     @Published var modelList: ModelList<T>
+    private var cancellables: Set<AnyCancellable> = []
     
     init(user: BarterMateUser?, modelList: ModelList<T>) {
         self.user = user
         self.modelList = modelList
+        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
     }
     
     func updateElements(items: [T]){

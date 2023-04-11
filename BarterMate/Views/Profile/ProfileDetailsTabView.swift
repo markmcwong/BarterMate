@@ -48,4 +48,3 @@ struct ProfileDetailsTabView_Previews: PreviewProvider {
         ProfileDetailsTabView(viewModel: UserProfileViewModel(user: SampleUser.bill))
     }
 }
-

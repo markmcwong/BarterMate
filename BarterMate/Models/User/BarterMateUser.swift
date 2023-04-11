@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateUser: Hashable, ObservableObject {
+class BarterMateUser: ObservableObject, Hashable, ListElement {
     var id: Identifier<BarterMateUser>
     @Published var username: String
     @Published var profilePicUrl: String?
@@ -50,3 +50,4 @@ extension BarterMateUser: UserFacadeDelegate {
         self.username = user.username
     }
 }
+

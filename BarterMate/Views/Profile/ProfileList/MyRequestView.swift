@@ -10,25 +10,38 @@ import SwiftUI
 struct MyRequestListView: View {
     
     @ObservedObject var viewModel: ListViewModel<BarterMateRequest>
+    @State var showModal = false
     
     var body: some View {
-        ScrollView(.vertical) {
-            VStack {
-                LazyVStack {
-                    ForEach(viewModel.modelList.elements, id: \.self) { request in
-                        RequestCardView(request: request, user: viewModel.user!)
-                    }
-                }.id(UUID())
-                
-                if viewModel.modelList.elements.count == 0 {
-                   Text("No More Item")
-                       .padding()
-                } else {
+        VStack {
+            Text("Request " + "\(viewModel.modelList.elements.count)")
+                .font(.subheadline)
+                .fontWeight(.bold)
+            
+            ScrollView(.vertical) {
+                VStack {
+                    LazyVStack {
+                        ForEach(viewModel.modelList.elements, id: \.self) { request in
+                            RequestCardView(request: request, user: viewModel.user, parentViewModel: viewModel)
+                        }
+                    }.id(UUID())
+                    
+                    if viewModel.modelList.elements.count == 0 {
+                       Text("No More Item")
+                           .padding()
+                    } else {
 
+                    }
                 }
             }
+            
+            ProfileButtonsView().onTapGesture {
+                showModal = true
+            }
         }
-
+        .overlay(ModalView(displayView: {
+            AddRequestFormView(ownerId: viewModel.user.id, requestList: viewModel.modelList, showModal: $showModal)
+        }, showModal: $showModal))
     }
 }
 
@@ -42,3 +55,4 @@ struct MyRequestListView_Previews: PreviewProvider {
         MyPostingListView(viewModel: viewModel)
     }
 }
+

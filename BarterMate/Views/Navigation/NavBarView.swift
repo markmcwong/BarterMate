@@ -31,7 +31,7 @@ struct NavBarView: View {
             }
             Spacer()
             Button("Transaction") {
-                print("Click Chat")
+                state = "Transaction"
             }
             Spacer()
             Button("Chat") {
@@ -47,3 +47,4 @@ struct NavBarView_Previews: PreviewProvider {
         NavBarView(state: .constant("Posting"))
     }
 }
+

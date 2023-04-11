@@ -17,6 +17,7 @@ struct MessageView: View {
     
     var body: some View {
         VStack {
+            Spacer()
             Text(viewModel.chatId)
             SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build
                                                                 , where: Message.keys.sentInID.eq(viewModel.chatId))

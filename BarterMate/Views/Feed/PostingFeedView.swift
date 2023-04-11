@@ -46,3 +46,4 @@ struct PostingFeedView_Previews: PreviewProvider {
         PostingFeedView(viewModel: PostingFeedViewModel(modelType: BarterMatePosting.self))
     }
 }
+

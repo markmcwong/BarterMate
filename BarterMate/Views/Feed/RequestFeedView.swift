@@ -47,3 +47,4 @@ struct RequestFeedView_Previews: PreviewProvider {
         RequestFeedView(viewModel: RequestFeedViewModel(modelType: BarterMateRequest.self))
     }
 }
+

@@ -15,7 +15,7 @@ struct ChatListItemView: ListItemView, View {
     static func build(for item: BarterMateChat, model: ListViewModel<BarterMateChat>?) -> ChatListItemView {
         return ChatListItemView(item: item, model: model)
     }
-    
+    @State var goToMessage = false
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
 
     internal init(item: BarterMateChat, model: ListViewModel<BarterMateChat>?) {
@@ -30,9 +30,8 @@ struct ChatListItemView: ListItemView, View {
     var body: some View {
         Button(action: {
             Task {
-//                await chat.fetchMessages {}
                 GlobalState.shared.currentChat = item
-                Router.singleton.navigate(to: .message)
+                goToMessage = true
             }
         }) {
             HStack {
@@ -62,6 +61,15 @@ struct ChatListItemView: ListItemView, View {
                                 print("model does not exist for deleting item")
                             }
                         }
+                        
+                        NavigationLink(
+                            "",
+                            destination: LazyView {
+                                MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+                            },
+                            isActive: $goToMessage
+                        )
+                        .hidden()
                     }
                 }
                 .padding()

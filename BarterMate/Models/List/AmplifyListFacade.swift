@@ -238,6 +238,8 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             return Chat.self
         case "BarterMateMessage":
             return Message.self
+        case "BarterMateUser":
+            return User.self
         default:
             return nil
         }

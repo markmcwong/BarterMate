@@ -61,11 +61,28 @@
 		17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1829CE7889008C31B4 /* BarterMateRequest.swift */; };
 		17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
-		176DEEF229DDE845002F0B2D /* ProfileDetailsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF129DDE845002F0B2D /* ProfileDetailsTabView.swift */; };
-		176DEEF429DDF764002F0B2D /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */; };
-		176DEEF629DDFABB002F0B2D /* ItemSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */; };
-		176DEEF829DF0C73002F0B2D /* AddRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */; };
-		176DEEFC29DF0DA6002F0B2D /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */; };
+		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
+		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
+		178F183D29E447AE0087D018 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183C29E447AE0087D018 /* TransactionList.swift */; };
+		178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */; };
+		178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184029E447DA0087D018 /* TransactionListFacade.swift */; };
+		178F184329E447E90087D018 /* AmplifyTransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */; };
+		178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184529E448020087D018 /* BarterMateTransaction.swift */; };
+		178F184829E448160087D018 /* TransactionFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184729E448160087D018 /* TransactionFacade.swift */; };
+		178F184A29E448290087D018 /* AmplifyTransactionFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184929E448290087D018 /* AmplifyTransactionFacade.swift */; };
+		178F184C29E4483A0087D018 /* TransactionFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */; };
+		178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184D29E449130087D018 /* ItemSelectionViewModel.swift */; };
+		178F185029E449210087D018 /* AddRequestViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184F29E449210087D018 /* AddRequestViewModel.swift */; };
+		178F185229E449350087D018 /* OfferSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185129E449350087D018 /* OfferSelectionViewModel.swift */; };
+		178F185429E449470087D018 /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185329E449470087D018 /* SelectionViewModel.swift */; };
+		178F185A29E44A1F0087D018 /* OfferSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185929E44A1F0087D018 /* OfferSelectionView.swift */; };
+		178F185E29E44AF40087D018 /* ProfileDetailsTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */; };
+		178F186129E44B370087D018 /* TransactionCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186029E44B370087D018 /* TransactionCardView.swift */; };
+		178F186329E44B470087D018 /* TransactionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186229E44B470087D018 /* TransactionListView.swift */; };
+		178F186529E44B550087D018 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186429E44B550087D018 /* TransactionView.swift */; };
+		178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186629E44B640087D018 /* TransactionHeaderView.swift */; };
+		178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionVIewModel.swift */; };
+		178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186B29E44BB60087D018 /* TransactionListViewModel.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
@@ -88,6 +105,8 @@
 		4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */; };
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
 		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
+		4D87E22A29E5737700A345AB /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22829E5737600A345AB /* AddRequestFormView.swift */; };
+		4D87E22B29E5737700A345AB /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22929E5737700A345AB /* ItemSelectionView.swift */; };
 		4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956029C58A3B003B5922 /* LoginViewModel.swift */; };
 		4D91956329C596A3003B5922 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956229C596A3003B5922 /* Router.swift */; };
 		4D91956529C596D6003B5922 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956429C596D6003B5922 /* LoginView.swift */; };
@@ -222,11 +241,30 @@
 		17375A1829CE7889008C31B4 /* BarterMateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateRequest.swift; sourceTree = "<group>"; };
 		17375A1A29CE7B2A008C31B4 /* BarterMatePosting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMatePosting.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		176DEEF129DDE845002F0B2D /* ProfileDetailsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsTabView.swift; sourceTree = "<group>"; };
-		176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
-		176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewModel.swift; sourceTree = "<group>"; };
-		176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestViewModel.swift; sourceTree = "<group>"; };
-		176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
+		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
+		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
+		178F183C29E447AE0087D018 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
+		178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacadeDelegate.swift; sourceTree = "<group>"; };
+		178F184029E447DA0087D018 /* TransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacade.swift; sourceTree = "<group>"; };
+		178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionListFacade.swift; sourceTree = "<group>"; };
+		178F184529E448020087D018 /* BarterMateTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateTransaction.swift; sourceTree = "<group>"; };
+		178F184729E448160087D018 /* TransactionFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFacade.swift; sourceTree = "<group>"; };
+		178F184929E448290087D018 /* AmplifyTransactionFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionFacade.swift; sourceTree = "<group>"; };
+		178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFacadeDelegate.swift; sourceTree = "<group>"; };
+		178F184D29E449130087D018 /* ItemSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionViewModel.swift; sourceTree = "<group>"; };
+		178F184F29E449210087D018 /* AddRequestViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestViewModel.swift; sourceTree = "<group>"; };
+		178F185129E449350087D018 /* OfferSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionViewModel.swift; sourceTree = "<group>"; };
+		178F185329E449470087D018 /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
+		178F185529E449FE0087D018 /* ItemSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
+		178F185929E44A1F0087D018 /* OfferSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfferSelectionView.swift; sourceTree = "<group>"; };
+		178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsTabView.swift; sourceTree = "<group>"; };
+		178F186029E44B370087D018 /* TransactionCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCardView.swift; sourceTree = "<group>"; };
+		178F186229E44B470087D018 /* TransactionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListView.swift; sourceTree = "<group>"; };
+		178F186429E44B550087D018 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
+		178F186629E44B640087D018 /* TransactionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderView.swift; sourceTree = "<group>"; };
+		178F186929E44BA40087D018 /* TransactionVIewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVIewModel.swift; sourceTree = "<group>"; };
+		178F186B29E44BB60087D018 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
+		178F186D29E44F1B0087D018 /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		17EF300429DB092D00FA2C82 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
@@ -248,6 +286,8 @@
 		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
+		4D87E22829E5737600A345AB /* AddRequestFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
+		4D87E22929E5737700A345AB /* ItemSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4D91956229C596A3003B5922 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		4D91956429C596D6003B5922 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -383,6 +423,7 @@
 				1703C71029D20F32006466D3 /* SampleUser.swift */,
 				1703C71229D21245006466D3 /* SampleItem.swift */,
 				172BC8D829D5FEED000EB398 /* SamplePosting.swift */,
+				178F183729E446FF0087D018 /* SampleTransaction.swift */,
 			);
 			path = Sample;
 			sourceTree = "<group>";
@@ -413,8 +454,10 @@
 			isa = PBXGroup;
 			children = (
 				172BC8E429D71041000EB398 /* AddItemFormViewModel.swift */,
-				176DEEF529DDFABB002F0B2D /* ItemSelectionViewModel.swift */,
-				176DEEF729DF0C73002F0B2D /* AddRequestViewModel.swift */,
+				178F184D29E449130087D018 /* ItemSelectionViewModel.swift */,
+				178F184F29E449210087D018 /* AddRequestViewModel.swift */,
+				178F185129E449350087D018 /* OfferSelectionViewModel.swift */,
+				178F185329E449470087D018 /* SelectionViewModel.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -423,8 +466,9 @@
 			isa = PBXGroup;
 			children = (
 				172BC8E129D613A6000EB398 /* AddItemFormView.swift */,
-				176DEEF329DDF764002F0B2D /* ItemSelectionView.swift */,
-				176DEEFB29DF0DA6002F0B2D /* AddRequestFormView.swift */,
+				4D87E22829E5737600A345AB /* AddRequestFormView.swift */,
+				4D87E22929E5737700A345AB /* ItemSelectionView.swift */,
+				178F185929E44A1F0087D018 /* OfferSelectionView.swift */,
 			);
 			path = Forms;
 			sourceTree = "<group>";
@@ -498,7 +542,7 @@
 				172FC0E029C616FD00842C70 /* UserProfileImageView.swift */,
 				172BC8DA29D60D4C000EB398 /* CreateItemButton.swift */,
 				172BC8DC29D60DC6000EB398 /* ProfileButtonsView.swift */,
-				176DEEF129DDE845002F0B2D /* ProfileDetailsTabView.swift */,
+				178F185D29E44AF40087D018 /* ProfileDetailsTabView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -540,6 +584,7 @@
 				172BC8D429D5EFE9000EB398 /* AmplifyRequestConverter.swift */,
 				172BC8D629D5F095000EB398 /* AmplifyPostingConverter.swift */,
 				4D2547C829DC1FA200AF8F7F /* AmplifyPredicate.swift */,
+				178F183929E447870087D018 /* AmplifyTransactionConverter.swift */,
 			);
 			path = AmplifyConverters;
 			sourceTree = "<group>";
@@ -554,6 +599,48 @@
 				4D2547C429DC14BB00AF8F7F /* SubscriptionProvider.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		178F183B29E447A00087D018 /* TransactionList */ = {
+			isa = PBXGroup;
+			children = (
+				178F183C29E447AE0087D018 /* TransactionList.swift */,
+				178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */,
+				178F184029E447DA0087D018 /* TransactionListFacade.swift */,
+				178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */,
+			);
+			path = TransactionList;
+			sourceTree = "<group>";
+		};
+		178F184429E447F30087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F184529E448020087D018 /* BarterMateTransaction.swift */,
+				178F184729E448160087D018 /* TransactionFacade.swift */,
+				178F184929E448290087D018 /* AmplifyTransactionFacade.swift */,
+				178F184B29E4483A0087D018 /* TransactionFacadeDelegate.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		178F185F29E44B260087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F186029E44B370087D018 /* TransactionCardView.swift */,
+				178F186229E44B470087D018 /* TransactionListView.swift */,
+				178F186429E44B550087D018 /* TransactionView.swift */,
+				178F186629E44B640087D018 /* TransactionHeaderView.swift */,
+			);
+			path = Transaction;
+			sourceTree = "<group>";
+		};
+		178F186829E44B850087D018 /* Transaction */ = {
+			isa = PBXGroup;
+			children = (
+				178F186929E44BA40087D018 /* TransactionVIewModel.swift */,
+				178F186B29E44BB60087D018 /* TransactionListViewModel.swift */,
+			);
+			path = Transaction;
 			sourceTree = "<group>";
 		};
 		17AB3A3529C7701A00FE6DCB /* AmplifyServices */ = {
@@ -583,6 +670,8 @@
 			isa = PBXGroup;
 			children = (
 				1734EF1E29C6313600D2D4AA /* AmplifyItemService.swift */,
+				178F185529E449FE0087D018 /* ItemSelectionView.swift */,
+				178F186D29E44F1B0087D018 /* AddRequestFormView.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -590,6 +679,8 @@
 		4D17C6F629CABD40001CB84E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				178F184429E447F30087D018 /* Transaction */,
+				178F183B29E447A00087D018 /* TransactionList */,
 				4D06B88B29D7F4F900CD5BD4 /* Chat */,
 				172BC8B329D34491000EB398 /* List */,
 				1703C6FA29D0AFAB006466D3 /* Posting */,
@@ -630,6 +721,7 @@
 		4D91955D29C58A05003B5922 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				178F186829E44B850087D018 /* Transaction */,
 				4DD92C0629DF269200FA8A90 /* SubscribableList */,
 				172BC90629D83B7A000EB398 /* Home */,
 				172BC8F429D744D5000EB398 /* Feed */,
@@ -645,6 +737,7 @@
 		4D91955E29C58A0C003B5922 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				178F185F29E44B260087D018 /* Transaction */,
 				4DD92C0929DF2DB100FA8A90 /* SubscribableList */,
 				4DD3E99329D9528100C99D2A /* Feed */,
 				4D4AD57229C6F76D00C2EEC6 /* Auth */,
@@ -976,6 +1069,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC0F87829BE2D27009EE2B5 /* ContentView.swift in Sources */,
+				178F184329E447E90087D018 /* AmplifyTransactionListFacade.swift in Sources */,
 				172BC90529D769AF000EB398 /* RequestCardView.swift in Sources */,
 				174ACAAA29BFA454006222AF /* StorageService.swift in Sources */,
 				172BC91429D89FAF000EB398 /* LazyView.swift in Sources */,
@@ -989,10 +1083,8 @@
 				1703C6FC29D0AFFF006466D3 /* UserFacade.swift in Sources */,
 				172BC8C929D49D6F000EB398 /* ModelList.swift in Sources */,
 				4DA9D03129D80E9100E06738 /* ChatListItemView.swift in Sources */,
-				176DEEF429DDF764002F0B2D /* ItemSelectionView.swift in Sources */,
 				172BC8E229D613A6000EB398 /* AddItemFormView.swift in Sources */,
 				172BC90829D83B85000EB398 /* HomeViewModel.swift in Sources */,
-				176DEEF229DDE845002F0B2D /* ProfileDetailsTabView.swift in Sources */,
 				088EE78C76D8B9F3FA5F597B /* AmplifyModels.swift in Sources */,
 				172BC8D929D5FEED000EB398 /* SamplePosting.swift in Sources */,
 				4DD92C0B29DF2DC500FA8A90 /* SubscribableListView.swift in Sources */,
@@ -1011,6 +1103,8 @@
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
 				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
 				172BC8D329D4BC48000EB398 /* AmplifyListFacade.swift in Sources */,
+				178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */,
+				178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */,
 				4D91956529C596D6003B5922 /* LoginView.swift in Sources */,
 				17375A1929CE7889008C31B4 /* BarterMateRequest.swift in Sources */,
 				1703C70029D0B21F006466D3 /* AmplifyItemConverter.swift in Sources */,
@@ -1018,12 +1112,17 @@
 				4053FCBFBD6E2DF6DBF0DF0F /* Chat.swift in Sources */,
 				172FC0EA29C616FD00842C70 /* PostingView.swift in Sources */,
 				172BC8E029D60E98000EB398 /* ModalView.swift in Sources */,
+				178F184829E448160087D018 /* TransactionFacade.swift in Sources */,
+				178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */,
+				178F185029E449210087D018 /* AddRequestViewModel.swift in Sources */,
 				172BC8FA29D7543A000EB398 /* AmplifyUserFacade.swift in Sources */,
 				4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */,
+				178F184A29E448290087D018 /* AmplifyTransactionFacade.swift in Sources */,
+				178F186529E44B550087D018 /* TransactionView.swift in Sources */,
+				178F186129E44B370087D018 /* TransactionCardView.swift in Sources */,
 				172BC8DD29D60DC6000EB398 /* ProfileButtonsView.swift in Sources */,
 				172BC91929D97AA8000EB398 /* ItemFacade.swift in Sources */,
 				0374E2AF17262B5D9412C0FF /* Group+Schema.swift in Sources */,
-				176DEEF629DDFABB002F0B2D /* ItemSelectionViewModel.swift in Sources */,
 				E1B56582B58967A02798E3D7 /* Group.swift in Sources */,
 				4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */,
 				172BC8D729D5F095000EB398 /* AmplifyPostingConverter.swift in Sources */,
@@ -1036,18 +1135,24 @@
 				51F47A3B1D3BDA3C4787DB42 /* Message.swift in Sources */,
 				172BC8F829D7529A000EB398 /* UserFacadeDelegate.swift in Sources */,
 				172BC8B929D3460B000EB398 /* OldAmplifyListFacade.swift in Sources */,
+				178F184E29E449130087D018 /* ItemSelectionViewModel.swift in Sources */,
+				4D87E22B29E5737700A345AB /* ItemSelectionView.swift in Sources */,
 				4DD3E99B29D96E6E00C99D2A /* MessageViewModel.swift in Sources */,
+				178F186A29E44BA40087D018 /* TransactionVIewModel.swift in Sources */,
+				178F183D29E447AE0087D018 /* TransactionList.swift in Sources */,
 				172BC92429D9F985000EB398 /* ImagePicker.swift in Sources */,
 				4DA7051E29C89D67004D3CBC /* GlobalState.swift in Sources */,
 				172BC8F629D744EE000EB398 /* PostingFeedViewModel.swift in Sources */,
+				4D87E22A29E5737700A345AB /* AddRequestFormView.swift in Sources */,
 				4DA9D02D29D80C2100E06738 /* ChatList.swift in Sources */,
 				4DD92C0829DF26B500FA8A90 /* SubscribableListViewModel.swift in Sources */,
+				178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */,
 				17375A1129CDB7C6008C31B4 /* BarterMateUser.swift in Sources */,
 				2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */,
 				4D2547C929DC1FA200AF8F7F /* AmplifyPredicate.swift in Sources */,
 				850E00250ED89B4BF34B72C0 /* Posting.swift in Sources */,
 				BDC66DF294755A74C32A51A3 /* Request+Schema.swift in Sources */,
-				176DEEFC29DF0DA6002F0B2D /* AddRequestFormView.swift in Sources */,
+				178F184C29E4483A0087D018 /* TransactionFacadeDelegate.swift in Sources */,
 				1703C71329D21245006466D3 /* SampleItem.swift in Sources */,
 				F5061AC38556AC131C81D956 /* Request.swift in Sources */,
 				172BC8D529D5EFE9000EB398 /* AmplifyRequestConverter.swift in Sources */,
@@ -1055,6 +1160,7 @@
 				AD47EC9B05D2C213951781BF /* Transaction+Schema.swift in Sources */,
 				4DB1D7C629D94AB300AAFCD8 /* BaseFeedViewModel.swift in Sources */,
 				17375A1B29CE7B2A008C31B4 /* BarterMatePosting.swift in Sources */,
+				178F185229E449350087D018 /* OfferSelectionViewModel.swift in Sources */,
 				172BC8B529D344B5000EB398 /* ModelListFacade.swift in Sources */,
 				172FC0FE29C6175700842C70 /* ImageProvider.swift in Sources */,
 				172BC8E929D736C0000EB398 /* ListViewModel.swift in Sources */,
@@ -1063,12 +1169,14 @@
 				4DD3E99929D954AF00C99D2A /* MessageView.swift in Sources */,
 				4DD3E99729D9528200C99D2A /* PostingFeedView.swift in Sources */,
 				4DF9851C29DE913400646C33 /* BarterMateModel.swift in Sources */,
-				176DEEF829DF0C73002F0B2D /* AddRequestViewModel.swift in Sources */,
 				2E788FD002A9D23A4CA23E89 /* TransactionStatus.swift in Sources */,
+				178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */,
 				172BC8BB29D34965000EB398 /* ListElement.swift in Sources */,
 				17375A1729CDBC67008C31B4 /* BarterMateItem.swift in Sources */,
 				4D2547C329DC146100AF8F7F /* Predicate.swift in Sources */,
 				5365083C8F89716DB167D767 /* User+Schema.swift in Sources */,
+				178F185E29E44AF40087D018 /* ProfileDetailsTabView.swift in Sources */,
+				178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */,
 				172BC90129D768C3000EB398 /* RequestFeedViewModel.swift in Sources */,
 				4D06B89329D7F77600CD5BD4 /* AmplifyMessageAdapter.swift in Sources */,
 				4DA7051529C836EF004D3CBC /* ChatListView.swift in Sources */,
@@ -1076,10 +1184,14 @@
 				172BC90B29D88A7E000EB398 /* MyPostingListView.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
+				178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
+				178F185A29E44A1F0087D018 /* OfferSelectionView.swift in Sources */,
 				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,
+				178F186329E44B470087D018 /* TransactionListView.swift in Sources */,
 				172BC8DB29D60D4C000EB398 /* CreateItemButton.swift in Sources */,
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
+				178F185429E449470087D018 /* SelectionViewModel.swift in Sources */,
 				4D2547C529DC14BB00AF8F7F /* SubscriptionProvider.swift in Sources */,
 				172BC91229D88F0B000EB398 /* MyRequestListView.swift in Sources */,
 				17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */,

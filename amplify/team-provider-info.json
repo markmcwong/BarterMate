@@ -17,9 +17,6 @@
       },
       "storage": {
         "s3bartermatestorage": {}
-      },
-      "api": {
-        "bartermate": {}
       }
     }
   }

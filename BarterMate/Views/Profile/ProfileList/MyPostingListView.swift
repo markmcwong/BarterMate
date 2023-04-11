@@ -61,3 +61,4 @@ struct MyPostingListView_Previews: PreviewProvider {
         MyPostingListView(viewModel: viewModel)
     }
 }
+

@@ -22,6 +22,8 @@ struct AmplifyConverter {
             return AmplifyChatAdapter.toBarterMateModel(chat: model as! Chat)
         case is Message:
             return AmplifyMessageAdapter.toBarterMateModel(message: model as! Message)
+        case is User:
+            return AmplifyUserConverter.toBarterMateModel(user: model as! User)
         default:
             return nil
         }

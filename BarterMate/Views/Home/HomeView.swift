@@ -12,27 +12,27 @@ struct HomeView: View {
     @StateObject private var router = Router.singleton
     let viewModel: HomeViewModel
     @State var state: String = "Profile"
-
+    
     var body: some View {
         VStack {
-            Text(state)
-            switch router.currentScreen {
-            case .profile:
+            switch state {
+            case "Profile":
                 UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
-            case .request:
+            case "Request":
                 RequestFeedView(viewModel: viewModel.requestFeedViewModel)
-            case .posting:
+            case "Posting":
                 PostingFeedView(viewModel: viewModel.postingFeedViewModel)
-            case .chat:
+            case "Chat":
                 ChatListView()
-            case .message:
-//                EmptyView()
+            case "Message":
                 MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+            case "Transaction":
+                TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.of(userId: viewModel.user.id), user: viewModel.user))
             default:
-                UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
+                EmptyView()
             }
             NavBarView(state: $state)
-
+            
         }.navigationBarBackButtonHidden(true)
     }
 }
