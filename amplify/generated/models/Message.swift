@@ -18,18 +18,21 @@ public struct Message: Model {
         try await _SentBy.get()
       } 
     }
+  public var sentInID: String?
   public var updatedAt: Temporal.DateTime?
   
   public init(id: String = UUID().uuidString,
       createdAt: Temporal.DateTime,
       content: String,
       SentIn: Chat? = nil,
-      SentBy: User? = nil) {
+      SentBy: User? = nil,
+      sentInID: String? = nil) {
     self.init(id: id,
       createdAt: createdAt,
       content: content,
       SentIn: SentIn,
       SentBy: SentBy,
+      sentInID: sentInID,
       updatedAt: nil)
   }
   internal init(id: String = UUID().uuidString,
@@ -37,12 +40,14 @@ public struct Message: Model {
       content: String,
       SentIn: Chat? = nil,
       SentBy: User? = nil,
+      sentInID: String? = nil,
       updatedAt: Temporal.DateTime? = nil) {
       self.id = id
       self.createdAt = createdAt
       self.content = content
       self._SentIn = LazyReference(SentIn)
       self._SentBy = LazyReference(SentBy)
+      self.sentInID = sentInID
       self.updatedAt = updatedAt
   }
   public mutating func setSentIn(_ SentIn: Chat? = nil) {
@@ -58,6 +63,7 @@ public struct Message: Model {
       content = try values.decode(String.self, forKey: .content)
       _SentIn = try values.decodeIfPresent(LazyReference<Chat>.self, forKey: .SentIn) ?? LazyReference(identifiers: nil)
       _SentBy = try values.decodeIfPresent(LazyReference<User>.self, forKey: .SentBy) ?? LazyReference(identifiers: nil)
+      sentInID = try? values.decode(String?.self, forKey: .sentInID)
       updatedAt = try? values.decode(Temporal.DateTime?.self, forKey: .updatedAt)
   }
   public func encode(to encoder: Encoder) throws {
@@ -67,6 +73,7 @@ public struct Message: Model {
       try container.encode(content, forKey: .content)
       try container.encode(_SentIn, forKey: .SentIn)
       try container.encode(_SentBy, forKey: .SentBy)
+      try container.encode(sentInID, forKey: .sentInID)
       try container.encode(updatedAt, forKey: .updatedAt)
   }
 }

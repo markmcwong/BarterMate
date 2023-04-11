@@ -10,6 +10,7 @@ extension Message {
     case content
     case SentIn
     case SentBy
+    case sentInID
     case updatedAt
   }
   
@@ -37,6 +38,7 @@ extension Message {
       .field(message.content, is: .required, ofType: .string),
       .belongsTo(message.SentIn, is: .optional, ofType: Chat.self, targetNames: ["chatID"]),
       .belongsTo(message.SentBy, is: .optional, ofType: User.self, targetNames: ["userID"]),
+      .field(message.sentInID, is: .optional, ofType: .string),
       .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
@@ -64,6 +66,9 @@ extension ModelPath where ModelType == Message {
     }
   public var SentBy: ModelPath<User>   {
       User.Path(name: "SentBy", parent: self) 
+    }
+  public var sentInID: FieldPath<String>   {
+      string("sentInID") 
     }
   public var updatedAt: FieldPath<Temporal.DateTime>   {
       datetime("updatedAt") 

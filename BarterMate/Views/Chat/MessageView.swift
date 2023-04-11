@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct MessageView: View {
-    let viewModel: MessageViewModel
+    @ObservedObject var viewModel: MessageViewModel
 
     init(viewModel: MessageViewModel) {
         self.viewModel = viewModel
@@ -17,7 +17,9 @@ struct MessageView: View {
     
     var body: some View {
         VStack {
-            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build, where: Message.self.keys.SentIn.eq(viewModel.chatId))
+            Text(viewModel.chatId)
+            SubscribableListView<BarterMateMessage, MessageRow>(content: MessageRow.build
+                                                                , where: Message.keys.sentInID.eq(viewModel.chatId))
             MessageInputView(viewModel: viewModel)
         }.navigationTitle(viewModel.chatName)
     }

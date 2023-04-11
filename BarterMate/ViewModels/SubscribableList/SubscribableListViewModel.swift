@@ -47,6 +47,10 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
             cancellable = provider.querySubscription(U.self, where: predicate) { [weak self] result in
                 DispatchQueue.main.async {
                     print("subscribeToUpdatesWithPredicate:  " + result.debugDescription)
+//                    for res in result{
+//                        print(res)
+//                    }
+//                    print("res loop finished")
                     self?.items = result
                     self?.objectWillChange.send()
                 }
