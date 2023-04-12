@@ -37,29 +37,9 @@ extension Request {
       .field(request.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
-    public class Path: ModelPath<Request> { }
-    
-    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Request: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
-}
-extension ModelPath where ModelType == Request {
-  public var id: FieldPath<String>   {
-      string("id") 
-    }
-  public var description: FieldPath<String>   {
-      string("description") 
-    }
-  public var createdAt: FieldPath<Temporal.DateTime>   {
-      datetime("createdAt") 
-    }
-  public var userID: FieldPath<String>   {
-      string("userID") 
-    }
-  public var updatedAt: FieldPath<Temporal.DateTime>   {
-      datetime("updatedAt") 
-    }
 }

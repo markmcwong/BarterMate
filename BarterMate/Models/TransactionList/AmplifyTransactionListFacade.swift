@@ -22,13 +22,14 @@ class AmplifyTransactionListFacade: TransactionListFacade {
     }
     
     func save(model: BarterMateTransaction) {
+
         Task {
             do {
-                guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
-                    print("error converting")
+                guard let amplifyTransaction = AmplifyConverter.toAmplifyModel(model: model) else {
                     return
                 }
-                _ = try await Amplify.DataStore.save(amplifyModel)
+                _ = try await Amplify.DataStore.save(amplifyTransaction)
+                print("saved transaction")
             } catch {
                 os_log("Error saving item into Amplify")
             }
@@ -55,6 +56,7 @@ class AmplifyTransactionListFacade: TransactionListFacade {
         }
         
         Task {
+            
             let transactions = try await Amplify.DataStore.query(Transaction.self)
         
             for transaction in transactions {
@@ -113,4 +115,5 @@ class AmplifyTransactionListFacade: TransactionListFacade {
     }
 
 }
+
 

@@ -25,7 +25,7 @@ class BarterMateUser: ObservableObject, Hashable, ListElement {
     private var userFacade: (any UserFacade)?
     
     static func getUserWithId(id: Identifier<BarterMateUser>) -> BarterMateUser {
-        let user = createEmptyUser()
+        let user = createEmptyUser(id: id)
         let facade = AmplifyUserFacade()
         user.userFacade = facade
         facade.delegate = user
@@ -33,8 +33,8 @@ class BarterMateUser: ObservableObject, Hashable, ListElement {
         return user
     }
     
-    static func createEmptyUser() -> BarterMateUser {
-        BarterMateUser(id: Identifier(value: ""), username: "")
+    static func createEmptyUser(id: Identifier<BarterMateUser>) -> BarterMateUser {
+        BarterMateUser(id: id, username: "")
     }
     
     init(id: Identifier<BarterMateUser> = Identifier(value: UUID().uuidString), username: String) {

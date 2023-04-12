@@ -35,7 +35,9 @@ struct MyItemListView: View {
             }
         }
         .overlay(ModalView(displayView: {
-            AddItemFormView(ownerId: viewModel.user!.id, itemList: viewModel.modelList, showModal: $showModal)
+            if let user = viewModel.user {
+                AddItemFormView(ownerId: user.id, itemList: viewModel.modelList, showModal: $showModal)
+            }
         }, showModal: $showModal))
     }
 }
@@ -49,3 +51,5 @@ struct ItemListView_Previews: PreviewProvider {
         MyItemListView(viewModel: viewModel)
     }
 }
+
+

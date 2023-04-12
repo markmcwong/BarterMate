@@ -18,3 +18,4 @@ protocol AuthService {
     func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult
     func getUser() -> BarterMateUser?
 }
+

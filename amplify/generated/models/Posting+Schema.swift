@@ -39,32 +39,9 @@ extension Posting {
       .field(posting.postingItemId, is: .optional, ofType: .string)
     )
     }
-    public class Path: ModelPath<Posting> { }
-    
-    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Posting: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
-}
-extension ModelPath where ModelType == Posting {
-  public var id: FieldPath<String>   {
-      string("id") 
-    }
-  public var createdAt: FieldPath<Temporal.DateTime>   {
-      datetime("createdAt") 
-    }
-  public var userID: FieldPath<String>   {
-      string("userID") 
-    }
-  public var item: ModelPath<Item>   {
-      Item.Path(name: "item", parent: self) 
-    }
-  public var updatedAt: FieldPath<Temporal.DateTime>   {
-      datetime("updatedAt") 
-    }
-  public var postingItemId: FieldPath<String>   {
-      string("postingItemId") 
-    }
 }

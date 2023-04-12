@@ -28,7 +28,6 @@ class ImageProvider {
                     break
                 }
             }
-            print("done downloading")
             do {
                 let data = try await downloadTask.value
                 completed(data)

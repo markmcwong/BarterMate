@@ -14,7 +14,7 @@ class LoginViewModel: ObservableObject {
     @Published var phoneNumber: String = ""
     @Published var username: String = ""
     @Published var errorMessage: String?
-    @Published var confirmationCode: String = ""   
+    @Published var confirmationCode: String = ""
     @Published var isLoggedIn: Bool = false
 
     private var user: BarterMateUser?
@@ -81,4 +81,5 @@ class LoginViewModel: ObservableObject {
         await authService.signOut()
     }
 }
+
 

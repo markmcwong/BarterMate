@@ -43,6 +43,11 @@ class TransactionViewModel: ObservableObject {
         self.objectWillChange.send()
     }
     
+    func completeBarter() {
+        transaction.userCompleteBarter(user: user)
+        self.objectWillChange.send()
+    }
+    
     private func populateMap() {
         initiateMap()
         for item in transaction.itemPool {
@@ -62,4 +67,5 @@ class TransactionViewModel: ObservableObject {
     }
     
 }
+
 

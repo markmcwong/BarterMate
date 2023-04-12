@@ -77,3 +77,5 @@ struct ModalView_Previews: PreviewProvider {
         ModalView(displayView: {EmptyView()}, showModal: .constant(true))
     }
 }
+
+

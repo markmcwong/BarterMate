@@ -29,11 +29,13 @@ class UserProfileViewModel: ObservableObject {
     }
     
     func save(item: BarterMateItem) {
+        itemList.insert(model: item)
         itemList.saveItem(element: item)
     }
     
     func delete(item: BarterMateItem) {
         itemList.delete(element: item)
+        itemList.remove(model: item)
     }
     
 //    func makePosting(item: BarterMateItem) {
@@ -43,3 +45,4 @@ class UserProfileViewModel: ObservableObject {
 //                          updatedAt: <#T##Date#>)
 //    }
 }
+

@@ -42,35 +42,9 @@ extension Message {
       .field(message.updatedAt, is: .optional, isReadOnly: true, ofType: .dateTime)
     )
     }
-    public class Path: ModelPath<Message> { }
-    
-    public static var rootPath: PropertyContainerPath? { Path() }
 }
 
 extension Message: ModelIdentifiable {
   public typealias IdentifierFormat = ModelIdentifierFormat.Default
   public typealias IdentifierProtocol = DefaultModelIdentifier<Self>
-}
-extension ModelPath where ModelType == Message {
-  public var id: FieldPath<String>   {
-      string("id") 
-    }
-  public var createdAt: FieldPath<Temporal.DateTime>   {
-      datetime("createdAt") 
-    }
-  public var content: FieldPath<String>   {
-      string("content") 
-    }
-  public var SentIn: ModelPath<Chat>   {
-      Chat.Path(name: "SentIn", parent: self) 
-    }
-  public var SentBy: ModelPath<User>   {
-      User.Path(name: "SentBy", parent: self) 
-    }
-  public var sentInID: FieldPath<String>   {
-      string("sentInID") 
-    }
-  public var updatedAt: FieldPath<Temporal.DateTime>   {
-      datetime("updatedAt") 
-    }
 }
