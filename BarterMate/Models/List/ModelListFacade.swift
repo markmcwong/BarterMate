@@ -15,6 +15,5 @@ protocol ModelListFacade {
     func getEveryoneModels()
     func getEveryoneModels(limit: Int)
     func getChatModels()
-    func getMessageModelsByChatId(chatId: String)
 }
 

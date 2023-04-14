@@ -9,7 +9,8 @@ import Foundation
 
 class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
     var user: BarterMateUser
-    var transactionList: TransactionList
+    var transactionList: TransactionList? = nil
+    var chatList: ListViewModel<BarterMateChat>? = nil
     
     init(user: BarterMateUser, transactionList: TransactionList) {
         self.user = user
@@ -18,12 +19,23 @@ class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
         super.init(itemList: userList)
     }
     
+    init(user: BarterMateUser, chatList: ListViewModel<BarterMateChat>) {
+        self.user = user
+        self.chatList = chatList
+        let userList = ModelList<BarterMateUser>.all()
+        super.init(itemList: userList)
+    }
+    
     var filteredUsers: [BarterMateUser] {
         itemList.elements.filter { $0.id != user.id }
     }
     
-    func createTransaction() {
+    func createTransaction(callback: () -> Void) {
         guard selectedItem.count >= 1 else {
+            return
+        }
+        
+        guard let transactionList = transactionList else {
             return
         }
         
@@ -35,6 +47,28 @@ class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
         }
         
         transaction.addUser(user: user)
+        callback()
+    }
+    
+    func createChat(name: String, callback: () -> Void) {
+        guard selectedItem.count >= 1 else {
+            return
+        }
+        
+        guard !name.isEmpty else {
+            return
+        }
+        
+        guard let chatList = chatList else {
+            return
+        }
+        
+        let chat = BarterMateChat(name: name, messages: [], users: Array(selectedItem))
+        chatList.saveItem(item: chat)
+        let chatUsers = selectedItem.map { AmplifyUserChatAdapter.toAmplifyModel(user: $0, chat: chat)}
+        print("Converted chatUsers are ", chatUsers)
+        ChatService.insertUserChats(userChats: chatUsers)
+        callback()
     }
 }
 

@@ -10,11 +10,9 @@ import SwiftUI
 
 struct ChatListView: View {
     @ObservedObject var viewModel = ChatListViewModel()
-    
+    @State private var addChat = false
+
     var body: some View {
-        Button("Create new chat") {
-//            viewModel.saveItem(item: )
-        }
         ScrollView(.vertical) {
             VStack {
 //                SubscribableListView<BarterMateUserChat, ChatListItemView>(content: ChatListItemView.build, where: UserChat.keys.user.eq( GlobalState.shared.userId))
@@ -33,6 +31,18 @@ struct ChatListView: View {
                 }
             }
         }.navigationTitle("Total number of Chats: " + viewModel.modelList.elements.count.description)
+            .onAppear(perform: {viewModel.fetchChatUserBelongsTo()})
+        ProfileButtonsView().onTapGesture {
+            addChat = true
+        }
+        NavigationLink(
+            "",
+            destination: LazyView {
+                UserSelectionView(user: GlobalState.shared.user!, chatList: viewModel, addChat: $addChat)
+            },
+            isActive: $addChat
+        )
+        .hidden()
     }
 }
 

@@ -24,7 +24,6 @@ struct ChatListItemView: ListItemView, View {
         if(!item.hasFetchedDetails) {
             item.fetchDetails()
         }
-//        self.parentViewModel = parentViewModel
     }
     
     var body: some View {

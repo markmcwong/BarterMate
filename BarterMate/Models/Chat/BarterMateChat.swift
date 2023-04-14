@@ -20,8 +20,8 @@ class BarterMateChat: Hashable, Identifiable, ListElement, ObservableObject {
          name: String?,
          messages: [BarterMateMessage]? = nil,
          users: [BarterMateUser]? = nil,
-         fetchMessagesClosure: ((@escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void)?,
-         fetchUsersClosure: ((@escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void)?) {
+         fetchMessagesClosure: ((@escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void)? = nil,
+         fetchUsersClosure: ((@escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void)? = nil) {
         self.id = id
         self.name = name
         self.messages = messages

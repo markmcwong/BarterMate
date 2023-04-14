@@ -19,6 +19,7 @@ class ChatListViewModel: ListViewModel<BarterMateChat> {
             Task {
                 let items = await ChatService.getCurrentUserChats(id: GlobalState.shared.userId!)
                 self.modelList.insertAll(models: items)
+                print(items)
                 self.objectWillChange.send()
             }
         }
