@@ -19,7 +19,7 @@ struct TransactionView: View {
         VStack {
             Text("State: " + "\(viewModel.transaction.state)")
             List {
-                ForEach(Array(viewModel.transaction.participants), id: \.self) { participant in
+                ForEach(Array(viewModel.transaction.participants ?? []), id: \.self) { participant in
                     Section(header: TransactionHeaderView(parentViewModel: viewModel, user: participant)) {
                         ForEach(Array(viewModel.userToItemsMap[participant.id] ?? []), id: \.self) { item in
                             HStack {

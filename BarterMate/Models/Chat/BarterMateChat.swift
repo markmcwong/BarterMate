@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateChat: Hashable, Identifiable, ListElement, ObservableObject {
+class BarterMateChat: Hashable, Identifiable, LazyListElement, ObservableObject {
     let id: Identifier<BarterMateChat>
     var name: String?
     @Published var messages: [BarterMateMessage]?

@@ -122,31 +122,6 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
         }
     }
     
-    func getChatModels() {
-        guard let delegate = delegate else {
-            return
-        }
-        
-        Task {
-            guard let type = convertToAmplifyType(type: U.typeName) else {
-                print("cannot convert to amplify type")
-                return
-            }
-            
-            let amplifyModelList = try await Amplify.DataStore.query(type.self)
-            let barterMateModels = amplifyModelList.compactMap {
-                AmplifyChatAdapter.toBarterMateModel(chat: $0 as! Chat)
-//                { barterMateChat in
-//                    delegate.insert(model: barterMateChat as! U)
-//                }
-            }
-            
-            if let barterMateModels = barterMateModels as? [U] {
-                delegate.insertAll(models: barterMateModels)
-            }
-        }
-    }
-    
     func getEveryoneModels(limit: Int) {
         guard let delegate = delegate else {
             return

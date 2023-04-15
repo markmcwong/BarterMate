@@ -22,7 +22,10 @@ class AmplifyTransactionFacade: TransactionFacade {
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
                 
-                for user in transaction.participants {
+                guard let participants = transaction.participants else {
+                    return
+                }
+                for user in participants {
                     addUser(user: user)
                 }
             } catch {

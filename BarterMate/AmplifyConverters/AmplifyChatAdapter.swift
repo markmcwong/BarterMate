@@ -97,9 +97,6 @@ struct AmplifyChatAdapter {
         let amplifyUsers: List<User> = List(elements: chat.users!.map { user in
             return AmplifyUserConverter.toAmplifyModel(user: user)
         })
-//        let chatUsers: List<UserChat> = List(elements: chat.users.compactMap { user in
-//            return AmplifyUserChatAdapter.toAmplifyModel(user: user, chat: chat, id: chat.id)
-//        })
         
         var amplifyChat = Chat(id: chat.id.value,
                                ChatMessages: amplifyChatMessages, ChatUsers: [], name: chat.name)
