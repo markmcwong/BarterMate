@@ -85,6 +85,20 @@
 		178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186629E44B640087D018 /* TransactionHeaderView.swift */; };
 		178F186A29E44BA40087D018 /* TransactionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186929E44BA40087D018 /* TransactionViewModel.swift */; };
 		178F186C29E44BB60087D018 /* TransactionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F186B29E44BB60087D018 /* TransactionListViewModel.swift */; };
+		17A4FABE29EC043C00FC9BE8 /* BarterMateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A4FABD29EC043C00FC9BE8 /* BarterMateUserTests.swift */; };
+		17A4FAC129EC05EC00FC9BE8 /* Amplify in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAC029EC05EC00FC9BE8 /* Amplify */; };
+		17A4FAC329EC05F800FC9BE8 /* AWSAPIPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAC229EC05F800FC9BE8 /* AWSAPIPlugin */; };
+		17A4FAC529EC05F800FC9BE8 /* AWSCognitoAuthPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAC429EC05F800FC9BE8 /* AWSCognitoAuthPlugin */; };
+		17A4FAC729EC05F800FC9BE8 /* AWSDataStorePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAC629EC05F800FC9BE8 /* AWSDataStorePlugin */; };
+		17A4FAC929EC05F800FC9BE8 /* AWSLocationGeoPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAC829EC05F800FC9BE8 /* AWSLocationGeoPlugin */; };
+		17A4FACB29EC05F800FC9BE8 /* AWSPinpointAnalyticsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FACA29EC05F800FC9BE8 /* AWSPinpointAnalyticsPlugin */; };
+		17A4FACD29EC05F800FC9BE8 /* AWSPinpointPushNotificationsPlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FACC29EC05F800FC9BE8 /* AWSPinpointPushNotificationsPlugin */; };
+		17A4FACF29EC05F800FC9BE8 /* AWSPluginsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FACE29EC05F800FC9BE8 /* AWSPluginsCore */; };
+		17A4FAD129EC05F800FC9BE8 /* AWSS3StoragePlugin in Frameworks */ = {isa = PBXBuildFile; productRef = 17A4FAD029EC05F800FC9BE8 /* AWSS3StoragePlugin */; };
+		17A4FAD329EC072A00FC9BE8 /* BarterMateItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A4FAD229EC072A00FC9BE8 /* BarterMateItemTests.swift */; };
+		17A4FAD529EC0CD400FC9BE8 /* BarterMatePostingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A4FAD429EC0CD400FC9BE8 /* BarterMatePostingTests.swift */; };
+		17A4FAD729EC0F5A00FC9BE8 /* BarterMateRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A4FAD629EC0F5A00FC9BE8 /* BarterMateRequestTests.swift */; };
+		17A4FAD929EC100E00FC9BE8 /* BarterMateTransactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A4FAD829EC100E00FC9BE8 /* BarterMateTransactionTests.swift */; };
 		17AB3A4329C7701A00FE6DCB /* AmplifyStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */; };
 		17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF300429DB092D00FA2C82 /* ItemImageView.swift */; };
 		2906A91F519B174DD98F549D /* Posting+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B17F90476DAF2F25789B030 /* Posting+Schema.swift */; };
@@ -267,6 +281,11 @@
 		178F186929E44BA40087D018 /* TransactionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewModel.swift; sourceTree = "<group>"; };
 		178F186B29E44BB60087D018 /* TransactionListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewModel.swift; sourceTree = "<group>"; };
 		178F186D29E44F1B0087D018 /* AddRequestFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
+		17A4FABD29EC043C00FC9BE8 /* BarterMateUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUserTests.swift; sourceTree = "<group>"; };
+		17A4FAD229EC072A00FC9BE8 /* BarterMateItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateItemTests.swift; sourceTree = "<group>"; };
+		17A4FAD429EC0CD400FC9BE8 /* BarterMatePostingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMatePostingTests.swift; sourceTree = "<group>"; };
+		17A4FAD629EC0F5A00FC9BE8 /* BarterMateRequestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateRequestTests.swift; sourceTree = "<group>"; };
+		17A4FAD829EC100E00FC9BE8 /* BarterMateTransactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateTransactionTests.swift; sourceTree = "<group>"; };
 		17AB3A3B29C7701A00FE6DCB /* AmplifyStorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplifyStorageService.swift; sourceTree = "<group>"; };
 		17EF300429DB092D00FA2C82 /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		181792E4D02494E509A6DAD9 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
@@ -363,6 +382,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A4FAC329EC05F800FC9BE8 /* AWSAPIPlugin in Frameworks */,
+				17A4FACB29EC05F800FC9BE8 /* AWSPinpointAnalyticsPlugin in Frameworks */,
+				17A4FAC929EC05F800FC9BE8 /* AWSLocationGeoPlugin in Frameworks */,
+				17A4FAC129EC05EC00FC9BE8 /* Amplify in Frameworks */,
+				17A4FACF29EC05F800FC9BE8 /* AWSPluginsCore in Frameworks */,
+				17A4FAC529EC05F800FC9BE8 /* AWSCognitoAuthPlugin in Frameworks */,
+				17A4FACD29EC05F800FC9BE8 /* AWSPinpointPushNotificationsPlugin in Frameworks */,
+				17A4FAC729EC05F800FC9BE8 /* AWSDataStorePlugin in Frameworks */,
+				17A4FAD129EC05F800FC9BE8 /* AWSS3StoragePlugin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,6 +673,13 @@
 			path = Transaction;
 			sourceTree = "<group>";
 		};
+		17A4FABF29EC05EC00FC9BE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		17AB3A3529C7701A00FE6DCB /* AmplifyServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +829,7 @@
 				A6A581AD5EE2E153BDDB950B /* AmplifyConfig */,
 				8CB6AEB7278AC47DC239B200 /* AmplifyModels */,
 				4D17C6E729C99952001CB84E /* Recovered References */,
+				17A4FABF29EC05EC00FC9BE8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -838,6 +874,11 @@
 			isa = PBXGroup;
 			children = (
 				4DC0F88629BE2D2A009EE2B5 /* BarterMateTests.swift */,
+				17A4FABD29EC043C00FC9BE8 /* BarterMateUserTests.swift */,
+				17A4FAD229EC072A00FC9BE8 /* BarterMateItemTests.swift */,
+				17A4FAD429EC0CD400FC9BE8 /* BarterMatePostingTests.swift */,
+				17A4FAD629EC0F5A00FC9BE8 /* BarterMateRequestTests.swift */,
+				17A4FAD829EC100E00FC9BE8 /* BarterMateTransactionTests.swift */,
 			);
 			path = BarterMateTests;
 			sourceTree = "<group>";
@@ -968,6 +1009,17 @@
 				4DC0F88429BE2D2A009EE2B5 /* PBXTargetDependency */,
 			);
 			name = BarterMateTests;
+			packageProductDependencies = (
+				17A4FAC029EC05EC00FC9BE8 /* Amplify */,
+				17A4FAC229EC05F800FC9BE8 /* AWSAPIPlugin */,
+				17A4FAC429EC05F800FC9BE8 /* AWSCognitoAuthPlugin */,
+				17A4FAC629EC05F800FC9BE8 /* AWSDataStorePlugin */,
+				17A4FAC829EC05F800FC9BE8 /* AWSLocationGeoPlugin */,
+				17A4FACA29EC05F800FC9BE8 /* AWSPinpointAnalyticsPlugin */,
+				17A4FACC29EC05F800FC9BE8 /* AWSPinpointPushNotificationsPlugin */,
+				17A4FACE29EC05F800FC9BE8 /* AWSPluginsCore */,
+				17A4FAD029EC05F800FC9BE8 /* AWSS3StoragePlugin */,
+			);
 			productName = BarterMateTests;
 			productReference = 4DC0F88229BE2D2A009EE2B5 /* BarterMateTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1239,7 +1291,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A4FAD929EC100E00FC9BE8 /* BarterMateTransactionTests.swift in Sources */,
 				4DC0F88729BE2D2A009EE2B5 /* BarterMateTests.swift in Sources */,
+				17A4FAD529EC0CD400FC9BE8 /* BarterMatePostingTests.swift in Sources */,
+				17A4FABE29EC043C00FC9BE8 /* BarterMateUserTests.swift in Sources */,
+				17A4FAD329EC072A00FC9BE8 /* BarterMateItemTests.swift in Sources */,
+				17A4FAD729EC0F5A00FC9BE8 /* BarterMateRequestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1571,6 +1628,51 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		17A4FAC029EC05EC00FC9BE8 /* Amplify */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = Amplify;
+		};
+		17A4FAC229EC05F800FC9BE8 /* AWSAPIPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSAPIPlugin;
+		};
+		17A4FAC429EC05F800FC9BE8 /* AWSCognitoAuthPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSCognitoAuthPlugin;
+		};
+		17A4FAC629EC05F800FC9BE8 /* AWSDataStorePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSDataStorePlugin;
+		};
+		17A4FAC829EC05F800FC9BE8 /* AWSLocationGeoPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSLocationGeoPlugin;
+		};
+		17A4FACA29EC05F800FC9BE8 /* AWSPinpointAnalyticsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPinpointAnalyticsPlugin;
+		};
+		17A4FACC29EC05F800FC9BE8 /* AWSPinpointPushNotificationsPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPinpointPushNotificationsPlugin;
+		};
+		17A4FACE29EC05F800FC9BE8 /* AWSPluginsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSPluginsCore;
+		};
+		17A4FAD029EC05F800FC9BE8 /* AWSS3StoragePlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
+			productName = AWSS3StoragePlugin;
+		};
 		4DC0F8A029BE2F5D009EE2B5 /* AWSAPIPlugin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 4DC0F89F29BE2F5D009EE2B5 /* XCRemoteSwiftPackageReference "amplify-swift" */;
