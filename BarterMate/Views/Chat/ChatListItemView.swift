@@ -33,11 +33,11 @@ struct ChatListItemView: ListItemView, View {
             goToMessage = true
         }) {
             HStack {
-                Image(systemName: "person")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .foregroundColor(.green)
-                    .padding(.trailing, 10)
+//                Image(systemName: "person")
+//                    .resizable()
+//                    .frame(width: 80, height: 80)
+//                    .foregroundColor(.green)
+//                    .padding(.trailing, 10)
                 VStack(alignment: .leading, spacing: 10) {
                     Text(item.name ?? "Default chat name")
                         .font(.headline)
@@ -65,14 +65,6 @@ struct ChatListItemView: ListItemView, View {
                         .foregroundColor(.red)
                         Spacer()
                     }
-                    NavigationLink(
-                      "",
-                      destination: LazyView {
-                          MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
-                      },
-                      isActive: $goToMessage
-                    )
-                  .hidden()
                 }
                 .padding()
                 .background(Color.white)
@@ -80,7 +72,15 @@ struct ChatListItemView: ListItemView, View {
                 .shadow(color: .gray, radius: 3, x: 2, y: 2)
             }
             .padding(.horizontal)
-        }
+            
+            NavigationLink(
+              "",
+              destination: LazyView {
+                  MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+              },
+              isActive: $goToMessage
+            ).hidden()
+        }.padding(5)
     }
 }
 

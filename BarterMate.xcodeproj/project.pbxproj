@@ -106,6 +106,7 @@
 		4D4AD57829C6FEAE00C2EEC6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */; };
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
 		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
+		4D8236AE29EC374500746DD7 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8236AD29EC374500746DD7 /* MessageRow.swift */; };
 		4D87E22A29E5737700A345AB /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22829E5737600A345AB /* AddRequestFormView.swift */; };
 		4D87E22B29E5737700A345AB /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22929E5737700A345AB /* ItemSelectionView.swift */; };
 		4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956029C58A3B003B5922 /* LoginViewModel.swift */; };
@@ -287,6 +288,7 @@
 		4D4AD57729C6FEAE00C2EEC6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
+		4D8236AD29EC374500746DD7 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		4D87E22829E5737600A345AB /* AddRequestFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		4D87E22929E5737700A345AB /* ItemSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -770,6 +772,7 @@
 				4DA7051429C836EF004D3CBC /* ChatListView.swift */,
 				4DA9D03029D80E9100E06738 /* ChatListItemView.swift */,
 				4DD3E99829D954AF00C99D2A /* MessageView.swift */,
+				4D8236AD29EC374500746DD7 /* MessageRow.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1124,6 +1127,7 @@
 				4D06B89129D7F70E00CD5BD4 /* AmplifyChatAdapter.swift in Sources */,
 				3DE63DE4217676F0B159A18C /* Category.swift in Sources */,
 				BE3D539F068946B8565FB0D6 /* Chat+Schema.swift in Sources */,
+				4D8236AE29EC374500746DD7 /* MessageRow.swift in Sources */,
 				4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */,
 				172BC8D329D4BC48000EB398 /* AmplifyListFacade.swift in Sources */,
 				178F186729E44B640087D018 /* TransactionHeaderView.swift in Sources */,

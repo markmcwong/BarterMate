@@ -25,44 +25,40 @@ struct RequestCardView: View {
 
     var body: some View {
         HStack {
-            HStack {
-                UserProfileImageView()
-                    .frame(width: 50, height: 50)
-                    .background(Circle().fill(Color.gray))
-                    .clipShape(Circle())
-                    .padding(.trailing, 10)
-                VStack(spacing: 5) {
-                    HStack {
-                        Text(user.username)
-                            .font(.callout)
-                            .lineLimit(1)
-                        Spacer()
-
-                    }
-                    HStack {
-                        Text(request.description)
-                            .font(.callout)
-                            .lineLimit(1)
-                        Spacer()
-
-                    }
-                }
-                if parentViewModel != nil {
-                    Image(systemName: "xmark")
-                        .frame(width: 25, height: 25)
-                        .background(Circle().fill(Color.gray))
-                        .padding(.leading, 10)
-                        .onTapGesture {
-                            parentViewModel?.deleteItem(item: request)
-                        }
-                }
-
-            }
-            .padding()
-            .background(Rectangle().fill(Color.white))
-            .cornerRadius(10)
-            .shadow(color: .gray, radius: 3, x: 2, y: 2)
-        }
+           UserProfileImageView()
+               .frame(width: 50, height: 50)
+               .background(Color.gray)
+               .clipShape(Circle())
+               .padding(.trailing, 10)
+           
+           VStack(alignment: .leading, spacing: 5) {
+               Text(user.username)
+                   .font(.title3)
+                   .fontWeight(.semibold)
+               
+               Text(request.description)
+                   .font(.body)
+                   .lineLimit(2)
+                   .foregroundColor(.secondary)
+               
+           }
+           
+           if parentViewModel != nil {
+               Image(systemName: "xmark.circle.fill")
+                   .resizable()
+                   .frame(width: 25, height: 25)
+                   .foregroundColor(.gray)
+                   .onTapGesture {
+                       parentViewModel?.deleteItem(item: request)
+                   }
+           }
+           
+           Spacer()
+       }
+       .padding(10)
+       .background(Color.white)
+       .cornerRadius(10)
+       .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 2)
     }
 }
 
