@@ -36,7 +36,7 @@ struct UserSelectionView: View {
                     ForEach((isForChat ? viewModel.itemList.elements : viewModel.filteredUsers), id: \.self) { user in
                         if viewModel.selectedItem.contains(user) {
                             UserCardView(item: user)
-                                .border(Color(.red))
+                                .border(Color(.blue))
                                 .onTapGesture {
                                     viewModel.unSelectItem(item: user)
                                 }
@@ -49,7 +49,7 @@ struct UserSelectionView: View {
                     }
                 }.id(UUID())
 
-                Button("Create \(isForChat ? "Chat" : "Transactions" ) with highlighted user") {
+                Button(action: {
                     if isForChat {
                         viewModel.createChat(name: inputText, callback: {
                             addItem = false
@@ -59,9 +59,20 @@ struct UserSelectionView: View {
                             addItem = false
                         })
                     }
-                }
+                }, label: {
+                    Text("Create \(isForChat ? "Chat" : "Transactions") with highlighted user")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.vertical, 12)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.accentColor)
+                        .cornerRadius(10)
+                })
+                .padding(.horizontal, 16)
+                .padding(.top, 16)
+                .padding(.bottom, 32)
             }
-        }
+        }.navigationTitle("Create new \(isForChat ? "Chat" : "Transactions")")
 
     }
 

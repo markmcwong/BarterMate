@@ -28,19 +28,32 @@ struct MessageView: View {
 struct MessageInputView: View {
     @State private var messageText = ""
     let viewModel: MessageViewModel
-
+    
     init(viewModel: MessageViewModel) {
         self.viewModel = viewModel
     }
-
+    
     var body: some View {
         HStack {
             TextField("Enter message...", text: $messageText)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-            Button("Send") {
-                viewModel.sendMessage(messageText)
-                messageText = ""
-            }
+                .font(.body)
+                .padding(10)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .strokeBorder(Color.gray.opacity(0.5), lineWidth: 1)
+                )
+            
+            Button(action: {
+               viewModel.sendMessage(messageText)
+               messageText = ""
+           }, label: {
+               Image(systemName: "paperplane.fill")
+                   .foregroundColor(.white)
+                   .padding(10)
+                   .background(Color.blue)
+                   .clipShape(Circle())
+           })
+            .disabled(messageText.isEmpty)
         }
         .padding()
     }
