@@ -8,9 +8,9 @@
 import Foundation
 
 class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
-    var user: BarterMateUser
-    var transactionList: ModelList<BarterMateTransaction>?
-    var chatList: ModelList<BarterMateChat>?
+    private(set) var user: BarterMateUser
+    private(set) var transactionList: ModelList<BarterMateTransaction>?
+    private(set) var chatList: ModelList<BarterMateChat>?
 
     init(user: BarterMateUser, transactionList: ModelList<BarterMateTransaction>) {
         self.user = user

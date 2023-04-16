@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ListViewModel<T: ListElement>: ObservableObject {
-    @Published var user: BarterMateUser?
+    @Published private(set) var user: BarterMateUser?
     @Published var modelList: ModelList<T>
     private var cancellables: Set<AnyCancellable> = []
 

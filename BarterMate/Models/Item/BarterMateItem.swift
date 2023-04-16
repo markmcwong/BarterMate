@@ -8,13 +8,13 @@
 import Foundation
 
 class BarterMateItem: Hashable, ListElement, ObservableObject {
-    var id: Identifier<BarterMateItem>
-    var name: String
-    var description: String
+    private(set) var id: Identifier<BarterMateItem>
+    private(set) var name: String
+    private(set) var description: String
     var imageUrl: String?
-    var ownerId: Identifier<BarterMateUser>
-    var createdAt: Date
-    var updatedAt: Date
+    private(set) var ownerId: Identifier<BarterMateUser>
+    private(set) var createdAt: Date
+    private(set) var updatedAt: Date
     @Published var imageData: Data?
 
     private var itemFacade: (any ItemFacade)?

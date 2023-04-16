@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class HomeViewModel: ObservableObject {
-    @Published var user: BarterMateUser
+    @Published private(set) var user: BarterMateUser
     let requestFeedViewModel: RequestFeedViewModel
     let postingFeedViewModel: PostingFeedViewModel
     private var cancellables: Set<AnyCancellable> = []

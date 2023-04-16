@@ -3,10 +3,10 @@ import Combine
 
 class UserProfileViewModel: ObservableObject {
 
-    @Published var user: BarterMateUser
-    @Published var itemList: ModelList<BarterMateItem>
-    @Published var postingList: ModelList<BarterMatePosting>
-    @Published var requestList: ModelList<BarterMateRequest>
+    @Published private(set) var user: BarterMateUser
+    @Published private(set) var itemList: ModelList<BarterMateItem>
+    @Published private(set) var postingList: ModelList<BarterMatePosting>
+    @Published private(set) var requestList: ModelList<BarterMateRequest>
     private var cancellables: Set<AnyCancellable> = []
 
     init(user: BarterMateUser) {

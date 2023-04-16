@@ -91,20 +91,8 @@ public class AmplifyAuthService: AuthService {
 
     func signOut() async {
         do {
-            let res = await Amplify.Auth.signOut()
-
-        } catch let error as AuthError {
-            print("Sign Out failed with error: \(error)")
-        } catch {
-            print("Unexpected error: \(error)")
+            let _ = await Amplify.Auth.signOut()
         }
-    }
-
-    func getCurrentUser() async throws -> AuthUser? {
-        let user = try await Amplify.Auth.getCurrentUser()
-        GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
-        print("Global State now: ", GlobalState.shared)
-        return user
     }
 
     func getUser() -> BarterMateUser? {

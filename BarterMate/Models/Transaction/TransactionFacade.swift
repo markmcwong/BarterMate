@@ -6,6 +6,7 @@
 //
 
 protocol TransactionFacade {
+    var delegate: TransactionFacadeDelegate? {get set}
     func setDelegate(delegate: TransactionFacadeDelegate)
     func createTransaction(transaction: BarterMateTransaction)
     func addUser(user: BarterMateUser)

@@ -48,7 +48,7 @@ class AddItemFormViewModel: ObservableObject {
         itemList.insert(model: newItem)
     }
 
-    func validateItem() -> Bool {
+    private func validateItem() -> Bool {
         guard name.isEmpty else {
             errorMessage = "Item Name Cannot be Empty"
             return false

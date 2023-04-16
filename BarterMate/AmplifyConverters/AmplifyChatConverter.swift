@@ -9,7 +9,7 @@ import Amplify
 import Foundation
 import Combine
 
-struct AmplifyChatAdapter {
+struct AmplifyChatConverter {
     static func toBarterMateModel(chat: Chat) -> BarterMateChat {
         func barterMateUserTask (completion: @escaping ([BarterMateUser]) -> [BarterMateUser]) {
                 do {
@@ -41,7 +41,7 @@ struct AmplifyChatAdapter {
                         var chatMessageResults: [BarterMateMessage] = []
                         for chatMessage in chatMessagesList {
                                 group.enter()
-                                let barterMateMessage: BarterMateMessage = AmplifyMessageAdapter.toBarterMateModel(message: chatMessage)
+                                let barterMateMessage: BarterMateMessage = AmplifyMessageConverter.toBarterMateModel(message: chatMessage)
                                 chatMessageResults.append(barterMateMessage)
                                 group.leave()
                         }
@@ -67,7 +67,7 @@ struct AmplifyChatAdapter {
 
     static func toAmplifyModel(chat: BarterMateChat) -> Chat {
         let amplifyChatMessages: List<Message> = List(elements: chat.messages!.map { message in
-            AmplifyMessageAdapter.toAmplifyModel(message: message)
+            AmplifyMessageConverter.toAmplifyModel(message: message)
         })
 
         let amplifyUsers: List<User> = List(elements: chat.users!.map { user in
@@ -87,7 +87,7 @@ struct AmplifyChatAdapter {
 
 struct AmplifyUserChatAdapter {
     static func toAmplifyModel(user: BarterMateUser, chat: BarterMateChat) -> UserChat {
-        let amplifyChat = AmplifyChatAdapter.toAmplifyModel(chat: chat)
+        let amplifyChat = AmplifyChatConverter.toAmplifyModel(chat: chat)
         let amplifyUser = AmplifyUserConverter.toAmplifyModel(user: user)
         let amplifyUserChat = UserChat(chat: amplifyChat,
                                        user: amplifyUser)

@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class SelectableItemViewModel<U: ListElement>: ObservableObject {
-    @Published var itemList: ModelList<U>
+    @Published private(set) var itemList: ModelList<U>
     @Published var highlightedItem: U?
     private var cancellables: Set<AnyCancellable> = []
 

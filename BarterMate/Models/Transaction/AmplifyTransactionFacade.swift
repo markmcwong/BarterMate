@@ -9,7 +9,7 @@ import Combine
 
 class AmplifyTransactionFacade: TransactionFacade {
 
-    var delegate: TransactionFacadeDelegate?
+    internal var delegate: TransactionFacadeDelegate?
 
     func setDelegate(delegate: TransactionFacadeDelegate) {
         self.delegate = delegate
