@@ -26,6 +26,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     func save(model: any ListElement) {
         Task {
             do {
+                print("do")
                 guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
                     print("error converting")
                     return

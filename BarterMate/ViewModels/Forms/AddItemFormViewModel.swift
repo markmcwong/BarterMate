@@ -49,12 +49,12 @@ class AddItemFormViewModel: ObservableObject {
     }
 
     private func validateItem() -> Bool {
-        guard name.isEmpty else {
+        guard !name.isEmpty else {
             errorMessage = "Item Name Cannot be Empty"
             return false
         }
 
-        guard description.isEmpty else {
+        guard !description.isEmpty else {
             errorMessage = "Description Cannot be Empty"
             return false
         }
