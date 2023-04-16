@@ -1,4 +1,3 @@
-//
 //  MyRequestView.swift
 //  BarterMate
 //
@@ -8,16 +7,16 @@
 import SwiftUI
 
 struct MyRequestListView: View {
-    
+
     @ObservedObject var viewModel: ListViewModel<BarterMateRequest>
     @State var showModal = false
-    
+
     var body: some View {
         VStack {
             Text("Request " + "\(viewModel.modelList.elements.count)")
                 .font(.subheadline)
                 .fontWeight(.bold)
-            
+
             ScrollView(.vertical) {
                 VStack {
                     LazyVStack {
@@ -25,16 +24,14 @@ struct MyRequestListView: View {
                             RequestCardView(request: request, user: viewModel.user, parentViewModel: viewModel)
                         }
                     }.id(UUID())
-                    
-                    if viewModel.modelList.elements.count == 0 {
-                       Text("No More Item")
-                           .padding()
-                    } else {
 
+                    if viewModel.modelList.elements.isEmpty {
+                       Text("No Request")
+                           .padding()
                     }
                 }
             }
-            
+
             ProfileButtonsView().onTapGesture {
                 showModal = true
             }
@@ -46,13 +43,12 @@ struct MyRequestListView: View {
 }
 
 struct MyRequestListView_Previews: PreviewProvider {
-    
+
     static var postingList = ModelList<BarterMatePosting>.of(SampleUser.bill.id)
-    
+
     static var viewModel = ListViewModel(user: SampleUser.bill, modelList: postingList)
-    
+
     static var previews: some View {
         MyPostingListView(viewModel: viewModel)
     }
 }
-

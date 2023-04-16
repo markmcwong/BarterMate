@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct ChatListItemView: ListItemView, View {
-    var model: ListViewModel<BarterMateChat>? = nil
+    var model: ListViewModel<BarterMateChat>?
     @ObservedObject var item: BarterMateChat
 
     static func build(for item: BarterMateChat, model: ListViewModel<BarterMateChat>?) -> ChatListItemView {
-        return ChatListItemView(item: item, model: model)
+        ChatListItemView(item: item, model: model)
     }
     @State var goToMessage = false
 //    @ObservedObject var parentViewModel: ListViewModel<BarterMateChat>
@@ -21,11 +21,11 @@ struct ChatListItemView: ListItemView, View {
     internal init(item: BarterMateChat, model: ListViewModel<BarterMateChat>?) {
         self.item = item
         self.model = model
-        if(!item.hasFetchedDetails) {
+        if !item.hasFetchedDetails {
             item.fetchDetails()
         }
     }
-    
+
     var body: some View {
         Button(action: {
             Task {
@@ -46,7 +46,7 @@ struct ChatListItemView: ListItemView, View {
                             Spacer()
                         }
                         HStack {
-                            if((item.users) != nil){
+                            if (item.users) != nil {
                                 ForEach(item.users!, id: \.id) { user in
                                     Text(user.username).font(.callout)
                                 }
@@ -54,13 +54,13 @@ struct ChatListItemView: ListItemView, View {
                             Spacer()
                         }
                         Button("Delete Item") {
-                            if(model != nil){
+                            if model != nil {
                                 model!.deleteItem(item: item)
                             } else {
                                 print("model does not exist for deleting item")
                             }
                         }
-                        
+
                         NavigationLink(
                             "",
                             destination: LazyView {
@@ -80,7 +80,7 @@ struct ChatListItemView: ListItemView, View {
     }
 }
 
-//struct ChatListItemView_Previews: PreviewProvider {
+// struct ChatListItemView_Previews: PreviewProvider {
 //    static var previews: some View {
 //    }
-//}
+// }

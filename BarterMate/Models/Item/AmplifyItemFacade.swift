@@ -10,14 +10,14 @@ import Amplify
 
 class AmplifyItemFacade: ItemFacade {
     var delegate: (any ItemFacadeDelegate)?
-    
+
     func getItemById(id: Identifier<BarterMateItem>) {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
-            
+
             guard let amplifyItem = try await Amplify.DataStore.query(Item.self, byId: id.value) else {
                 return
             }
@@ -27,7 +27,7 @@ class AmplifyItemFacade: ItemFacade {
             }
 
             delegate.update(item: barterMateItem)
-            
+
         }
     }
 }

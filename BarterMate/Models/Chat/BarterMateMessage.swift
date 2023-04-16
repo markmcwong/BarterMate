@@ -14,10 +14,10 @@ class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject, 
     var fetchUserClosure: ((@escaping (BarterMateUser) -> BarterMateUser) -> Void)?
     let createdAt: Date
     let content: String
-    var hasFetchedDetails: Bool = false
-    
+    var hasFetchedDetails = false
+
     var description: String {
-        return "BarterMateMessage[\(id): { \(sentIn.debugDescription), \(sentBy.debugDescription)}"
+        "BarterMateMessage[\(id): { \(sentIn.debugDescription), \(sentBy.debugDescription)}"
     }
 
     init(id: Identifier<BarterMateMessage> = Identifier(value: UUID().uuidString),
@@ -33,23 +33,22 @@ class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject, 
         self.fetchUserClosure = fetchUserClosure
         self.content = content
     }
-    
+
     static func == (lhs: BarterMateMessage, rhs: BarterMateMessage) -> Bool {
         lhs.id == rhs.id && lhs.sentBy?.id == rhs.sentBy?.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(sentBy?.hashValue)
     }
-    
+
     func fetchDetails() {
         fetchUser()
         self.hasFetchedDetails = true
     }
-    
+
     func fetchUser() {
-//        print("fetch user called")
         if self.sentBy == nil {
             guard let fetchUserClosure = fetchUserClosure else {
                 print("fetch user closuer wrong")

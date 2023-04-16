@@ -16,7 +16,7 @@ struct SamplePosting {
         }
         return createdAt
     }()
-    
+
     static let defaultUpdatedAt = { () -> Date in
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -25,13 +25,13 @@ struct SamplePosting {
         }
         return updatedAt
     }()
-    
+
     static let guitarPosting = BarterMatePosting(id: Identifier(value: "guitar"),
                                                  item: SampleItem.guitar,
                                                  createdAt: defaultCreatedAt,
                                                  updatedAt: defaultUpdatedAt)
-    
+
     static let bottlePosting = BarterMatePosting(id: Identifier(value: "Bottle"), item: SampleItem.waterBottle,
-    createdAt: defaultCreatedAt,
-    updatedAt: defaultUpdatedAt)
+                                                 createdAt: defaultCreatedAt,
+                                                 updatedAt: defaultUpdatedAt)
 }

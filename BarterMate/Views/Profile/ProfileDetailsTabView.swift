@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ProfileDetailsTabView: View {
-    @State private var selection = 1;
+    @State private var selection = 1
     @ObservedObject var viewModel: UserProfileViewModel
-    
+
     var body: some View {
         VStack {
             TabView(selection: $selection) {
@@ -37,8 +37,6 @@ struct ProfileDetailsTabView: View {
 //                showModal = true
 //            }
         }
-
-
 
     }
 }

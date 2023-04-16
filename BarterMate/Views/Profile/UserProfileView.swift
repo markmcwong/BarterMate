@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct UserProfileView: View {
-    
+
     @ObservedObject var viewModel: UserProfileViewModel
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var image: Image?
-    
+
     func loadImage() {
         guard let inputImage = inputImage else {
             return
@@ -23,7 +23,7 @@ struct UserProfileView: View {
     var body: some View {
         VStack {
             UserProfileImageView()
-                .frame(width: 150,  height: 150)
+                .frame(width: 150, height: 150)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(lineWidth: 0.5))
                 .onTapGesture {
@@ -32,7 +32,7 @@ struct UserProfileView: View {
                 .onChange(of: inputImage) { _ in
                     loadImage()
                 }
-            
+
             Text(viewModel.user.username)
                 .font(.largeTitle)
                 .fontWeight(.bold)
@@ -51,11 +51,8 @@ struct UserProfileView_Previews: PreviewProvider {
         var viewModel = UserProfileViewModel(user: SampleUser.bill)
         return viewModel
     }()
-    
+
     static var previews: some View {
         UserProfileView(viewModel: viewModel)
     }
 }
-
-
-

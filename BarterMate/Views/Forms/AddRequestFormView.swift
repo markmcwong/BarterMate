@@ -21,12 +21,12 @@ struct AddRequestFormView: View {
                 .padding()
                 .autocapitalization(.none)
                 .keyboardType(.default)
-            
-            if viewModel.errorMessage != "" {
+
+            if viewModel.errorMessage.isEmpty {
                 Text(viewModel.errorMessage).foregroundColor(.orange).font(.system(size: 12)).padding()
             }
         }
-        
+
         Button("Make request") {
             viewModel.addRequest()
             showModal = false
@@ -36,6 +36,8 @@ struct AddRequestFormView: View {
 
 struct AddRequestFormVIew_Previews: PreviewProvider {
     static var previews: some View {
-        AddRequestFormView(ownerId: SampleUser.bill.id, requestList: ModelList<BarterMateRequest>.empty(), showModal: .constant(true))
+        AddRequestFormView(ownerId: SampleUser.bill.id,
+                           requestList: ModelList<BarterMateRequest>.empty(),
+                           showModal: .constant(true))
     }
 }

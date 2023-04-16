@@ -15,4 +15,3 @@ protocol ModelListFacade {
     func getEveryoneModels()
     func getEveryoneModels(limit: Int)
 }
-

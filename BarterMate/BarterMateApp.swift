@@ -17,7 +17,7 @@ struct BarterMateApp: App {
     init() {
         configureAmplify()
     }
-    
+
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -35,10 +35,9 @@ func configureAmplify() {
         try Amplify.add(plugin: AWSS3StoragePlugin())
         try Amplify.configure()
 
-        print("Initialized Amplify");
+        print("Initialized Amplify")
     } catch {
         // simplified error handling for the tutorial
         print("Could not initialize Amplify: \(error)")
     }
 }
-

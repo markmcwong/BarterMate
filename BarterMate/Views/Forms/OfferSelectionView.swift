@@ -10,12 +10,12 @@ import SwiftUI
 struct OfferSelectionView: View {
     @ObservedObject var viewModel: OfferSelectionViewModel
     @Binding var addOffer: Bool
-    
+
     init(userId: Identifier<BarterMateUser>, transaction: BarterMateTransaction, addOffer: Binding<Bool>) {
         viewModel = OfferSelectionViewModel(userId: userId, transaction: transaction)
         self._addOffer = addOffer
     }
-    
+
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack {
@@ -35,14 +35,12 @@ struct OfferSelectionView: View {
 
                 }
             }.id(UUID())
-            
-            if viewModel.itemList.elements.count == 0 {
-               Text("No More Item")
-                   .padding()
-            } else {
 
+            if viewModel.itemList.elements.isEmpty {
+               Text("No Item to Offer")
+                   .padding()
             }
-            
+
             Button("Offer item in transaction") {
                 guard viewModel.highlightedItem != nil else {
                     return
@@ -59,4 +57,3 @@ struct OfferSelectionView_Previews: PreviewProvider {
         OfferSelectionView(userId: SampleUser.bill.id, transaction: SampleTransaction.sampleTransaction, addOffer: .constant(true))
     }
 }
-

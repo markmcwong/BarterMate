@@ -30,8 +30,7 @@ struct ChatListView: View {
 
                 }
             }
-        }.navigationTitle("Total number of Chats: " + viewModel.modelList.elements.count.description)
-            .onAppear(perform: {viewModel.fetchChatUserBelongsTo()})
+        }.onAppear(perform: { viewModel.fetchChatUserBelongsTo() })
         ProfileButtonsView().onTapGesture {
             addChat = true
         }
@@ -46,8 +45,8 @@ struct ChatListView: View {
     }
 }
 
-//struct ChatListView_Previews: PreviewProvider {
+// struct ChatListView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        ChatListView()
 //    }
-//}
+// }

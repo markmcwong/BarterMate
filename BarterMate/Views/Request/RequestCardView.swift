@@ -66,9 +66,8 @@ struct RequestCardView: View {
     }
 }
 
-//struct RequestCardView_Previews: PreviewProvider {
+// struct RequestCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        RequestCardView(request: Request(id: "a", description: "Hello World", createdAt: nil, owner: User())
 //    }
-//}
-
+// }

@@ -14,8 +14,8 @@ class BarterMateChat: Hashable, Identifiable, LazyListElement, ObservableObject 
     @Published var users: [BarterMateUser]?
     var fetchMessagesClosure: ((@escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void)?
     var fetchUsersClosure: ((@escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void)?
-    var hasFetchedDetails: Bool = false
-    
+    var hasFetchedDetails = false
+
     init(id: Identifier<BarterMateChat> = Identifier(value: UUID().uuidString),
          name: String?,
          messages: [BarterMateMessage]? = nil,
@@ -36,7 +36,7 @@ class BarterMateChat: Hashable, Identifiable, LazyListElement, ObservableObject 
         fetchUsers()
         self.hasFetchedDetails = true
     }
-    
+
     func fetchMessages() {
 //        print("fetch messages called")
         if self.messages == nil {
@@ -71,11 +71,11 @@ class BarterMateChat: Hashable, Identifiable, LazyListElement, ObservableObject 
             return
         }
     }
-    
+
     static func == (lhs: BarterMateChat, rhs: BarterMateChat) -> Bool {
         lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

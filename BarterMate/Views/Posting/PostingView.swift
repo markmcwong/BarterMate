@@ -12,13 +12,13 @@ struct PostingView: View {
     @ObservedObject var posting: BarterMatePosting
     let user: BarterMateUser
     var parentViewModel: ListViewModel<BarterMatePosting>?
-    
+
     init(posting: BarterMatePosting, user: BarterMateUser, parentViewModel: ListViewModel<BarterMatePosting>) {
         self.posting = posting
         self.user = user
         self.parentViewModel = parentViewModel
     }
-    
+
     init(posting: BarterMatePosting, user: BarterMateUser) {
         self.posting = posting
         self.user = user
@@ -28,7 +28,7 @@ struct PostingView: View {
         VStack(alignment: .leading) {
             HStack {
                 UserProfileImageView()
-                    .frame(width: 40,  height: 40)
+                    .frame(width: 40, height: 40)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
@@ -47,7 +47,6 @@ struct PostingView: View {
 
                 Text(posting.item.name)
                 Text(posting.item.description)
-            
 
             ZStack {
                 ItemImageView(item: posting.item)
@@ -63,5 +62,3 @@ struct PostingView_Previews: PreviewProvider {
         PostingView(posting: SamplePosting.bottlePosting, user: SampleUser.bill)
     }
 }
-
-

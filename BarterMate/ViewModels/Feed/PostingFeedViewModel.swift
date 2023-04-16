@@ -10,11 +10,11 @@ import Combine
 
 class PostingFeedViewModel: BaseViewModel<BarterMatePosting> {
     override func getUserIdFromModel(_ model: BarterMatePosting) -> Identifier<BarterMateUser> {
-        return model.item.ownerId
+        model.item.ownerId
     }
 }
 
-//class PostingFeedViewModel: ObservableObject {
+// class PostingFeedViewModel: ObservableObject {
 //    @Published var postingList: ModelList<BarterMatePosting>
 //    var userIds: [Identifier<BarterMateUser>] = []
 //    @Published var userIdToUser: [Identifier<BarterMateUser> : BarterMateUser] = [:]
@@ -39,4 +39,4 @@ class PostingFeedViewModel: BaseViewModel<BarterMatePosting> {
 //            userIdToUser[userId] = user
 //        }
 //    }
-//}
+// }

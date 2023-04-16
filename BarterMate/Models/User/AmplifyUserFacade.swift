@@ -10,14 +10,13 @@ import Amplify
 
 class AmplifyUserFacade: UserFacade {
     var delegate: (any UserFacadeDelegate)?
-    
+
     func getUserById(id: Identifier<BarterMateUser>) {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
-            print(id.value)
             guard let amplifyUser = try await Amplify.DataStore.query(User.self, byId: id.value) else {
                 print("no user")
                 return
@@ -28,7 +27,7 @@ class AmplifyUserFacade: UserFacade {
             }
 
             delegate.update(user: barterMateUser)
-            
+
         }
     }
 }

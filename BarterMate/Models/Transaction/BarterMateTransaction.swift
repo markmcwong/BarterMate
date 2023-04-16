@@ -21,9 +21,9 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     @Published var hasLockedOffer: Set<Identifier<BarterMateUser>>
     @Published var hasCompletedBarter: Set<Identifier<BarterMateUser>>
     @Published var state: TransactionState
-    
+
     var facade: TransactionFacade?
-    
+
     static func createNewTransaction() -> BarterMateTransaction {
         let transaction = BarterMateTransaction(participants: [],
                                                 itemPool: [],
@@ -33,7 +33,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         transaction.facade?.createTransaction(transaction: transaction)
         return transaction
     }
-    
+
     init(id: Identifier<BarterMateTransaction> = Identifier(value: UUID().uuidString),
          participants: (Set<BarterMateUser>),
          itemPool: (Set<BarterMateItem>),
@@ -48,12 +48,12 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         self.hasCompletedBarter = hasCompletedBarter
         setUpFacade()
     }
-    
+
     func setUpFacade() {
         self.facade = AmplifyTransactionFacade()
         self.facade?.setDelegate(delegate: self)
     }
-    
+
     func addUser(user: BarterMateUser) {
         guard state == .INITIATED else {
             return
@@ -64,7 +64,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         facade?.addUser(user: user)
         participants.insert(user)
     }
-    
+
     func removeUser(user: BarterMateUser) {
         guard state == .INITIATED else {
             return
@@ -75,7 +75,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         facade?.removeUser(user: user)
         participants.remove(user)
     }
-    
+
     func addItem(item: BarterMateItem) {
         guard state == .INITIATED else {
             return
@@ -87,7 +87,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         facade?.addItem(item: item)
         itemPool.insert(item)
     }
-    
+
     func removeItem(item: BarterMateItem) {
         guard state == .INITIATED else {
             return
@@ -98,30 +98,28 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         facade?.removeItem(item: item)
         itemPool.remove(item)
     }
-    
+
     func userLockTransaction(user: BarterMateUser) {
         guard state == .INITIATED else {
             return
         }
-        
+
         hasLockedOffer.insert(user.id)
         facade?.userLockTransaction(user: user)
         lockTransaction()
     }
-    
+
     func lockTransaction() {
         guard state == .INITIATED else {
             return
         }
-        for participant in participants {
-            if !hasLockedOffer.contains(participant.id) {
-                return
-            }
+        for participant in participants where !hasLockedOffer.contains(participant.id) {
+            return
         }
         state = .ITEMLOCKED
         facade?.lockTransaction()
     }
-    
+
     func userCompleteBarter(user: BarterMateUser) {
         guard state == .ITEMLOCKED else {
             return
@@ -131,29 +129,25 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         facade?.userCompleteBarter(user: user)
         completeBarter()
     }
-    
+
     func completeBarter() {
         guard state == .ITEMLOCKED else {
             return
         }
-        for participant in participants {
-            if !hasCompletedBarter.contains(participant.id) {
-                return
-            }
+        for participant in participants where !hasCompletedBarter.contains(participant.id) {
+            return
         }
         state = .COMPLETED
         facade?.completeTransaction()
     }
-    
+
     static func == (lhs: BarterMateTransaction, rhs: BarterMateTransaction) -> Bool {
         lhs.id == rhs.id && lhs.participants == rhs.participants && lhs.itemPool == rhs.itemPool
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(itemPool)
         hasher.combine(participants)
     }
 }
-
-

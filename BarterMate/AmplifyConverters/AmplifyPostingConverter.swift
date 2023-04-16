@@ -9,7 +9,7 @@ import Foundation
 import Amplify
 
 struct AmplifyPostingConverter {
-    
+
     static func toBarterMateModel(posting: Posting) -> BarterMatePosting? {
 
         guard let itemId = posting.postingItemId,
@@ -17,10 +17,8 @@ struct AmplifyPostingConverter {
               let updatedAt = posting.updatedAt else {
             return nil
         }
-        
-        
-        let convertedItem = BarterMateItem.getItemWithId(id: Identifier(value: itemId))
 
+        let convertedItem = BarterMateItem.getItemWithId(id: Identifier(value: itemId))
 
         let barterMatePosting = BarterMatePosting(id: Identifier(value: posting.id),
                                                   item: convertedItem,
@@ -29,21 +27,20 @@ struct AmplifyPostingConverter {
 
         return barterMatePosting
     }
-    
-    
+
     static func toAmplifyModel(posting: BarterMatePosting) -> Posting? {
-        
+
         let convertedItem = AmplifyConverter.toAmplifyModel(model: posting.item)
-        
+
         guard let convertedItem = convertedItem as? Item else {
             return nil
         }
-        
+
         let amplifyPosting = Posting(id: posting.id.value,
                                      userID: posting.item.ownerId.value,
                                      item: convertedItem,
                                      postingItemId: convertedItem.id)
-        
+
         return amplifyPosting
     }
 }

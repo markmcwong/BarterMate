@@ -5,6 +5,8 @@
 //  Created by mark on 12/3/2023.
 //
 
+// swiftlint: disable all
+
 import XCTest
 
 final class BarterMateUITests: XCTestCase {

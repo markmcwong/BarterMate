@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct ItemSelectionView: View {
-    
+
     @ObservedObject var viewModel: ItemSelectionViewModel
     @Binding var addPosting: Bool
-    
+
     init(userid: Identifier<BarterMateUser>, postingList: ModelList<BarterMatePosting>, addPosting: Binding<Bool>) {
         viewModel = ItemSelectionViewModel(userid: userid, postingList: postingList)
         self._addPosting = addPosting
     }
-    
+
     var body: some View {
         ScrollView(.vertical) {
             LazyVStack {
@@ -36,14 +36,14 @@ struct ItemSelectionView: View {
 
                 }
             }.id(UUID())
-            
-            if viewModel.itemList.elements.count == 0 {
-               Text("No More Item")
+
+            if viewModel.itemList.elements.isEmpty {
+               Text("No Item")
                    .padding()
             } else {
 
             }
-            
+
             Button("Make Posting") {
                 guard viewModel.highlightedItem != nil else {
                     return
@@ -60,5 +60,3 @@ struct ItemSelectionView_Previews: PreviewProvider {
         ItemSelectionView(userid: SampleUser.bill.id, postingList: ModelList<BarterMatePosting>.empty(), addPosting: .constant(true))
     }
 }
-
-

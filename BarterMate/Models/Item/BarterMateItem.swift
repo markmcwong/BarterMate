@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BarterMateItem: Hashable, ListElement, ObservableObject{
+class BarterMateItem: Hashable, ListElement, ObservableObject {
     var id: Identifier<BarterMateItem>
     var name: String
     var description: String
@@ -16,9 +16,9 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
     var createdAt: Date
     var updatedAt: Date
     @Published var imageData: Data?
-    
+
     private var itemFacade: (any ItemFacade)?
-    
+
     static func getItemWithId(id: Identifier<BarterMateItem>) -> BarterMateItem {
         let item = createUnavailableItem()
         let facade = AmplifyItemFacade()
@@ -27,7 +27,7 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
         item.itemFacade?.getItemById(id: id)
         return item
     }
-    
+
     static func createUnavailableItem() -> BarterMateItem {
         BarterMateItem(id: Identifier(value: ""),
                        name: "",
@@ -37,8 +37,14 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
                        createdAt: .distantPast,
                        updatedAt: .distantPast)
     }
-    
-    init(id: Identifier<BarterMateItem> = Identifier(value: UUID().uuidString), name: String, description: String, imageUrl: String?, ownerId: Identifier<BarterMateUser>, createdAt: Date, updatedAt: Date) {
+
+    init(id: Identifier<BarterMateItem> = Identifier(value: UUID().uuidString),
+         name: String,
+         description: String,
+         imageUrl: String?,
+         ownerId: Identifier<BarterMateUser>,
+         createdAt: Date,
+         updatedAt: Date) {
         self.id = id
         self.name = name
         self.description = description
@@ -48,7 +54,7 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
         self.updatedAt = updatedAt
         loadImage()
     }
-    
+
     func loadImage() {
         guard let imageUrl = imageUrl else {
             return
@@ -59,11 +65,11 @@ class BarterMateItem: Hashable, ListElement, ObservableObject{
             }
         }
     }
-    
+
     static func == (lhs: BarterMateItem, rhs: BarterMateItem) -> Bool {
         lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
@@ -81,4 +87,3 @@ extension BarterMateItem: ItemFacadeDelegate {
         loadImage()
     }
 }
-

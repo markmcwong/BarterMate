@@ -14,7 +14,7 @@ struct CreateItemButton: View {
             .resizable()
             .aspectRatio(contentMode: .fit)
             .frame(width: 30, height: 30)
-        
+
     }
 }
 

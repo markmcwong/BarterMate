@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct MyPostingListView: View {
-    
+
     @ObservedObject var viewModel: ListViewModel<BarterMatePosting>
     @State private var addPosting = false
-    
+
     var body: some View {
         VStack {
             Text("Posting " + "\(viewModel.modelList.elements.count)")
@@ -24,9 +24,9 @@ struct MyPostingListView: View {
                             PostingView(posting: posting, user: viewModel.user!, parentViewModel: viewModel)
                         }
                     }.id(UUID())
-                    
-                    if viewModel.modelList.elements.count == 0 {
-                       Text("No More Item")
+
+                    if viewModel.modelList.elements.isEmpty {
+                       Text("No Posting")
                            .padding()
                     } else {
 
@@ -39,7 +39,9 @@ struct MyPostingListView: View {
             NavigationLink(
                 "",
                 destination: LazyView {
-                    ItemSelectionView(userid: viewModel.user!.id, postingList: viewModel.modelList, addPosting: $addPosting)
+                    ItemSelectionView(userid: viewModel.user!.id,
+                                      postingList: viewModel.modelList,
+                                      addPosting: $addPosting)
                 },
                 isActive: $addPosting
             )
@@ -47,18 +49,16 @@ struct MyPostingListView: View {
 
         }
 
-
     }
 }
 
 struct MyPostingListView_Previews: PreviewProvider {
-    
+
     static var postingList = ModelList<BarterMatePosting>.of(SampleUser.bill.id)
-    
+
     static var viewModel = ListViewModel(user: SampleUser.bill, modelList: postingList)
-    
+
     static var previews: some View {
         MyPostingListView(viewModel: viewModel)
     }
 }
-

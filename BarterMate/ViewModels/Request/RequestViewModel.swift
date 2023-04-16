@@ -5,11 +5,11 @@
 ////  Created by Zico on 16/3/23.
 ////
 //
-//import Foundation
-//import Combine
-//import Amplify
+// import Foundation
+// import Combine
+// import Amplify
 //
-//class RequestViewModel: ObservableObject {
+// class RequestViewModel: ObservableObject {
 //    var request: Request
 //    var requesterName: String?
 //    var userService: UserService
@@ -51,9 +51,9 @@
 //            Amplify.log.error("\(#function) Error removing request - \(error.localizedDescription)")
 //        }
 //    }
-//}
+// }
 //
-//extension RequestCardView {
+// extension RequestCardView {
 //    class RequestViewModel: ObservableObject {
 //        var request: Request
 //        var requesterName: String?
@@ -97,7 +97,7 @@
 //            }
 //        }
 //    }
-//}
+// }
 //
 //
 //

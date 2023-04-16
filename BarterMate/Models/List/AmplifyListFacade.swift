@@ -12,33 +12,31 @@ import os
 class AmplifyListFacade<U: ListElement>: ModelListFacade {
 
     typealias BarterMateModel = U
-    
+
     var delegate: ModelList<U>?
-    
+
     func setDelegate(delegate: any ModelListFacadeDelegate) {
-        print("Type of delegate is : ", delegate.self)
         guard let delegate = delegate as? ModelList<U> else {
             print("No delegate available")
             return
         }
         self.delegate = delegate
     }
-    
+
     func save(model: any ListElement) {
         Task {
             do {
                 guard let amplifyModel = AmplifyConverter.toAmplifyModel(model: model) else {
-                    print("erorr converting")
+                    print("error converting")
                     return
                 }
-                print("saving")
                 _ = try await Amplify.DataStore.save(amplifyModel)
             } catch {
                 os_log("Error saving item into Amplify")
             }
         }
     }
-    
+
     func delete(model: any ListElement) {
         Task {
             do {
@@ -51,20 +49,19 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             }
         }
     }
-    
+
     func getModelsById(of userId: Identifier<BarterMateUser>) {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 return
             }
             let amplifyModelList = try await Amplify.DataStore.query(type.self,
-                                                             where: Ownable.userID == userId.value)
-            
-            print("amplifyModelList : ", U.typeName, amplifyModelList)
+                                                                     where: Ownable.userID == userId.value)
+
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
             }
@@ -72,22 +69,22 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             if let barterMateModels = barterMateModels as? [U] {
                 delegate.insertAll(models: barterMateModels)
             }
-            
+
         }
     }
-    
+
     func getModelsById(of userId: Identifier<BarterMateUser>, limit: Int) {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 return
             }
-            
+
             let amplifyModelList = try await Amplify.DataStore.query(type.self,
-                                                             where: Ownable.userID == userId.value,
+                                                                     where: Ownable.userID == userId.value,
                                                                      paginate: .page(0, limit: UInt(limit)))
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
@@ -98,19 +95,18 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             }
         }
     }
-    
-    
+
     func getEveryoneModels() {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 print("cannot convert to amplify type")
                 return
             }
-            
+
             let amplifyModelList = try await Amplify.DataStore.query(type.self)
 
             let barterMateModels = amplifyModelList.compactMap {
@@ -122,21 +118,21 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             }
         }
     }
-    
+
     func getEveryoneModels(limit: Int) {
         guard let delegate = delegate else {
             return
         }
-        
+
         Task {
             guard let type = convertToAmplifyType(type: U.typeName) else {
                 print("cannot convert to amplify type")
                 return
             }
-            
+
             let amplifyModelList = try await Amplify.DataStore.query(type,
                                                                      paginate: .page(0, limit: UInt(limit)))
-            
+
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
             }
@@ -146,7 +142,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             }
         }
     }
-    
+
     private func convertToAmplifyType(type: String) -> Model.Type? {
         switch type {
         case "BarterMateItem":

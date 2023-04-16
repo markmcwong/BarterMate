@@ -9,6 +9,6 @@ import Foundation
 
 protocol ItemFacade {
     var delegate: (any ItemFacadeDelegate)? { get set }
-    
+
     func getItemById(id: Identifier<BarterMateItem>)
 }

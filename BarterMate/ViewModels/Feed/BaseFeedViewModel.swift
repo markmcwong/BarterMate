@@ -1,4 +1,3 @@
-//
 //  BaseFeedViewModel.swift
 //  BarterMate
 //
@@ -13,16 +12,15 @@ class BaseViewModel<T: ListElement>: ObservableObject {
     var userIds: [Identifier<BarterMateUser>] = []
     @Published var userIdToUser: [Identifier<BarterMateUser>: BarterMateUser] = [:]
     private var cancellables: Set<AnyCancellable> = []
-    
+
     init(modelType: T.Type) {
         self.modelList = ModelList<T>.all()
-        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
+        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {[weak self] _ in
             self?.objectWillChange.send()
             self?.populateUserMap()
         }.store(in: &cancellables)
     }
-    
+
     private func populateUserMap() {
         for model in modelList.elements {
             let userId = getUserIdFromModel(model)
@@ -30,9 +28,8 @@ class BaseViewModel<T: ListElement>: ObservableObject {
                 continue
             }
             let user = BarterMateUser.getUserWithId(id: userId)
-            if user.username == "" {
-                user.objectWillChange.receive(on: DispatchQueue.main).sink {
-                    [weak self] _ in
+            if user.username.isEmpty {
+                user.objectWillChange.receive(on: DispatchQueue.main).sink { [weak self] _ in
                     self?.userIdToUser[userId] = user
                 }.store(in: &cancellables)
             } else {
@@ -41,19 +38,16 @@ class BaseViewModel<T: ListElement>: ObservableObject {
         }
         self.objectWillChange.send()
     }
-    
-    
+
     func refresh() {
         self.modelList = ModelList<T>.all()
-        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
-            [weak self] _ in
+        modelList.objectWillChange.receive(on: DispatchQueue.main).sink { [weak self] _ in
             self?.objectWillChange.send()
             self?.populateUserMap()
         }.store(in: &cancellables)
     }
-    
+
     func getUserIdFromModel(_ model: T) -> Identifier<BarterMateUser> {
         fatalError("getUserIdFromModel must be implemented in subclass")
     }
 }
-

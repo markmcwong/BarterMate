@@ -13,7 +13,7 @@ protocol ServiceManager {
     var requestService: RequestService { get }
     var postingService: PostingService { get }
     var userService: UserService { get }
-    
+
     func configure()
-    
+
 }
