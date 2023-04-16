@@ -117,6 +117,7 @@
 		4D68926029C41E61001ADF49 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68925F29C41E61001ADF49 /* AuthService.swift */; };
 		4D68926229C41E96001ADF49 /* AmplifyAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */; };
 		4D8236AE29EC374500746DD7 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8236AD29EC374500746DD7 /* MessageRow.swift */; };
+		4D8236B029EC403F00746DD7 /* BarterMateChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8236AF29EC403F00746DD7 /* BarterMateChatTests.swift */; };
 		4D87E22A29E5737700A345AB /* AddRequestFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22829E5737600A345AB /* AddRequestFormView.swift */; };
 		4D87E22B29E5737700A345AB /* ItemSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D87E22929E5737700A345AB /* ItemSelectionView.swift */; };
 		4D91956129C58A3B003B5922 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D91956029C58A3B003B5922 /* LoginViewModel.swift */; };
@@ -298,6 +299,7 @@
 		4D68925F29C41E61001ADF49 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		4D68926129C41E96001ADF49 /* AmplifyAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyAuthService.swift; sourceTree = "<group>"; };
 		4D8236AD29EC374500746DD7 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
+		4D8236AF29EC403F00746DD7 /* BarterMateChatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateChatTests.swift; sourceTree = "<group>"; };
 		4D87E22829E5737600A345AB /* AddRequestFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRequestFormView.swift; sourceTree = "<group>"; };
 		4D87E22929E5737700A345AB /* ItemSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemSelectionView.swift; sourceTree = "<group>"; };
 		4D91956029C58A3B003B5922 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -864,6 +866,7 @@
 				17A4FAD429EC0CD400FC9BE8 /* BarterMatePostingTests.swift */,
 				17A4FAD629EC0F5A00FC9BE8 /* BarterMateRequestTests.swift */,
 				17A4FAD829EC100E00FC9BE8 /* BarterMateTransactionTests.swift */,
+				4D8236AF29EC403F00746DD7 /* BarterMateChatTests.swift */,
 			);
 			path = BarterMateTests;
 			sourceTree = "<group>";
@@ -1272,6 +1275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17A4FAD929EC100E00FC9BE8 /* BarterMateTransactionTests.swift in Sources */,
+				4D8236B029EC403F00746DD7 /* BarterMateChatTests.swift in Sources */,
 				4DC0F88729BE2D2A009EE2B5 /* BarterMateTests.swift in Sources */,
 				17A4FAD529EC0CD400FC9BE8 /* BarterMatePostingTests.swift in Sources */,
 				17A4FABE29EC043C00FC9BE8 /* BarterMateUserTests.swift in Sources */,
