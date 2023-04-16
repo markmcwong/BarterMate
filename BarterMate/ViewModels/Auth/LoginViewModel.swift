@@ -9,8 +9,8 @@ import Combine
 
 @MainActor
 class LoginViewModel: ObservableObject {
-    @Published var email: String = ""
-    @Published var password: String = ""
+    @Published var email: String = "markwongmanchun@gmail.com"
+    @Published var password: String = "Testing123!"
     @Published var phoneNumber: String = ""
     @Published var username: String = ""
     @Published var errorMessage: String?

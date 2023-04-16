@@ -28,31 +28,33 @@ struct ChatListItemView: ListItemView, View {
 
     var body: some View {
         Button(action: {
-            Task {
-                GlobalState.shared.currentChat = item
-                goToMessage = true
-            }
+            GlobalState.shared.currentChat = item
+            print("button pressed")
+            goToMessage = true
         }) {
             HStack {
-                HStack {
-                    Image(systemName: "person")
-                        .frame(width: 150, height: 150)
-                        .padding(.trailing, 10)
-                    VStack(spacing: 5) {
-                        HStack {
-                            Text(item.name ?? "Default chat name")
-                                .font(.callout)
-                                .lineLimit(1)
-                            Spacer()
-                        }
-                        HStack {
-                            if (item.users) != nil {
-                                ForEach(item.users!, id: \.id) { user in
-                                    Text(user.username).font(.callout)
-                                }
+                Image(systemName: "person")
+                    .resizable()
+                    .frame(width: 80, height: 80)
+                    .foregroundColor(.green)
+                    .padding(.trailing, 10)
+                VStack(alignment: .leading, spacing: 10) {
+                    Text(item.name ?? "Default chat name")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    HStack(spacing: 10) {
+                        if let users = item.users {
+                            ForEach(users, id: \.id) { user in
+                                Text(user.username)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                                    .padding(5)
+                                    .background(Color.green.opacity(0.2))
+                                    .cornerRadius(10)
                             }
-                            Spacer()
                         }
+                    }
+                    HStack {
                         Button("Delete Item") {
                             if model != nil {
                                 model!.deleteItem(item: item)
@@ -60,22 +62,24 @@ struct ChatListItemView: ListItemView, View {
                                 print("model does not exist for deleting item")
                             }
                         }
-
-                        NavigationLink(
-                            "",
-                            destination: LazyView {
-                                MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
-                            },
-                            isActive: $goToMessage
-                        )
-                        .hidden()
+                        .foregroundColor(.red)
+                        Spacer()
                     }
+                    NavigationLink(
+                      "",
+                      destination: LazyView {
+                          MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+                      },
+                      isActive: $goToMessage
+                    )
+                  .hidden()
                 }
                 .padding()
-                .background(Rectangle().fill(Color.white))
-                .border(.green)
+                .background(Color.white)
+                .cornerRadius(10)
                 .shadow(color: .gray, radius: 3, x: 2, y: 2)
             }
+            .padding(.horizontal)
         }
     }
 }
