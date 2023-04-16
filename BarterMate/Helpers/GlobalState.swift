@@ -12,7 +12,6 @@ import Combine
 class GlobalState: ObservableObject {
     static let shared = GlobalState()
 
-//    private let authService: AuthService
     private var subscribers = Set<AnyCancellable>()
 
     @Published var userId: String? = "213f11fc-0384-4c44-a8c0-e87f1b77b41e"

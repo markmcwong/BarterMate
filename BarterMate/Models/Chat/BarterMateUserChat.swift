@@ -8,9 +8,9 @@
 import Foundation
 
 class BarterMateUserChat: Hashable, Identifiable, ListElement {
-    var id: Identifier<BarterMateUserChat>
-    var chat: BarterMateChat
-    var user: BarterMateUser
+    private(set) var id: Identifier<BarterMateUserChat>
+    private(set) var chat: BarterMateChat
+    private(set) var user: BarterMateUser
 
     static func == (lhs: BarterMateUserChat, rhs: BarterMateUserChat) -> Bool {
         lhs.id == rhs.id && lhs.chat.id == rhs.chat.id && lhs.user.id == rhs.user.id

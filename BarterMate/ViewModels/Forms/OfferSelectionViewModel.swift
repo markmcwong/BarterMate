@@ -10,7 +10,7 @@ import Combine
 
 class OfferSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
 
-    var transaction: BarterMateTransaction
+    private(set) var transaction: BarterMateTransaction
 
     init(userId: Identifier<BarterMateUser>, transaction: BarterMateTransaction) {
         self.transaction = transaction

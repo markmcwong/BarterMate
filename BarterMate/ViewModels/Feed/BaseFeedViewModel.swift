@@ -8,9 +8,9 @@ import Foundation
 import Combine
 
 class BaseViewModel<T: ListElement>: ObservableObject {
-    @Published var modelList: ModelList<T>
-    var userIds: [Identifier<BarterMateUser>] = []
-    @Published var userIdToUser: [Identifier<BarterMateUser>: BarterMateUser] = [:]
+    @Published private(set) var modelList: ModelList<T>
+    private(set) var userIds: [Identifier<BarterMateUser>] = []
+    @Published private(set) var userIdToUser: [Identifier<BarterMateUser>: BarterMateUser] = [:]
     private var cancellables: Set<AnyCancellable> = []
 
     init(modelType: T.Type) {

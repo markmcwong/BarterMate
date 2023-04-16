@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ItemSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
-    var postingList: ModelList<BarterMatePosting>
+    private(set) var postingList: ModelList<BarterMatePosting>
 
     init(userid: Identifier<BarterMateUser>, postingList: ModelList<BarterMatePosting>) {
         self.postingList = postingList

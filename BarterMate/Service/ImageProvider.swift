@@ -12,7 +12,6 @@ import SwiftUI
 class ImageProvider {
     private var cacheKey: String
     private var storageService: StorageService
-    //private var subscribers = Set<AnyCancellable>()
 
     init(key: String) {
         self.cacheKey = key
