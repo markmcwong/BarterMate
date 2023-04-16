@@ -61,6 +61,7 @@ class ModelList<T: ListElement>: ObservableObject {
     }
 
     func saveItem(element: T) {
+        print("saving")
         modelListFacade?.save(model: element)
         insert(model: element)
     }

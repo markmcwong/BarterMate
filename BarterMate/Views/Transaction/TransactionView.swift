@@ -47,7 +47,11 @@ struct TransactionView: View {
             }.onAppear {
                 print("view appear")
                 viewModel.update()
-            }
+            }.overlay(ModalView(displayView: {
+                if let item = selectedItem {
+                    ItemImageView(item: item)
+                }
+            }, showModal: $showModal))
             VStack {
                 Spacer()
                 
