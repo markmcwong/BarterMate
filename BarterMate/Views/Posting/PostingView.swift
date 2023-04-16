@@ -25,35 +25,50 @@ struct PostingView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 16) {
                 UserProfileImageView()
                     .frame(width: 40, height: 40)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
-                VStack(alignment: .leading) {
+                
+                VStack(alignment: .leading, spacing: 4) {
                     Text(user.username)
-                            .font(.system(size: 20))
-                            .bold()
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                            .fontWeight(.semibold)
                 }
+                
                 Spacer()
+                
                 if parentViewModel != nil {
                     Image(systemName: "x.circle.fill")
+                        .foregroundColor(.secondary)
                         .onTapGesture {
                             parentViewModel?.deleteItem(item: posting)
                         }
                 }
             }
-
-                Text(posting.item.name)
-                Text(posting.item.description)
-
-            ZStack {
-                ItemImageView(item: posting.item)
-                    .scaledToFit()
-            }
+            
+            Text(posting.item.name)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.primary)
+            
+            Text(posting.item.description)
+                .font(.body)
+                .foregroundColor(.secondary)
+            
+            ItemImageView(item: posting.item)
+                .scaledToFit()
         }
         .padding()
+        .background(Color(.systemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .overlay(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(Color(.systemGray4), lineWidth: 1)
+        )
     }
 }
 

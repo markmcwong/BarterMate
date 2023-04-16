@@ -12,22 +12,27 @@ struct UserCardView: View {
     @ObservedObject var item: BarterMateUser
 
     var body: some View {
-        HStack {
+        HStack(spacing: 4) {
             UserProfileImageView()
-                .frame(width: 50, height: 50)
+                .frame(width: 30, height: 30)
                 .background(Circle().fill(Color.gray))
                 .clipShape(Circle())
-                .padding(.trailing, 10)
-            HStack {
+            
+            VStack(alignment: .leading, spacing: 4) {
                 Text(item.username)
-                    .font(.callout)
+                    .font(.headline)
                     .lineLimit(1)
-                Spacer()
-
             }
+            
+            Spacer()
         }
+        .padding(12)
+        .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
     }
 }
+
 
 // struct UserCardView_Previews: PreviewProvider {
 //    static var previews: some View {

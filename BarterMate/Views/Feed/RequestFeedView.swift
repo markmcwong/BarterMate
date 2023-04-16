@@ -27,8 +27,13 @@ struct RequestFeedView: View {
                         .padding()
                 }
 
-                Button("Refresh Request Feed") {
+                Button {
                     viewModel.refresh()
+                } label: {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.blue)
                 }
             }
         }

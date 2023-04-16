@@ -26,13 +26,22 @@ struct ChatListView: View {
                 if viewModel.modelList.elements.count == 0 {
                    Text("No More Item")
                        .padding()
-                } else {
-
+                }
+                
+                Button {
+                    viewModel.refresh()
+                } label: {
+                    Image(systemName: "arrow.clockwise.circle.fill")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                        .foregroundColor(.blue)
                 }
             }
         }.onAppear(perform: { viewModel.fetchChatUserBelongsTo() })
         ProfileButtonsView().onTapGesture {
             addChat = true
+        }.refreshable {
+            viewModel.refresh()
         }
         NavigationLink(
             "",

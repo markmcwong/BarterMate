@@ -25,54 +25,46 @@ struct ChatListItemView: ListItemView, View {
             item.fetchDetails()
         }
     }
-
+    
     var body: some View {
         Button(action: {
             GlobalState.shared.currentChat = item
-            print("button pressed")
             goToMessage = true
         }) {
-            HStack {
-                Image(systemName: "person")
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .foregroundColor(.green)
-                    .padding(.trailing, 10)
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(item.name ?? "Default chat name")
-                        .font(.headline)
-                        .foregroundColor(.primary)
-                    HStack(spacing: 10) {
-                        if let users = item.users {
-                            ForEach(users, id: \.id) { user in
-                                Text(user.username)
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                                    .padding(5)
-                                    .background(Color.green.opacity(0.2))
-                                    .cornerRadius(10)
+            VStack(alignment: .leading, spacing: 10) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(item.name ?? "Default chat name")
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                        HStack(spacing: 10) {
+                            if let users = item.users {
+                                ForEach(users, id: \.id) { user in
+                                    Text(user.username)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                        .padding(5)
+                                        .background(Color.green.opacity(0.2))
+                                        .cornerRadius(10)
+                                }
                             }
                         }
                     }
-                    HStack {
-                        Button("Delete Item") {
-                            if model != nil {
-                                model!.deleteItem(item: item)
-                            } else {
-                                print("model does not exist for deleting item")
-                            }
+                    Spacer()
+                    Button(action: {
+                        if model != nil {
+                            model!.deleteItem(item: item)
+                        } else {
+                            print("model does not exist for deleting item")
                         }
-                        .foregroundColor(.red)
-                        Spacer()
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.red)
+//                            .padding(10)
+                            .background(Color.white.opacity(0.9))
+                            .clipShape(Circle())
+//                            .shadow(color: .gray, radius: 3, x: 2, y: 2)
                     }
-                    NavigationLink(
-                      "",
-                      destination: LazyView {
-                          MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
-                      },
-                      isActive: $goToMessage
-                    )
-                  .hidden()
                 }
                 .padding()
                 .background(Color.white)
@@ -81,6 +73,16 @@ struct ChatListItemView: ListItemView, View {
             }
             .padding(.horizontal)
         }
+        .padding(5)
+        .background(Color.clear)
+        NavigationLink(
+           "",
+           destination: LazyView {
+               MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+           },
+           isActive: $goToMessage
+         )
+       .hidden()
     }
 }
 

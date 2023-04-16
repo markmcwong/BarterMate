@@ -26,4 +26,8 @@ class ChatListViewModel: ListViewModel<BarterMateChat> {
             }
         }
     }
+    
+    func refresh() {
+        fetchChatUserBelongsTo()
+    }
 }
