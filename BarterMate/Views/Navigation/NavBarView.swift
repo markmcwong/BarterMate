@@ -34,7 +34,6 @@ struct NavBarView: View {
             TabBarButton(title: "Chat", imageSystemName: "message.fill", isSelected: state == .chat) {
                 state = .chat
             }
-            Spacer()
         }
         .frame(height: 60)
         .background(Color.white)
