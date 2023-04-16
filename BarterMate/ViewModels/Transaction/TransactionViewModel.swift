@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class TransactionViewModel: ObservableObject {
-    var user: BarterMateUser
+    private(set) var user: BarterMateUser
     @Published var transaction: BarterMateTransaction
     @Published var userToItemsMap: [Identifier<BarterMateUser>: [BarterMateItem]] = [:]
 

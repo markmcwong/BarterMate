@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ChatListViewModel: ListViewModel<BarterMateChat> {
-    var chatService: ChatService
+    private var chatService: ChatService
 
     init() {
         self.chatService = AmplifyChatService()

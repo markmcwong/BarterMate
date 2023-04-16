@@ -8,8 +8,8 @@
 import Foundation
 
 class BarterMateUser: ObservableObject, Hashable, ListElement {
-    var id: Identifier<BarterMateUser>
-    @Published var username: String
+    private(set) var id: Identifier<BarterMateUser>
+    @Published private(set) var username: String
 
     static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
         lhs.id == rhs.id

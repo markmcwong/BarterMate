@@ -15,14 +15,14 @@ enum TransactionState: String {
 
 class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, ObservableObject {
 
-    var id: Identifier<BarterMateTransaction>
-    @Published var participants: Set<BarterMateUser>
-    @Published var itemPool: Set<BarterMateItem>
-    @Published var hasLockedOffer: Set<Identifier<BarterMateUser>>
-    @Published var hasCompletedBarter: Set<Identifier<BarterMateUser>>
-    @Published var state: TransactionState
+    private(set) var id: Identifier<BarterMateTransaction>
+    private(set) var participants: Set<BarterMateUser>
+    @Published private(set) var itemPool: Set<BarterMateItem>
+    @Published private(set) var hasLockedOffer: Set<Identifier<BarterMateUser>>
+    @Published private(set) var hasCompletedBarter: Set<Identifier<BarterMateUser>>
+    @Published private(set) var state: TransactionState
 
-    var facade: TransactionFacade?
+    private var facade: TransactionFacade?
 
     static func createNewTransaction() -> BarterMateTransaction {
         let transaction = BarterMateTransaction(participants: [],
@@ -49,7 +49,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         setUpFacade()
     }
 
-    func setUpFacade() {
+    private func setUpFacade() {
         self.facade = AmplifyTransactionFacade()
         self.facade?.setDelegate(delegate: self)
     }
@@ -109,7 +109,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         lockTransaction()
     }
 
-    func lockTransaction() {
+    private func lockTransaction() {
         guard state == .INITIATED else {
             return
         }
@@ -130,7 +130,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         completeBarter()
     }
 
-    func completeBarter() {
+    private func completeBarter() {
         guard state == .ITEMLOCKED else {
             return
         }

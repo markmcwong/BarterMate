@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class TransactionListViewModel: ListViewModel<BarterMateTransaction> {
-    @Published var userList: ModelList<BarterMateUser>
+    @Published private(set) var userList: ModelList<BarterMateUser>
     private var cancellables = [AnyCancellable]()
 
     init(transactions: ModelList<BarterMateTransaction>, user: BarterMateUser) {

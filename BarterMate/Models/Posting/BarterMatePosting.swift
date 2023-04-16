@@ -9,9 +9,9 @@ import Foundation
 
 class BarterMatePosting: Hashable, ListElement, ObservableObject {
     let id: Identifier<BarterMatePosting>
-    @Published var item: BarterMateItem
-    var createdAt: Date
-    var updatedAt: Date
+    @Published private(set) var item: BarterMateItem
+    private(set) var createdAt: Date
+    private(set) var updatedAt: Date
 
     init(id: Identifier<BarterMatePosting> = Identifier(value: UUID().uuidString),
          item: BarterMateItem,

@@ -9,11 +9,11 @@ import Foundation
 
 class BarterMateChat: Hashable, Identifiable, LazyListElement, ObservableObject {
     let id: Identifier<BarterMateChat>
-    var name: String?
-    @Published var messages: [BarterMateMessage]?
-    @Published var users: [BarterMateUser]?
-    var fetchMessagesClosure: ((@escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void)?
-    var fetchUsersClosure: ((@escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void)?
+    private(set) var name: String?
+    @Published private(set) var messages: [BarterMateMessage]?
+    @Published private(set) var users: [BarterMateUser]?
+    private(set) var fetchMessagesClosure: ((@escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void)?
+    private(set) var fetchUsersClosure: ((@escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void)?
     var hasFetchedDetails = false
 
     init(id: Identifier<BarterMateChat> = Identifier(value: UUID().uuidString),

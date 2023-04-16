@@ -31,12 +31,12 @@ struct AmplifyConverter {
             guard let chat = model as? Chat else {
                 return nil
             }
-            return AmplifyChatAdapter.toBarterMateModel(chat: chat)
+            return AmplifyChatConverter.toBarterMateModel(chat: chat)
         case is Message:
             guard let message = model as? Message else {
                 return nil
             }
-            return AmplifyMessageAdapter.toBarterMateModel(message: message)
+            return AmplifyMessageConverter.toBarterMateModel(message: message)
         case is User:
             guard let user = model as? User else {
                 return nil
@@ -73,12 +73,12 @@ struct AmplifyConverter {
             guard let chat = model as? BarterMateChat else {
                 return nil
             }
-            return AmplifyChatAdapter.toAmplifyModel(chat: chat)
+            return AmplifyChatConverter.toAmplifyModel(chat: chat)
         case is BarterMateMessage:
             guard let message = model as? BarterMateMessage else {
                 return nil
             }
-            return AmplifyMessageAdapter.toAmplifyModel(message: message)
+            return AmplifyMessageConverter.toAmplifyModel(message: message)
         case is BarterMateTransaction:
             guard let transaction = model as? BarterMateTransaction else {
                 return nil

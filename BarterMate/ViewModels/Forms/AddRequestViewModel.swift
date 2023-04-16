@@ -10,7 +10,7 @@ import Combine
 class AddRequestViewModel: ObservableObject {
     @Published var description: String = ""
     @Published var errorMessage = ""
-    @Published var requestList: ModelList<BarterMateRequest>
+    @Published private(set) var requestList: ModelList<BarterMateRequest>
     let ownerId: Identifier<BarterMateUser>
 
     init(ownerId: Identifier<BarterMateUser>, requestList: ModelList<BarterMateRequest>) {
