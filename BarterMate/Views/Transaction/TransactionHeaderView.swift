@@ -14,7 +14,7 @@ struct TransactionHeaderView: View {
     var body: some View {
         HStack {
             Text(user.username)
-
+            
             if parentViewModel.transaction.hasCompletedBarter.contains(user.id) {
                 Text("Completed Trade")
             } else if parentViewModel.transaction.hasLockedOffer.contains(user.id) {
@@ -24,7 +24,8 @@ struct TransactionHeaderView: View {
             }
             
             if parentViewModel.user == user {
-                if parentViewModel.transaction.hasLockedOffer.contains(user.id) {
+                if parentViewModel.transaction.hasLockedOffer.contains(user.id)
+                    || parentViewModel.transaction.state == .ITEMLOCKED {
                     Button("Complete Trade") {
                         parentViewModel.completeBarter()
                     }

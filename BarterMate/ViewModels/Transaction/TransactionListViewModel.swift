@@ -23,5 +23,13 @@ class TransactionListViewModel: ObservableObject {
             self?.objectWillChange.send()
         }.store(in: &cancellables)
     }
+    
+    func refresh() {
+        self.transactions = TransactionList.of(userId: user.id)
+        transactions.objectWillChange.receive(on: DispatchQueue.main).sink {
+            [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
+    }
 }
 

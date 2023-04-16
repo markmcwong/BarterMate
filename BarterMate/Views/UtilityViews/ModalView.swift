@@ -31,7 +31,7 @@ struct ModalView<DisplayView: View>: View {
                                         .foregroundColor(.white)
                                         .frame(width: proxy.size.width * 0.8, height: proxy.size.height * 0.8, alignment: .center)
                                         .overlay(alignment: .center) {
-                                            ModalContentView(displayView: {self.displayView}, showModal: self.$showModal)
+                                            ModalContentView(displayView: {self.displayView}, showModal: self.$showModal).frame(width: proxy.size.width * 0.7, height: proxy.size.height * 0.7)
                                         }
                                     )
                                 }
@@ -64,7 +64,7 @@ struct ModalContentView<DisplayView: View>: View { // the real modal content
                 HStack {
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.large)
-                    Text("Cancel Request")
+                    Text("Go back")
                 }
             }
         }

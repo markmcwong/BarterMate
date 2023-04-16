@@ -65,6 +65,11 @@
 		1745A49B29E5E2A1009A4ADD /* UserSelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49A29E5E2A1009A4ADD /* UserSelectionViewModel.swift */; };
 		1745A49D29E5E342009A4ADD /* UserCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49C29E5E342009A4ADD /* UserCardView.swift */; };
 		1745A49F29E5E355009A4ADD /* UserSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A49E29E5E355009A4ADD /* UserSelectionView.swift */; };
+		1745A4A429E99EF3009A4ADD /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1745A4A229E99EF2009A4ADD /* awsconfiguration.json */; };
+		1745A4A529E99EF3009A4ADD /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = 1745A4A329E99EF3009A4ADD /* amplifyconfiguration.json */; };
+		1745A4A729E9BA5D009A4ADD /* ItemPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A4A629E9BA5D009A4ADD /* ItemPreviewView.swift */; };
+		1745A4AA29EB3296009A4ADD /* BarterMateUserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A4A929EB3296009A4ADD /* BarterMateUserTests.swift */; };
+		1745A4AC29EB34CD009A4ADD /* BarterMateItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1745A4AB29EB34CD009A4ADD /* BarterMateItemTests.swift */; };
 		174ACAAA29BFA454006222AF /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174ACAA629BFA454006222AF /* StorageService.swift */; };
 		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
 		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
@@ -250,6 +255,11 @@
 		1745A49A29E5E2A1009A4ADD /* UserSelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionViewModel.swift; sourceTree = "<group>"; };
 		1745A49C29E5E342009A4ADD /* UserCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardView.swift; sourceTree = "<group>"; };
 		1745A49E29E5E355009A4ADD /* UserSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionView.swift; sourceTree = "<group>"; };
+		1745A4A229E99EF2009A4ADD /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = "<group>"; };
+		1745A4A329E99EF3009A4ADD /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		1745A4A629E9BA5D009A4ADD /* ItemPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPreviewView.swift; sourceTree = "<group>"; };
+		1745A4A929EB3296009A4ADD /* BarterMateUserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateUserTests.swift; sourceTree = "<group>"; };
+		1745A4AB29EB34CD009A4ADD /* BarterMateItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateItemTests.swift; sourceTree = "<group>"; };
 		174ACAA629BFA454006222AF /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
 		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
@@ -604,6 +614,15 @@
 			path = AmplifyConverters;
 			sourceTree = "<group>";
 		};
+		1745A4A829EB3261009A4ADD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1745A4A929EB3296009A4ADD /* BarterMateUserTests.swift */,
+				1745A4AB29EB34CD009A4ADD /* BarterMateItemTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		174ACAA529BFA454006222AF /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -645,6 +664,7 @@
 				178F186229E44B470087D018 /* TransactionListView.swift */,
 				178F186429E44B550087D018 /* TransactionView.swift */,
 				178F186629E44B640087D018 /* TransactionHeaderView.swift */,
+				1745A4A629E9BA5D009A4ADD /* ItemPreviewView.swift */,
 			);
 			path = Transaction;
 			sourceTree = "<group>";
@@ -852,6 +872,7 @@
 		4DC0F88529BE2D2A009EE2B5 /* BarterMateTests */ = {
 			isa = PBXGroup;
 			children = (
+				1745A4A829EB3261009A4ADD /* Models */,
 				4DC0F88629BE2D2A009EE2B5 /* BarterMateTests.swift */,
 			);
 			path = BarterMateTests;
@@ -931,6 +952,8 @@
 		A6A581AD5EE2E153BDDB950B /* AmplifyConfig */ = {
 			isa = PBXGroup;
 			children = (
+				1745A4A329E99EF3009A4ADD /* amplifyconfiguration.json */,
+				1745A4A229E99EF2009A4ADD /* awsconfiguration.json */,
 				7BB604BE79DCC89DC2ABB368 /* awsconfiguration.json */,
 				312F6D1ABCF12ADC1D99DF7C /* amplifyconfiguration.json */,
 			);
@@ -1055,6 +1078,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1745A4A429E99EF3009A4ADD /* awsconfiguration.json in Resources */,
+				1745A4A529E99EF3009A4ADD /* amplifyconfiguration.json in Resources */,
 				4DC0F87D29BE2D2A009EE2B5 /* Preview Assets.xcassets in Resources */,
 				4DC0F87A29BE2D2A009EE2B5 /* Assets.xcassets in Resources */,
 				414C5B354AB8901CD300A4C9 /* awsconfiguration.json in Resources */,
@@ -1211,6 +1236,7 @@
 				4D4AD57529C6FBD400C2EEC6 /* ActionResult.swift in Sources */,
 				178F185429E449470087D018 /* SelectionViewModel.swift in Sources */,
 				4D2547C529DC14BB00AF8F7F /* SubscriptionProvider.swift in Sources */,
+				1745A4A729E9BA5D009A4ADD /* ItemPreviewView.swift in Sources */,
 				172BC91229D88F0B000EB398 /* MyRequestListView.swift in Sources */,
 				17EF300529DB092D00FA2C82 /* ItemImageView.swift in Sources */,
 				4DCB0C4D29E3D47800344065 /* BarterMateUserChat.swift in Sources */,
@@ -1238,6 +1264,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DC0F88729BE2D2A009EE2B5 /* BarterMateTests.swift in Sources */,
+				1745A4AA29EB3296009A4ADD /* BarterMateUserTests.swift in Sources */,
+				1745A4AC29EB34CD009A4ADD /* BarterMateItemTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,8 @@ import SwiftUI
 struct TransactionView: View {
     @ObservedObject var viewModel: TransactionViewModel
     @State var addOffer = false
+    @State var showModal = false
+    @State var selectedItem: BarterMateItem?
     
     init(user: BarterMateUser, transaction: BarterMateTransaction) {
         self.viewModel = TransactionViewModel(user: user, transaction: transaction)
@@ -27,18 +29,27 @@ struct TransactionView: View {
                                 Spacer()
                             }
                             .contentShape(Rectangle())
+                            .onTapGesture {
+                                print("clicked")
+                                selectedItem = item
+                                showModal = true
+                            }
                             .onLongPressGesture(minimumDuration: 2) {
-                                    viewModel.removeItem(item: item)
+                                print("click")
+                                viewModel.removeItem(item: item)
                                     viewModel.update()
                                 }
+
 
                         }
                     }
                     
                 }
             }
-            ProfileButtonsView().onTapGesture {
-                addOffer = true
+            if (!viewModel.transaction.hasLockedOffer.contains(viewModel.user.id) && !viewModel.transaction.hasCompletedBarter.contains(viewModel.user.id)) {
+                ProfileButtonsView().onTapGesture {
+                    addOffer = true
+                }
             }
             NavigationLink(
                 "",
@@ -53,7 +64,11 @@ struct TransactionView: View {
         }.onAppear {
             print("view appear")
             viewModel.update()
-        }
+        }.overlay(ModalView(displayView: {
+            if let item = selectedItem {
+                ItemImageView(item: item)
+            }
+        }, showModal: $showModal))
 
     }
 }

@@ -17,24 +17,11 @@ struct ItemCardView: View {
     init(item: BarterMateItem, parentViewModel: ListViewModel<BarterMateItem>) {
         self.item = item
         self.parentViewModel = parentViewModel
-        loadImage()
     }
     
     init(item: BarterMateItem) {
         self.item = item
-        loadImage()
     }
-    
-    func loadImage() {
-        guard let data = item.imageData else {
-            return
-        }
-        guard let uiImage = UIImage(data: data) else {
-            return
-        }
-        image = Image(uiImage: uiImage)
-    }
-
     
     var body: some View {
         HStack {

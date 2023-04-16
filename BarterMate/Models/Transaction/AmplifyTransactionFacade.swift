@@ -22,9 +22,6 @@ class AmplifyTransactionFacade: TransactionFacade {
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
                 
-                for user in transaction.participants {
-                    addUser(user: user)
-                }
             } catch {
                 print("error creating transaction")
             }
@@ -52,8 +49,6 @@ class AmplifyTransactionFacade: TransactionFacade {
                                                          transaction: amplifyTransaction)
                 
                 try await Amplify.DataStore.save(newUserTransaction)
-                
-                try await Amplify.DataStore.save(amplifyTransaction)
             } catch {
                 print("error in adding user into Transaction")
             }
@@ -168,11 +163,15 @@ class AmplifyTransactionFacade: TransactionFacade {
         Task {
             do {
                 let userLocked = UserLocked(userId: user.id.value, locked: true)
-                
+                print("locked")
                 guard var amplifyTransaction = try await Amplify.DataStore.query(Transaction.self, byId: delegate.id.value) else {
+                    print("failed to get transaction")
                     return
                 }
                 
+                if amplifyTransaction.userLocked == nil {
+                    amplifyTransaction.userLocked = []
+                }
                 amplifyTransaction.userLocked?.append(userLocked)
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
@@ -194,6 +193,9 @@ class AmplifyTransactionFacade: TransactionFacade {
                     return
                 }
                 
+                if amplifyTransaction.userCompleted == nil {
+                    amplifyTransaction.userCompleted = []
+                }
                 amplifyTransaction.userCompleted?.append(userCompleted)
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
@@ -202,3 +204,4 @@ class AmplifyTransactionFacade: TransactionFacade {
     }
     
 }
+

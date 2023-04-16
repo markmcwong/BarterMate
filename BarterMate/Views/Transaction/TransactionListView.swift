@@ -20,8 +20,7 @@ struct TransactionListView: View {
                         ForEach(viewModel.transactions.transactions, id: \.self) { transaction in
                             TransactionCardView(user: viewModel.user, transaction: transaction)
                         }.id(UUID())
-                        
-                        
+                        Text("\(viewModel.transactions.transactions.count)")
                         if viewModel.transactions.transactions.count == 0 {
                             Text("No More Transaction")
                                 .padding()
@@ -42,6 +41,12 @@ struct TransactionListView: View {
                 isActive: $addTransaction
             )
             .hidden()
+        }
+        .onAppear {
+            viewModel.refresh()
+        }
+        .refreshable {
+            viewModel.refresh()
         }
 
     }
