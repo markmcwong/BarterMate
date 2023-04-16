@@ -11,7 +11,7 @@ struct MyPostingView: View {
 
     let posting: BarterMatePosting
     @ObservedObject var parentViewModel: ListViewModel<BarterMatePosting>
-    
+
     init(posting: BarterMatePosting, parentViewModel: ListViewModel<BarterMatePosting>) {
         self.posting = posting
         self.parentViewModel = parentViewModel
@@ -21,7 +21,7 @@ struct MyPostingView: View {
         VStack(alignment: .leading) {
             HStack {
                 UserProfileImageView()
-                    .frame(width: 40,  height: 40)
+                    .frame(width: 40, height: 40)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(lineWidth: 1))
                 VStack(alignment: .leading) {
@@ -45,6 +45,7 @@ struct MyPostingView: View {
 
 struct MyPostingView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPostingView(posting: SamplePosting.bottlePosting, parentViewModel: ListViewModel(user: SampleUser.bill, modelList: ModelList.of(SampleUser.bill.id)))
+        MyPostingView(posting: SamplePosting.bottlePosting,
+                      parentViewModel: ListViewModel(user: SampleUser.bill, modelList: ModelList.of(SampleUser.bill.id)))
     }
 }

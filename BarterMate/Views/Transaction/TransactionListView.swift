@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct TransactionListView: View {
-    
+
     @ObservedObject var viewModel: TransactionListViewModel
     @State private var addTransaction = false
-    
+
     var body: some View {
         VStack {
             ScrollView(.vertical) {
@@ -20,14 +20,6 @@ struct TransactionListView: View {
                         ForEach(viewModel.modelList.elements, id: \.self.id) { transaction in
                             TransactionCardView(user: viewModel.user!, transaction: transaction)
                         }.id(UUID())
-                        
-                        
-                        if viewModel.modelList.elements.count == 0 {
-                            Text("No More Transaction")
-                                .padding()
-                        } else {
-                            
-                        }
                     }
                 }
             }
@@ -37,11 +29,19 @@ struct TransactionListView: View {
             NavigationLink(
                 "",
                 destination: LazyView {
-                    UserSelectionView(user: viewModel.user!, transactionList: viewModel.modelList, addTransaction: $addTransaction)
+                    UserSelectionView(user: viewModel.user!,
+                                      transactionList: viewModel.modelList,
+                                      addTransaction: $addTransaction)
                 },
                 isActive: $addTransaction
             )
             .hidden()
+        }
+        .onAppear {
+            viewModel.refresh()
+        }
+        .refreshable {
+            viewModel.refresh()
         }
 
     }
@@ -49,8 +49,7 @@ struct TransactionListView: View {
 
 struct TransactionListView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.all(), user: SampleUser.bill))
+        TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.all(),
+                                                                user: SampleUser.bill))
     }
 }
-
-

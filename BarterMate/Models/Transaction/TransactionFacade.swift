@@ -17,5 +17,3 @@ protocol TransactionFacade {
     func lockTransaction()
     func completeTransaction()
 }
-
-

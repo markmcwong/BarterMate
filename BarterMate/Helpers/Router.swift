@@ -23,7 +23,7 @@ class Router: ObservableObject {
     static let singleton = Router()
 
     private init() { }
-    
+
     func navigate(to screen: AppScreen) {
         currentScreen = screen
     }

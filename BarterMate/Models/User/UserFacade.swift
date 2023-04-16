@@ -9,6 +9,6 @@ import Foundation
 
 protocol UserFacade {
     var delegate: (any UserFacadeDelegate)? { get set }
-    
+
     func getUserById(id: Identifier<BarterMateUser>)
 }

@@ -10,12 +10,11 @@ import Amplify
 import Combine
 
 class ItemViewModel: ObservableObject {
-    
+
     var item: BarterMateItem
 
     init(item: BarterMateItem) {
         self.item = item
     }
-    
-}
 
+}

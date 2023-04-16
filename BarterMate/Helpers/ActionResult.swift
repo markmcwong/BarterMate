@@ -10,7 +10,7 @@ import Foundation
 class ActionResult {
     var isSuccess: Bool
     var message: String
-    
+
     init(_ isSuccess: Bool, _ message: String) {
         self.isSuccess = isSuccess
         self.message = message

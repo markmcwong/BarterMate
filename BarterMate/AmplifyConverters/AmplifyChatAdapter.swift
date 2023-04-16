@@ -11,7 +11,7 @@ import Combine
 
 struct AmplifyChatAdapter {
     static func toBarterMateModel(chat: Chat) -> BarterMateChat {
-        func barterMateUserTask (completion: @escaping ([BarterMateUser]) -> [BarterMateUser]) -> Void {
+        func barterMateUserTask (completion: @escaping ([BarterMateUser]) -> [BarterMateUser]) {
                 do {
                     Task {
                         try await chat.ChatUsers!.fetch()
@@ -26,15 +26,15 @@ struct AmplifyChatAdapter {
                             group.leave()
                         }
                         group.notify(queue: DispatchQueue.main) {
-                            completion (chatUserResults)
+                            _ = completion(chatUserResults)
                         }
                         return chatUserResults
                     }
                 }
             }
-        func barterMateMessageTask (completion: @escaping ([BarterMateMessage]) -> [BarterMateMessage]) -> Void {
+        func barterMateMessageTask (completion: @escaping ([BarterMateMessage]) -> [BarterMateMessage]) {
                 do {
-                    Task{
+                    Task {
                         try await chat.ChatMessages!.fetch()
                         let chatMessagesList: List<Message> = chat.ChatMessages!
                         let group = DispatchGroup()
@@ -44,60 +44,36 @@ struct AmplifyChatAdapter {
                                 let barterMateMessage: BarterMateMessage = AmplifyMessageAdapter.toBarterMateModel(message: chatMessage)
                                 chatMessageResults.append(barterMateMessage)
                                 group.leave()
-//                            })
                         }
                         group.notify(queue: DispatchQueue.main) {
-                            completion (chatMessageResults)
+                            _ = completion(chatMessageResults)
                         }
                         return chatMessageResults
                     }
                 }
-//                } catch {
-//                    return []
-//                }
-//            }
         }
-        
+
             let barterMateChat = BarterMateChat(
                 id: Identifier(value: chat.id),
-                                name: chat.name,
-                                messages: nil,
-                                users: nil,
-                                fetchMessagesClosure: barterMateMessageTask,
-//                                fetchUsersClosure: nil
-                                fetchUsersClosure: barterMateUserTask
+                name: chat.name,
+                messages: nil,
+                users: nil,
+                fetchMessagesClosure: barterMateMessageTask,
+                fetchUsersClosure: barterMateUserTask
              )
-            
-//            barterMateChat.setFetchMessages {
-//                do {
-//                    print(chat.ChatMessages)
-//                    try await chat.ChatMessages!.fetch()
-//                    print(chat.ChatMessages)
-////                    chat.ChatMessages?.
-////                    let chatMessages = chat.ChatMessages?.compactMap { chatMessage in
-////                        return AmplifyMessageAdapter.toBarterMateModel(message: chatMessage)
-////                    }
-////                    barterMateChat.messages = chatMessages!
-//                } catch let error {
-//                    print("Barter Mate Chat error: ", error.localizedDescription)
-//                    barterMateChat.messages = []
-//                }
-//
-//            }
-//
-//            completion(barterMateChat)
+
             return barterMateChat
     }
-    
+
     static func toAmplifyModel(chat: BarterMateChat) -> Chat {
         let amplifyChatMessages: List<Message> = List(elements: chat.messages!.map { message in
-            return AmplifyMessageAdapter.toAmplifyModel(message: message)
+            AmplifyMessageAdapter.toAmplifyModel(message: message)
         })
-        
+
         let amplifyUsers: List<User> = List(elements: chat.users!.map { user in
-            return AmplifyUserConverter.toAmplifyModel(user: user)
+            AmplifyUserConverter.toAmplifyModel(user: user)
         })
-        
+
         var amplifyChat = Chat(id: chat.id.value,
                                ChatMessages: amplifyChatMessages, ChatUsers: [], name: chat.name)
         let amplifyChatUsers: List<UserChat> = List(elements: amplifyUsers.map { user in
@@ -106,7 +82,7 @@ struct AmplifyChatAdapter {
         amplifyChat.ChatUsers = amplifyChatUsers
         return amplifyChat
     }
-    
+
 }
 
 struct AmplifyUserChatAdapter {

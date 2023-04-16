@@ -13,7 +13,7 @@ struct AddItemFormView: View {
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
     @State private var image: Image?
-    
+
     func loadImage() {
         guard let inputImage = inputImage else {
             return
@@ -21,30 +21,30 @@ struct AddItemFormView: View {
         image = Image(uiImage: inputImage)
         viewModel.image = inputImage
     }
-    
+
     init(ownerId: Identifier<BarterMateUser>, itemList: ModelList<BarterMateItem>, showModal: Binding<Bool>) {
         viewModel = AddItemFormViewModel(itemList: itemList, ownerId: ownerId)
         self._showModal = showModal
     }
-    
+
     var body: some View {
         VStack {
             TextField("Name", text: $viewModel.name)
                 .padding()
                 .autocapitalization(.none)
                 .keyboardType(.default)
-            
+
             TextField("Description", text: $viewModel.description)
                 .padding()
                 .keyboardType(.phonePad)
                 .onChange(of: inputImage) { _ in
                     loadImage()
                 }
-            
-            if viewModel.errorMessage != "" {
+
+            if viewModel.errorMessage.isEmpty {
                 Text(viewModel.errorMessage).foregroundColor(.orange).font(.system(size: 12)).padding()
             }
-            
+
             ZStack {
                 Rectangle()
                     .fill(.secondary)
@@ -60,7 +60,7 @@ struct AddItemFormView: View {
             .onTapGesture {
                 showingImagePicker = true
             }
-            
+
             Button("Submit") {
                 viewModel.addItem()
                 showModal = false
@@ -74,12 +74,12 @@ struct AddItemFormView: View {
 
 struct FormView_Previews: PreviewProvider {
     static var itemList = ModelList<BarterMateItem>.of(SampleUser.bill.id)
-    
+
     static var viewModel = AddItemFormViewModel(itemList: itemList, ownerId: SampleUser.bill.id)
-    
+
     static var previews: some View {
-        AddItemFormView(ownerId: SampleUser.bill.id, itemList: ModelList<BarterMateItem>.empty(), showModal: .constant(true))
+        AddItemFormView(ownerId: SampleUser.bill.id,
+                        itemList: ModelList<BarterMateItem>.empty(),
+                        showModal: .constant(true))
     }
 }
-
-

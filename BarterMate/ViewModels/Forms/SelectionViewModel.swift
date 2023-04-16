@@ -18,4 +18,3 @@ extension SelectionViewModel {
         highlightedItem = item
     }
 }
-

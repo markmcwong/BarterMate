@@ -8,4 +8,3 @@
 protocol TransactionFacadeDelegate {
     var id: Identifier<BarterMateTransaction> { get }
 }
-

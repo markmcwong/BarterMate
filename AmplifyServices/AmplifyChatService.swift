@@ -14,7 +14,7 @@ class AmplifyChatService: ChatService {
             let response = try await Amplify.API.query(request: .getCurrentUserChats(byId: id))
             switch response {
             case .success(let data):
-                if let items:JSONValue = data.value(at: "items") {
+                if let items: JSONValue = data.value(at: "items") {
                     var chatArrayResult: [BarterMateChat] = []
                     print("todoJSON : ", items)
                     let encodedItems = try? JSONEncoder().encode(items)
@@ -26,8 +26,12 @@ class AmplifyChatService: ChatService {
                             let encodedIsDeleted = try? JSONEncoder().encode(item.value(at: "_deleted"))
                             let bool = (try? JSONDecoder().decode(Bool.self, from: encodedIsDeleted!))
                             print(item.value(at: "_deleted")!)
-                            if(bool == nil || !bool!){
-                                chatArrayResult.append(BarterMateChat(id: Identifier(value: chat.id), name: chat.name,  messages: [], users: [], fetchMessagesClosure: nil, fetchUsersClosure: nil))
+                            if bool == nil || !bool! {
+                                chatArrayResult.append(BarterMateChat(id: Identifier(value: chat.id),
+                                                                      name: chat.name, messages: [],
+                                                                      users: [],
+                                                                      fetchMessagesClosure: nil,
+                                                                      fetchUsersClosure: nil))
                             }
                         }
                     }
@@ -38,21 +42,20 @@ class AmplifyChatService: ChatService {
                 print("Response contained errors: \(errorResponse)")
                 return []
             }
-        }
-        catch let error {
+        } catch {
             print("error: ", error.localizedDescription)
             return []
         }
         return []
     }
-    
+
     func insertUserChats(userChats: [UserChat]) {
         Task {
             do {
-                for userChat in userChats{
+                for userChat in userChats {
                     try await Amplify.DataStore.save(userChat)
                 }
-            } catch let error {
+            } catch {
                 print("Saving user chat error: ", error.localizedDescription)
             }
         }

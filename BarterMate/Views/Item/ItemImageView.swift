@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ItemImageView: View {
     @ObservedObject var item: BarterMateItem
-    @State var image: Image? = nil
-    
+    @State var image: Image?
+
     init(item: BarterMateItem) {
         self.item = item
         self.image = image
     }
-    
+
     func loadImage() {
         guard let data = item.imageData else {
             return
@@ -25,7 +25,7 @@ struct ItemImageView: View {
         }
         image = Image(uiImage: uiImage)
     }
-    
+
     var body: some View {
         HStack {
             if item.imageData == nil {

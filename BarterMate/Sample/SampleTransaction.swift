@@ -14,4 +14,3 @@ struct SampleTransaction {
                                                          hasCompletedBarter: Set([]),
                                                          state: .INITIATED)
 }
-

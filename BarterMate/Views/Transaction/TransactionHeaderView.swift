@@ -10,7 +10,7 @@ import SwiftUI
 struct TransactionHeaderView: View {
     @ObservedObject var parentViewModel: TransactionViewModel
     let user: BarterMateUser
-    
+
     var body: some View {
         HStack {
             Text(user.username)
@@ -22,9 +22,10 @@ struct TransactionHeaderView: View {
             } else {
                 Spacer()
             }
-            
+
             if parentViewModel.user == user {
-                if parentViewModel.transaction.hasLockedOffer.contains(user.id) {
+                if parentViewModel.transaction.hasLockedOffer.contains(user.id)
+                    || parentViewModel.transaction.state == .ITEMLOCKED {
                     Button("Complete Trade") {
                         parentViewModel.completeBarter()
                     }
@@ -42,8 +43,8 @@ struct TransactionHeaderView: View {
 
 struct TransactionHeaderView_Previews: PreviewProvider {
     static var previews: some View {
-        TransactionHeaderView(parentViewModel: TransactionViewModel(user: SampleUser.bill, transaction: SampleTransaction.sampleTransaction), user: SampleUser.bob)
+        TransactionHeaderView(parentViewModel: TransactionViewModel(user: SampleUser.bill,
+                                                                    transaction: SampleTransaction.sampleTransaction),
+                              user: SampleUser.bob)
     }
 }
-
-

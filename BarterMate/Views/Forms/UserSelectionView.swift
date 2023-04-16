@@ -12,23 +12,22 @@ struct UserSelectionView: View {
     @ObservedObject var viewModel: UserSelectionViewModel
     @Binding var addItem: Bool
     let isForChat: Bool
-    
+
     init(user: BarterMateUser, transactionList: ModelList<BarterMateTransaction>, addTransaction: Binding<Bool>) {
         self.viewModel = UserSelectionViewModel(user: user, transactionList: transactionList)
         self._addItem = addTransaction
         self.isForChat = false
     }
-    
+
     init(user: BarterMateUser, chatList: ModelList<BarterMateChat>, addChat: Binding<Bool>) {
         self.viewModel = UserSelectionViewModel(user: user, chatList: chatList)
         self._addItem = addChat
         self.isForChat = true
     }
-    
-    
+
     var body: some View {
         VStack {
-            if(isForChat) {
+            if isForChat {
                 TextField("Enter chat name...", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
             }
@@ -49,9 +48,9 @@ struct UserSelectionView: View {
                         }
                     }
                 }.id(UUID())
-                
+
                 Button("Create \(isForChat ? "Chat" : "Transactions" ) with highlighted user") {
-                    if(isForChat) {
+                    if isForChat {
                         viewModel.createChat(name: inputText, callback: {
                             addItem = false
                         })
@@ -65,12 +64,11 @@ struct UserSelectionView: View {
         }
 
     }
-    
+
 }
 
-//struct SelectUser_Previews: PreviewProvider {
+// struct SelectUser_Previews: PreviewProvider {
 //    static var previews: some View {
 //        SelectUser()
 //    }
-//}
-
+// }

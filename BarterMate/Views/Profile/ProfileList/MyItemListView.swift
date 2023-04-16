@@ -10,7 +10,7 @@ import SwiftUI
 struct MyItemListView: View {
     @State var showModal = false
     @ObservedObject var viewModel: ListViewModel<BarterMateItem>
-    
+
     var body: some View {
         VStack {
             Text("Item " + "\(viewModel.modelList.elements.count)")
@@ -22,9 +22,9 @@ struct MyItemListView: View {
                         ItemCardView(item: item, parentViewModel: viewModel)
                     }
                 }.id(UUID())
-                
-                if viewModel.modelList.elements.count == 0 {
-                   Text("No More Item")
+
+                if viewModel.modelList.elements.isEmpty {
+                   Text("No Item")
                        .padding()
                 } else {
 
@@ -43,13 +43,11 @@ struct MyItemListView: View {
 }
 
 struct ItemListView_Previews: PreviewProvider {
-    
+
     static var itemList = ModelList<BarterMateItem>.of(SampleUser.bill.id)
-    
+
     static var viewModel = ListViewModel(user: SampleUser.bill, modelList: itemList)
     static var previews: some View {
         MyItemListView(viewModel: viewModel)
     }
 }
-
-

@@ -5,10 +5,10 @@ protocol NameDescribable {
 
 extension NameDescribable {
     var typeName: String {
-        return String(describing: type(of: self))
+        String(describing: type(of: self))
     }
-    
+
     static var typeName: String {
-        return String(describing: self)
+        String(describing: self)
     }
 }

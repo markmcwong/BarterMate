@@ -13,7 +13,7 @@ public class AmplifyAuthService: AuthService {
     var authUser: AuthUser?
     var username: String?
     var password: String?
-    
+
     func signUp(username: String, email: String, phoneNumber: String, password: String) async -> ActionResult {
         let attributes = [
             AuthUserAttribute(.email, value: email),
@@ -21,7 +21,7 @@ public class AmplifyAuthService: AuthService {
             AuthUserAttribute(.preferredUsername, value: username)
         ]
         let options = AuthSignUpRequest.Options(userAttributes: attributes)
-        
+
         do {
             let res = try await Amplify.Auth.signUp(username: email, password: password, options: options)
             switch res.nextStep {
@@ -38,8 +38,8 @@ public class AmplifyAuthService: AuthService {
             return ActionResult(false, "Unexpected error: \(error)")
         }
     }
-    
-    func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult{
+
+    func confirmSignUp(email: String, confirmationCode: String) async -> ActionResult {
         do {
             await signOut()
             let res = try await Amplify.Auth.confirmSignUp(for: email, confirmationCode: confirmationCode)
@@ -47,7 +47,7 @@ public class AmplifyAuthService: AuthService {
                 let signInRes = try await Amplify.Auth.signIn(username: email, password: password)
                 if signInRes.isSignedIn {
                     let user = try await Amplify.Auth.getCurrentUser()
-                    let _ = try await Amplify.DataStore.save(User(id: user.userId, username: username))
+                    _ = try await Amplify.DataStore.save(User(id: user.userId, username: username))
                 }
             }
             return ActionResult(res.isSignUpComplete, res.isSignUpComplete ? "" : "Invalid Credentials")
@@ -57,8 +57,7 @@ public class AmplifyAuthService: AuthService {
             return ActionResult(false, "Unexpected error: \(error)")
         }
     }
-    
-    
+
     func signInWithEmail(email: String, password: String) async -> ActionResult {
         do {
             let res = try await Amplify.Auth.signIn(username: email, password: password)
@@ -74,7 +73,7 @@ public class AmplifyAuthService: AuthService {
             return ActionResult(false, "Unexpected error: \(error)")
         }
     }
-    
+
     func signInWithPhoneNumber(phoneNumber: String, password: String) async -> ActionResult {
         do {
             let res = try await Amplify.Auth.signIn(username: phoneNumber, password: password)
@@ -89,31 +88,30 @@ public class AmplifyAuthService: AuthService {
             return ActionResult(false, "Unexpected error: \(error)")
         }
     }
-    
+
     func signOut() async {
         do {
             let res = await Amplify.Auth.signOut()
-            
+
         } catch let error as AuthError {
             print("Sign Out failed with error: \(error)")
         } catch {
             print("Unexpected error: \(error)")
         }
     }
-    
+
     func getCurrentUser() async throws -> AuthUser? {
         let user = try await Amplify.Auth.getCurrentUser()
         GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
         print("Global State now: ", GlobalState.shared)
         return user
     }
-    
-    func getUser() -> BarterMateUser?  {
+
+    func getUser() -> BarterMateUser? {
         guard let authUser = authUser else {
             return nil
         }
         return BarterMateUser.getUserWithId(id: Identifier(value: authUser.userId))
     }
-    
-}
 
+}

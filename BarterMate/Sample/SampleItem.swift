@@ -8,7 +8,7 @@
 import Foundation
 
 struct SampleItem {
-    
+
     static let waterBottle = BarterMateItem(id: Identifier(value: "Bottle"),
                                             name: "Bottle",
                                             description: "500 ml, new",
@@ -16,7 +16,7 @@ struct SampleItem {
                                             ownerId: Identifier(value: "1111"),
                                             createdAt: Date(),
                                             updatedAt: Date())
-    
+
     static let guitar = BarterMateItem(id: Identifier(value: "12345"),
                                        name: "guitar",
                                        description: "Ibanez Acoustic Guitar",

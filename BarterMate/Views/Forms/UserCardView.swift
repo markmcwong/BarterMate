@@ -10,7 +10,7 @@ import SwiftUI
 struct UserCardView: View {
 
     @ObservedObject var item: BarterMateUser
-    
+
     var body: some View {
         HStack {
             UserProfileImageView()
@@ -23,15 +23,14 @@ struct UserCardView: View {
                     .font(.callout)
                     .lineLimit(1)
                 Spacer()
-                
+
             }
         }
     }
 }
 
-//struct UserCardView_Previews: PreviewProvider {
+// struct UserCardView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        UserCardView()
 //    }
-//}
-
+// }

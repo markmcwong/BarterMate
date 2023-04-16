@@ -1,4 +1,3 @@
-//
 //  FutureFactory.swift
 //  BarterMate
 //

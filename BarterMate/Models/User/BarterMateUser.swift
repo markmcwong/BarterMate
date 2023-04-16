@@ -10,20 +10,18 @@ import Foundation
 class BarterMateUser: ObservableObject, Hashable, ListElement {
     var id: Identifier<BarterMateUser>
     @Published var username: String
-    @Published var profilePicUrl: String?
-    
+
     static func == (lhs: BarterMateUser, rhs: BarterMateUser) -> Bool {
-        lhs.id == rhs.id && lhs.username == rhs.username && lhs.profilePicUrl == rhs.profilePicUrl
+        lhs.id == rhs.id
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(username)
-        hasher.combine(profilePicUrl)
     }
-    
+
     private var userFacade: (any UserFacade)?
-    
+
     static func getUserWithId(id: Identifier<BarterMateUser>) -> BarterMateUser {
         let user = createEmptyUser(id: id)
         let facade = AmplifyUserFacade()
@@ -32,16 +30,16 @@ class BarterMateUser: ObservableObject, Hashable, ListElement {
         user.userFacade?.getUserById(id: id)
         return user
     }
-    
+
     static func createEmptyUser(id: Identifier<BarterMateUser>) -> BarterMateUser {
         BarterMateUser(id: id, username: "")
     }
-    
+
     init(id: Identifier<BarterMateUser> = Identifier(value: UUID().uuidString), username: String) {
         self.id = id
         self.username = username
     }
-    
+
 }
 
 extension BarterMateUser: UserFacadeDelegate {
@@ -50,4 +48,3 @@ extension BarterMateUser: UserFacadeDelegate {
         self.username = user.username
     }
 }
-

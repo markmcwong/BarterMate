@@ -10,12 +10,12 @@ import SwiftUI
 struct TransactionCardView: View {
 
     @ObservedObject var viewModel: TransactionViewModel
-    @State var goToTransaction: Bool = false
-    
+    @State var goToTransaction = false
+
     init(user: BarterMateUser, transaction: BarterMateTransaction) {
         self.viewModel = TransactionViewModel(user: user, transaction: transaction)
     }
-    
+
     var body: some View {
         VStack {
             HStack {
@@ -32,9 +32,9 @@ struct TransactionCardView: View {
                                     .font(.callout)
                                     .lineLimit(1)
                                 Spacer()
-                                
+
                             }
-                            
+
                         }
                     }
                 }
@@ -46,7 +46,7 @@ struct TransactionCardView: View {
                     isActive: $goToTransaction
                 )
                 .hidden()
-                
+
                 HStack {
                     Spacer()
                     Text("Status : " + "\(viewModel.transaction.state)")
@@ -69,5 +69,3 @@ struct TransactionCardView_Previews: PreviewProvider {
         TransactionCardView(user: SampleUser.bill, transaction: SampleTransaction.sampleTransaction)
     }
 }
-
-

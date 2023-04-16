@@ -5,11 +5,11 @@
 ////  Created by Zico on 18/3/23.
 ////
 //
-//import Amplify
-//import Foundation
-//import SwiftUI
+// import Amplify
+// import Foundation
+// import SwiftUI
 //
-//class PostingViewModel: ObservableObject {
+// class PostingViewModel: ObservableObject {
 //    
 //    var posting: Posting
 //    var image: Image?
@@ -44,7 +44,7 @@
 //        }
 //    }
 //    
-//}
+// }
 //
 //
 //

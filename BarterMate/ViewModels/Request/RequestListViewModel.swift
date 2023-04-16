@@ -5,12 +5,12 @@
 ////  Created by Zico on 16/3/23.
 ////
 //
-//import Amplify
-//import Combine
-//import Foundation
+// import Amplify
+// import Combine
+// import Foundation
 //
-//@MainActor
-//class RequestListViewModel: ObservableObject {
+// @MainActor
+// class RequestListViewModel: ObservableObject {
 //    @Published private(set) var loadedRequests: [Request] = [Request]()
 //    @Published var isRequestSynced = false
 //    
@@ -73,5 +73,5 @@
 //            Amplify.log.error("\(#function) Error loading request - \(error.localizedDescription)")
 //        }
 //    }
-//}
+// }
 //

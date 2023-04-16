@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RequestFeedView: View {
     @ObservedObject var viewModel: RequestFeedViewModel
-    
+
     var body: some View {
         ScrollView(.vertical) {
             VStack {
@@ -21,15 +21,12 @@ struct RequestFeedView: View {
                     }
 
                 }.id(UUID())
-                    
 
-                if viewModel.modelList.elements.count == 0 {
+                if viewModel.modelList.elements.isEmpty {
                     Text("No More Request")
                         .padding()
-                } else {
-
                 }
-                
+
                 Button("Refresh Request Feed") {
                     viewModel.refresh()
                 }
@@ -39,7 +36,7 @@ struct RequestFeedView: View {
             viewModel.refresh()
         }
     }
-    
+
 }
 
 struct RequestFeedView_Previews: PreviewProvider {
@@ -47,4 +44,3 @@ struct RequestFeedView_Previews: PreviewProvider {
         RequestFeedView(viewModel: RequestFeedViewModel(modelType: BarterMateRequest.self))
     }
 }
-

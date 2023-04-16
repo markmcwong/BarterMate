@@ -8,5 +8,5 @@
 import Foundation
 
 class ChatList: ModelList<BarterMateChat> {
-    
+
 }

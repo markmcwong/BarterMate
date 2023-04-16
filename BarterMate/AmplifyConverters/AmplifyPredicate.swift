@@ -5,10 +5,10 @@
 ////  Created by mark on 4/4/2023.
 ////
 //
-//import Foundation
-//import Amplify
+// import Foundation
+// import Amplify
 //
-//extension BarterMatePredicate {
+// extension BarterMatePredicate {
 //    func toAmplifyQueryPredicate(field: String) -> QueryPredicate {
 //        switch self {
 //        case let group as BarterMatePredicateGroup:
@@ -23,9 +23,9 @@
 //            fatalError("Unsupported BarterMatePredicate type")
 //        }
 //    }
-//}
+// }
 //
-//extension BarterMateQueryOperator {
+// extension BarterMateQueryOperator {
 //    func toAmplifyQueryOperator(field: String) -> QueryOperator {
 //        switch self {
 //        case .notEqual(let value):
@@ -50,4 +50,4 @@
 //            return QueryOperator.beginsWith(value as! Persistable as! String)
 //        }
 //    }
-//}
+// }

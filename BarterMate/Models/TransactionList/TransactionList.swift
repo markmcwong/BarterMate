@@ -15,10 +15,9 @@ class TransactionList: ModelList<BarterMateTransaction> {
     }
 
     override func setFacade() {
-        print(" is this setFacade called ")
         self.modelListFacade = AmplifyTransactionListFacade()
     }
-    
+
     static func transactions_of(_ ownerId: Identifier<BarterMateUser>) -> TransactionList {
         print("called for TransactionList")
         let modelList = TransactionList()
@@ -27,19 +26,18 @@ class TransactionList: ModelList<BarterMateTransaction> {
         modelList.modelListFacade?.getModelsById(of: ownerId)
         return modelList
     }
-    
+
     func insert(transaction: BarterMateTransaction) {
         self.elements.append(transaction)
     }
-    
+
     func remove(transaction: BarterMateTransaction) {
         if let index = self.elements.firstIndex(of: transaction) {
             self.elements.remove(at: index)
         }
     }
-    
+
     func insertAll(transactions: [BarterMateTransaction]) {
         self.elements.append(contentsOf: transactions)
     }
 }
-

@@ -14,4 +14,3 @@ extension Identifier: Equatable {
         lhs.value == rhs.value
     }
 }
-

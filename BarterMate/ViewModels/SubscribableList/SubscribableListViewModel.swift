@@ -14,13 +14,13 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
     private var cancellable: Cancellable?
     private let provider: AmplifySubscriptionProvider<U>
     let predicate: QueryPredicate?
-    
+
     init() {
         self.provider = AmplifySubscriptionProvider<U>()
         self.predicate = nil
         subscribeToUpdates()
     }
-    
+
     init(where predicate: QueryPredicate) {
         self.provider = AmplifySubscriptionProvider<U>()
         self.predicate = predicate
@@ -32,7 +32,7 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
         cancellable = provider.querySubscription(U.self) { [weak self] result in
             DispatchQueue.main.async {
                 print("subscribeToUpdates : ")
-                for res in result{
+                for res in result {
                     print(res)
                 }
                 print("res loop finished")
@@ -40,9 +40,9 @@ class SubscribableListViewModel<U: ListElement>: ObservableObject {
             }
         }
     }
-    
+
     func subscribeToUpdatesWithPredicate(where predicate: QueryPredicate?) {
-        if(predicate != nil){
+        if predicate != nil {
             print("subscribeToUpdatesWithPredicate called")
             cancellable = provider.querySubscription(U.self, where: predicate) { [weak self] result in
                 DispatchQueue.main.async {

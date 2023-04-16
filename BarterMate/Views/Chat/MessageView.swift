@@ -14,7 +14,7 @@ struct MessageView: View {
     init(viewModel: MessageViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         VStack {
             Spacer()
@@ -25,7 +25,6 @@ struct MessageView: View {
         }.navigationTitle(viewModel.chatName)
     }
 }
-    
 
 struct MessageInputView: View {
     @State private var messageText = ""
@@ -34,7 +33,7 @@ struct MessageInputView: View {
     init(viewModel: MessageViewModel) {
         self.viewModel = viewModel
     }
-    
+
     var body: some View {
         HStack {
             TextField("Enter message...", text: $messageText)
@@ -99,26 +98,26 @@ struct MessageInputView: View {
 ////        // Sort messages by date in ascending order
 ////        self.messages = messages.sorted { $0.createdAt < $1.createdAt }
 ////    }
-//}
+// }
 
 struct MessageRow: View, ListItemView {
-    var model: ListViewModel<BarterMateMessage>? = nil
+    var model: ListViewModel<BarterMateMessage>?
     @ObservedObject var item: BarterMateMessage
     let isSentByMe: Bool
-    
+
     static func build(for item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) -> MessageRow {
-        return MessageRow(item: item, model: model)
+        MessageRow(item: item, model: model)
     }
-    
+
     internal init(item: BarterMateMessage, model: ListViewModel<BarterMateMessage>? = nil) {
         self.item = item
         self.model = model
-        if(!item.hasFetchedDetails) {
+        if !item.hasFetchedDetails {
             item.fetchDetails()
         }
         self.isSentByMe = !(item.sentBy == nil) && (item.sentBy?.id.value == GlobalState.shared.userId)
     }
-    
+
     var body: some View {
         HStack {
             if isSentByMe {
@@ -134,7 +133,7 @@ struct MessageRow: View, ListItemView {
                     .foregroundColor(.white)
                     .background(Color.gray)
                     .cornerRadius(10)
-                if(item.sentBy != nil) {
+                if item.sentBy != nil {
                     Text("Sent by: " + item.sentBy!.username)
 //                         + item.sentBy!.id.value)
                 }
@@ -143,4 +142,3 @@ struct MessageRow: View, ListItemView {
         }
     }
 }
-

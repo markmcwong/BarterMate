@@ -8,31 +8,39 @@
 import Foundation
 import SwiftUI
 
+enum AppState {
+    case profile
+    case request
+    case posting
+    case chat
+    case message
+    case transaction
+}
+
 struct HomeView: View {
     @StateObject private var router = Router.singleton
     let viewModel: HomeViewModel
-    @State var state: String = "Profile"
-    
+    @State var state: AppState = .profile
+
     var body: some View {
         VStack {
             switch state {
-            case "Profile":
+            case .profile:
                 UserProfileView(viewModel: UserProfileViewModel(user: viewModel.user))
-            case "Request":
+            case .request:
                 RequestFeedView(viewModel: viewModel.requestFeedViewModel)
-            case "Posting":
+            case .posting:
                 PostingFeedView(viewModel: viewModel.postingFeedViewModel)
-            case "Chat":
+            case .chat:
                 ChatListView()
-            case "Message":
+            case .message:
                 MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
-            case "Transaction":
-                TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.transactions_of(viewModel.user.id), user: viewModel.user))
-            default:
-                EmptyView()
+            case .transaction:
+                TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.transactions_of(viewModel.user.id),
+                                                                        user: viewModel.user))
             }
             NavBarView(state: $state)
-            
+
         }.navigationBarBackButtonHidden(true)
     }
 }

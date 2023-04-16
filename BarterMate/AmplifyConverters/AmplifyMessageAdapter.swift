@@ -9,13 +9,13 @@ import Amplify
 import Foundation
 
 struct AmplifyMessageAdapter {
-    
+
     static func toBarterMateModel(message: Message) -> BarterMateMessage {
 //        let amplifyUser = message.SentBy
 //        let sentBy = AmplifyUserConverter.toBarterMateModel(user: message.SentBy)
 //        let sentIn = AmplifyChatAdapter.toBarterMateModel(chat: message.SentIn!, completion: {_ in })
 
-        func barterMateUserTask (completion: @escaping (BarterMateUser) -> BarterMateUser) -> Void {
+        func barterMateUserTask (completion: @escaping (BarterMateUser) -> BarterMateUser) {
             do {
                 Task {
                     let amplifiedUser: User = try await message.SentBy!
@@ -26,20 +26,17 @@ struct AmplifyMessageAdapter {
                 }
             }
         }
-        
+
         let barterMateMessage = BarterMateMessage(id: Identifier(value: message.id),
                                                   sentIn: nil,
                                                   sentBy: nil,
                                                   fetchUserClosure: barterMateUserTask,
-//                                                    (
-//                                                    sentBy ??
-//                                                    AmplifyUserConverter.toBarterMateModel(user: User(id: "404", username: "User not Found")))!,
-                                            createdAt: message.createdAt.foundationDate,
-                                            content: message.content)
-        
+                                                  createdAt: message.createdAt.foundationDate,
+                                                  content: message.content)
+
         return barterMateMessage
     }
-    
+
     static func toAmplifyModel(message: BarterMateMessage) -> Message {
 //       print("Sent IN: ", message.sentIn?.id.value)
 //       print("Sent BY: ", message.sentBy?.id.value)
@@ -52,8 +49,8 @@ struct AmplifyMessageAdapter {
                                      SentBy:
                                         (message.sentIn != nil) ? AmplifyUserConverter.toAmplifyModel(user: message.sentBy!) : nil,
                                      sentInID: (message.sentIn != nil) ? message.sentIn?.id.value : nil)
-        
+
         return amplifyMessage
     }
-    
+
 }
