@@ -100,12 +100,12 @@ public class AmplifyAuthService: AuthService {
         }
     }
 
-    func getCurrentUser() async throws -> AuthUser? {
-        let user = try await Amplify.Auth.getCurrentUser()
-        GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
-        print("Global State now: ", GlobalState.shared)
-        return user
-    }
+//    func getCurrentUser() async throws -> AuthUser? {
+//        let user = try await Amplify.Auth.getCurrentUser()
+//        GlobalState.shared.updateUser(userId: user.userId, user: User(id: user.userId, username: user.username))
+//        print("Global State now: ", GlobalState.shared)
+//        return user
+//    }
 
     func getUser() -> BarterMateUser? {
         guard let authUser = authUser else {

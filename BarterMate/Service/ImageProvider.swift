@@ -5,15 +5,14 @@
 //  Created by Zico on 18/3/23.
 //
 
-import Amplify
 import Combine
 import Foundation
 import SwiftUI
 
 class ImageProvider {
-    var cacheKey: String
+    private var cacheKey: String
     private var storageService: StorageService
-    private var subscribers = Set<AnyCancellable>()
+    //private var subscribers = Set<AnyCancellable>()
 
     init(key: String) {
         self.cacheKey = key
@@ -30,6 +29,7 @@ class ImageProvider {
                 let data = try await downloadTask.value
                 completed(data)
             } catch {
+                
             }
         }
     }
