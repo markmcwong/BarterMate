@@ -18,53 +18,65 @@ struct TransactionView: View {
     }
 
     var body: some View {
-        VStack {
-            Text("State: " + "\(viewModel.transaction.state)")
-            List {
-                ForEach(Array(viewModel.transaction.participants), id: \.self) { participant in
-                    Section(header: TransactionHeaderView(parentViewModel: viewModel, user: participant)) {
-                        ForEach(Array(viewModel.userToItemsMap[participant.id] ?? []), id: \.self) { item in
-                            HStack {
-                                Text(item.name)
-                                Spacer()
-                            }
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                selectedItem = item
-                                showModal = true
-                            }
-                            .onLongPressGesture(minimumDuration: 2) {
+        ZStack {
+            VStack {
+                Text("State: " + "\(viewModel.transaction.state)")
+                List {
+                    ForEach(Array(viewModel.transaction.participants), id: \.self) { participant in
+                        Section(header: TransactionHeaderView(parentViewModel: viewModel, user: participant)) {
+                            ForEach(Array(viewModel.userToItemsMap[participant.id] ?? []), id: \.self) { item in
+                                HStack {
+                                    Text(item.name)
+                                    Spacer()
+                                }
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    selectedItem = item
+                                    showModal = true
+                                }
+                                .onLongPressGesture(minimumDuration: 2) {
                                     viewModel.removeItem(item: item)
                                     viewModel.update()
+                                }
+                                
                             }
-
                         }
+                        
                     }
-
+                }
+            }.onAppear {
+                print("view appear")
+                viewModel.update()
+            }.overlay(ModalView(displayView: {
+                if let item = selectedItem {
+                    ItemImageView(item: item)
+                }
+            }, showModal: $showModal))
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        addOffer = true
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(20)
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
                 }
             }
-            ProfileButtonsView().onTapGesture {
-                addOffer = true
-            }
-            NavigationLink(
-                "",
-                destination: LazyView {
-                    OfferSelectionView(userId: viewModel.user.id,
-                                       transaction: viewModel.transaction,
-                                       addOffer: $addOffer)
-                },
-                isActive: $addOffer
-            )
-            .hidden()
-        }.onAppear {
-            print("view appear")
-            viewModel.update()
-        }.overlay(ModalView(displayView: {
-            if let item = selectedItem {
-                ItemImageView(item: item)
-            }
-        }, showModal: $showModal))
-
+        }.sheet(isPresented: $addOffer) {
+            OfferSelectionView(userId: viewModel.user.id,
+                               transaction: viewModel.transaction,
+                               addOffer: $addOffer)
+        }
     }
 }
 
