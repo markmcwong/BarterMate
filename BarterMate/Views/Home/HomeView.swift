@@ -27,7 +27,7 @@ struct HomeView: View {
             case "Message":
                 MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
             case "Transaction":
-                TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.of(userId: viewModel.user.id), user: viewModel.user))
+                TransactionListView(viewModel: TransactionListViewModel(transactions: TransactionList.transactions_of(viewModel.user.id), user: viewModel.user))
             default:
                 EmptyView()
             }

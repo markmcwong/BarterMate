@@ -69,8 +69,6 @@
 		178F183829E446FF0087D018 /* SampleTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183729E446FF0087D018 /* SampleTransaction.swift */; };
 		178F183A29E447870087D018 /* AmplifyTransactionConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183929E447870087D018 /* AmplifyTransactionConverter.swift */; };
 		178F183D29E447AE0087D018 /* TransactionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183C29E447AE0087D018 /* TransactionList.swift */; };
-		178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */; };
-		178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184029E447DA0087D018 /* TransactionListFacade.swift */; };
 		178F184329E447E90087D018 /* AmplifyTransactionListFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */; };
 		178F184629E448020087D018 /* BarterMateTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184529E448020087D018 /* BarterMateTransaction.swift */; };
 		178F184829E448160087D018 /* TransactionFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 178F184729E448160087D018 /* TransactionFacade.swift */; };
@@ -254,8 +252,6 @@
 		178F183729E446FF0087D018 /* SampleTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleTransaction.swift; sourceTree = "<group>"; };
 		178F183929E447870087D018 /* AmplifyTransactionConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionConverter.swift; sourceTree = "<group>"; };
 		178F183C29E447AE0087D018 /* TransactionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionList.swift; sourceTree = "<group>"; };
-		178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacadeDelegate.swift; sourceTree = "<group>"; };
-		178F184029E447DA0087D018 /* TransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListFacade.swift; sourceTree = "<group>"; };
 		178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplifyTransactionListFacade.swift; sourceTree = "<group>"; };
 		178F184529E448020087D018 /* BarterMateTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarterMateTransaction.swift; sourceTree = "<group>"; };
 		178F184729E448160087D018 /* TransactionFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionFacade.swift; sourceTree = "<group>"; };
@@ -620,8 +616,6 @@
 			isa = PBXGroup;
 			children = (
 				178F183C29E447AE0087D018 /* TransactionList.swift */,
-				178F183E29E447C30087D018 /* TransactionListFacadeDelegate.swift */,
-				178F184029E447DA0087D018 /* TransactionListFacade.swift */,
 				178F184229E447E90087D018 /* AmplifyTransactionListFacade.swift */,
 			);
 			path = TransactionList;
@@ -1129,7 +1123,6 @@
 				172FC0EA29C616FD00842C70 /* PostingView.swift in Sources */,
 				172BC8E029D60E98000EB398 /* ModalView.swift in Sources */,
 				178F184829E448160087D018 /* TransactionFacade.swift in Sources */,
-				178F183F29E447C30087D018 /* TransactionListFacadeDelegate.swift in Sources */,
 				178F185029E449210087D018 /* AddRequestViewModel.swift in Sources */,
 				172BC8FA29D7543A000EB398 /* AmplifyUserFacade.swift in Sources */,
 				4DA7051C29C841D4004D3CBC /* AmplifyChatService.swift in Sources */,
@@ -1202,7 +1195,6 @@
 				172BC90B29D88A7E000EB398 /* MyPostingListView.swift in Sources */,
 				E5F6B36A99D12DFF33BF0D85 /* UserChat+Schema.swift in Sources */,
 				3EF6F2339C3D0BDE1ED1EFC8 /* UserChat.swift in Sources */,
-				178F184129E447DA0087D018 /* TransactionListFacade.swift in Sources */,
 				4D68926029C41E61001ADF49 /* AuthService.swift in Sources */,
 				178F185A29E44A1F0087D018 /* OfferSelectionView.swift in Sources */,
 				4DA7051A29C84112004D3CBC /* ChatService.swift in Sources */,

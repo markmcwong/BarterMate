@@ -8,17 +8,17 @@
 import Foundation
 import Combine
 
-class TransactionListViewModel: ObservableObject {
-    @Published var transactions: TransactionList
+class TransactionListViewModel: ListViewModel<BarterMateTransaction> {
+//    @Published var transactions: TransactionList
+//    @Published var transactions: ModelList<BarterMateTransaction>
     @Published var userList: ModelList<BarterMateUser>
-    var user: BarterMateUser
+//    var user: BarterMateUser
     private var cancellables = [AnyCancellable]()
     
-    init(transactions: TransactionList, user: BarterMateUser) {
-        self.user = user
+    init(transactions: ModelList<BarterMateTransaction>, user: BarterMateUser) {
         self.userList = ModelList<BarterMateUser>.all()
-        self.transactions = transactions
-        transactions.objectWillChange.receive(on: DispatchQueue.main).sink {
+        super.init(user: user, modelList: transactions)
+        modelList.objectWillChange.receive(on: DispatchQueue.main).sink {
             [weak self] _ in
             self?.objectWillChange.send()
         }.store(in: &cancellables)

@@ -7,40 +7,39 @@
 
 import Combine
 
-class TransactionList: TransactionListFacadeDelegate, ObservableObject {
+class TransactionList: ModelList<BarterMateTransaction> {
+    private var modelListFacade: (any ModelListFacade)?
 
-    @Published var transactions: [BarterMateTransaction] = []
-    
-    var facade: TransactionListFacade?
-    
-    static func all() -> TransactionList {
-        let transactionList = TransactionList()
-        transactionList.facade = AmplifyTransactionListFacade()
-        transactionList.facade?.setDelegate(delegate: transactionList)
-        transactionList.facade?.getAll()
-        return transactionList
-    }
-    
-    static func of(userId: Identifier<BarterMateUser>) -> TransactionList {
-        let transactionList = TransactionList()
-        transactionList.facade = AmplifyTransactionListFacade()
-        transactionList.facade?.setDelegate(delegate: transactionList)
-        transactionList.facade?.getModelsWithUser(of: userId)
-        return transactionList
+    override private init() {
+        super.init()
     }
 
+    override func setFacade() {
+        print(" is this setFacade called ")
+        self.modelListFacade = AmplifyTransactionListFacade()
+    }
+    
+    static func transactions_of(_ ownerId: Identifier<BarterMateUser>) -> TransactionList {
+        print("called for TransactionList")
+        let modelList = TransactionList()
+        modelList.setFacade()
+        modelList.modelListFacade?.setDelegate(delegate: modelList)
+        modelList.modelListFacade?.getModelsById(of: ownerId)
+        return modelList
+    }
+    
     func insert(transaction: BarterMateTransaction) {
-        transactions.append(transaction)
+        self.elements.append(transaction)
     }
     
     func remove(transaction: BarterMateTransaction) {
-        if let index = transactions.firstIndex(of: transaction) {
-            self.transactions.remove(at: index)
+        if let index = self.elements.firstIndex(of: transaction) {
+            self.elements.remove(at: index)
         }
     }
     
     func insertAll(transactions: [BarterMateTransaction]) {
-        self.transactions.append(contentsOf: transactions)
+        self.elements.append(contentsOf: transactions)
     }
 }
 

@@ -13,6 +13,6 @@ protocol ListElement: Hashable, NameDescribable {
 }
 
 protocol LazyListElement: ListElement {
-    associatedtype U
-    func fetch(closure: (() async -> [U])) -> [U]
+    var hasFetchedDetails: Bool { get set }
+    func fetchDetails()
 }

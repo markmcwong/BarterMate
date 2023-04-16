@@ -22,6 +22,7 @@ class ModelList<T: ListElement>: ObservableObject {
     }
     
     static func of(_ ownerId: Identifier<BarterMateUser>) -> ModelList {
+        print("called for ", T.typeName)
         let modelList = ModelList()
         modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
@@ -33,16 +34,11 @@ class ModelList<T: ListElement>: ObservableObject {
         let modelList = ModelList()
         modelList.setFacade()
         modelList.modelListFacade?.setDelegate(delegate: modelList)
-        if(T.self.typeName == "BarterMateChat") {
-            print("Getting chat models")
-            modelList.modelListFacade?.getChatModels()
-        } else {
-            modelList.modelListFacade?.getEveryoneModels()
-        }
+        modelList.modelListFacade?.getEveryoneModels()
         return modelList
     }
 
-    private init() {}
+    internal init() {}
     
     func setFacade() {
         modelListFacade = AmplifyListFacade<T>()

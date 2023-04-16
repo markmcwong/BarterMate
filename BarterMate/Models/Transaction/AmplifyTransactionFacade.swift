@@ -21,7 +21,7 @@ class AmplifyTransactionFacade: TransactionFacade {
                 let amplifyTransaction = AmplifyTransactionConverter.toAmplifyModel(transaction: transaction)
                 
                 try await Amplify.DataStore.save(amplifyTransaction)
-                
+
                 for user in transaction.participants {
                     addUser(user: user)
                 }

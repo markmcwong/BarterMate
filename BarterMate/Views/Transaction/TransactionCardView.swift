@@ -20,8 +20,7 @@ struct TransactionCardView: View {
         VStack {
             HStack {
                 ScrollView(.horizontal) {
-                    ForEach(Array(viewModel.transaction.participants), id: \.self) { participant in
-                        
+                    ForEach(Array(viewModel.transaction.participants), id: \.self.id) { participant in
                         HStack {
                             UserProfileImageView()
                                 .frame(width: 50, height: 50)
@@ -38,7 +37,6 @@ struct TransactionCardView: View {
                             
                         }
                     }
-                    
                 }
                 NavigationLink(
                     "",

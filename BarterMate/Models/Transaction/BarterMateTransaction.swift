@@ -35,8 +35,8 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     init(id: Identifier<BarterMateTransaction> = Identifier(value: UUID().uuidString),
-         participants: Set<BarterMateUser>,
-         itemPool: Set<BarterMateItem>,
+         participants: (Set<BarterMateUser>),
+         itemPool: (Set<BarterMateItem>),
          hasLockedOffer: Set<Identifier<BarterMateUser>>,
          hasCompletedBarter: Set<Identifier<BarterMateUser>>,
          state: TransactionState) {
@@ -80,6 +80,7 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
         guard state == .INITIATED else {
             return
         }
+
         guard !itemPool.contains(item) else {
             return
         }
@@ -145,11 +146,13 @@ class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, O
     }
     
     static func == (lhs: BarterMateTransaction, rhs: BarterMateTransaction) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id && lhs.participants == rhs.participants && lhs.itemPool == rhs.itemPool
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(itemPool)
+        hasher.combine(participants)
     }
 }
 
