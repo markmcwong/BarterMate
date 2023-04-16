@@ -71,4 +71,28 @@ class BarterMateChatTests: XCTestCase {
         XCTAssertTrue(fetchUsersCalled)
         XCTAssertTrue(chat.hasFetchedDetails)
     }
+    
+    func testEquality_whenIdsAreEqual() {
+        let chatId = Identifier<BarterMateChat>(value: "1")
+        let chatName = "testChat"
+        let messages = [BarterMateMessage]()
+        let users = [BarterMateUser]()
+        
+        let chat1 = BarterMateChat(id: chatId, name: chatName, messages: messages, users: users)
+        let chat2 = BarterMateChat(id: chatId, name: chatName, messages: messages, users: users)
+        
+        XCTAssertEqual(chat1, chat2)
+    }
+    
+    func testHash_whenIdsAreEqual() {
+        let chatId = Identifier<BarterMateChat>(value: "1")
+        let chatName = "testChat"
+        let messages = [BarterMateMessage]()
+        let users = [BarterMateUser]()
+        
+        let chat1 = BarterMateChat(id: chatId, name: chatName, messages: messages, users: users)
+        let chat2 = BarterMateChat(id: chatId, name: chatName, messages: messages, users: users)
+        
+        XCTAssertEqual(chat1.hashValue, chat2.hashValue)
+    }
 }

@@ -36,7 +36,7 @@ struct PostingFeedView: View {
                         .frame(width: 20, height: 20)
                         .foregroundColor(.blue)
                 }
-            }
+            }.padding(10)
         }
         .refreshable {
             viewModel.refresh()
