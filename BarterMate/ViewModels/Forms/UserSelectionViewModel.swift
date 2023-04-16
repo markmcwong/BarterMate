@@ -9,17 +9,17 @@ import Foundation
 
 class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
     var user: BarterMateUser
-    var transactionList: TransactionList? = nil
-    var chatList: ListViewModel<BarterMateChat>? = nil
+    var transactionList: ModelList<BarterMateTransaction>? = nil
+    var chatList: ModelList<BarterMateChat>? = nil
     
-    init(user: BarterMateUser, transactionList: TransactionList) {
+    init(user: BarterMateUser, transactionList: ModelList<BarterMateTransaction>) {
         self.user = user
         self.transactionList = transactionList
         let userList = ModelList<BarterMateUser>.all()
         super.init(itemList: userList)
     }
     
-    init(user: BarterMateUser, chatList: ListViewModel<BarterMateChat>) {
+    init(user: BarterMateUser, chatList: ModelList<BarterMateChat>) {
         self.user = user
         self.chatList = chatList
         let userList = ModelList<BarterMateUser>.all()
@@ -40,7 +40,7 @@ class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
         }
         
         let transaction = BarterMateTransaction.createNewTransaction()
-        transactionList.insert(transaction: transaction)
+        transactionList.insert(model: transaction)
         
         for user in selectedItem {
             transaction.addUser(user: user)
@@ -64,10 +64,10 @@ class UserSelectionViewModel: MultiSelectableItemViewModel<BarterMateUser> {
         }
         
         let chat = BarterMateChat(name: name, messages: [], users: Array(selectedItem))
-        chatList.saveItem(item: chat)
+        chatList.saveItem(element: chat)
         let chatUsers = selectedItem.map { AmplifyUserChatAdapter.toAmplifyModel(user: $0, chat: chat)}
         print("Converted chatUsers are ", chatUsers)
-        ChatService.insertUserChats(userChats: chatUsers)
+        AmplifyChatService().insertUserChats(userChats: chatUsers)
         callback()
     }
 }

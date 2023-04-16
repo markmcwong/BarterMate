@@ -13,17 +13,14 @@ enum TransactionState: String {
     case COMPLETED = "Barter Completed"
 }
 
-class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegate, ObservableObject {
+class BarterMateTransaction: Hashable, ListElement, TransactionFacadeDelegate, ObservableObject {
 
     var id: Identifier<BarterMateTransaction>
-    @Published var participants: (Set<BarterMateUser>)?
-    @Published var itemPool: (Set<BarterMateItem>)?
+    @Published var participants: Set<BarterMateUser>
+    @Published var itemPool: Set<BarterMateItem>
     @Published var hasLockedOffer: Set<Identifier<BarterMateUser>>
     @Published var hasCompletedBarter: Set<Identifier<BarterMateUser>>
     @Published var state: TransactionState
-    var fetchParticipantsClosure: ((@escaping (Set<BarterMateUser>) -> Set<BarterMateUser>) -> Void)?
-    var fetchItemsClosure: ((@escaping (Set<BarterMateItem>) -> Set<BarterMateItem>) -> Void)?
-    var hasFetchedDetails: Bool = false
     
     var facade: TransactionFacade?
     
@@ -38,12 +35,10 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     init(id: Identifier<BarterMateTransaction> = Identifier(value: UUID().uuidString),
-         participants: Set<BarterMateUser>,
-         itemPool: Set<BarterMateItem>,
+         participants: (Set<BarterMateUser>),
+         itemPool: (Set<BarterMateItem>),
          hasLockedOffer: Set<Identifier<BarterMateUser>>,
          hasCompletedBarter: Set<Identifier<BarterMateUser>>,
-         fetchParticipantsClosure: ((@escaping (Set<BarterMateUser>) -> Set<BarterMateUser>) -> Void)? = nil,
-         fetchItemsClosure: ((@escaping (Set<BarterMateItem>) -> Set<BarterMateItem>) -> Void)? = nil,
          state: TransactionState) {
         self.id = id
         self.participants = participants
@@ -51,8 +46,6 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
         self.state = state
         self.hasLockedOffer = hasLockedOffer
         self.hasCompletedBarter = hasCompletedBarter
-        self.fetchParticipantsClosure = fetchParticipantsClosure
-        self.fetchItemsClosure = fetchItemsClosure
         setUpFacade()
     }
     
@@ -65,15 +58,15 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
         guard state == .INITIATED else {
             return
         }
-        guard (participants != nil) && !participants!.contains(user) else {
+        guard !participants.contains(user) else {
             return
         }
         facade?.addUser(user: user)
-        participants!.insert(user)
+        participants.insert(user)
     }
     
     func removeUser(user: BarterMateUser) {
-        guard state == .INITIATED, var participants = participants else {
+        guard state == .INITIATED else {
             return
         }
         guard participants.contains(user) else {
@@ -84,7 +77,7 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     func addItem(item: BarterMateItem) {
-        guard state == .INITIATED, var itemPool = itemPool else {
+        guard state == .INITIATED else {
             return
         }
 
@@ -96,7 +89,7 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     func removeItem(item: BarterMateItem) {
-        guard state == .INITIATED, var itemPool = itemPool else {
+        guard state == .INITIATED else {
             return
         }
         guard itemPool.contains(item) else {
@@ -117,7 +110,7 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     func lockTransaction() {
-        guard state == .INITIATED, var participants = participants else {
+        guard state == .INITIATED else {
             return
         }
         for participant in participants {
@@ -140,7 +133,7 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     func completeBarter() {
-        guard state == .ITEMLOCKED, let participants = participants else {
+        guard state == .ITEMLOCKED else {
             return
         }
         for participant in participants {
@@ -153,52 +146,14 @@ class BarterMateTransaction: Hashable, LazyListElement, TransactionFacadeDelegat
     }
     
     static func == (lhs: BarterMateTransaction, rhs: BarterMateTransaction) -> Bool {
-        lhs.id == rhs.id
+        lhs.id == rhs.id && lhs.participants == rhs.participants && lhs.itemPool == rhs.itemPool
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
+        hasher.combine(itemPool)
+        hasher.combine(participants)
     }
-    
-    func fetchDetails() {
-        fetchParticipants()
-        fetchItems()
-        self.hasFetchedDetails = true
-    }
-    
-    func fetchParticipants() {
-        if self.participants == nil {
-            print("inner fetch")
-            guard let fetchParticipantsClosure = fetchParticipantsClosure else {
-                print("fetch participants closuer wrong")
-                self.participants = []
-                return
-            }
-            fetchParticipantsClosure {
-                print("fetchParticipantsClosure : ", $0)
-                self.participants = $0
-                return $0
-            }
-            return
-        }
-    }
-
-    func fetchItems() {
-        if self.itemPool == nil {
-            guard let fetchItemsClosure = fetchItemsClosure else {
-                print("fetch user closuer wrong")
-                self.itemPool = []
-                return
-            }
-            fetchItemsClosure {
-                print("fetchItemsClosure : ", $0)
-                self.itemPool = $0
-                return $0
-            }
-            return
-        }
-    }
-    
 }
 
 

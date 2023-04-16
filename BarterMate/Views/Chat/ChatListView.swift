@@ -38,7 +38,7 @@ struct ChatListView: View {
         NavigationLink(
             "",
             destination: LazyView {
-                UserSelectionView(user: GlobalState.shared.user!, chatList: viewModel, addChat: $addChat)
+                UserSelectionView(user: GlobalState.shared.user!, chatList: viewModel.modelList, addChat: $addChat)
             },
             isActive: $addChat
         )

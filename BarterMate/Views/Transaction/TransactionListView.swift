@@ -17,12 +17,12 @@ struct TransactionListView: View {
             ScrollView(.vertical) {
                 VStack {
                     LazyVStack {
-                        ForEach(viewModel.transactions.transactions, id: \.self) { transaction in
-                            TransactionCardView(user: viewModel.user, transaction: transaction)
+                        ForEach(viewModel.modelList.elements, id: \.self.id) { transaction in
+                            TransactionCardView(user: viewModel.user!, transaction: transaction)
                         }.id(UUID())
                         
                         
-                        if viewModel.transactions.transactions.count == 0 {
+                        if viewModel.modelList.elements.count == 0 {
                             Text("No More Transaction")
                                 .padding()
                         } else {
@@ -37,7 +37,7 @@ struct TransactionListView: View {
             NavigationLink(
                 "",
                 destination: LazyView {
-                    UserSelectionView(user: viewModel.user, transactionList: viewModel.transactions, addTransaction: $addTransaction)
+                    UserSelectionView(user: viewModel.user!, transactionList: viewModel.modelList, addTransaction: $addTransaction)
                 },
                 isActive: $addTransaction
             )

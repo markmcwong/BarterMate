@@ -5,78 +5,81 @@
 //  Created by mark on 20/3/2023.
 //
 
-//import Amplify
-//import Foundation
+import Amplify
+import Foundation
 
-//class AmplifyChatService: ChatService {
-//    
-//    var eventsPublisher = AmplifyEventsPublisher.shared
-//    
-//    func createChat(chatName: String, users: [User]) async throws -> Chat {
-//        let chat = Chat()
-//        let savedItem = try await Amplify.DataStore.save(chat)
-//        eventsPublisher.dataStoreServiceEventsTopic.send(.chatCreated(chat))
-//        return savedItem
-//    }
-//    
-//    func savePosting(_ posting: Posting) async throws -> Posting {
-//        let savedItem = try await Amplify.DataStore.save(posting)
-//        eventsPublisher.dataStoreServiceEventsTopic.send(.postingCreated(posting))
-//        return savedItem
-//    }
-//    
-//    func deletePosting(_ posting: Posting) async throws {
-//        try await Amplify.DataStore.delete(posting)
-//        eventsPublisher.dataStoreServiceEventsTopic.send(.postingDeleted(posting))
-//    }
-//    
-//    func fetchChat(id: String) async throws -> Chat? {
-//        return try await Amplify.DataStore.query(Chat.self, byId: id)
-//    }
-//    
-////    func fetchMessagesByChat(chatID: String) async throws -> [Message] {
-////        let messages = try await Amplify.DataStore.query(Message.self, where: Message.keys.SentTo == chatID)
-////        return messages
-////    }
-//    
-//    func fetchChatsByUser(userID: String) async throws -> [Chat] {
-//        let userChats = try await Amplify.DataStore.query(UserChat.self, where: UserChat.keys.user == userID)
-//        
-//        return try await withThrowingTaskGroup(of: Chat?.self) { group in
-//            for userChat in userChats {
-//                group.addTask {
-//                    return try await Amplify.DataStore.query(Chat.self, byId: userChat.chat.id)
-//                }
-//            }
-//            
-//            var chats: [Chat] = []
-//            for try await chat in group {
-//                if let chat = chat {
-//                    chats.append(chat)
-//                }
-//            }
-//            
-//            return chats
-//        }
-//    }
-//
-////    func createMessage(chat: Chat, sentBy: User, content: String) async throws -> Message {
-////        let createdAt = Temporal.DateTime.now()
-////        let message = Message(chatID: chat.id, SentBy: sentBy, createdAt: createdAt, content: content, messageSentById: sentBy.id)
-////        try await Amplify.DataStore.save(message)
-////        return message
-////    }
-//    
-//    func query(where predicate: QueryPredicate?,
-//               sort sortInput: QuerySortInput?,
-//               paginate paginationInput: QueryPaginationInput?) async throws -> [Posting] {
-//        return try await Amplify.DataStore.query(Posting.self,
-//                                                 where: predicate,
-//                                                 sort: sortInput,
-//                                                 paginate: paginationInput)
-//    }
-//    
-//    func query(byId: String) async throws -> Posting? {
-//        return try await Amplify.DataStore.query(Posting.self, byId: byId)
-//    }
-//}
+class AmplifyChatService: ChatService {
+    func getCurrentUserChats(id: String) async -> [BarterMateChat] {
+        do {
+            let response = try await Amplify.API.query(request: .getCurrentUserChats(byId: id))
+            switch response {
+            case .success(let data):
+                if let items:JSONValue = data.value(at: "items") {
+                    var chatArrayResult: [BarterMateChat] = []
+                    print("todoJSON : ", items)
+                    let encodedItems = try? JSONEncoder().encode(items)
+                    let JSONArray = try? JSONDecoder().decode(Array<JSONValue>.self, from: encodedItems!)
+                    for chatJSON in JSONArray! {
+                        if let item = chatJSON.value(at: "chat"),
+                            let chatData = try? JSONEncoder().encode(item),
+                           let chat = try? JSONDecoder().decode(Chat.self, from: chatData) {
+                            let encodedIsDeleted = try? JSONEncoder().encode(item.value(at: "_deleted"))
+                            let bool = (try? JSONDecoder().decode(Bool.self, from: encodedIsDeleted!))
+                            print(item.value(at: "_deleted")!)
+                            if(bool == nil || !bool!){
+                                chatArrayResult.append(BarterMateChat(id: Identifier(value: chat.id), name: chat.name,  messages: [], users: [], fetchMessagesClosure: nil, fetchUsersClosure: nil))
+                            }
+                        }
+                    }
+                    print(chatArrayResult)
+                    return (chatArrayResult)
+                }
+            case .failure(let errorResponse):
+                print("Response contained errors: \(errorResponse)")
+                return []
+            }
+        }
+        catch let error {
+            print("error: ", error.localizedDescription)
+            return []
+        }
+        return []
+    }
+    
+    func insertUserChats(userChats: [UserChat]) {
+        Task {
+            do {
+                for userChat in userChats{
+                    try await Amplify.DataStore.save(userChat)
+                }
+            } catch let error {
+                print("Saving user chat error: ", error.localizedDescription)
+            }
+        }
+    }
+}
+
+extension GraphQLRequest {
+    static func getCurrentUserChats(byId id: String) -> GraphQLRequest<JSONValue> {
+        let operationName = "listUserChats"
+        let document = """
+        query getCurrentUserChats($id: ID!) {
+          \(operationName)(filter: {userId: {eq: $id}}) {
+            items {
+              chat {
+                id
+                name
+                _deleted
+              }
+            }
+          }
+        }
+        """
+        return GraphQLRequest<JSONValue>(
+            document: document,
+            variables: ["id": id],
+            responseType: JSONValue.self,
+            decodePath: operationName
+        )
+    }
+}

@@ -19,7 +19,7 @@ class OfferSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
     }
     
     var filteredItems: [BarterMateItem] {
-        itemList.elements.filter { !(transaction.itemPool?.contains($0) ?? false) }
+        itemList.elements.filter { !(transaction.itemPool.contains($0)) }
     }
     
     func offerItem() {

@@ -50,18 +50,14 @@ class TransactionViewModel: ObservableObject {
     
     private func populateMap() {
         initiateMap()
-        if(transaction.itemPool != nil){
-            for item in transaction.itemPool! {
-                userToItemsMap[item.ownerId]?.append(item)
-            }
+        for item in transaction.itemPool {
+            userToItemsMap[item.ownerId]?.append(item)
         }
     }
     
     private func initiateMap() {
-        if(transaction.participants != nil){
-            for user in transaction.participants! {
-                userToItemsMap[user.id] = []
-            }
+        for user in transaction.participants {
+            userToItemsMap[user.id] = []
         }
     }
     

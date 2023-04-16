@@ -13,13 +13,13 @@ struct UserSelectionView: View {
     @Binding var addItem: Bool
     let isForChat: Bool
     
-    init(user: BarterMateUser, transactionList: TransactionList, addTransaction: Binding<Bool>) {
+    init(user: BarterMateUser, transactionList: ModelList<BarterMateTransaction>, addTransaction: Binding<Bool>) {
         self.viewModel = UserSelectionViewModel(user: user, transactionList: transactionList)
         self._addItem = addTransaction
         self.isForChat = false
     }
     
-    init(user: BarterMateUser, chatList: ListViewModel<BarterMateChat>, addChat: Binding<Bool>) {
+    init(user: BarterMateUser, chatList: ModelList<BarterMateChat>, addChat: Binding<Bool>) {
         self.viewModel = UserSelectionViewModel(user: user, chatList: chatList)
         self._addItem = addChat
         self.isForChat = true

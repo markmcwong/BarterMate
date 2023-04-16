@@ -16,6 +16,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
     var delegate: ModelList<U>?
     
     func setDelegate(delegate: any ModelListFacadeDelegate) {
+        print("Type of delegate is : ", delegate.self)
         guard let delegate = delegate as? ModelList<U> else {
             print("No delegate available")
             return
@@ -63,7 +64,7 @@ class AmplifyListFacade<U: ListElement>: ModelListFacade {
             let amplifyModelList = try await Amplify.DataStore.query(type.self,
                                                              where: Ownable.userID == userId.value)
             
-
+            print("amplifyModelList : ", U.typeName, amplifyModelList)
             let barterMateModels = amplifyModelList.compactMap {
                 AmplifyConverter.toBarterMateModel(model: $0)
             }
