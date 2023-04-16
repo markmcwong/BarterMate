@@ -91,12 +91,7 @@ public class AmplifyAuthService: AuthService {
 
     func signOut() async {
         do {
-            let res = await Amplify.Auth.signOut()
-
-        } catch let error as AuthError {
-            print("Sign Out failed with error: \(error)")
-        } catch {
-            print("Unexpected error: \(error)")
+            let _ = await Amplify.Auth.signOut()
         }
     }
 
