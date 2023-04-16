@@ -17,19 +17,19 @@ struct ProfileDetailsTabView: View {
                 MyItemListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.itemList))
                     .tabItem {
                         Image(systemName: "shippingbox")
-                        Text("Items")
+                        Text("My Items")
                     }
                     .tag(1)
                 MyPostingListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.postingList))
                     .tabItem {
                         Image(systemName: "signpost.and.arrowtriangle.up")
-                        Text("Posting")
+                        Text("My Posting")
                     }
                     .tag(2)
                 MyRequestListView(viewModel: ListViewModel(user: viewModel.user, modelList: viewModel.requestList))
                     .tabItem {
                         Image(systemName: "questionmark.square")
-                        Text("Request")
+                        Text("My Request")
                     }
                     .tag(3)
             }
