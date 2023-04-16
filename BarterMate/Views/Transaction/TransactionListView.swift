@@ -13,37 +13,50 @@ struct TransactionListView: View {
     @State private var addTransaction = false
 
     var body: some View {
-        VStack {
-            ScrollView(.vertical) {
-                VStack {
-                    LazyVStack {
-                        ForEach(viewModel.modelList.elements, id: \.self.id) { transaction in
-                            TransactionCardView(user: viewModel.user!, transaction: transaction)
-                        }.id(UUID())
+        ZStack {
+            VStack {
+                ScrollView(.vertical) {
+                    VStack {
+                        LazyVStack {
+                            ForEach(viewModel.modelList.elements, id: \.self.id) { transaction in
+                                TransactionCardView(user: viewModel.user!, transaction: transaction)
+                            }.id(UUID())
+                        }
                     }
                 }
             }
-            ProfileButtonsView().onTapGesture {
-                addTransaction = true
+            .onAppear {
+                viewModel.refresh()
             }
-            NavigationLink(
-                "",
-                destination: LazyView {
-                    UserSelectionView(user: viewModel.user!,
-                                      transactionList: viewModel.modelList,
-                                      addTransaction: $addTransaction)
-                },
-                isActive: $addTransaction
-            )
-            .hidden()
+            .refreshable {
+                viewModel.refresh()
+            }
+            
+            VStack {
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    
+                    Button(action: {
+                        addTransaction = true
+                    }) {
+                        Image(systemName: "plus")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(20)
+                            .background(Color.blue)
+                            .clipShape(Circle())
+                    }
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
+                }
+            }
+        }.sheet(isPresented: $addTransaction) {
+            UserSelectionView(user: viewModel.user!,
+                              transactionList: viewModel.modelList,
+                              addTransaction: $addTransaction)
         }
-        .onAppear {
-            viewModel.refresh()
-        }
-        .refreshable {
-            viewModel.refresh()
-        }
-
     }
 }
 
