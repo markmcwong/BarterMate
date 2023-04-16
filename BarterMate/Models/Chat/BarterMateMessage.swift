@@ -11,10 +11,10 @@ class BarterMateMessage: Hashable, Identifiable, ListElement, ObservableObject, 
     let id: Identifier<BarterMateMessage>
     let sentIn: BarterMateChat?
     @Published var sentBy: BarterMateUser?
-    var fetchUserClosure: ((@escaping (BarterMateUser) -> BarterMateUser) -> Void)?
+    private(set) var fetchUserClosure: ((@escaping (BarterMateUser) -> BarterMateUser) -> Void)?
     let createdAt: Date
     let content: String
-    var hasFetchedDetails = false
+    private(set) var hasFetchedDetails = false
 
     var description: String {
         "BarterMateMessage[\(id): { \(sentIn.debugDescription), \(sentBy.debugDescription)}"

@@ -14,7 +14,7 @@ class OfferSelectionViewModel: SelectableItemViewModel<BarterMateItem> {
 
     init(userId: Identifier<BarterMateUser>, transaction: BarterMateTransaction) {
         self.transaction = transaction
-        let itemList = ItemList.of(userId)
+        let itemList = ModelList<BarterMateItem>.of(userId)
         super.init(itemList: itemList)
     }
 
