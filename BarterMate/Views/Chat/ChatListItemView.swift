@@ -29,15 +29,9 @@ struct ChatListItemView: ListItemView, View {
     var body: some View {
         Button(action: {
             GlobalState.shared.currentChat = item
-            print("button pressed")
             goToMessage = true
         }) {
             HStack {
-//                Image(systemName: "person")
-//                    .resizable()
-//                    .frame(width: 80, height: 80)
-//                    .foregroundColor(.green)
-//                    .padding(.trailing, 10)
                 VStack(alignment: .leading, spacing: 10) {
                     Text(item.name ?? "Default chat name")
                         .font(.headline)
@@ -54,33 +48,36 @@ struct ChatListItemView: ListItemView, View {
                             }
                         }
                     }
-                    HStack {
-                        Button("Delete Item") {
-                            if model != nil {
-                                model!.deleteItem(item: item)
-                            } else {
-                                print("model does not exist for deleting item")
-                            }
-                        }
-                        .foregroundColor(.red)
-                        Spacer()
-                    }
                 }
                 .padding()
                 .background(Color.white)
                 .cornerRadius(10)
                 .shadow(color: .gray, radius: 3, x: 2, y: 2)
+
+                Spacer()
+
+                Button(action: {
+                    if model != nil {
+                        model!.deleteItem(item: item)
+                    } else {
+                        print("model does not exist for deleting item")
+                    }
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.red)
+                        .padding(10)
+                        .background(Color.white.opacity(0.9))
+                        .clipShape(Circle())
+                        .shadow(color: .gray, radius: 3, x: 2, y: 2)
+                }
             }
             .padding(.horizontal)
-            
-            NavigationLink(
-              "",
-              destination: LazyView {
-                  MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
-              },
-              isActive: $goToMessage
-            ).hidden()
-        }.padding(5)
+        }
+        .padding(5)
+        .background(Color.clear)
+        .sheet(isPresented: $goToMessage) {
+            MessageView(viewModel: MessageViewModel(chat: GlobalState.shared.currentChat))
+        }
     }
 }
 
