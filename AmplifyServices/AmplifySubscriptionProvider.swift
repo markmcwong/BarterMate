@@ -76,34 +76,3 @@ extension AnyCancellable: Cancellable {
         self.cancel()
     }
 }
-
-// extension GraphQLRequest {
-//    static func getChatMessages(byId id: String) -> GraphQLRequest<JSONValue> {
-//        let operationName = "listMessages"
-//        let document = """
-//        query getChatMessages($id: ID!) {
-//          \(operationName)getChatMessages(filter: {chatID: {eq: $id}}) {
-//          items {
-//            id
-//            content
-//            SentBy {
-//              username
-//              profilePic
-//            }
-//            SentIn {
-//              id
-//              name
-//              createdAt
-//            }
-//            _deleted
-//          }
-//        }
-//        """
-//        return GraphQLRequest<JSONValue>(
-//            document: document,
-//            variables: ["id": id],
-//            responseType: JSONValue.self,
-//            decodePath: operationName
-//        )
-//    }
-// }
