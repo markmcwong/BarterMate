@@ -15,67 +15,30 @@ struct NavBarView: View {
     var body: some View {
         HStack {
             Spacer()
-            Button(action: { state = .posting }) {
-                VStack {
-                    Image(systemName: "plus.square.fill")
-                        .font(.system(size: 24))
-                    Text("Posting")
-                        .font(.caption)
-                }
-                .foregroundColor(state == .posting ? .blue : .gray)
-                .frame(maxWidth: .infinity)
+            TabBarButton(title: "Posting", imageSystemName: "plus.square.fill", isSelected: state == .posting) {
+                state = .posting
             }
             Spacer()
-            Button(action: { state = .request }) {
-                VStack {
-                    Image(systemName: "list.bullet")
-                        .font(.system(size: 24))
-                    Text("Request")
-                        .font(.caption)
-                }
-                .foregroundColor(state == .request ? .blue : .gray)
-                .frame(maxWidth: .infinity)
+            TabBarButton(title: "Request", imageSystemName: "list.bullet", isSelected: state == .request) {
+                state = .request
             }
             Spacer()
-            Button(action: { state = .profile }) {
-                VStack {
-                    Image(systemName: "person.crop.circle.fill")
-                        .font(.system(size: 24))
-                    Text("Profile")
-                        .font(.caption)
-                }
-                .foregroundColor(state == .profile ? .blue : .gray)
-                .frame(maxWidth: .infinity)
+            TabBarButton(title: "Profile", imageSystemName: "person.crop.circle.fill", isSelected: state == .profile) {
+                state = .profile
             }
             Spacer()
-            Button(action: { state = .transaction }) {
-                VStack {
-                    Image(systemName: "arrow.up.arrow.down.square.fill")
-                        .font(.system(size: 24))
-                    Text("Transaction")
-                        .font(.caption)
-                }
-                .foregroundColor(state == .transaction ? .blue : .gray)
-                .frame(maxWidth: .infinity)
+            TabBarButton(title: "Transaction", imageSystemName: "arrow.up.arrow.down.square.fill", isSelected: state == .transaction) {
+                state = .transaction
             }
             Spacer()
-            Button(action: { state = .chat }) {
-                VStack {
-                    Image(systemName: "message.fill")
-                        .font(.system(size: 24))
-                    Text("Chat")
-                        .font(.caption)
-                }
-                .foregroundColor(state == .chat ? .blue : .gray)
-                .frame(maxWidth: .infinity)
+            TabBarButton(title: "Chat", imageSystemName: "message.fill", isSelected: state == .chat) {
+                state = .chat
             }
-//            Spacer()
+            Spacer()
         }
         .frame(height: 60)
         .background(Color.white)
         .shadow(color: Color.gray.opacity(0.3), radius: 10, x: 0, y: -5)
-
-
     }
 }
 
@@ -85,18 +48,22 @@ struct NavBarView_Previews: PreviewProvider {
     }
 }
 
-struct NavbarButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.horizontal, 16)
-            .padding(.vertical, 8)
-            .background(Color.white)
-            .foregroundColor(Color.blue)
-            .cornerRadius(20)
-            .overlay(
-                RoundedRectangle(cornerRadius: 20)
-                    .stroke(Color.blue, lineWidth: 2)
-            )
-            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
+struct TabBarButton: View {
+    let title: String
+    let imageSystemName: String
+    let isSelected: Bool
+    let action: () -> Void
+    
+    var body: some View {
+        Button(action: action) {
+            VStack {
+                Image(systemName: imageSystemName)
+                    .font(.system(size: 24))
+                Text(title)
+                    .font(.caption)
+            }
+            .foregroundColor(isSelected ? .blue : .gray)
+            .frame(maxWidth: .infinity)
+        }
     }
 }
